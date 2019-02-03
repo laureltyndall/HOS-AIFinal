@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     public SavePoint CurrentSavepoint;
     public Character PlayerCharacter;
     public int PlayerHealth;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		
 	}
 	
