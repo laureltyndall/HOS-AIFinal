@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HOS;
 
-namespace HOS
+[System.Serializable]
+public class GameData
 {
-    public class GameManager : MonoBehaviour 
-    {
         public GameState CurrentGameState;
         public ProgressionCheckpoint CurrentGameCheckpoint;
         public SavePoint CurrentGameSavepoint;
@@ -15,10 +15,4 @@ namespace HOS
         
         public List<GameObject> AudioLibrary;
         public Dictionary<string,bool> LevelPuzzleCompleted;
-
-        void Start()
-        {
-            DontDestroyOnLoad(this.gameObject);
-        }
-    }
 }
