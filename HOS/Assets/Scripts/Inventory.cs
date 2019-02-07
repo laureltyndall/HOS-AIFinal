@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour 
 {
-    public Dictionary<InventoryItem, RawImage> ImageList;
+    public Dictionary<InventoryItem, Item> ItemsInInventory = new Dictionary<InventoryItem,Item>();
     
 	// Use this for initialization
 	void Start () {
@@ -17,4 +17,30 @@ public class Inventory : MonoBehaviour
     {
 		
 	}
+
+    public void AddInventoryItem()
+    {
+    }
+    
+    public void SelectItem()
+    {
+
+    }
+    
+    public void RemoveItem()
+    {
+    }
+
+    public void ResetInventory()
+    {
+        ItemsInInventory.Clear();
+    }
+    
+    private void IsItemInInventory()
+    {
+    }
+
+    private void CanPlayerUseItem()
+    {
+    }
 }

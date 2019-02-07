@@ -65,3 +65,13 @@ public enum InventoryItem
     Stick = 7,
     SecondList = 8,
 }
+
+public enum ItemStatus
+{
+    None = 0,
+    NotAvailable = 1,
+    Available = 2,
+    InInventory = 3,
+    Used = 4,
+    Removed = 5,
+}
