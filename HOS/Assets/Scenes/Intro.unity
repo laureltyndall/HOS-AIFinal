@@ -1614,6 +1614,7 @@ MonoBehaviour:
   CurrentGameState: 0
   CurrentGameCheckpoint: 0
   CurrentGameSavepoint: 0
+  CurrentPlayer: {fileID: 0}
   AudioLibrary: []
 --- !u!4 &1136828760
 Transform:
