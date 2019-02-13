@@ -58,12 +58,13 @@ public enum InventoryItem
     Trowel = 0,
     Flashlight = 1,
     Worms = 2,
-    Checklist = 3,
+    MoveInChecklist = 3,
     Cheese = 4,
     Basket = 5,
-    StarPiece = 6,
+    MarblePiece = 6,
     Stick = 7,
-    SecondList = 8,
+    MysteryChecklist = 8,
+    SiblingLetter = 9,
 }
 
 public enum ItemStatus

@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - GameManager
+  - Trowel
+  - Flashlight
+  - Cheese
+  - Move-InChecklist
+  - Basket
+  - Worms
+  - MarblePiece
+  - Stick
+  - MysteryChecklist
+  - SiblingLetter
   layers:
   - Default
   - TransparentFX
