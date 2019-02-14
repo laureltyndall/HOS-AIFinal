@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HOS;
 
+//References to determine whether the game is currently running.
 public enum GameState
 {
     None = 0,
@@ -11,6 +12,7 @@ public enum GameState
     GameOver = 3,
 }
 
+//References which character the player is currently using.
 public enum Character
 {
     None = 0,
@@ -18,6 +20,7 @@ public enum Character
     Anne = 2,
 }
 
+//References to determine whether the player is able to progress further in the game.
 public enum ProgressionCheckpoint
 {
     None = 0,
@@ -29,7 +32,8 @@ public enum ProgressionCheckpoint
     HedgeMaze = 6,
     UndergroundTunnel = 7,
 }
-    
+
+//References to determine the player's current save point.    
 public enum SavePoint
 {
     None = 0,
@@ -46,4 +50,29 @@ public enum SavePoint
     UndergroundTunnelInitial = 11,
     UndergroundTunnelMaze = 12,
     UndergroundTunnelExit = 13,
+}
+
+//References to the items used by the inventory system
+public enum InventoryItem
+{
+    Trowel = 0,
+    Flashlight = 1,
+    Worms = 2,
+    MoveInChecklist = 3,
+    Cheese = 4,
+    Basket = 5,
+    MarblePiece = 6,
+    Stick = 7,
+    MysteryChecklist = 8,
+    SiblingLetter = 9,
+}
+
+public enum ItemStatus
+{
+    None = 0,
+    NotAvailable = 1,
+    Available = 2,
+    InInventory = 3,
+    Used = 4,
+    Removed = 5,
 }

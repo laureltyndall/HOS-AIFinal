@@ -9,10 +9,8 @@ namespace HOS
         public GameState CurrentGameState;
         public ProgressionCheckpoint CurrentGameCheckpoint;
         public SavePoint CurrentGameSavepoint;
-
+        public Player CurrentPlayer;
         public Dictionary<string,GameObject> MasterGameInventory;
-        public Dictionary<string,GameObject> PlayerInventory;
-        
         public List<GameObject> AudioLibrary;
         public Dictionary<string,bool> LevelPuzzleCompleted;
 
