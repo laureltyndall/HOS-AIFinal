@@ -120,6 +120,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224365445929081410, guid: e1f6366c0128a5343b375fbaf42f2440,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -216,7 +221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1325275753233330, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224485130707030084, guid: e1f6366c0128a5343b375fbaf42f2440,
         type: 2}
@@ -278,6 +283,36 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1071204799}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114757191323038402, guid: e1f6366c0128a5343b375fbaf42f2440,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 103110442}
     m_RemovedComponents:
     - {fileID: 114835133745944562, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
@@ -1091,7 +1126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.97794116, g: 0.97794116, b: 0.97794116, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1657,6 +1692,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1071204798}
+  - component: {fileID: 1071204799}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -1677,6 +1713,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1071204799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1071204797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed15228f749e91c418637c171cb16871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeStamp: 10
+  scene_number: 0
+  PauseMenu: {fileID: 0}
+  CurrentGameTime: 0
 --- !u!1 &1119028639
 GameObject:
   m_ObjectHideFlags: 0

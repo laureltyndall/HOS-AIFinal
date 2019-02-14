@@ -18,5 +18,19 @@ namespace HOS
         {
             DontDestroyOnLoad(this.gameObject);
         }
+
+        public void SelectPlayerCharacter(int PlayerChoice)
+        {
+            if (PlayerChoice == 1)
+            {
+                // Player is Alex Russell
+                CurrentPlayer.PlayerCharacter = Character.Alex;
+            }
+            else if (PlayerChoice == 2)
+            {
+                // Player is Anne Russell
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+            }
+        }
     }
 }
