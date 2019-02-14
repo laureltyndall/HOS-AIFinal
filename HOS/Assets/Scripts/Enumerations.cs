@@ -76,3 +76,17 @@ public enum ItemStatus
     Used = 4,
     Removed = 5,
 }
+
+public enum CursorType
+{
+    None = 0,
+    Default = 1,
+    Forward = 2,
+    Backup = 3,
+    LeftTurn = 4,
+    RightTurn = 5,
+    LookCloser = 6,
+    PickUpItem = 7,
+    Panoramic = 8,
+    TurnAround = 9,
+}
