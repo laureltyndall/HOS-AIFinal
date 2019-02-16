@@ -45,7 +45,6 @@ public class SaveAndLoadManager : MonoBehaviour
         Manager.CurrentGameCheckpoint = DataCollection.CurrentGameCheckpoint;
         Manager.CurrentGameSavepoint = DataCollection.CurrentGameSavepoint;
         Manager.CurrentPlayer = DataCollection.CurrentPlayer;
-        Manager.MasterGameInventory = DataCollection.MasterGameInventory;
         Manager.LevelPuzzleCompleted = DataCollection.LevelPuzzleCompleted;
     }
     
@@ -60,7 +59,6 @@ public class SaveAndLoadManager : MonoBehaviour
         DataCollection.CurrentGameCheckpoint = Manager.CurrentGameCheckpoint;
         DataCollection.CurrentGameSavepoint = Manager.CurrentGameSavepoint;
         DataCollection.CurrentPlayer = Manager.CurrentPlayer;
-        DataCollection.MasterGameInventory = Manager.MasterGameInventory;
         DataCollection.LevelPuzzleCompleted = Manager.LevelPuzzleCompleted;
 
         //Serialize data to be encoded by the JSON file.

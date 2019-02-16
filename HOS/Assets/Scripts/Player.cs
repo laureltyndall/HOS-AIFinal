@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public SavePoint CurrentSavepoint;
     public Character PlayerCharacter;
     public int PlayerHealth;
-    public Dictionary<InventoryItem,Item> PlayerInventory;
+    public Dictionary<InventoryItem,Item> PlayerInventory = new Dictionary<InventoryItem, Item>();
 
 	// Use this for initialization
 	void Start () 

@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         #region Create Inventory Items
         NewItem.ItemImage = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Image>(); // Find Item Image
         NewItem.ItemImage.enabled = false; //Disable Item Image
@@ -80,7 +81,10 @@ public class Inventory : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        UpdateItems();
+        if (Manager.CurrentPlayer.PlayerInventory.Count > 0)
+        {
+            UpdateItems();
+        }
 	}
 
     public void AddInventoryItem(InventoryItem CurrentItem)
@@ -167,36 +171,43 @@ public class Inventory : MonoBehaviour
     {
         if (CurrentItem == InventoryItem.Basket)
         {
-            
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Basket);
         }
         else if (CurrentItem == InventoryItem.Cheese)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Cheese);
         }
         else if (CurrentItem == InventoryItem.Flashlight)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Flashlight);
         }
         else if (CurrentItem == InventoryItem.MarblePiece)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.MarblePiece);
         }
         else if (CurrentItem == InventoryItem.MoveInChecklist)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.MoveInChecklist);
         }
         else if (CurrentItem == InventoryItem.MysteryChecklist)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.MysteryChecklist);
         }
         else if (CurrentItem == InventoryItem.SiblingLetter)
         {
-
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.SiblingLetter);
         }
         else if (CurrentItem == InventoryItem.Stick)
         {
-
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Stick);
         }
         else if (CurrentItem == InventoryItem.Trowel)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Trowel);
         }
         else if (CurrentItem == InventoryItem.Worms)
         {
+            Manager.CurrentPlayer.PlayerInventory.Remove(InventoryItem.Worms);
         }
     }
 
@@ -300,11 +311,54 @@ public class Inventory : MonoBehaviour
         }   
     }
     
-    private void IsItemInInventory()
+    private bool IsItemInInventory(Item i)
     {
+        foreach (KeyValuePair <InventoryItem, Item> item in Manager.CurrentPlayer.PlayerInventory)
+        {
+            if (i.ItemID == item.Key)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
-    private void CanPlayerUseItem()
+    private void CanPlayerUseItem(Item i)
     {
+        if (IsItemInInventory(i))
+        {
+            if (i.ItemID  == InventoryItem.Basket)
+            {
+            }
+            else if (i.ItemID == InventoryItem.Cheese)
+            {
+            }   
+            else if (i.ItemID  == InventoryItem.Flashlight)
+            {
+            }
+            else if (i.ItemID  == InventoryItem.MarblePiece)
+            {
+            }
+            else if (i.ItemID  == InventoryItem.MoveInChecklist)
+            {
+            }
+            else if (i.ItemID  == InventoryItem.MysteryChecklist)
+            {
+            }
+            else if (i.ItemID  == InventoryItem.SiblingLetter)
+            {
+
+            }
+            else if (i.ItemID  == InventoryItem.Stick)
+            {
+
+            }
+            else if (i.ItemID  == InventoryItem.Trowel)
+            {
+            }
+            else if (i.ItemID  == InventoryItem.Worms)
+            {
+            }
+        }
     }
 }

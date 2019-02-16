@@ -9,14 +9,14 @@ namespace HOS
         public GameState CurrentGameState;
         public ProgressionCheckpoint CurrentGameCheckpoint;
         public SavePoint CurrentGameSavepoint;
-        public Player CurrentPlayer;
-        public Dictionary<string,GameObject> MasterGameInventory;
-        public List<GameObject> AudioLibrary;
-        public Dictionary<string,bool> LevelPuzzleCompleted;
+        public Player CurrentPlayer = new Player();
+        public List<GameObject> AudioLibrary = new List<GameObject>();
+        public Dictionary<string,bool> LevelPuzzleCompleted = new Dictionary<string, bool>();
 
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
+            CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
         public void SelectPlayerCharacter(int PlayerChoice)
