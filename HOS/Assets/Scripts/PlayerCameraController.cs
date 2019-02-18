@@ -7,30 +7,48 @@ public class PlayerCameraController : MonoBehaviour
     public bool CanOrbit = false;
     private int TurnsLeft = 0;
     private int TurnsRight = 0;
-
+    //Possible way to prevent the player from leaving area boundaries
+    private int StepBoundaryLeftMax = 0;
+    private int StepBoundaryRightMax = 0;
+    private int StepBoundaryFowardMax = 0;
+    private int StepBoundaryBackwardMax = 0;
+    private int StepsTaken = 0;
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
+    void Update()
+    {
+        if (CanOrbit == false)
+        {
+            TurnsLeft = 0;
+            TurnsRight = 0;
+        }
+    }
+
     public void MovePlayerFoward()
     {
         this.gameObject.transform.Translate(0,0,10);
+        StepsTaken += 1;
     }
 
     public void MovePlayerBackward()
     {
         this.gameObject.transform.Translate(0,0,-10);
+        StepsTaken += 1;
     }
 
     public void MovePlayerLeft()
     {
         this.gameObject.transform.Translate(-10,0,0);
+        StepsTaken += 1;
     }
 
     public void MovePlayerRight()
     {
         this.gameObject.transform.Translate(10,0,0);
+        StepsTaken += 1;
     }
 
     public void MovePlayerUturn()

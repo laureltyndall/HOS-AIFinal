@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace HOS
 {
@@ -31,6 +32,11 @@ namespace HOS
                 // Player is Anne Russell
                 CurrentPlayer.PlayerCharacter = Character.Anne;
             }
+        }
+
+        public void LoadScene()
+        {
+            SceneManager.LoadScene("Intro");
         }
     }
 }
