@@ -17,7 +17,7 @@ namespace HOS
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
-            CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+       //     CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
         public void SelectPlayerCharacter(int PlayerChoice)
