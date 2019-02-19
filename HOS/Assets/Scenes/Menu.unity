@@ -1455,7 +1455,7 @@ MonoBehaviour:
           m_MethodName: OnMouseEnter
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 2800000, guid: 3ccda8f274a91914d855745d124d814c,
+            m_ObjectArgument: {fileID: 2800000, guid: ae75f3f6e6b78524d9f27192b501fc36,
               type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Texture2D, UnityEngine
             m_IntArgument: 0
@@ -4683,7 +4683,7 @@ MonoBehaviour:
           m_MethodName: OnMouseEnter
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 2800000, guid: fecce44eb752a3b4d807e674674ec07e,
+            m_ObjectArgument: {fileID: 2800000, guid: be00c185b6f4e074580090e614740583,
               type: 3}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Texture2D, UnityEngine
             m_IntArgument: 0
