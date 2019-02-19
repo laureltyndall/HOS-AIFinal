@@ -399,6 +399,10 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 103110442}
+    - target: {fileID: 1243211825159538, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114835133745944562, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e1f6366c0128a5343b375fbaf42f2440, type: 2}
@@ -456,11 +460,11 @@ GameObject:
   - component: {fileID: 129141825}
   - component: {fileID: 129141824}
   - component: {fileID: 129141823}
-  - component: {fileID: 129141822}
   - component: {fileID: 129141827}
+  - component: {fileID: 129141822}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -473,10 +477,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 129141821}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1bb779f89be2e4ab2d65a4e24a596f, type: 3}
+  m_Script: {fileID: 11500000, guid: cca1379a4d409204694f361bbefe121d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanOrbit: 1
+  CurrentCheckpoint: 0
+  CurrentSavepoint: 0
+  PlayerCharacter: 0
+  PlayerHealth: 0
 --- !u!23 &129141823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -538,7 +545,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 129141821}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 47.14, y: 1.09, z: -32.97}
+  m_LocalPosition: {x: 47.14, y: 1.09, z: -34.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 603052325}
@@ -633,6 +640,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 160501592}
   m_Mesh: {fileID: 4300556, guid: fd7fbfae3f68ea54b979cde7450726d6, type: 3}
+--- !u!1 &188628154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 188628155}
+  m_Layer: 0
+  m_Name: Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &188628155
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 188628154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 45.9, y: 0, z: -58.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &194719777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1619,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 603052321}
   m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.414, z: -1.874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 129141826}
@@ -3191,7 +3226,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 129141822}
+      - m_Target: {fileID: 0}
         m_MethodName: MovePlayerFoward
         m_Mode: 1
         m_Arguments:
@@ -3616,3 +3651,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1995512075}
+--- !u!1 &2146144397 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1243211825159538, guid: e1f6366c0128a5343b375fbaf42f2440,
+    type: 2}
+  m_PrefabInternal: {fileID: 103110440}
+--- !u!114 &2146144401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2146144397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1bb779f89be2e4ab2d65a4e24a596f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentPlayer: {fileID: 0}
+  CanOrbit: 1
+  WaypointList:
+  - {fileID: 188628154}

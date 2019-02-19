@@ -1,18 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerCameraController : MonoBehaviour 
+public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 {
+    public Player CurrentPlayer;
     public bool CanOrbit = false;
-    private int TurnsLeft = 0;
-    private int TurnsRight = 0;
-    //Possible way to prevent the player from leaving area boundaries
-    private int StepBoundaryLeftMax = 0;
-    private int StepBoundaryRightMax = 0;
-    private int StepBoundaryFowardMax = 0;
-    private int StepBoundaryBackwardMax = 0;
-    private int StepsTaken = 0;
+    public List<GameObject> WaypointList = new List<GameObject>();
+
 	// Use this for initialization
 	void Start () {
 		
@@ -20,66 +16,50 @@ public class PlayerCameraController : MonoBehaviour
 	
     void Update()
     {
-        if (CanOrbit == false)
+        CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
+
+    public void OnPointerClick(PointerEventData data)
+    {
+        if ((data.pressPosition.x >= 0 && data.pressPosition.x <= 200) && (data.pressPosition.y >= 0 && data.pressPosition.y <= 451))
         {
-            TurnsLeft = 0;
-            TurnsRight = 0;
+            CurrentPlayer.transform.position = WaypointList[0].transform.position;
         }
+        if ((data.pressPosition.x >= 0 && data.pressPosition.x <= 200) && (data.pressPosition.y >= 0 && data.pressPosition.y <= 451))
+        {
+            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+        }
+        
     }
 
-    public void MovePlayerFoward()
+    public void OnPointerEnter(PointerEventData data)
     {
-        this.gameObject.transform.Translate(0,0,10);
-        StepsTaken += 1;
-    }
-
-    public void MovePlayerBackward()
-    {
-        this.gameObject.transform.Translate(0,0,-10);
-        StepsTaken += 1;
-    }
-
-    public void MovePlayerLeft()
-    {
-        this.gameObject.transform.Translate(-10,0,0);
-        StepsTaken += 1;
-    }
-
-    public void MovePlayerRight()
-    {
-        this.gameObject.transform.Translate(10,0,0);
-        StepsTaken += 1;
+        if (CanOrbit)
+        {
+            if ((data.pressPosition.x >= 0 && data.pressPosition.x <= 450) && (data.pressPosition.y >= 0 && data.pressPosition.y <= 800))
+            {
+                RotateLeft();
+            }
+            if ((data.pressPosition.x >= 900 && data.pressPosition.x <= 1400) && (data.pressPosition.y >= 0 && data.pressPosition.y <= 800))
+            {
+                RotateRight();
+            }
+        }
     }
 
     public void MovePlayerUturn()
     {
-        this.gameObject.transform.Translate(0,0,0);
-        this.gameObject.transform.Rotate(0,180,0);
+        CurrentPlayer.transform.Rotate(0,180,0);
+    }
+    
+    public void RotateLeft()
+    {
+        CurrentPlayer.transform.Rotate(0,-90,0);
     }
 
-    public void OrbitLeft()
+    public void RotateRight()
     {
-        if (CanOrbit)
-        {
-            if (TurnsLeft <= 0)
-            {
-                this.gameObject.transform.GetChild(0).transform.Translate(-4, 0, 0);
-            }
-            this.gameObject.transform.Rotate(0, -90, 0);
-            TurnsLeft += 1;
-        }
-    }
-
-    public void OrbitRight()
-    {
-        if (CanOrbit)
-        {
-            if (TurnsRight <= 0)
-            {
-                this.gameObject.transform.GetChild(0).transform.Translate(4, 0, 0);
-            }
-            this.gameObject.transform.Rotate(0, -90, 0);
-            TurnsRight += 1;
-        }
+        CurrentPlayer.transform.Rotate(0,90,0);
     }
 }
