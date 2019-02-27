@@ -15,6 +15,10 @@ public class TopDownCamera : MonoBehaviour
     private float m_Angle = 1f;     //my angle for camera
     [SerializeField]
     private float m_Smoothspeed = 0.5f;     //Smoothing the camera speed
+    [SerializeField]
+    private float boundX = 2.0f;
+    [SerializeField]
+    private float boundY = 1.5f;
 
     private Vector3 refVelocity;
     #endregion
