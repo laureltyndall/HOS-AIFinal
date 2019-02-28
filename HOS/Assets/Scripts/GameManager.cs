@@ -24,13 +24,19 @@ namespace HOS
         {
             if (PlayerChoice == 1)
             {
-                // Player is Alex Russell
-                CurrentPlayer.PlayerCharacter = Character.Alex;
+                if (CurrentPlayer != null)
+                {
+                    // Player is Alex Russell
+                    CurrentPlayer.PlayerCharacter = Character.Alex;
+                }
             }
             else if (PlayerChoice == 2)
             {
-                // Player is Anne Russell
-                CurrentPlayer.PlayerCharacter = Character.Anne;
+                if (CurrentPlayer != null)
+                {
+                    // Player is Anne Russell
+                    CurrentPlayer.PlayerCharacter = Character.Anne;
+                }
             }
         }
 
