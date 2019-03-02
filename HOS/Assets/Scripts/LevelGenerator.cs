@@ -37,10 +37,10 @@ public class LevelGenerator : MonoBehaviour
                 LevelGridArray[i, j] = LevelSectionArray[GeneratedNumber];
                 tempCoords = t.position.x + LevelSectionArray[i].transform.localScale.x;
                 t.position = new Vector3(tempCoords,t.position.y,t.position.z);
-                if (j == LevelGridXSize - 1)
+                if (j == LevelGridYSize - 3)
                 {
-                    tempCoords= t.position.z + LevelSectionArray[i].transform.localScale.z;
-                    t.position = new Vector3(t.position.x, t.position.y, tempCoords);
+                    tempCoords= t.position.z + LevelSectionArray[j].transform.localScale.z;
+                    t.position = new Vector3(LevelSectionArray[i].transform.position.x, t.position.y, tempCoords);
                 }
                 GameObject G = GameObject.Instantiate(LevelGridArray[i, j]);
                 G.transform.position = t.position;
