@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour 
 {
-    public const int MaxSegments = 4;
-    public const int MaxLevelSize = 3;
+    public const int MaxLevelSections = 4;
+    public const int LevelGridXSize = 3;
+    public const int LevelGridYSize = 3;
     public GameObject MazeStartPosition;
-    public GameObject[,] LevelArray = new GameObject[MaxLevelSize,MaxLevelSize];
-    public GameObject[] MasterLevelSegmentArray = new GameObject[MaxSegments];
-    private int NumberRow = 0;
-    private int NumberCol = 0;
+    public GameObject[,] LevelGridArray = new GameObject[LevelGridXSize,LevelGridXSize];
+    public GameObject[] LevelSectionArray = new GameObject[MaxLevelSections];
     private int GeneratedNumber = 0;
 	// Use this for initialization
 	void Start () 
@@ -30,20 +29,20 @@ public class LevelGenerator : MonoBehaviour
         t.position = new Vector3(0, 0, 0);
         float tempCoords;
 
-        for (int i = 0; i < MaxLevelSize; i++)
+        for (int i = 0; i < LevelGridXSize; i++)
         {
-            for (int j = 0; j < MaxLevelSize; j++)
+            for (int j = 0; j < LevelGridYSize; j++)
             {
                 GenerateNumber();
-                LevelArray[i, j] = MasterLevelSegmentArray[GeneratedNumber];
-                tempCoords = t.position.x + MasterLevelSegmentArray[i].transform.localScale.x;
+                LevelGridArray[i, j] = LevelSectionArray[GeneratedNumber];
+                tempCoords = t.position.x + LevelSectionArray[i].transform.localScale.x;
                 t.position = new Vector3(tempCoords,t.position.y,t.position.z);
-                if (j == MaxLevelSize - 1)
+                if (j == LevelGridXSize - 1)
                 {
-                    tempCoords= t.position.z + MasterLevelSegmentArray[i].transform.localScale.z;
+                    tempCoords= t.position.z + LevelSectionArray[i].transform.localScale.z;
                     t.position = new Vector3(t.position.x, t.position.y, tempCoords);
                 }
-                GameObject G = GameObject.Instantiate(LevelArray[i, j]);
+                GameObject G = GameObject.Instantiate(LevelGridArray[i, j]);
                 G.transform.position = t.position;
 
             }
@@ -52,6 +51,6 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateNumber()
     {
-        GeneratedNumber = Random.Range(0,MaxSegments);   
+        GeneratedNumber = Random.Range(0,MaxLevelSections);   
     }
 }

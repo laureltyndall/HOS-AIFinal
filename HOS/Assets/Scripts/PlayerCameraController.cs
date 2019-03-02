@@ -10,25 +10,38 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
     public bool CanBackup = false;
     public float RotateTime = 0.2f;
     public List<GameObject> WaypointList = new List<GameObject>();
+    public GameObject CurrentWaypoint;
     public List<Texture2D> CursorList;
     CursorType CurrentCursor = CursorType.Default;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+    {
+		FindWaypointList();
 	}
 	
     void Update()
     {
         CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        
     }
 
+    public void FindWaypointList()
+    {
+        GameObject TempObj = GameObject.FindGameObjectWithTag("WaypointList");
+        WaypointList = new List<GameObject>();
+        foreach (Transform t in TempObj.transform)
+        {
+            WaypointList.Add(t.gameObject);
+        }
+    }
 
     public void OnPointerClick(PointerEventData data)
     {
         if (CurrentCursor == CursorType.Forward)
         {
             CurrentPlayer.transform.position = WaypointList[0].transform.position;
+            CurrentWaypoint = WaypointList[0];
         }
         if (CurrentCursor == CursorType.TurnAround)
         {
