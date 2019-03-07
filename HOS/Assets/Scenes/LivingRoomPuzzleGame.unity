@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 134712701}
   m_Layer: 0
   m_Name: Folders 200/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -437,7 +437,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 134712699}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 144862769}
   m_Layer: 0
   m_Name: Tape Dispenser 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -521,7 +521,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 144862767}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 188156834}
   m_Layer: 0
   m_Name: Binder Clips 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -605,7 +605,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 188156832}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -628,9 +628,10 @@ GameObject:
   - component: {fileID: 189714398}
   - component: {fileID: 189714397}
   - component: {fileID: 189714396}
+  - component: {fileID: 189714399}
   m_Layer: 0
   m_Name: Left Side
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -689,7 +690,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 189714394}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -701,6 +702,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 189714394}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &189714399
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 189714394}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &218758546
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +898,7 @@ GameObject:
   - component: {fileID: 314078521}
   m_Layer: 0
   m_Name: Stapler 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -941,7 +957,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 314078519}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -966,7 +982,7 @@ GameObject:
   - component: {fileID: 314286206}
   m_Layer: 0
   m_Name: Pencil Case 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1025,7 +1041,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 314286204}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1050,7 +1066,7 @@ GameObject:
   - component: {fileID: 326706787}
   m_Layer: 0
   m_Name: Fancy Pen Cup 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1109,7 +1125,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 326706785}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1134,7 +1150,7 @@ GameObject:
   - component: {fileID: 332352061}
   m_Layer: 0
   m_Name: Arm Rest 300/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1193,7 +1209,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 332352059}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1386,7 +1402,7 @@ GameObject:
   - component: {fileID: 473317076}
   m_Layer: 0
   m_Name: Books 200/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1445,7 +1461,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 473317074}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1470,7 +1486,7 @@ GameObject:
   - component: {fileID: 480743344}
   m_Layer: 0
   m_Name: Stamper 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1529,7 +1545,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 480743342}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1554,7 +1570,7 @@ GameObject:
   - component: {fileID: 518940915}
   m_Layer: 0
   m_Name: Modem 400/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1613,7 +1629,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 518940913}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1703,7 +1719,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 524048266}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -2, z: 37}
+  m_LocalPosition: {x: 0, y: 0, z: 37}
   m_LocalScale: {x: 2000, y: 0, z: 1500}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1974,7 +1990,7 @@ GameObject:
   - component: {fileID: 889650360}
   m_Layer: 0
   m_Name: Organizer 200/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2033,7 +2049,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889650358}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2226,7 +2242,7 @@ GameObject:
   - component: {fileID: 959710265}
   m_Layer: 0
   m_Name: Lamp 400/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2285,7 +2301,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 959710263}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2308,9 +2324,11 @@ GameObject:
   - component: {fileID: 994237203}
   - component: {fileID: 994237202}
   - component: {fileID: 994237201}
+  - component: {fileID: 994237204}
+  - component: {fileID: 994237205}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2369,7 +2387,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994237199}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2381,6 +2399,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994237199}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &994237204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994237199}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &994237205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994237199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0e9d550cad16340af1e4d270b90cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1015764854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2522,7 @@ GameObject:
   - component: {fileID: 1049909876}
   m_Layer: 0
   m_Name: Mouse Pad 200/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2537,7 +2581,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1049909874}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2644,9 +2688,11 @@ GameObject:
   - component: {fileID: 1265210131}
   - component: {fileID: 1265210130}
   - component: {fileID: 1265210129}
+  - component: {fileID: 1265210132}
+  - component: {fileID: 1265210133}
   m_Layer: 0
   m_Name: Rubber Bands 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2705,7 +2751,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1265210127}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2717,6 +2763,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1265210127}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1265210132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265210127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67502d3aba1493447a9ea507171345a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NewCursor: {fileID: 0}
+  AttachedtoMouse: 0
+  StartPosition: {fileID: 0}
+  CameraDistance: 800
+--- !u!54 &1265210133
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265210127}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &1268922134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2780,7 +2856,7 @@ GameObject:
   - component: {fileID: 1308027800}
   m_Layer: 0
   m_Name: Hand Sanitizer 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2839,7 +2915,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1308027798}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2948,7 +3024,7 @@ GameObject:
   - component: {fileID: 1326927248}
   m_Layer: 0
   m_Name: Scissors 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3007,7 +3083,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1326927246}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3452,7 +3528,7 @@ GameObject:
   - component: {fileID: 1659416121}
   m_Layer: 0
   m_Name: Flashlight 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3511,7 +3587,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659416119}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3536,7 +3612,7 @@ GameObject:
   - component: {fileID: 1663330144}
   m_Layer: 0
   m_Name: Paper Clip Cup 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3595,7 +3671,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1663330142}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3618,9 +3694,10 @@ GameObject:
   - component: {fileID: 1724083135}
   - component: {fileID: 1724083134}
   - component: {fileID: 1724083133}
+  - component: {fileID: 1724083136}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: Border
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3679,7 +3756,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724083131}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3691,6 +3768,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724083131}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1724083136
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724083131}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1764350601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,7 +3796,7 @@ GameObject:
   - component: {fileID: 1764350603}
   m_Layer: 0
   m_Name: Paper Clips 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3763,7 +3855,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1764350601}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3786,6 +3878,7 @@ GameObject:
   - component: {fileID: 1776342967}
   - component: {fileID: 1776342966}
   - component: {fileID: 1776342965}
+  - component: {fileID: 1776342968}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -3847,7 +3940,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1776342963}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -3859,6 +3952,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1776342963}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &1776342968
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1776342963}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1794466756
 GameObject:
   m_ObjectHideFlags: 0
@@ -4303,7 +4411,7 @@ GameObject:
   - component: {fileID: 2068806603}
   m_Layer: 0
   m_Name: Regular Pen Cup 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4362,7 +4470,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2068806601}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4387,7 +4495,7 @@ GameObject:
   - component: {fileID: 2132296835}
   m_Layer: 0
   m_Name: Plant 100/100
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4446,7 +4554,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2132296833}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4521,7 +4629,7 @@ GameObject:
   - component: {fileID: 2139088516}
   m_Layer: 0
   m_Name: Clock 100/200
-  m_TagString: Untagged
+  m_TagString: PuzzlePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4580,7 +4688,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2139088514}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}

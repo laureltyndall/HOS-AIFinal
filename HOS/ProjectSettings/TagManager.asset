@@ -18,6 +18,8 @@ TagManager:
   - Border
   - WinBorder
   - Key
+  - WaypointList
+  - PuzzlePiece
   layers:
   - Default
   - TransparentFX
