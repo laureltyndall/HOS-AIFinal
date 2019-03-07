@@ -16,7 +16,7 @@ namespace HOS
         public string PlayerName;
         private string SiblingName;
 
-        public float TimeLeft = 60.0f;
+        private float TimeLeft = 180.0f;
 
         private string Narration1 = "It looks like I need to move the blocks out of the way so the key gets to the keyhole.";
         private string Narration2 = ": Please hurry, ";
@@ -59,15 +59,15 @@ namespace HOS
                 }
 
                 TimeLeft -= Time.deltaTime;
-                if (TimeLeft <= 45)
+                if (TimeLeft <= 60)
                 {
                     NarrativeBox.text = Narration2;
                 }
-                if (TimeLeft <= 25)
+                if (TimeLeft <= 30)
                 {
                     NarrativeBox.text = Narration3;
                 }
-                if (TimeLeft <= 5)
+                if (TimeLeft <= 10)
                 {
                     NarrativeBox.text = Narration4;
                 }
@@ -122,6 +122,13 @@ namespace HOS
         {
             // If the pause menu is on, turn it off. If it is off, turn it on
             GameOverPanel.SetActive(!GameOverPanel.activeSelf);
+        }
+
+        public void RunWinGame()
+        {
+            ManagerScript.PuzzleComplete = true;
+            GameOver = true;
+
         }
     }
 }

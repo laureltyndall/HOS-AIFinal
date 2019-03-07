@@ -39,17 +39,29 @@ namespace HOS
                 if (Moving == CanMove.Right)
                 {
                     ParentPiece.IsMovingRight = true;
+                    ParentPiece.IsMovingLeft = false;
+                    ParentPiece.IsMovingUp = false;
+                    ParentPiece.IsMovingDown = false;
                 }
                 else if (Moving == CanMove.Left)
                 {
+                    ParentPiece.IsMovingRight = false;
                     ParentPiece.IsMovingLeft = true;
+                    ParentPiece.IsMovingUp = false;
+                    ParentPiece.IsMovingDown = false;
                 }
                 else if (Moving == CanMove.Up)
                 {
+                    ParentPiece.IsMovingRight = false;
+                    ParentPiece.IsMovingLeft = false;
                     ParentPiece.IsMovingUp = true;
+                    ParentPiece.IsMovingDown = false;
                 }
                 else if (Moving == CanMove.Down)
                 {
+                    ParentPiece.IsMovingRight = false;
+                    ParentPiece.IsMovingLeft = false;
+                    ParentPiece.IsMovingUp = false;
                     ParentPiece.IsMovingDown = true;
                 }
             }

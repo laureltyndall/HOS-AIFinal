@@ -13,6 +13,7 @@ namespace HOS
         public Player CurrentPlayer = new Player();
         public List<GameObject> AudioLibrary = new List<GameObject>();
         public Dictionary<string,bool> LevelPuzzleCompleted = new Dictionary<string, bool>();
+        public bool PuzzleComplete;
 
         void Start()
         {

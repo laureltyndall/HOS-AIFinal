@@ -6,11 +6,13 @@ namespace HOS
 {
     public class MovingPiece : MonoBehaviour
     {
-
+        Rigidbody MyRigidbody;
         public bool IsMovingRight = false;
         public bool IsMovingLeft = false;
         public bool IsMovingUp = false;
         public bool IsMovingDown = false;
+
+        private float Speed = 15.0f;
 
         public SliderGameController SliderGameScript;
 
@@ -20,32 +22,43 @@ namespace HOS
         void Start()
         {
             SliderGameScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SliderGameController>();
+            MyRigidbody = this.gameObject.GetComponent<Rigidbody>();
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (IsMovingRight)
             {
-                transform.Translate(-Vector3.right * MovementSpeed * Time.deltaTime);
+                MyRigidbody.AddForce(Vector3.right * (Speed * Time.deltaTime), ForceMode.VelocityChange);
+              //  transform.Translate(-Vector3.right * MovementSpeed * Time.deltaTime);
             }
 
             if (IsMovingLeft)
             {
-                transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
+                MyRigidbody.AddForce(Vector3.left * (Speed * Time.deltaTime), ForceMode.VelocityChange);
+             //   transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
             }
 
             if (IsMovingUp)
             {
-                transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
+                MyRigidbody.AddForce(Vector3.up * (Speed * Time.deltaTime), ForceMode.VelocityChange);
+             //   transform.Translate(Vector3.right * MovementSpeed * Time.deltaTime);
             }
 
             if (IsMovingDown)
             {
-                transform.Translate(-Vector3.right * MovementSpeed * Time.deltaTime);
+                MyRigidbody.AddForce(Vector3.down * (Speed * Time.deltaTime), ForceMode.VelocityChange);
+                // transform.Translate(-Vector3.right * MovementSpeed * Time.deltaTime);
             }
         }
-
+        
+        private void OnCollisionEnter(Collision collision)
+        {
+            collision.rigidbody.velocity = new Vector3(0, 0, 0);
+            MyRigidbody.velocity = new Vector3(0, 0, 0);
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             IsMovingRight = false;
@@ -60,8 +73,11 @@ namespace HOS
                 {
                     // The Game is Won
                     Debug.Log("Game is WON");
+                    SliderGameScript.RunWinGame();
                 }
             }
         }
+
+
     }
 }
