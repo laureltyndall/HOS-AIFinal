@@ -5180,6 +5180,7 @@ MonoBehaviour:
   CurrentGameSavepoint: 0
   CurrentPlayer: {fileID: 0}
   AudioLibrary: []
+  PuzzleComplete: 0
 --- !u!4 &1136828760
 Transform:
   m_ObjectHideFlags: 0
