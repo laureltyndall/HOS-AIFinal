@@ -2,8 +2,9 @@
 using System.Collections;
 using HOS;
 
-public class Grid : MonoBehaviour {
+public class GridAstar : MonoBehaviour {
     #region Member Variables
+    public Transform player;
     public LayerMask unwalkableMask;        //Layer used for objectes meant to be unwalkable
 	public Vector2 gridWorldSize;           //Create The grid size in the Inspector
 	public float nodeRadius;                //Creates Radius for grid in the inspector
@@ -52,10 +53,20 @@ public class Grid : MonoBehaviour {
 
 	
 		if (grid != null) {
+            Node playerNode = NodeFromWorldPoint(player.position);
 			foreach (Node n in grid) {
-				Gizmos.color = (n.walkable)?Color.green:Color.red;
+				Gizmos.color = (n.walkable)?Color.red:Color.green;
+                if(playerNode == n)
+                {
+                    Gizmos.color = Color.cyan;
+                }
+               
 				Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
 			}
 		}
+        else
+        {
+            Debug.Log("Grid is null");
+        }
 	}
 }
