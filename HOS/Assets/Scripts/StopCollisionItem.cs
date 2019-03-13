@@ -16,11 +16,12 @@ public class StopCollisionItem : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        Debug.Log(collision.gameObject.name + " his collided with " + this.name);
+        collision.rigidbody.velocity = new Vector3(0, 0, 0);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.position = other.transform.position;
+        
     }
 }
