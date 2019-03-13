@@ -126,9 +126,13 @@ namespace HOS
 
         public void RunWinGame()
         {
-            ManagerScript.PuzzleComplete = true;
+            if (ManagerScript != null)
+            {
+                ManagerScript.PuzzleComplete = true;
+            }
             GameOver = true;
-
+            NarrativeBox.text = Narration5;
+            Time.timeScale = 0;
         }
     }
 }
