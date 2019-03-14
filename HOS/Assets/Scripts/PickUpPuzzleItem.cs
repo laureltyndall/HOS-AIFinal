@@ -58,13 +58,9 @@ public class PickUpPuzzleItem : MonoBehaviour {
 
     private void ObjectFollowCursor()
     {
-        //      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //     Vector3 point = ray.origin + (ray.direction * CameraDistance);
-        //     this.transform.position = point;
-
-        Vector3 pos = Input.mousePosition;
-        pos.z = 62.5f;
-        transform.position = Camera.main.ScreenToWorldPoint(pos);
+              Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+             Vector3 point = ray.origin + (ray.direction * CameraDistance);
+             this.transform.position = point;
     }
 
 }
