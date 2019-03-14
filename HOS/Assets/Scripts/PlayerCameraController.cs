@@ -2,27 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Player CurrentPlayer;
+    public GameObject CurrentPlayer;
     public bool CanOrbit = false;
     public bool CanBackup = false;
     public float RotateTime = 0.2f;
+    private float TimeBetweenMovement = 1f;
+    private bool WaitingToMove = false;
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
     public List<Texture2D> CursorList;
     CursorType CurrentCursor = CursorType.Default;
+    private Scene CurrentScene;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
     {
 		FindWaypointList();
-	}
-	
+        CurrentScene = SceneManager.GetActiveScene();
+        CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
+
+        if (CurrentScene.name == "Intro")
+        {
+            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+            CurrentWaypoint = WaypointList[0];
+        }
+
+    }
+
     void Update()
     {
-        CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (WaitingToMove)
+        {
+            TimeBetweenMovement -= Time.deltaTime;
+
+            if (TimeBetweenMovement <= 0)
+            {
+                WaitingToMove = false;
+            }
+        }
         
     }
 
@@ -38,14 +59,34 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
 
     public void OnPointerClick(PointerEventData data)
     {
-        if (CurrentCursor == CursorType.Forward)
+        if (!WaitingToMove)
         {
-            CurrentPlayer.transform.position = WaypointList[0].transform.position;
-            CurrentWaypoint = WaypointList[0];
-        }
-        if (CurrentCursor == CursorType.TurnAround)
-        {
-            MovePlayerUturn();
+            if (CurrentCursor == CursorType.Forward)
+            {
+                if (CurrentScene.name == "Intro")
+                {
+                    if (CurrentWaypoint == WaypointList[0])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                        CurrentWaypoint = WaypointList[1];
+                        WaitingToMove = true;
+                    }
+                    else if (CurrentWaypoint == WaypointList[1])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                        CurrentWaypoint = WaypointList[2];
+                    }
+                    else if (CurrentWaypoint == WaypointList[2])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                        CurrentWaypoint = WaypointList[0];
+                    }
+                }
+            }
+            if (CurrentCursor == CursorType.TurnAround)
+            {
+                MovePlayerUturn();
+            }
         }
     }
 
