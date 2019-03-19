@@ -60,8 +60,8 @@ public class TopDownCamera : MonoBehaviour
         Vector3 finalPosition = flatTargetPosition + rotatedVector;
         Debug.DrawLine(m_target.position, finalPosition, Color.blue);
 
-        transform.position = Vector3.SmoothDamp(transform.position, finalPosition, ref refVelocity, m_Smoothspeed);
-        //transform.position = finalPosition;
+        //transform.position = Vector3.SmoothDamp(transform.position, finalPosition, ref refVelocity, m_Smoothspeed);
+        transform.position = finalPosition;
         transform.LookAt(m_target.position);
     }
 }
