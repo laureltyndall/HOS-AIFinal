@@ -9,9 +9,8 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
     public GameObject CurrentPlayer;
     public bool CanOrbit = false;
     public bool CanBackup = false;
+    public bool CanSharpTurn = false;
     public float RotateTime = 0.2f;
-    private float TimeBetweenMovement = 1f;
-    private bool WaitingToMove = false;
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
     public List<Texture2D> CursorList;
@@ -35,15 +34,6 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
 
     void Update()
     {
-        if (WaitingToMove)
-        {
-            TimeBetweenMovement -= Time.deltaTime;
-
-            if (TimeBetweenMovement <= 0)
-            {
-                WaitingToMove = false;
-            }
-        }
         
     }
 
@@ -59,34 +49,42 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
 
     public void OnPointerClick(PointerEventData data)
     {
-        if (!WaitingToMove)
+        if (CurrentCursor == CursorType.Forward)
         {
-            if (CurrentCursor == CursorType.Forward)
+            if (CurrentScene.name == "Intro")
             {
-                if (CurrentScene.name == "Intro")
+                if (CurrentWaypoint == WaypointList[0])
                 {
-                    if (CurrentWaypoint == WaypointList[0])
-                    {
-                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                        CurrentWaypoint = WaypointList[1];
-                        WaitingToMove = true;
-                    }
-                    else if (CurrentWaypoint == WaypointList[1])
-                    {
-                        CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                        CurrentWaypoint = WaypointList[2];
-                    }
-                    else if (CurrentWaypoint == WaypointList[2])
-                    {
-                        CurrentPlayer.transform.position = WaypointList[0].transform.position;
-                        CurrentWaypoint = WaypointList[0];
-                    }
+                    CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                    CurrentWaypoint = WaypointList[1];
+                }
+                else if (CurrentWaypoint == WaypointList[1])
+                {
+                    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                    CurrentWaypoint = WaypointList[2];
+                }
+                else if (CurrentWaypoint == WaypointList[2])
+                {
+                    CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                    CurrentWaypoint = WaypointList[0];
                 }
             }
-            if (CurrentCursor == CursorType.TurnAround)
+        }
+        if (CurrentCursor == CursorType.TurnAround)
+        {
+            MovePlayerUturn();
+        }
+        if (CurrentCursor == CursorType.Backup)
+        {
+            if (CurrentScene.name == "Intro")
             {
-                MovePlayerUturn();
+                if (CurrentWaypoint == WaypointList[2])
+                {
+                    CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                    CurrentWaypoint = WaypointList[1];
+                }
             }
+
         }
     }
 
@@ -113,17 +111,20 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
         }
         else
         {
-            if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
+            if (CanSharpTurn)
             {
-                Debug.Log("Changing to Turn Left Cursor");
-                Cursor.SetCursor(CursorList[6], Vector2.zero, CursorMode.Auto);
-                CurrentCursor = CursorType.LeftTurn;
-            }
-            if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-            {
-                Debug.Log("Changing to Turn Right Cursor");
-                Cursor.SetCursor(CursorList[7], Vector2.zero, CursorMode.Auto);
-                CurrentCursor = CursorType.RightTurn;
+                if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
+                {
+                    Debug.Log("Changing to Turn Left Cursor");
+                    Cursor.SetCursor(CursorList[6], Vector2.zero, CursorMode.Auto);
+                    CurrentCursor = CursorType.LeftTurn;
+                }
+                if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
+                {
+                    Debug.Log("Changing to Turn Right Cursor");
+                    Cursor.SetCursor(CursorList[7], Vector2.zero, CursorMode.Auto);
+                    CurrentCursor = CursorType.RightTurn;
+                }
             }
             if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
             {
