@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HOS;
 
 public class Unit : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class Unit : MonoBehaviour {
 
     void Start()
     {
-        PathRequestManager.Requestpath(transform.position, target.position, OnPathFound);
+        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
     }
 
     public void OnPathFound(Vector3[] newPath, bool PathSuccessful)

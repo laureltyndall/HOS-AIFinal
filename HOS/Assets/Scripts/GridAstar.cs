@@ -5,15 +5,14 @@ using HOS;
 
 public class GridAstar : MonoBehaviour {
     #region Member Variables
-    public Transform player;
-    public LayerMask unwalkableMask;        //Layer used for objectes meant to be unwalkable
-	public Vector2 gridWorldSize;           //Create The grid size in the Inspector
-	public float nodeRadius;                //Creates Radius for grid in the inspector
-	public Node[,] grid;                    //2D array for the Node class
-    
+    public bool displayGridGizmos;
+    public LayerMask unwalkableMask;
+    public Vector2 gridWorldSize;
+    public float nodeRadius;
+    Node[,] grid;
 
-	float nodeDiameter;
-	int gridSizeX, gridSizeY;
+    float nodeDiameter;
+    int gridSizeX, gridSizeY;
     #endregion
 
     #region Default Constructor
@@ -24,6 +23,14 @@ public class GridAstar : MonoBehaviour {
 		CreateGrid();
 	}
     #endregion
+
+    public int MaxSize
+    {
+        get
+        {
+            return gridSizeX * gridSizeY;
+        }
+    }
 
     #region Grid Constructor 
     void CreateGrid() {
