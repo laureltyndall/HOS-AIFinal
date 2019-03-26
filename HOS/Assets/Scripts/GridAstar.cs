@@ -18,7 +18,7 @@ public class GridAstar : MonoBehaviour {
     #endregion
 
     #region Default Constructor
-    void Start() {
+    void Awake() {
 		nodeDiameter = nodeRadius*2;
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
