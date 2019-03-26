@@ -5,7 +5,6 @@ using HOS;
 
 public class GridAstar : MonoBehaviour {
     #region Member Variables
-    public bool displayGridGizmos;
     public Transform player;
     public LayerMask unwalkableMask;        //Layer used for objectes meant to be unwalkable
 	public Vector2 gridWorldSize;           //Create The grid size in the Inspector
@@ -25,13 +24,7 @@ public class GridAstar : MonoBehaviour {
 		CreateGrid();
 	}
     #endregion
-    public int MaxSize
-    {
-        get
-        {
-            return gridSizeX * gridSizeY;
-        }
-    }
+
     #region Grid Constructor 
     void CreateGrid() {
 		grid = new Node[gridSizeX,gridSizeY];
@@ -81,18 +74,27 @@ public class GridAstar : MonoBehaviour {
 		return grid[x,y];
 	}
 
+    public List<Node> path;
 
-    void OnDrawGizmos()
-    {
+	void OnDrawGizmos() {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
-        if (grid != null && displayGridGizmos)
-        {
-            foreach (Node n in grid)
-            {
-                Gizmos.color = (n.walkable) ? Color.red : Color.green;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
-            }
-        }
-    }
+		Gizmos.DrawWireCube(transform.position,new Vector3(gridWorldSize.x,1,gridWorldSize.y));
+
+	
+		if (grid != null) {
+			foreach (Node n in grid) {
+				Gizmos.color = (n.walkable)?Color.red:Color.green;
+                if (path != null)
+                {
+                    if (path.Contains(n))
+                    {
+                        Gizmos.color = Color.black;
+                    }
+                }
+               
+				Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
+			}
+		}
+        
+	}
 }
