@@ -20,6 +20,15 @@ public enum Character
     Anne = 2,
 }
 
+public enum SnakeState
+{
+    None = 0,
+    Attack = 1,
+    Recover = 2,
+    Move = 3,
+    Hurt = 4,
+}
+
 //References to determine whether the player is able to progress further in the game.
 public enum ProgressionCheckpoint
 {
