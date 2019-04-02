@@ -14,6 +14,7 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
     public List<Texture2D> CursorList;
+    public Camera MainCamera;
     CursorType CurrentCursor = CursorType.Default;
     private Scene CurrentScene;
 
@@ -21,8 +22,14 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
     void Start () 
     {
 		FindWaypointList();
+        MainCamera = Camera.main;
         CurrentScene = SceneManager.GetActiveScene();
-        CurrentPlayer = GameObject.FindGameObjectWithTag("Player");
+        CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
+
+        if (CurrentPlayer == null)
+        {
+            CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAlex");
+        }
 
         if (CurrentScene.name == "Intro")
         {
@@ -61,18 +68,22 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
                 else if (CurrentWaypoint == WaypointList[1])
                 {
                     CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
                     CurrentWaypoint = WaypointList[2];
+                    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
                 }
                 else if (CurrentWaypoint == WaypointList[2])
                 {
                     CurrentPlayer.transform.position = WaypointList[0].transform.position;
                     CurrentWaypoint = WaypointList[0];
+                    Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 }
             }
         }
         if (CurrentCursor == CursorType.TurnAround)
         {
             MovePlayerUturn();
+            
         }
         if (CurrentCursor == CursorType.Backup)
         {
@@ -82,6 +93,7 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
                 {
                     CurrentPlayer.transform.position = WaypointList[1].transform.position;
                     CurrentWaypoint = WaypointList[1];
+                    
                 }
             }
 
