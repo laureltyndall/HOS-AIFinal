@@ -9,6 +9,7 @@ public class SnakeMiniGameController : MonoBehaviour
     public int PlayerHP = 3;
     public float PlayerActionTimer;
     public float SnakeActionTimer;
+    public bool GameOver = false;
     public bool PlayerWinsGame = false;
     public bool SnakeWinsGame = false;
     public float PlayerActionTimerInterval = 0;
@@ -38,6 +39,7 @@ public class SnakeMiniGameController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+
         if (GenerateAction)
         {
             if (CurrentSnakeState == SnakeState.Move)
