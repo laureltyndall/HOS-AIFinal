@@ -23,6 +23,8 @@ TagManager:
   - PlayerAlex
   - PlayerAnne
   - Folders
+  - SiblingAnne
+  - SiblingAlex
   layers:
   - Default
   - TransparentFX
