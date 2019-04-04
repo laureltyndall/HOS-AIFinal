@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SnakeMiniGameController : MonoBehaviour 
 {
-    public int SnakeHP = 3;
+    public int SnakeHP = 6;
     public int PlayerHP = 3;
     public float PlayerActionTimer;
     public float SnakeActionTimer;
@@ -17,14 +17,16 @@ public class SnakeMiniGameController : MonoBehaviour
     public float MasterTimer = 0.0f;
     public float MasterTimerResetInterval = 8.5f;
     public GameObject SnakeObject;
-    public Button AttackButton;
-    public Button EvadeButton;
+    public GameObject AttackButton;
+    public GameObject EvadeButton;
     public Text GameActionTextBox;
     public bool PlayerAttack = false;
     public bool PlayerDodge = false;
     public bool GenerateAction = true;
     public bool SnakeMissAttack = false;
     public int SnakeMoveDirection;
+    public float FlashTimer = 1f;
+    public float FlashTimerReset = 1f;
 
     public SnakeState CurrentSnakeState = SnakeState.None;
 	// Use this for initialization
@@ -34,7 +36,8 @@ public class SnakeMiniGameController : MonoBehaviour
         GenerateAction = true;
         AttackButton.gameObject.SetActive(false);
         EvadeButton.gameObject.SetActive(false);
-	}
+        Time.timeScale = 1;
+    }
 	
 	// Update is called once per frame
 	void Update()
@@ -55,7 +58,7 @@ public class SnakeMiniGameController : MonoBehaviour
                 PlayerDodge = true;
                 GameActionTextBox.text = "Quick dodge the snake's bite!";
                 SnakeActionTimerInterval = Random.Range(1.25f, 2f);
-                PlayerActionTimerInterval = Random.Range(0.6f, 1.25f);
+                PlayerActionTimerInterval = Random.Range(0.6f, 1.00f);
                 CurrentSnakeState = SnakeState.Recover;
                 GenerateAction = false;
             }
@@ -65,7 +68,7 @@ public class SnakeMiniGameController : MonoBehaviour
                 AttackButton.gameObject.SetActive(true);
                 GameActionTextBox.text = "I can probably strike the snake now before it coils back up.";
                 SnakeActionTimerInterval = Random.Range(1.0f, 4f);
-                PlayerActionTimerInterval = Random.Range(0.45f, 1.65f);
+                PlayerActionTimerInterval = Random.Range(0.45f, 1.00f);
                 SnakeMoveDirection = Random.Range(1, 2);
                 CurrentSnakeState = SnakeState.Move;
                 GenerateAction = false;
@@ -128,20 +131,19 @@ public class SnakeMiniGameController : MonoBehaviour
                 PlayerAttack = false;
                 AttackButton.gameObject.SetActive(false);
                 PlayerActionTimer = 0;
-
             }
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Left Mouse Button Down");
-        if (PlayerDodge && PlayerActionTimer < PlayerActionTimerInterval)
-        {
-            SnakeMissAttack = true;
-            PlayerDodge = false;
-            EvadeButton.gameObject.SetActive(false);
-            PlayerActionTimer = 0;
-        }
+            if (PlayerDodge && PlayerActionTimer < PlayerActionTimerInterval)
+            {
+                SnakeMissAttack = true;
+                PlayerDodge = false;
+                EvadeButton.gameObject.SetActive(false);
+                PlayerActionTimer = 0;
+            }
         }
 
         if (PlayerActionTimer >= PlayerActionTimerInterval)
@@ -166,7 +168,13 @@ public class SnakeMiniGameController : MonoBehaviour
             }
             PlayerActionTimer = 0;
         }
+
         DetermineGameOver();
+
+        if(PlayerWinsGame || SnakeWinsGame)
+        {
+            Time.timeScale = 0;
+        }
 	}
 
     public void DetermineGameOver()
@@ -182,29 +190,6 @@ public class SnakeMiniGameController : MonoBehaviour
         {
             GameActionTextBox.text = "Dead";
             SnakeWinsGame = true;
-        }
-    }
-
-    public void PlayerAttackButton()
-    {
-        if (PlayerAttack)
-        {
-            DamageSnake();
-            PlayerAttack = false;
-            AttackButton.gameObject.SetActive(false);
-            PlayerActionTimer = 0;
-
-        }
-    }
-
-    public void PlayerDodgeButton()
-    {
-        if (PlayerDodge)
-        {
-            SnakeMissAttack = true;
-            PlayerDodge = false;
-            EvadeButton.gameObject.SetActive(false);
-            PlayerActionTimer = 0;
         }
     }
 
