@@ -182,13 +182,13 @@ public class SnakeMiniGameController : MonoBehaviour
         
         if (SnakeHP <= 0)
         {
-            GameActionTextBox.text = "Winner";
+            GameActionTextBox.text = "Go it!";
             PlayerWinsGame = true;
         }
 
         if (PlayerHP <= 0)
         {
-            GameActionTextBox.text = "Dead";
+            GameActionTextBox.text = "Oooh... I don't feel so good...";
             SnakeWinsGame = true;
         }
     }

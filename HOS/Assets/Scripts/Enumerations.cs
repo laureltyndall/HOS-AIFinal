@@ -99,3 +99,12 @@ public enum CursorType
     Panoramic = 8,
     TurnAround = 9,
 }
+
+public enum Alphabet
+{
+    None = 0,
+    English = 1,
+    Greek = 2,
+    Runic = 3,
+    Russian = 4
+}
