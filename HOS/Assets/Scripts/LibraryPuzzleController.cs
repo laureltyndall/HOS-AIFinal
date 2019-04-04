@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using HOS;
 
 public class LibraryPuzzleController : MonoBehaviour {
@@ -12,6 +13,19 @@ public class LibraryPuzzleController : MonoBehaviour {
     public Vector3 SwitchingPosition;
     public List<Transform> CorrectPositions;
     public int CorrectFolders = 0;
+    public float PuzzleTime = 0.0f;
+    public int RunicClicks = 0;
+    public int TotalClicks = 0;
+    public Text TextArea;
+    public GameObject SkipButton;
+    private bool TextAreaFilled = false;
+    public bool GameOver = false;
+
+    public string PlayerName;
+    public string SiblingName;
+    public GameManager ManagerScript;
+    private bool ManagerFound = false;
+    private bool NamesFound = false;
 
     private Vector3 CorrectEnglish1 = new Vector3(0f, 0f, 0f);
     private Vector3 CorrectEnglish2 = new Vector3(0f, 0f, 4f);
@@ -31,56 +45,95 @@ public class LibraryPuzzleController : MonoBehaviour {
     private Vector3 CorrectRussian2 = new Vector3(0f, 0f, 60f);
     private Vector3 CorrectRussian3 = new Vector3(0f, 0f, 64f);
     private Vector3 CorrectRussian4 = new Vector3(0f, 0f, 68f);
-
-
+    
     // Use this for initialization
     void Start () {
 		foreach (Transform child in FolderParent.transform)
         {
             FolderOrder.Add(child.gameObject);
         }
-	}
+
+        FindManagerScript();
+        FindNames();
+
+        if(NamesFound)
+        {
+            TextArea.text = "If I don't put these back in order, " + SiblingName + " is going to skin me alive!";
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		foreach (GameObject go in FolderOrder)
+        if (!GameOver)
         {
-            if (go.GetComponentInChildren<FolderIndicator>().Clicked)
+            if (!TextAreaFilled)
             {
-                if(ClickedFolder1 == null)
+                TextArea.text = "If I don't put these back in order, " + SiblingName + " is going to skin me alive!";
+                TextAreaFilled = true;
+            }
+
+            PuzzleTime += Time.deltaTime;
+
+            if (PuzzleTime >= 50f)
+            {
+                SkipButton.SetActive(true);
+            }
+
+            foreach (GameObject go in FolderOrder)
+            {
+                if (go.GetComponentInChildren<FolderIndicator>().Clicked)
                 {
-                    ClickedFolder1 = go;
-                    go.GetComponentInChildren<FolderIndicator>().Clicked = false;
-                }
-                else if (ClickedFolder2 == null)
-                {
-                    ClickedFolder2 = go;
-                    go.GetComponentInChildren<FolderIndicator>().Clicked = false;
+                    if (ClickedFolder1 == null)
+                    {
+                        ClickedFolder1 = go;
+                        go.GetComponentInChildren<FolderIndicator>().Clicked = false;
+                    }
+                    else if (ClickedFolder2 == null)
+                    {
+                        ClickedFolder2 = go;
+                        go.GetComponentInChildren<FolderIndicator>().Clicked = false;
+                    }
+
+                    TotalClicks++;
                 }
             }
-        }
 
-        if(ClickedFolder1 != null)
-        {
-            if(ClickedFolder2 != null)
+            if (ClickedFolder1 != null)
             {
-                SwitchingPosition = ClickedFolder1.transform.position;
-                ClickedFolder1.transform.position = ClickedFolder2.transform.position;
-                ClickedFolder2.transform.position = SwitchingPosition;
+                if (ClickedFolder2 != null)
+                {
+                    SwitchingPosition = ClickedFolder1.transform.position;
+                    ClickedFolder1.transform.position = ClickedFolder2.transform.position;
+                    ClickedFolder2.transform.position = SwitchingPosition;
 
-                ClickedFolder1 = null;
-                ClickedFolder2 = null;
-                SwitchingPosition = new Vector3();
+                    ClickedFolder1 = null;
+                    ClickedFolder2 = null;
+                    SwitchingPosition = new Vector3();
+                }
+            }
+
+            if (TotalClicks == 5)
+            {
+                TextArea.text = "Let's see, the first thing I should probably do is color-code the folders. " + SiblingName + " is pretty OCD about things, so the colors should probably be in order alphabetically.";
+            }
+            if (TotalClicks == 10)
+            {
+                TextArea.text = "I looks like the black folders are the English alphabet, the geen are runes (geek), blue is the Greek alphabet, and red looks like - Russian?";
+            }
+
+            if (CorrectFolders >= 17)
+            {
+                Debug.Log("Game Won!");
+                GameOver = true;
+            }
+            else
+            {
+                CheckForCorrectSequence();
             }
         }
-
-        if (CorrectFolders >= 17)
+        else if (GameOver)
         {
-            Debug.Log("Game Won!");
-        }
-        else
-        {
-            CheckForCorrectSequence();
+            Time.timeScale = 0;
         }
     }
 
@@ -215,6 +268,129 @@ public class LibraryPuzzleController : MonoBehaviour {
                 {
                     CorrectFolders++;
                 }
+            }
+        }
+    }
+
+    public void SkipGame()
+    {
+        foreach (GameObject go in FolderOrder)
+        {
+            if (go.name == "English1")
+            {
+                go.transform.position = CorrectEnglish1;
+            }
+            else if (go.name == "English2")
+            {
+                go.transform.position = CorrectEnglish2;
+            }
+            else if (go.name == "English3")
+            {
+                go.transform.position = CorrectEnglish3;
+            }
+            else if (go.name == "English4")
+            {
+                go.transform.position = CorrectEnglish4;
+            }
+            else if (go.name == "Greek1")
+            {
+                go.transform.position = CorrectGreek1;
+            }
+            else if (go.name == "Greek2")
+            {
+                go.transform.position = CorrectGreek2;
+            }
+            else if (go.name == "Greek3")
+            {
+                go.transform.position = CorrectGreek3;
+            }
+            else if (go.name == "Greek4")
+            {
+                go.transform.position = CorrectGreek4;
+            }
+            else if (go.name == "Greek5")
+            {
+                go.transform.position = CorrectGreek5;
+            }
+            else if (go.name == "Runes1")
+            {
+                go.transform.position = CorrectRunic1;
+            }
+            else if (go.name == "Runes2")
+            {
+                go.transform.position = CorrectRunic2;
+            }
+            else if (go.name == "Runes3")
+            {
+                go.transform.position = CorrectRunic3;
+            }
+            else if (go.name == "Runes4")
+            {
+                go.transform.position = CorrectRunic4;
+            }
+            else if (go.name == "Runes5")
+            {
+                go.transform.position = CorrectRunic5;
+            }
+            else if (go.name == "Russian1")
+            {
+                go.transform.position = CorrectRussian1;
+            }
+            else if (go.name == "Russian2")
+            {
+                go.transform.position = CorrectRussian2;
+            }
+            else if (go.name == "Russian3")
+            {
+                go.transform.position = CorrectRussian3;
+            }
+            else if (go.name == "Russian4")
+            {
+                go.transform.position = CorrectRussian4;
+            }
+        }
+    }
+
+    void FindNames()
+    {
+        if (PlayerName != "")
+        {
+            if (PlayerName == "Alex")
+            {
+                SiblingName = "Anne";
+                NamesFound = true;
+            }
+            else if (PlayerName == "Anne")
+            {
+                SiblingName = "Alex";
+                NamesFound = true;
+            }
+        }
+        else
+        {
+            SiblingName = "Alex";
+            NamesFound = true;
+        }
+    }
+
+    void FindManagerScript()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("GameManager");
+
+        if (go != null)
+        {
+            ManagerScript = go.gameObject.GetComponent<GameManager>();
+
+            if (ManagerScript != null)
+            {
+                PlayerName = ManagerScript.CurrentPlayer.name;
+
+                if (PlayerName != "")
+                {
+                    FindNames();
+                }
+
+                ManagerFound = true;
             }
         }
     }
