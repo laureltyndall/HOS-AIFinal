@@ -119,20 +119,50 @@ public class SnakeMiniGameController : MonoBehaviour
             CurrentSnakeState = SnakeState.Move;
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("Right Mouse Button Down");
+            if (PlayerAttack && PlayerActionTimer < PlayerActionTimerInterval)
+            {
+                DamageSnake();
+                PlayerAttack = false;
+                AttackButton.gameObject.SetActive(false);
+                PlayerActionTimer = 0;
+
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Left Mouse Button Down");
+        if (PlayerDodge && PlayerActionTimer < PlayerActionTimerInterval)
+        {
+            SnakeMissAttack = true;
+            PlayerDodge = false;
+            EvadeButton.gameObject.SetActive(false);
+            PlayerActionTimer = 0;
+        }
+        }
+
         if (PlayerActionTimer >= PlayerActionTimerInterval)
         {
             if (PlayerAttack)
             {
-                PlayerAttack = false;
-                AttackButton.gameObject.SetActive(false);
-                GameActionTextBox.text = "";
-
+                if (Input.GetMouseButtonDown(1))
+                {
+                    PlayerAttack = false;
+                    AttackButton.gameObject.SetActive(false);
+                    GameActionTextBox.text = "";
+                }
             }
             else if (PlayerDodge)
             {
-                PlayerDodge = false;
-                AttackButton.gameObject.SetActive(false);                
-                GameActionTextBox.text = "";
+                if (Input.GetMouseButtonDown(0))
+                {
+                    PlayerDodge = false;
+                    AttackButton.gameObject.SetActive(false);
+                    GameActionTextBox.text = "";
+                }
             }
             PlayerActionTimer = 0;
         }
