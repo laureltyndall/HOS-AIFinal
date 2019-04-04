@@ -6,7 +6,7 @@ using HOS;
 public class Unit : MonoBehaviour {
 
     public Transform target;
-    float speed = 1;
+    public float speed = 1;
     Vector3[] path;
     int targetIndex;
 
@@ -54,7 +54,7 @@ public class Unit : MonoBehaviour {
             for (int i = targetIndex; i < path.Length; i++)
             {
                 Gizmos.color = Color.black;
-                Gizmos.DrawLine(path[i], Vector3.one);
+                Gizmos.DrawCube(path[i], Vector3.one);
 
                 if (i == targetIndex)
                 {
