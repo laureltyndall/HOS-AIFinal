@@ -133,6 +133,7 @@ public class LibraryPuzzleController : MonoBehaviour {
         }
         else if (GameOver)
         {
+            TextArea.text = "Got it!";
             Time.timeScale = 0;
         }
     }
