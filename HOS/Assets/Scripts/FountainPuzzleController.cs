@@ -19,8 +19,11 @@ public class FountainPuzzleController : MonoBehaviour {
     public bool MoonstoneInsterted = false;
     private bool RiddleSolved = false;
     public int ClickNumber = 0;
+    public int TryCount = 0;
     public int NumberCorrect = 0;
     private bool GameOver = false;
+
+    public GameObject RainbowHelper;
 
     private int WrongClicksCount = 0;
 
@@ -38,6 +41,10 @@ public class FountainPuzzleController : MonoBehaviour {
             if (!MoonstoneInsterted)
             {
                 CloseUpCamera.SetActive(false);
+                if(MoonstoneStarEmpty.GetComponent<MoonstoneStarController>().Clicked)
+                {
+                    MoonstoneInsterted = true;
+                }
             }
             else
             {
@@ -64,11 +71,18 @@ public class FountainPuzzleController : MonoBehaviour {
                                 go.gameObject.GetComponent<StarIndicator>().Clickable = true;
                             }
 
+                            TextAreaSmall.text = "According to the riddle, I think these colors make up a rainbow. Maybe if I press them in the right oder, they might do something.";
+
                             BeginStars = false;
                         }
                     }
                     else
                     {
+                        if(TryCount >= 5)
+                        {
+                            RainbowHelper.SetActive(true);
+                        }
+
                         foreach (GameObject go in ClickableStars)
                         {
                             if (go.gameObject.GetComponent<StarIndicator>().Clicked)
@@ -154,6 +168,7 @@ public class FountainPuzzleController : MonoBehaviour {
                                     NumberCorrect = 0;
                                     ClickNumber = 0;
                                 }
+                                TryCount++;
                             }
                         }
                     }
