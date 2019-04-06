@@ -1246,7 +1246,9 @@ MonoBehaviour:
   StarTurnTimer: 4
   MoonstoneInsterted: 0
   ClickNumber: 0
+  TryCount: 0
   NumberCorrect: 0
+  RainbowHelper: {fileID: 761530817}
 --- !u!114 &245931275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,7 +2802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &761530818
 RectTransform:
   m_ObjectHideFlags: 0
