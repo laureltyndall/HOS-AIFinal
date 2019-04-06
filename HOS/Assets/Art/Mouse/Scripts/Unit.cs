@@ -10,7 +10,7 @@ public class Unit : MonoBehaviour {
     Vector3[] path;
     int targetIndex;
 
-    void Start()
+    void Update()
     {
         PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
     }
