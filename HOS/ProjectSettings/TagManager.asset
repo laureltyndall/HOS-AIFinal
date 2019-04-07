@@ -25,6 +25,7 @@ TagManager:
   - Folders
   - SiblingAnne
   - SiblingAlex
+  - CrowMinigameController
   layers:
   - Default
   - TransparentFX

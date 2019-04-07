@@ -7,10 +7,12 @@ public class DestroyWorm : MonoBehaviour
     public bool DestroyThis = false;
     public float Timer = 0.00f;
     public float TimerReset = 5.00f;
+    public CrowMinigameController Controller;  
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+    {
+        Controller = GameObject.FindGameObjectWithTag("CrowMinigameController").GetComponent<CrowMinigameController>();
 	}
 	
 	// Update is called once per frame
@@ -18,6 +20,7 @@ public class DestroyWorm : MonoBehaviour
     {
         if (DestroyThis)
         {
+            Controller.IsCrowDistracted = false;
             Destroy(this.gameObject);
         }
         
@@ -27,4 +30,12 @@ public class DestroyWorm : MonoBehaviour
         }
         Timer += Time.deltaTime;
 	}
+
+    void OnTriggerEnter(Collider Collision)
+    {
+        if (Collision.gameObject.name == "Crow")
+        {
+            Controller.IsCrowDistracted = true;
+        }
+    }
 }

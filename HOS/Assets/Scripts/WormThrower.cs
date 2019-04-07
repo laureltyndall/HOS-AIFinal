@@ -16,7 +16,7 @@ public class WormThrower : MonoBehaviour
     private float m_CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.
     private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
     private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
-    private GameObject WormThrown;
+    public GameObject WormThrown;
 
     private void OnEnable()
     {
@@ -36,7 +36,7 @@ public class WormThrower : MonoBehaviour
     }
 
 
-    private void Update ()
+    private void Update()
     {
         // The slider should have a default value of the minimum launch force.
         m_AimSlider.value = m_MinLaunchForce;
@@ -47,7 +47,10 @@ public class WormThrower : MonoBehaviour
             // ... use the max force and launch the shell.
             m_CurrentLaunchForce = m_MaxLaunchForce;
             if (Manager.CanThrowWorm)
-                Fire ();
+            {
+                Fire();
+                Manager.NumberOfWorms -= 1;
+            }
         }
         // Otherwise, if the fire button has just started being pressed...
         else if (Input.GetButtonDown (m_FireButton))
@@ -69,7 +72,10 @@ public class WormThrower : MonoBehaviour
         {
             // ... launch the shell.
             if (Manager.CanThrowWorm)
-                Fire ();
+            {
+                Fire();
+                Manager.NumberOfWorms -= 1;
+            }
         }
     }
 
