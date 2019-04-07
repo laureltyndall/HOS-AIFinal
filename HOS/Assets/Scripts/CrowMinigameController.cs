@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CrowMinigameController : MonoBehaviour 
 {
-    public int NumberOfWorms = 5;
+    public int NumberOfWorms = 8;
     public bool CanThrowWorm = true;
     public int PlayerHP = 3;
     public const int PlayerMaxLives = 3;
@@ -20,6 +21,9 @@ public class CrowMinigameController : MonoBehaviour
     public GameObject TransformStartPosition;
     public GameObject PlayerLifeImage;
     public Canvas UICanvas;
+    public int TimesCrowDistracted = 0;
+    public Text WormText;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -38,35 +42,43 @@ public class CrowMinigameController : MonoBehaviour
             MoveToWorm();
         }
 
-        if(Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            WormThrowerObject.transform.position += Vector3.up;
+            WormThrowerObject.transform.position += Vector3.up / 2;
         }
-        if(Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            WormThrowerObject.transform.position += Vector3.down;
+            WormThrowerObject.transform.position += Vector3.down / 2;
         } 
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            WormThrowerObject.transform.position += Vector3.left;
+            WormThrowerObject.transform.position += Vector3.right / 2;
         } 
-        if(Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            WormThrowerObject.transform.position += Vector3.right;
+            WormThrowerObject.transform.position += Vector3.left / 2;
         }
-        DetermineNumberOfWorms();   
+        DetermineNumberOfWorms();
+
+        if (TimesCrowDistracted >= 5)
+        {
+            IsGameOver = true;
+        }   
+        UpdateWorms();
 	}
 
     void AttackPlayer()
     {
         float timeStep = speed * Time.deltaTime;
         AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, Player.transform.position,timeStep);
+        AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,Player.transform.position);
     }
     
     void MoveToWorm()
     {
         float timeStep = speed * Time.deltaTime;
         AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position,timeStep);
+        AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,WormThrowerScript.WormThrown.transform.position);
     }
 
     void DetermineNumberOfWorms()
@@ -92,9 +104,23 @@ public class CrowMinigameController : MonoBehaviour
         }
     }
 
-    void RemoveLife()
+    void OnTriggerEnter(Collider Collision)
     {
+        if (Collision.gameObject.name == "Crow")
+        {
+            LifeArray[PlayerHP -1].SetActive(false);
+            PlayerHP -= 1;
+        }
 
-        
+        if (PlayerHP <= 0)
+        {
+            PlayerDead = true;
+        }
+    }
+
+    void UpdateWorms()
+    {
+        WormText.text = "Number of Worms Remaining: " + NumberOfWorms.ToString();
+
     }
 }

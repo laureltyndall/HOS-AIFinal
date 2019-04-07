@@ -37,5 +37,12 @@ public class DestroyWorm : MonoBehaviour
         {
             Controller.IsCrowDistracted = true;
         }
+
+        if (Collision.gameObject.name == "Crow" && Vector3.Distance(this.transform.position, Collision.transform.position) <= 4 && Controller.IsCrowDistracted == true)
+        {
+            Controller.TimesCrowDistracted += 1;
+            Destroy(this.gameObject);
+            Controller.IsCrowDistracted = false;
+        }
     }
 }
