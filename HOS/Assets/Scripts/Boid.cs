@@ -23,7 +23,7 @@ public class Boid : MonoBehaviour
         direction = transform.forward.normalized;
         if(flockController != null) 
         {
-            Debug.LogError("You must assign a flock controller!");
+//            Debug.LogError("You must assign a flock controller!");
         }
     }
 

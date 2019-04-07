@@ -11,12 +11,12 @@ public class WormThrower : MonoBehaviour
     public float m_MaxLaunchForce = 30f;        // The force given to the shell if the fire button is held for the max charge time.
     public float m_MaxChargeTime = 0.75f;       // How long the shell can charge for before it is fired at max force.
 
-
+    public CrowMinigameController Manager;
     private string m_FireButton;                // The input axis that is used for launching shells.
     private float m_CurrentLaunchForce;         // The force that will be given to the shell when the fire button is released.
     private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
     private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
-
+    private GameObject WormThrown;
 
     private void OnEnable()
     {
@@ -46,7 +46,8 @@ public class WormThrower : MonoBehaviour
         {
             // ... use the max force and launch the shell.
             m_CurrentLaunchForce = m_MaxLaunchForce;
-            Fire ();
+            if (Manager.CanThrowWorm)
+                Fire ();
         }
         // Otherwise, if the fire button has just started being pressed...
         else if (Input.GetButtonDown (m_FireButton))
@@ -67,7 +68,8 @@ public class WormThrower : MonoBehaviour
         else if (Input.GetButtonUp (m_FireButton) && !m_Fired)
         {
             // ... launch the shell.
-            Fire ();
+            if (Manager.CanThrowWorm)
+                Fire ();
         }
     }
 
@@ -81,6 +83,7 @@ public class WormThrower : MonoBehaviour
         Rigidbody shellInstance =
             Instantiate (m_Shell, m_FireTransform.position, m_FireTransform.rotation) as Rigidbody;
 
+        WormThrown = shellInstance.gameObject;
         // Set the shell's velocity to the launch force in the fire position's forward direction.
         shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward; ;
 
