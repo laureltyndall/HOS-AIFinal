@@ -60,6 +60,46 @@ public class CrowMinigameController : MonoBehaviour
         }
         DetermineNumberOfWorms();
 
+        if (WormThrowerObject.transform.position.x < -2)
+        {
+            WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x + 1f, WormThrowerObject.transform.position.y, WormThrowerObject.transform.position.z);
+        }
+        if (WormThrowerObject.transform.position.x > 2)
+        {
+            WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x - 1f, WormThrowerObject.transform.position.y, WormThrowerObject.transform.position.z);
+        }
+
+        if (WormThrowerObject.transform.position.y < -.9)
+        {
+            WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x, WormThrowerObject.transform.position.y + 1f, WormThrowerObject.transform.position.z);
+        }
+
+        if (WormThrowerObject.transform.position.y > -.3)
+        {
+            WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x, WormThrowerObject.transform.position.y - 1f, WormThrowerObject.transform.position.z);
+        }
+
+        if (AttackerCrow.transform.position.x < -2.5)
+        {
+            AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x + 1f, AttackerCrow.transform.position.y, AttackerCrow.transform.position.z);
+        }
+
+        if (AttackerCrow.transform.position.x > 2.5)
+        {
+            AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x - 1f, AttackerCrow.transform.position.y, AttackerCrow.transform.position.z);
+        }
+
+        if (AttackerCrow.transform.position.y < -1)
+        {
+            AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x, AttackerCrow.transform.position.y + 1f, AttackerCrow.transform.position.z);
+        }
+
+        if (AttackerCrow.transform.position.y >-.025 )
+        {
+            AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x, AttackerCrow.transform.position.y - 1f, AttackerCrow.transform.position.z);
+
+        }
+
         if (TimesCrowDistracted >= 5)
         {
             IsGameOver = true;
