@@ -14,6 +14,7 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public GameManager ManagerScript;
         public Text TextArea;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -21,14 +22,22 @@ namespace HOS
             GameObject go = GameObject.FindGameObjectWithTag("UISystem");
             MovementScript = go.GetComponent<PlayerCameraController>();
 
-            GameObject gm = GameObject.FindGameObjectWithTag("GameController");
-            ManagerScript = go.gameObject.GetComponent<GameManager>();
+
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (!ManagerFound)
+            {
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
 
+                if(ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
+            }
         }
 
         void OnMouseOver()
