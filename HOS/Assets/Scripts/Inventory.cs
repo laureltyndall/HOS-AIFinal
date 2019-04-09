@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        Manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         #region Create Inventory Items
         NewItem.ItemImage = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Image>(); // Find Item Image
         NewItem.ItemImage.enabled = false; //Disable Item Image
