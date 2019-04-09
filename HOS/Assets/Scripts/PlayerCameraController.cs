@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class PlayerCameraController : MonoBehaviour
 {
     public GameObject CurrentPlayer;
-    public bool CanOrbit = false;
-    public bool CanBackup = false;
-    public bool CanSharpTurn = false;
     public float RotateTime = 0.2f;
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
     public List<Texture2D> CursorList;
     public Camera MainCamera;
-    CursorType CurrentCursor = CursorType.Default;
+    public CursorType CurrentCursor = CursorType.Default;
     private Scene CurrentScene;
+
+    public bool CanUturn = false;
+    public bool CanOrbit = false;
+    public bool CanLeftTurn = false;
+    public bool CanRightTurn = false;
+    public bool CanForward = false;
+    public bool CanBackup = false;
 
     // Use this for initialization
     void Start () 
@@ -35,13 +39,18 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
         {
             CurrentPlayer.transform.position = WaypointList[0].transform.position;
             CurrentWaypoint = WaypointList[0];
+            CanUturn = true;
+            CanForward = true;
         }
 
     }
 
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            MovePlayer();
+        }
     }
 
     public void FindWaypointList()
@@ -56,116 +65,110 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
 
     public void OnPointerClick(PointerEventData data)
     {
-        if (CurrentCursor == CursorType.Forward)
+        if (CurrentScene.name == "Intro")
         {
-            if (CurrentScene.name == "Intro")
+            if (CurrentCursor == CursorType.Forward)
             {
-                if (CurrentWaypoint == WaypointList[0])
+                if (CanForward)
                 {
-                    CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                    CurrentWaypoint = WaypointList[1];
-                }
-                else if (CurrentWaypoint == WaypointList[1])
-                {
-                    CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                    CurrentWaypoint = WaypointList[2];
-                    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
-                }
-                else if (CurrentWaypoint == WaypointList[2])
-                {
-                    CurrentPlayer.transform.position = WaypointList[0].transform.position;
-                    CurrentWaypoint = WaypointList[0];
-                    Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                }
-            }
-        }
-        if (CurrentCursor == CursorType.TurnAround)
-        {
-            MovePlayerUturn();
-            
-        }
-        if (CurrentCursor == CursorType.Backup)
-        {
-            if (CurrentScene.name == "Intro")
-            {
-                if (CurrentWaypoint == WaypointList[2])
-                {
-                    CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                    CurrentWaypoint = WaypointList[1];
-                    
+                    if (CurrentWaypoint == WaypointList[0])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                        CurrentWaypoint = WaypointList[1];
+                    }
+                    else if (CurrentWaypoint == WaypointList[2])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                        CurrentWaypoint = WaypointList[0];
+                     //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    }
+                    //else if (CurrentWaypoint == WaypointList[1])
+                    //{
+                    //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                    //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+                    //    CurrentWaypoint = WaypointList[2];
+                    //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    //}
+
                 }
             }
 
-        }
-    }
+            if (CurrentCursor == CursorType.TurnAround)
+            {
+                MovePlayerUturn();
 
-    public void OnPointerEnter(PointerEventData data)
-    {
-        Debug.Log("Position X: " + Input.mousePosition.x.ToString() + " , Position Y: " + Input.mousePosition.y.ToString());
+            }
+            if (CurrentCursor == CursorType.Backup)
+            {
+                if (CurrentScene.name == "Intro")
+                {
+                    if (CurrentWaypoint == WaypointList[2])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                        CurrentWaypoint = WaypointList[1];
 
-        if (CanOrbit)
-        {
-            if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-            {
-                Debug.Log("Rotating Left");
-                Cursor.SetCursor(CursorList[4], Vector2.zero, CursorMode.Auto);
-                CurrentCursor = CursorType.Panoramic;
-                RotateLeft();
-            }
-            if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-            {
-                Debug.Log("Rotating Right");
-                Cursor.SetCursor(CursorList[4], Vector2.zero, CursorMode.Auto);
-                CurrentCursor = CursorType.Panoramic;
-                RotateRight();
-            }
-        }
-        else
-        {
-            if (CanSharpTurn)
-            {
-                if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-                {
-                    Debug.Log("Changing to Turn Left Cursor");
-                    Cursor.SetCursor(CursorList[6], Vector2.zero, CursorMode.Auto);
-                    CurrentCursor = CursorType.LeftTurn;
+                    }
                 }
-                if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-                {
-                    Debug.Log("Changing to Turn Right Cursor");
-                    Cursor.SetCursor(CursorList[7], Vector2.zero, CursorMode.Auto);
-                    CurrentCursor = CursorType.RightTurn;
-                }
-            }
-            if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
-            {
-                Debug.Log("Changing to Forward Cursor");
-                Cursor.SetCursor(CursorList[3], Vector2.zero, CursorMode.Auto);
-                CurrentCursor = CursorType.Forward;
-            }
-            if ((Input.mousePosition.x >= 100 && Input.mousePosition.x <= 1100) && (Input.mousePosition.y >= 50 && Input.mousePosition.y <= 120))
-            {
-                if (CanBackup)
-                {
-                    Debug.Log("Changing to Backup Cursor");
-                    Cursor.SetCursor(CursorList[0], Vector2.zero, CursorMode.Auto);
-                    CurrentCursor = CursorType.Backup;
-                }
-                else
-                {
-                    Debug.Log("Changing to U-Turn Cursor");
-                    Cursor.SetCursor(CursorList[8], Vector2.zero, CursorMode.Auto);
-                    CurrentCursor = CursorType.TurnAround;
-                }
+
             }
         }
     }
 
-    public void OnPointerExit(PointerEventData data)
+    public void MovePlayer()
     {
-       Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        CurrentCursor = CursorType.Default;
+        if (CurrentScene.name == "Intro")
+        {
+            if (CurrentCursor == CursorType.Forward)
+            {
+                if (CanForward)
+                {
+                    if (CurrentWaypoint == WaypointList[0])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                        CurrentWaypoint = WaypointList[1];
+                        CanUturn = true;
+                        CanOrbit = true;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+}
+                    //else if (CurrentWaypoint == WaypointList[2])
+                    //{
+                    //    CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                    //    CurrentWaypoint = WaypointList[0];
+                    //    //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    //}
+                    //else if (CurrentWaypoint == WaypointList[1])
+                    //{
+                    //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                    //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+                    //    CurrentWaypoint = WaypointList[2];
+                    //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    //}
+
+                }
+            }
+
+            if (CurrentCursor == CursorType.TurnAround)
+            {
+                MovePlayerUturn();
+
+            }
+            if (CurrentCursor == CursorType.Backup)
+            {
+                if (CurrentScene.name == "Intro")
+                {
+                    if (CurrentWaypoint == WaypointList[2])
+                    {
+                        CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                        CurrentWaypoint = WaypointList[1];
+
+                    }
+                }
+
+            }
+        }
     }
 
     public void MovePlayerUturn()
@@ -181,10 +184,5 @@ public class PlayerCameraController : MonoBehaviour, IPointerClickHandler, IPoin
     public void RotateRight()
     {
         CurrentPlayer.transform.Rotate(0,90,0);
-    }
-
-    public void OnGUI()
-    {
-      //  GUI.Box(new Rect(0, 0, 4, 3), );
     }
 }
