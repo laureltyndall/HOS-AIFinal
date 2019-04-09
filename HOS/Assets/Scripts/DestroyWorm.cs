@@ -31,14 +31,14 @@ public class DestroyWorm : MonoBehaviour
         Timer += Time.deltaTime;
 	}
 
-    void OnTriggerEnter(Collider Collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (Collision.gameObject.name == "Crow")
+        if (collision.gameObject.name == "Crow")
         {
             Controller.IsCrowDistracted = true;
         }
 
-        if (Collision.gameObject.name == "Crow" && Vector3.Distance(this.transform.position, Collision.transform.position) <= 4 && Controller.IsCrowDistracted == true)
+        if (collision.gameObject.name == "Crow" && Vector3.Distance(this.transform.position, collision.transform.position) <= 4 && Controller.IsCrowDistracted == true)
         {
             Controller.TimesCrowDistracted += 1;
             Destroy(this.gameObject);

@@ -60,41 +60,41 @@ public class CrowMinigameController : MonoBehaviour
         }
         DetermineNumberOfWorms();
 
-        if (WormThrowerObject.transform.position.x < -2)
+        if (WormThrowerObject.transform.position.x < -4)
         {
             WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x + 1f, WormThrowerObject.transform.position.y, WormThrowerObject.transform.position.z);
         }
-        if (WormThrowerObject.transform.position.x > 2)
+        if (WormThrowerObject.transform.position.x > 4)
         {
             WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x - 1f, WormThrowerObject.transform.position.y, WormThrowerObject.transform.position.z);
         }
 
-        if (WormThrowerObject.transform.position.y < -.9)
+        if (WormThrowerObject.transform.position.y < -1.5)
         {
             WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x, WormThrowerObject.transform.position.y + 1f, WormThrowerObject.transform.position.z);
         }
 
-        if (WormThrowerObject.transform.position.y > -.3)
+        if (WormThrowerObject.transform.position.y > .5)
         {
             WormThrowerObject.transform.position = new Vector3(WormThrowerObject.transform.position.x, WormThrowerObject.transform.position.y - 1f, WormThrowerObject.transform.position.z);
         }
 
-        if (AttackerCrow.transform.position.x < -2.5)
+        if (AttackerCrow.transform.position.x < -4.5)
         {
             AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x + 1f, AttackerCrow.transform.position.y, AttackerCrow.transform.position.z);
         }
 
-        if (AttackerCrow.transform.position.x > 2.5)
+        if (AttackerCrow.transform.position.x > 4.5)
         {
             AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x - 1f, AttackerCrow.transform.position.y, AttackerCrow.transform.position.z);
         }
 
-        if (AttackerCrow.transform.position.y < -1)
+        if (AttackerCrow.transform.position.y < -2)
         {
             AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x, AttackerCrow.transform.position.y + 1f, AttackerCrow.transform.position.z);
         }
 
-        if (AttackerCrow.transform.position.y >-.025 )
+        if (AttackerCrow.transform.position.y >.75 )
         {
             AttackerCrow.transform.position = new Vector3(AttackerCrow.transform.position.x, AttackerCrow.transform.position.y - 1f, AttackerCrow.transform.position.z);
 
@@ -144,9 +144,9 @@ public class CrowMinigameController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider Collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (Collision.gameObject.name == "Crow")
+        if (collision.gameObject.name == "Crow")
         {
             LifeArray[PlayerHP -1].SetActive(false);
             PlayerHP -= 1;
