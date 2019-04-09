@@ -22,9 +22,10 @@ namespace HOS
         private bool LetterClicked = false;
         private bool PaperOpen = false;
         private bool LetterFlipped = false;
+        private bool LetterOpen = false;
         public bool Clickable = false;
 
-        private int LetterNarrationCounter = 0;
+        private int LetterNarrationCounter = 4;
         private int SpeakCounter = 2;
 
         private Scene CurrentScene;
@@ -53,15 +54,14 @@ namespace HOS
         {
             GameObject go = GameObject.FindGameObjectWithTag("GameController");
             Controller = go.gameObject.GetComponent<MenuManager>();
-            LetterNarration = go.gameObject.GetComponent<LetterNarration>();
-            GameObject ag = GameObject.FindGameObjectWithTag("GameManager");
-            Manager = ag.gameObject.GetComponent<GameManager>();
-          //  GameObject ui = GameObject.FindGameObjectWithTag("UISystem");
-       //     MovementScript = go.GetComponent<PlayerCameraController>();
+            Manager = go.gameObject.GetComponent<GameManager>();
+            GameObject nar = GameObject.FindGameObjectWithTag("GameManager");
+            LetterNarration = nar.gameObject.GetComponent<LetterNarration>();
+            //  GameObject ui = GameObject.FindGameObjectWithTag("UISystem");
+            //     MovementScript = go.GetComponent<PlayerCameraController>();
 
             CurrentScene = SceneManager.GetActiveScene();
 
-            LetterNarrationCounter = LetterNarration.Narration.Count;
             TimeCounter = TimeBetweenNarration;
 
             CharacterName = LetterNarration.CharacterName;
@@ -73,22 +73,28 @@ namespace HOS
         {
             //if (Clickable)
             //{
-                if (LetterClicked)
-                {
-                    BeforeLetterCounter -= Time.deltaTime;
-                this.GetComponent<MeshRenderer>().enabled = false;
-           //     this.GetComponent<BoxCollider>().enabled = false;
+            CharacterName = LetterNarration.CharacterName;
+            SiblingName = LetterNarration.SiblingName;
 
-                    if (BeforeLetterCounter <= 0)
+            if (LetterClicked)
+            {
+                BeforeLetterCounter -= Time.deltaTime;
+                this.GetComponent<MeshRenderer>().enabled = false;
+                //     this.GetComponent<BoxCollider>().enabled = false;
+
+                if (BeforeLetterCounter <= 0)
+                {
+                    if (!LetterOpen)
                     {
                         OpenLetter();
-                        NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter - 1];
-                        LetterNarrationCounter--;
-                        SceneText.text = LetterNarration.CharacterSpeaks[0];
-                        PaperOpen = true;
-                        LetterClicked = false;
                     }
+                    NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter - 1];
+                    LetterNarrationCounter--;
+                    SceneText.text = LetterNarration.CharacterSpeaks[0];
+                    PaperOpen = true;
+                    LetterClicked = false;
                 }
+            }
 
                 if (PaperOpen)
                 {
@@ -175,6 +181,8 @@ namespace HOS
                                 MovementScript.CanRightTurn = false;
                                 MovementScript.CanForward = false;
                                 MovementScript.CanBackup = false;
+
+                                Manager.MasterInventory.AddInventoryItem(InventoryItem.SiblingLetter);
                             }
 
                                 AfterLetterCounter = 4f;
@@ -223,15 +231,17 @@ namespace HOS
                     {
                         Controller.TogglePanel(LetterAlextoAnne);
                     }
-                    else
-                    {
-                        Controller.TogglePanel(LetterAlextoAnne);
-                    }
+                    //else
+                    //{
+                    //    Controller.TogglePanel(LetterAlextoAnne);
+                    //}
                 }
-                else
-                {
-                    Controller.TogglePanel(LetterAlextoAnne);
-                }
+                //else
+                //{
+                //    Controller.TogglePanel(LetterAlextoAnne);
+                //}
+
+                LetterOpen = true;
             }
 
         }

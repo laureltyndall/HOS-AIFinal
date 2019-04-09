@@ -81,10 +81,13 @@ public class Inventory : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-        if (Manager.CurrentPlayer.PlayerInventory.Count > 0)
-        {
-            UpdateItems();
-        }
+        //if (Manager.CurrentPlayer != null)
+        //{
+        //    if (Manager.CurrentPlayer.PlayerInventory.Count > 0)
+        //    {
+        //        UpdateItems();
+        //    }
+        //}
 	}
 
     public void AddInventoryItem(InventoryItem CurrentItem)

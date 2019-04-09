@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
+namespace HOS
+{ 
 public class PlayerCameraController : MonoBehaviour
 {
     public GameObject CurrentPlayer;
+        public GameManager ManagerScript;
     public float RotateTime = 0.2f;
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
@@ -26,27 +29,39 @@ public class PlayerCameraController : MonoBehaviour
     void Start () 
     {
 		FindWaypointList();
-        MainCamera = Camera.main;
         CurrentScene = SceneManager.GetActiveScene();
-        CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
+            GameObject GO = GameObject.FindGameObjectWithTag("GameController");
+            ManagerScript = GO.GetComponent<GameManager>();
 
-        if (CurrentPlayer == null)
-        {
-            CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAlex");
-        }
+            FindCharacter();
 
-        if (CurrentScene.name == "Intro")
-        {
-            CurrentPlayer.transform.position = WaypointList[0].transform.position;
-            CurrentWaypoint = WaypointList[0];
-            CanUturn = true;
-            CanForward = true;
-        }
+
+        //    if (CurrentScene.name == "Intro")
+        //{
+
+        //    CurrentPlayer.transform.position = WaypointList[0].transform.position;
+        //    CurrentWaypoint = WaypointList[0];
+        //    CanUturn = true;
+        //    CanForward = true;
+        //}
 
     }
 
     void Update()
     {
+            if (CurrentPlayer == null)
+            {
+                FindCharacter();
+
+                if (CurrentScene.name == "Intro")
+                {
+                    MainCamera = Camera.main;
+                    CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                    CurrentWaypoint = WaypointList[0];
+                    CanUturn = true;
+                    CanForward = true;
+                }
+            }
         if(Input.GetMouseButtonDown(0))
         {
             MovePlayer();
@@ -185,4 +200,20 @@ public class PlayerCameraController : MonoBehaviour
     {
         CurrentPlayer.transform.Rotate(0,90,0);
     }
+
+        public void FindCharacter()
+        {
+            if (ManagerScript != null && ManagerScript.CurrentPlayer != null)
+            {
+                if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Alex)
+                {
+                    CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAlex");
+                }
+                else if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Anne)
+                {
+                    CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
+                }
+            }
+        }
+}
 }
