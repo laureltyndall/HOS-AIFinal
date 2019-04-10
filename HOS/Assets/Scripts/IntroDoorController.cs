@@ -45,7 +45,6 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-
                 if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0])
                 {
                     Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);

@@ -17,6 +17,9 @@ namespace HOS
         public bool PuzzleComplete;
         public Inventory MasterInventory = new Inventory();
 
+        public bool KilledBySnake = false;
+        public bool SnakeBeaten = false;
+
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
@@ -25,14 +28,14 @@ namespace HOS
 
         private void Update()
         {
-            if(SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
+            if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
 
                 CurrentGameState = GameState.GameStarted;
 
-                if(NewCharacter == Character.Anne)
+                if (NewCharacter == Character.Anne)
                 {
                     alex.SetActive(false);
                     CurrentPlayer = anne.GetComponent<Player>();
@@ -47,7 +50,16 @@ namespace HOS
                     CurrentPlayer.PlayerHealth = 10;
                 }
             }
+            else if (SceneManager.GetActiveScene().name == "Gate Scene")
+            {
 
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+            }
+
+            if(KilledBySnake)
+            {
+
+            }
         }
 
         public void SelectPlayerCharacter(int PlayerChoice)
