@@ -22,8 +22,10 @@ namespace HOS
         private bool LetterClicked = false;
         private bool PaperOpen = false;
         private bool LetterFlipped = false;
+        private bool LetterOpen = false;
+        public bool Clickable = false;
 
-        private int LetterNarrationCounter = 0;
+        private int LetterNarrationCounter = 4;
         private int SpeakCounter = 2;
 
         private Scene CurrentScene;
@@ -41,6 +43,7 @@ namespace HOS
         public Texture LetterBack;
         public GameObject AnneBloodSpatter;
         public GameObject AlexBloodSpatter;
+        public PlayerCameraController MovementScript;
 
         public Text NarrativeText;
         public Text SceneText;
@@ -51,13 +54,14 @@ namespace HOS
         {
             GameObject go = GameObject.FindGameObjectWithTag("GameController");
             Controller = go.gameObject.GetComponent<MenuManager>();
-            LetterNarration = go.gameObject.GetComponent<LetterNarration>();
-            GameObject ag = GameObject.FindGameObjectWithTag("GameManager");
-            Manager = ag.gameObject.GetComponent<GameManager>();
+            Manager = go.gameObject.GetComponent<GameManager>();
+            GameObject nar = GameObject.FindGameObjectWithTag("GameManager");
+            LetterNarration = nar.gameObject.GetComponent<LetterNarration>();
+            //  GameObject ui = GameObject.FindGameObjectWithTag("UISystem");
+            //     MovementScript = go.GetComponent<PlayerCameraController>();
 
             CurrentScene = SceneManager.GetActiveScene();
 
-            LetterNarrationCounter = LetterNarration.Narration.Count;
             TimeCounter = TimeBetweenNarration;
 
             CharacterName = LetterNarration.CharacterName;
@@ -67,13 +71,23 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
+            //if (Clickable)
+            //{
+            CharacterName = LetterNarration.CharacterName;
+            SiblingName = LetterNarration.SiblingName;
+
             if (LetterClicked)
             {
                 BeforeLetterCounter -= Time.deltaTime;
+                this.GetComponent<MeshRenderer>().enabled = false;
+                //     this.GetComponent<BoxCollider>().enabled = false;
 
                 if (BeforeLetterCounter <= 0)
                 {
-                    OpenLetter();
+                    if (!LetterOpen)
+                    {
+                        OpenLetter();
+                    }
                     NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter - 1];
                     LetterNarrationCounter--;
                     SceneText.text = LetterNarration.CharacterSpeaks[0];
@@ -82,55 +96,62 @@ namespace HOS
                 }
             }
 
-            if (PaperOpen)
-            {
-                TimeCounter -= Time.deltaTime;
-
-                if (CurrentScene.name == "Intro")
+                if (PaperOpen)
                 {
-                    if (LetterNarrationCounter > 0)
-                    {
-                        if (TimeCounter <= 0)
-                        {
-                            NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter - 1];
-                            LetterNarrationCounter--;
-                            TimeCounter = TimeBetweenNarration;
-                        }
-                    }
-                    else if (LetterNarrationCounter == 0)
-                    {
-                        NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter];
-                        TimeCounter = TimeBetweenNarration;
-                        LetterNarrationCounter--;
-                    }
-                    else
-                    {
-                        AfterLetterCounter -= Time.deltaTime;
+                    TimeCounter -= Time.deltaTime;
 
-                        if (AfterLetterCounter <= 0)
+                    if (CurrentScene.name == "Intro")
+                    {
+                        if (LetterNarrationCounter > 0)
                         {
-                            if (SpeakCounter > 0)
+                            if (TimeCounter <= 0)
                             {
-                                NarrativeText.text = LetterNarration.CharacterSpeaks[SpeakCounter];
+                                NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter - 1];
+                                LetterNarrationCounter--;
+                                TimeCounter = TimeBetweenNarration;
+                            }
+                        }
+                        else if (LetterNarrationCounter == 0)
+                        {
+                            NarrativeText.text = LetterNarration.Narration[LetterNarrationCounter];
+                            TimeCounter = TimeBetweenNarration;
+                            LetterNarrationCounter--;
+                        }
+                        else
+                        {
+                            AfterLetterCounter -= Time.deltaTime;
 
-                                if (SpeakCounter == 1)
+                            if (AfterLetterCounter <= 0)
+                            {
+                                if (SpeakCounter > 0)
                                 {
-                                    // Change the letter to the back of the paper.
-                                    if (Manager != null)
+                                    NarrativeText.text = LetterNarration.CharacterSpeaks[SpeakCounter];
+
+                                    if (SpeakCounter == 1)
                                     {
-                                        if (Manager.CurrentPlayer != null)
+                                        // Change the letter to the back of the paper.
+                                        if (Manager != null)
                                         {
-                                            if (Manager.CurrentPlayer.PlayerCharacter == Character.Alex)
+                                            if (Manager.CurrentPlayer != null)
                                             {
-                                                // Display back of envelope
-                                                AnneLetterText.texture = LetterBack;
-                                                Controller.TogglePanel(AnneBloodSpatter);
-                                            }
-                                            else if (Manager.CurrentPlayer.PlayerCharacter == Character.Anne)
-                                            {
-                                                // Display back of envelope
-                                                AlexLetterText.texture = LetterBack;
-                                                Controller.TogglePanel(AlexBloodSpatter);
+                                                if (Manager.CurrentPlayer.PlayerCharacter == Character.Alex)
+                                                {
+                                                    // Display back of envelope
+                                                    AnneLetterText.texture = LetterBack;
+                                                    Controller.TogglePanel(AnneBloodSpatter);
+                                                }
+                                                else if (Manager.CurrentPlayer.PlayerCharacter == Character.Anne)
+                                                {
+                                                    // Display back of envelope
+                                                    AlexLetterText.texture = LetterBack;
+                                                    Controller.TogglePanel(AlexBloodSpatter);
+                                                }
+                                                else
+                                                {
+                                                    // Display back of envelope
+                                                    AlexLetterText.texture = LetterBack;
+                                                    Controller.TogglePanel(AlexBloodSpatter);
+                                                }
                                             }
                                             else
                                             {
@@ -139,45 +160,58 @@ namespace HOS
                                                 Controller.TogglePanel(AlexBloodSpatter);
                                             }
                                         }
-                                        else
-                                        {
-                                            // Display back of envelope
-                                            AlexLetterText.texture = LetterBack;
-                                            Controller.TogglePanel(AlexBloodSpatter);
-                                        }
                                     }
+
+                                    SpeakCounter--;
                                 }
+                                else
+                                {
+                                    OpenLetter();
+                                    PaperOpen = false;
 
-                                SpeakCounter--;
-                            }
-                            else
-                            {
-                                OpenLetter();
-                                PaperOpen = false;
+                                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
+                                MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+                                MovementScript.CanUturn = true;
+                                MovementScript.CanOrbit = true;
+                                MovementScript.CanOrbit = true;
+                                MovementScript.CanLeftTurn = false;
+                                MovementScript.CanRightTurn = false;
+                                MovementScript.CanForward = false;
+                                MovementScript.CanBackup = false;
+
+                                Manager.MasterInventory.AddInventoryItem(InventoryItem.SiblingLetter);
                             }
 
-                            AfterLetterCounter = 4f;
+                                AfterLetterCounter = 4f;
+                            }
                         }
                     }
                 }
-            }
+        //    }
         }
 
         private void OnMouseDown()
         {
-            if (tag == "SiblingLetter")
-            {
-                if (SiblingName == "Anne")
+            //if (Clickable)
+            //{
+                if (tag == "SiblingLetter")
                 {
-                    SceneText.text = "A letter from Anne? I haven't heard from her in years.";
-                }
-                else if (SiblingName == "Alex")
-                {
-                    SceneText.text = "A letter from Alex? I haven't heard from him in years.";
-                }
+                    if (SiblingName == "Anne")
+                    {
+                        SceneText.text = "A letter from Anne? I haven't heard from her in years.";
+                    }
+                    else if (SiblingName == "Alex")
+                    {
+                        SceneText.text = "A letter from Alex? I haven't heard from him in years.";
+                    }
 
-                LetterClicked = true;
-            }
+                    LetterClicked = true;
+                    MovementScript.CanBackup = false;
+                }
+         //   }
         }
 
         private void OpenLetter()
@@ -197,15 +231,17 @@ namespace HOS
                     {
                         Controller.TogglePanel(LetterAlextoAnne);
                     }
-                    else
-                    {
-                        Controller.TogglePanel(LetterAlextoAnne);
-                    }
+                    //else
+                    //{
+                    //    Controller.TogglePanel(LetterAlextoAnne);
+                    //}
                 }
-                else
-                {
-                    Controller.TogglePanel(LetterAlextoAnne);
-                }
+                //else
+                //{
+                //    Controller.TogglePanel(LetterAlextoAnne);
+                //}
+
+                LetterOpen = true;
             }
 
         }

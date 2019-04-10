@@ -20,6 +20,13 @@ TagManager:
   - Key
   - WaypointList
   - PuzzlePiece
+  - PlayerAlex
+  - PlayerAnne
+  - Folders
+  - SiblingAnne
+  - SiblingAlex
+  - CrowMinigameController
+  - UISystem
   layers:
   - Default
   - TransparentFX
