@@ -9,7 +9,7 @@ namespace HOS
 public class PlayerCameraController : MonoBehaviour
 {
     public GameObject CurrentPlayer;
-        public GameManager ManagerScript;
+    public GameManager ManagerScript;
     public float RotateTime = 0.2f;
     public List<GameObject> WaypointList = new List<GameObject>();
     public GameObject CurrentWaypoint;
@@ -34,22 +34,11 @@ public class PlayerCameraController : MonoBehaviour
             ManagerScript = GO.GetComponent<GameManager>();
 
             FindCharacter();
-
-
-        //    if (CurrentScene.name == "Intro")
-        //{
-
-        //    CurrentPlayer.transform.position = WaypointList[0].transform.position;
-        //    CurrentWaypoint = WaypointList[0];
-        //    CanUturn = true;
-        //    CanForward = true;
-        //}
-
     }
 
     void Update()
     {
-            if (CurrentPlayer == null)
+        if (CurrentPlayer == null)
             {
                 FindCharacter();
 
@@ -61,12 +50,52 @@ public class PlayerCameraController : MonoBehaviour
                     CanUturn = true;
                     CanForward = true;
                 }
+                if (CurrentScene.name == "Gate Scene")
+                {
+                    MainCamera = Camera.main;
+                    CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                    CurrentWaypoint = WaypointList[0];
+                    CanUturn = true;
+                    CanForward = true;
+                }
             }
+
         if(Input.GetMouseButtonDown(0))
         {
             MovePlayer();
         }
-    }
+
+            if (CurrentScene.name == "Gate Scene")
+            {
+                if (CurrentWaypoint == WaypointList[4])
+                {
+                    CanUturn = false;
+                    CanOrbit = false;
+                    CanLeftTurn = false;
+                    CanRightTurn = false;
+                    CanForward = false;
+                    CanBackup = true;
+                }
+                else if (CurrentWaypoint == WaypointList[5])
+                {
+                    CanUturn = false;
+                    CanOrbit = false;
+                    CanLeftTurn = false;
+                    CanRightTurn = false;
+                    CanForward = false;
+                    CanBackup = true;
+                }
+                else if(CurrentWaypoint == WaypointList[3])
+                {
+                    CanUturn = false;
+                    CanOrbit = false;
+                    CanLeftTurn = false;
+                    CanRightTurn = false;
+                    CanForward = false;
+                    CanBackup = false;
+                }
+            }
+        }
 
     public void FindWaypointList()
     {
@@ -95,16 +124,7 @@ public class PlayerCameraController : MonoBehaviour
                     {
                         CurrentPlayer.transform.position = WaypointList[0].transform.position;
                         CurrentWaypoint = WaypointList[0];
-                     //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                     }
-                    //else if (CurrentWaypoint == WaypointList[1])
-                    //{
-                    //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                    //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                    //    CurrentWaypoint = WaypointList[2];
-                    //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
-                    //}
-
                 }
             }
 
@@ -127,6 +147,64 @@ public class PlayerCameraController : MonoBehaviour
 
             }
         }
+        else if (CurrentScene.name == "Gate Scene")
+        {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                            CurrentWaypoint = WaypointList[1];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+    }
+                        else if (CurrentWaypoint == WaypointList[2])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+
+
+                        }
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    if (CurrentWaypoint == WaypointList[0])
+                    {
+                        MovePlayerUturn();
+                    }
+                }
+                if (CurrentCursor == CursorType.Backup)
+                {
+                    if (CurrentScene.name == "Gate Scene")
+                    {
+                        if (CurrentWaypoint == WaypointList[4])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                        }
+                        if (CurrentWaypoint == WaypointList[5])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                        }
+                    }
+
+                }
+            }
     }
 
     public void MovePlayer()
@@ -201,19 +279,19 @@ public class PlayerCameraController : MonoBehaviour
         CurrentPlayer.transform.Rotate(0,90,0);
     }
 
-        public void FindCharacter()
+    public void FindCharacter()
+    {
+        if (ManagerScript != null && ManagerScript.CurrentPlayer != null)
         {
-            if (ManagerScript != null && ManagerScript.CurrentPlayer != null)
+            if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Alex)
             {
-                if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Alex)
-                {
-                    CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAlex");
-                }
-                else if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Anne)
-                {
-                    CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
-                }
+                CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAlex");
+            }
+            else if (ManagerScript.CurrentPlayer.PlayerCharacter == Character.Anne)
+            {
+                CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
             }
         }
+    }
 }
 }

@@ -10,6 +10,7 @@ namespace HOS
     {
         public PlayerCameraController MovementScript;
         public Texture2D NewCursor;
+        public bool UIOnly = false;
         //public bool Clickable = false;
 
         public void Start()
@@ -20,12 +21,9 @@ namespace HOS
 
         void OnMouseOver()
         {
-            //if (Clickable)
-            //{
             //If your mouse hovers over the GameObject with the script attached, output this message
             //     Debug.Log("Mouse is over " + this.name);
             Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
-            //   }
         }
 
         void OnMouseExit()
@@ -98,6 +96,11 @@ namespace HOS
                         MovementScript.CurrentCursor = CursorType.TurnAround;
                     }
                 }
+            }
+
+            if(UIOnly)
+            {
+                Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
             }
         }
 
