@@ -885,6 +885,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224345255062648470, guid: 13f4f2a463ecb7c48a885da2e068ede5,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -923,7 +933,7 @@ Prefab:
     - target: {fileID: 224345255062648470, guid: 13f4f2a463ecb7c48a885da2e068ede5,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224345255062648470, guid: 13f4f2a463ecb7c48a885da2e068ede5,
         type: 2}
@@ -974,6 +984,56 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 731596487}
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 114570873589313206, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 731596487}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadOnClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602681937018432, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13f4f2a463ecb7c48a885da2e068ede5, type: 2}
@@ -1424,8 +1484,8 @@ GameObject:
   - component: {fileID: 731596486}
   - component: {fileID: 731596487}
   m_Layer: 0
-  m_Name: Controller
-  m_TagString: GameController
+  m_Name: Living Room Puzzle Game Manager
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1441,7 +1501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &731596486
 MonoBehaviour:
@@ -1484,7 +1544,9 @@ MonoBehaviour:
   TotalClicks: 0
   TextArea: {fileID: 521261972}
   SkipButton: {fileID: 962453479}
+  GameOver: 0
   PlayerName: 
+  SiblingName: 
   ManagerScript: {fileID: 0}
 --- !u!114 &731596487
 MonoBehaviour:
@@ -1890,7 +1952,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &829149760
 Prefab:
@@ -2203,7 +2265,7 @@ Transform:
   - {fileID: 1033618217}
   - {fileID: 778191836}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994042542
 GameObject:
@@ -2471,7 +2533,7 @@ Transform:
   m_Children:
   - {fileID: 1702446393}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1001 &1153880760
 Prefab:
@@ -3106,6 +3168,89 @@ MonoBehaviour:
   Clicked: 0
   ClickMe: 0
   TextArea: {fileID: 521261972}
+--- !u!1 &1408135065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1408135066}
+  - component: {fileID: 1408135069}
+  - component: {fileID: 1408135068}
+  - component: {fileID: 1408135067}
+  m_Layer: 0
+  m_Name: Controller - Delete Before Build
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1408135066
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408135065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.91, y: 3.7881482, z: 32.2899}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1408135067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408135065}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d81e04e6849d22e48bb2dc2fda9676d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  InventoryButtonList: []
+  ThisPicture: {fileID: 0}
+--- !u!114 &1408135068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408135065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed15228f749e91c418637c171cb16871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeStamp: 10
+  scene_number: 0
+  PauseMenu: {fileID: 0}
+  CurrentGameTime: 0
+--- !u!114 &1408135069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1408135065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fe2c6fc440b6c44a8f73c57accc272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentGameState: 0
+  CurrentGameCheckpoint: 0
+  CurrentGameSavepoint: 0
+  CurrentPlayer: {fileID: 0}
+  NewCharacter: 0
+  AudioLibrary: []
+  PuzzleComplete: 0
+  MasterInventory: {fileID: 0}
+  KilledBySnake: 0
+  SnakeBeaten: 0
+  GameOverScreen: {fileID: 0}
+  GameOver: 0
 --- !u!1 &1430319254
 GameObject:
   m_ObjectHideFlags: 0
@@ -4107,7 +4252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 4.7, y: -90, z: 0}
 --- !u!1 &2054542739
 GameObject:
@@ -4172,7 +4317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 32.702, y: -50.83, z: 106.728004}
 --- !u!1 &2116060037
 GameObject:

@@ -16,7 +16,7 @@ public class FolderIndicator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject go = GameObject.FindGameObjectWithTag("GameController");
+        GameObject go = GameObject.FindGameObjectWithTag("GameManager");
         PuzzleController = go.GetComponent<LibraryPuzzleController>();
 	}
 	

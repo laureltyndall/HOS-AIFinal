@@ -81,7 +81,7 @@ namespace HOS
 
         void FindManagerScript()
         {
-            GameObject go = GameObject.FindGameObjectWithTag("GameManager");
+            GameObject go = GameObject.FindGameObjectWithTag("GameController");
 
             if (go != null)
             {
@@ -89,14 +89,17 @@ namespace HOS
 
                 if (ManagerScript != null)
                 {
-                    PlayerName = ManagerScript.CurrentPlayer.name;
-
-                    if (PlayerName != null)
+                    if (ManagerScript.CurrentPlayer != null)
                     {
-                        FindNames();
-                    }
+                        PlayerName = ManagerScript.CurrentPlayer.name;
 
-                    ManagerFound = true;
+                        if (PlayerName != null)
+                        {
+                            FindNames();
+                        }
+
+                        ManagerFound = true;
+                    }
                 }
             }
         }

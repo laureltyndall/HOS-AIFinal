@@ -20,6 +20,9 @@ namespace HOS
         public bool KilledBySnake = false;
         public bool SnakeBeaten = false;
 
+        public bool GroundsFromGate = false;
+        public bool GroundsFromHouse = false;
+
         public GameObject GameOverScreen;
         public bool GameOver = false;
 
@@ -69,6 +72,25 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
+            }
+            else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+
+                // Test from gate
+                GroundsFromGate = true;
+                GroundsFromHouse = false;
+
+                // Test from house
+                //GroundsFromGate = false;
+                //GroundsFromHouse = true;
             }
         }
 

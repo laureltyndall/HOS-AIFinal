@@ -21,7 +21,7 @@ namespace HOS
         // Use this for initialization
         void Start()
         {
-            SliderGameScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<SliderGameController>();
+            SliderGameScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SliderGameController>();
             MyRigidbody = this.gameObject.GetComponent<Rigidbody>();
         }
 

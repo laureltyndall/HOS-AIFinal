@@ -37,10 +37,12 @@ namespace HOS
                     ManagerFound = true;
                 }
             }
-
-            if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
+            else
             {
-                Clickable = false;
+                if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
+                {
+                    Clickable = false;
+                }
             }
         }
 

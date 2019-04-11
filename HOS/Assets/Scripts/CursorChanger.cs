@@ -56,24 +56,9 @@ namespace HOS
             }
             else
             {
-                //if (CanSharpTurn)
-                //{
-                //    if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-                //    {
-                //        Debug.Log("Changing to Turn Left Cursor");
-                //        Cursor.SetCursor(CursorList[6], Vector2.zero, CursorMode.Auto);
-                //        CurrentCursor = CursorType.LeftTurn;
-                //    }
-                //    if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
-                //    {
-                //        Debug.Log("Changing to Turn Right Cursor");
-                //        Cursor.SetCursor(CursorList[7], Vector2.zero, CursorMode.Auto);
-                //        CurrentCursor = CursorType.RightTurn;
-                //    }
-                //}
                 if (MovementScript.CanForward)
                 {
-                    if (MovementScript.CurrentScene.name == "Intro")
+                    if (MovementScript.CurrentScene.name == "Intro" || MovementScript.CurrentScene.name == "HouseGrounds")
                     {
                         if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
                         {
@@ -122,7 +107,5 @@ namespace HOS
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             MovementScript.CurrentCursor = CursorType.Default;
         }
-
-        
     }
 }
