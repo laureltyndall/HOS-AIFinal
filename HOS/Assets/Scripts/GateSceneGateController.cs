@@ -11,12 +11,14 @@ namespace HOS
         public bool Clickable = true;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
+        private MenuManager Controller;
         public GameManager ManagerScript;
         public Text TextArea;
         public bool ManagerFound = false;
         public int ClickCounter = 0;
         private bool GateComment = false;
         public GameObject Snake;
+        public GameObject GameOverPanel;
 
         // Use this for initialization
         void Start()
@@ -32,6 +34,7 @@ namespace HOS
             {
                 GameObject gm = GameObject.FindGameObjectWithTag("GameController");
                 ManagerScript = gm.gameObject.GetComponent<GameManager>();
+                Controller = gm.gameObject.GetComponent<MenuManager>();
 
                 if (ManagerScript != null)
                 {
@@ -39,7 +42,7 @@ namespace HOS
                 }
             }
 
-            if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+            if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
             {
                 if(!GateComment)
                 {
@@ -48,7 +51,7 @@ namespace HOS
                 }
             }
 
-            if(ClickCounter == 1 && MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+            if(ClickCounter == 1 && MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
             {
                 TextArea.text = "I need to find some way to get that snake away from the gate latch.";
             }
@@ -59,7 +62,7 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
 
@@ -84,7 +87,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     // If the player has the letter in inventory, leave the house
                     if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
@@ -103,10 +106,10 @@ namespace HOS
                     {
                         if(ClickCounter < 1)
                         {
-                            MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[4].transform.position;
-                            MovementScript.CurrentWaypoint = MovementScript.WaypointList[4];
+                            MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[3].transform.position;
+                            MovementScript.CurrentWaypoint = MovementScript.WaypointList[3];
                             //     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                            //     Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                            Camera.main.transform.rotation = Quaternion.Euler(41.62f, 180f, 0f);
 
                             MovementScript.CanUturn = false;
                             MovementScript.CanOrbit = false;
@@ -118,14 +121,17 @@ namespace HOS
                             Snake.SetActive(true);
                             TextArea.text = "Whoah! There's a snake!";
                         }
-                        else if(ClickCounter == 2)
+                        else if(ClickCounter < 5 && ClickCounter > 0)
                         {
                             TextArea.text = "Ouch!";
                         }
                         else if (ClickCounter >= 5)
                         {
                             TextArea.text = "Oooh. I don't feel so good.";
+                            Controller.ShowGameOver(GameOverPanel);
                             ManagerScript.KilledBySnake = true;
+
+                            ClickCounter = 0;
                         }
                     }
 

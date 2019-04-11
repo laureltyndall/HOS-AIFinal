@@ -42,16 +42,28 @@ namespace HOS
                 }
             }
 
+            if(ShovelClicked && !ShovelUIObject.activeSelf)
+            {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
+
             if(ShovelinInventory)
             {
-                ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Trowel);
-
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[5])
+                if (ManagerScript.MasterInventory != null)
                 {
-                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[3].transform.position;
-                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[3];
-                    //     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                    //     Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Trowel);
+                }
+
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4])
+                {
+                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
+                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
+
+                 //   MovementScript.CurrentPlayer.transform.Rotate(new Vector3(0f, 180f, 0f));
+                    MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                    
+                    Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                   // Camera.main.transform.Rotate(new Vector3(0f, 0f, 0f));
 
                     MovementScript.CanUturn = false;
                     MovementScript.CanOrbit = false;
@@ -68,7 +80,7 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[5])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4])
                 {
                     Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
 
@@ -98,6 +110,7 @@ namespace HOS
                     TextArea.text = "This should help me get that snake out of the way.";
                     ShovelClicked = true;
                     Controller.TogglePanel(ShovelUIObject);
+                    Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
                 }
             }
         }

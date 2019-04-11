@@ -73,11 +73,24 @@ namespace HOS
                 //}
                 if (MovementScript.CanForward)
                 {
-                    if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
+                    if (MovementScript.CurrentScene.name == "Intro")
                     {
-                        Debug.Log("Changing to Forward Cursor");
-                        Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
-                        MovementScript.CurrentCursor = CursorType.Forward;
+                        if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
+                        {
+                            Debug.Log("Changing to Forward Cursor");
+                            Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+                            MovementScript.CurrentCursor = CursorType.Forward;
+                        }
+                    }
+
+                    if(MovementScript.CurrentScene.name == "Gate Scene")
+                    {
+                        if ((Input.mousePosition.x >= 410 && Input.mousePosition.x <= 850) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
+                        {
+                            Debug.Log("Changing to Forward Cursor");
+                            Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+                            MovementScript.CurrentCursor = CursorType.Forward;
+                        }
                     }
                 }
 
@@ -109,5 +122,7 @@ namespace HOS
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             MovementScript.CurrentCursor = CursorType.Default;
         }
+
+        
     }
 }

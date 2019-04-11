@@ -81,6 +81,24 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
+    public void ShowGameOver(GameObject panel)
+    {
+        // If the pause menu is on, turn it off. If it is off, turn it on
+        panel.SetActive(!panel.activeSelf);
+
+        if (!panel.activeSelf)   // If the scene is paused
+        {
+            // Unpause the scene
+            Time.timeScale = 1;
+
+        }
+        else                         // If the scene is not paused
+        {
+            // Pause the scene
+            Time.timeScale = 0;
+        }
+    }
+
     public void OnMouseEnter(Texture2D NewCursor)
     {
         // Use this to set the cursor to the chosen sprite image

@@ -20,10 +20,17 @@ namespace HOS
         public bool KilledBySnake = false;
         public bool SnakeBeaten = false;
 
+        public GameObject GameOverScreen;
+        public bool GameOver = false;
+
         void Start()
         {
-            DontDestroyOnLoad(this.gameObject);
-       //     CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            if (SceneManager.GetActiveScene().name == "Menu")
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
+
+            Time.timeScale = 1;
         }
 
         private void Update()
@@ -32,7 +39,7 @@ namespace HOS
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-
+                //GameObject
                 CurrentGameState = GameState.GameStarted;
 
                 if (NewCharacter == Character.Anne)
@@ -50,15 +57,16 @@ namespace HOS
                     CurrentPlayer.PlayerHealth = 10;
                 }
             }
-            else if (SceneManager.GetActiveScene().name == "Gate Scene")
+            else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {
-
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
-            }
-
-            if(KilledBySnake)
-            {
-
+                CurrentPlayer.PlayerHealth = 10;
             }
         }
 
