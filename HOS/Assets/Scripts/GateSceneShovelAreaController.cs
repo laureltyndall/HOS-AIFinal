@@ -15,6 +15,7 @@ namespace HOS
         public Text TextArea;
         public bool ManagerFound = false;
         public MeshRenderer Shovel;
+        public CapsuleCollider MyCollider;
 
         // Use this for initialization
         void Start()
@@ -48,7 +49,7 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
 
@@ -73,12 +74,12 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
-                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[5].transform.position;
-                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[5];
+                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[4].transform.position;
+                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[4];
                     //     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                    //     Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    Camera.main.transform.Rotate(new Vector3(50.28f, 7.2f, 0f));
 
                     MovementScript.CanUturn = false;
                     MovementScript.CanOrbit = false;
@@ -86,6 +87,8 @@ namespace HOS
                     MovementScript.CanRightTurn = false;
                     MovementScript.CanForward = false;
                     MovementScript.CanBackup = true;
+
+                    MyCollider.enabled = false;
                 }
             }
         }

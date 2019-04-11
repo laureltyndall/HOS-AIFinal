@@ -23,7 +23,6 @@ namespace HOS
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
-       //     CurrentPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
 
         private void Update()
@@ -50,10 +49,16 @@ namespace HOS
                     CurrentPlayer.PlayerHealth = 10;
                 }
             }
-            else if (SceneManager.GetActiveScene().name == "Gate Scene")
+            else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {
-
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
             }
 
             if(KilledBySnake)
