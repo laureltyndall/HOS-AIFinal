@@ -85,12 +85,12 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
 
                 // Test from gate
-                GroundsFromGate = true;
-                GroundsFromHouse = false;
+                //GroundsFromGate = true;
+                //GroundsFromHouse = false;
 
                 // Test from house
-                //GroundsFromGate = false;
-                //GroundsFromHouse = true;
+                GroundsFromGate = false;
+                GroundsFromHouse = true;
             }
         }
 

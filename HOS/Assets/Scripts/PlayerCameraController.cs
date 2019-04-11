@@ -93,11 +93,13 @@ namespace HOS
                         else if (ManagerScript.GroundsFromHouse)
                         {
                             MainCamera = Camera.main;
-                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentPlayer.transform.position = WaypointList[4].transform.position;
                             CurrentWaypoint = WaypointList[4];
+                            MovePlayerUturn();
                             // Turn the player around
                             CanUturn = true;
                             CanForward = true;
+                            UTurnSelected = true;
                         }
                     }
                 }
@@ -135,6 +137,27 @@ namespace HOS
                 if (CurrentWaypoint == WaypointList[0])     // Near Gate
                 {
                     if (UTurnSelected)      // Looking at gate
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                    else    // Looking at crossroads
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                }
+                if(CurrentWaypoint == WaypointList[4])
+                {
+                    if (!UTurnSelected)      // Looking at house
                     {
                         CanUturn = true;
                         CanOrbit = false;
@@ -441,7 +464,7 @@ namespace HOS
 
                 }
             }
-            else if (CurrentScene.name == "HouseGrounds" && ManagerScript.GroundsFromGate)
+            else if (CurrentScene.name == "HouseGrounds")
             {
                 if (CurrentCursor == CursorType.Forward)
                 {
@@ -748,65 +771,6 @@ namespace HOS
                     {
                         UTurnSelected = !UTurnSelected;
                     }
-                }
-            }
-            else if (CurrentScene.name == "HouseGrounds" && ManagerScript.GroundsFromHouse)
-            {
-                if (CurrentCursor == CursorType.Forward)
-                {
-                    if (CanForward)
-                    {
-                        // THIS NEEDS WORK
-                        if (CurrentWaypoint == WaypointList[0])
-                        {
-                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                            CurrentWaypoint = WaypointList[1];
-                            CanUturn = false;
-                            CanOrbit = false;
-                            CanLeftTurn = false;
-                            CanRightTurn = false;
-                            CanForward = true;
-                            CanBackup = false;
-                        }
-                        else if (CurrentWaypoint == WaypointList[1])
-                        {
-                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                            CurrentWaypoint = WaypointList[2];
-                            //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                            CanUturn = false;
-                            CanOrbit = false;
-                            CanLeftTurn = false;
-                            CanRightTurn = false;
-                            CanForward = true;
-                            CanBackup = false;
-                        }
-                        else if (CurrentWaypoint == WaypointList[2])
-                        {
-                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
-                            CurrentWaypoint = WaypointList[3];
-                            //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                            CanUturn = false;
-                            CanOrbit = false;
-                            CanLeftTurn = false;
-                            CanRightTurn = false;
-                            CanForward = true;
-                            CanBackup = false;
-                        }
-                        //else if (CurrentWaypoint == WaypointList[1])
-                        //{
-                        //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                        //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                        //    CurrentWaypoint = WaypointList[2];
-                        //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
-                        //}
-
-                    }
-                }
-
-                if (CurrentCursor == CursorType.TurnAround)
-                {
-                    MovePlayerUturn();
-
                 }
             }
         }
