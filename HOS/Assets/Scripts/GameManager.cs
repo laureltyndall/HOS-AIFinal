@@ -39,7 +39,9 @@ namespace HOS
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                //GameObject
+                GameObject InventoryPanel = GameObject.FindGameObjectWithTag("InventoryPanel");
+                MasterInventory = InventoryPanel.GetComponent<Inventory>();
+                InventoryPanel.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
 
                 if (NewCharacter == Character.Anne)
@@ -100,6 +102,12 @@ namespace HOS
             CurrentGameState = GameState.None;
         }
 
+    public void ToggleInventoryPanel(GameObject panel)
+    {
+        // If the pause menu is on, turn it off. If it is off, turn it on
+        panel.SetActive(!panel.activeSelf);
+        MasterInventory.ActivateMenu();
+    }
         public void LoadScene(string SceneName)
         {
             SceneManager.LoadScene(SceneName);

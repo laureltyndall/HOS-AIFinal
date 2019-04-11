@@ -87,6 +87,9 @@ public class Inventory : MonoBehaviour
         NewItem = new Item();
 
         #endregion
+
+        AddInventoryItem(InventoryItem.Basket);
+        AddInventoryItem(InventoryItem.Flashlight);
 	}
 
     public void AddInventoryItem(InventoryItem CurrentItem)
