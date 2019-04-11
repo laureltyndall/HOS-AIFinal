@@ -16,62 +16,62 @@ public class Inventory : MonoBehaviour
     {
         Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         #region Create Inventory Items
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Flashlight").GetComponent<Image>(); // Find Item Image
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("FlashlightSprite").GetComponent<Image>(); // Find Item Image
         NewItem.ItemImage.enabled = false; //Disable Item Image
         NewItem.ItemID = InventoryItem.Flashlight; //Add Item ID
         NewItem.Status = ItemStatus.Available; //Add Item Status
         ItemsInInventory.Add(InventoryItem.Flashlight,NewItem); //Add Item to inventory
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Trowel").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("TrowelSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.Trowel;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.Trowel,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Basket").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("BasketSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.Basket;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.Basket,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Cheese").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("CheeseSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.Cheese;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.Cheese,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("MarblePiece").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("MarblePieceSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.MarblePiece;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.MarblePiece,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Move-InChecklist").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Move-InChecklistSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.MoveInChecklist;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.MoveInChecklist,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("MysteryChecklist").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("MysteryChecklistSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.MysteryChecklist;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.MysteryChecklist,NewItem);
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("SiblingLetter").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("SiblingLetterSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.SiblingLetter;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.SiblingLetter,NewItem);
         NewItem = new Item();
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Stick").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("StickSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.Stick;
         NewItem.Status = ItemStatus.Available;
@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
         NewItem = new Item();
 
 
-        NewItem.ItemImage = GameObject.FindGameObjectWithTag("Worms").GetComponent<Image>();
+        NewItem.ItemImage = GameObject.FindGameObjectWithTag("WormsSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
         NewItem.ItemID = InventoryItem.Worms;
         NewItem.Status = ItemStatus.Available;
