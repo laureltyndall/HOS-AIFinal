@@ -15,6 +15,9 @@ MonoBehaviour:
   - pbExtrudeAsGroup
   - pbManifoldEdgeExtrusion
   - pbShowMover
+  - pbIconGUI
+  - pbDragSelectWholeElement
+  - pbUVMaterialPreview
   m_Int_keys:
   - pbDefaultEditLevel
   - pbDefaultSelectionMode
@@ -28,12 +31,12 @@ MonoBehaviour:
   m_String_keys: []
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 010001
-  m_Int_values: 0400000000000000000000000200000000000000
+  m_Bool_values: 010001000100
+  m_Int_values: 0400000002000000000000000200000000000000
   m_Float_values:
   - 0.1
   - 0
-  - 0
+  - 30
   m_String_values: []
   m_Color_values: []
   m_Material_values: []
