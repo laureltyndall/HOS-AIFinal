@@ -28,6 +28,7 @@ TagManager:
   - CrowMinigameController
   - UISystem
   - InventoryPanel
+  - Inventory
   layers:
   - Default
   - TransparentFX

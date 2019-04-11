@@ -42,11 +42,8 @@ namespace HOS
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                GameObject InventoryPanel = GameObject.FindGameObjectWithTag("InventoryPanel");
-                MasterInventory = InventoryPanel.GetComponent<Inventory>();
-                InventoryPanel.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 if (NewCharacter == Character.Anne)
                 {
                     alex.SetActive(false);
@@ -61,6 +58,8 @@ namespace HOS
                     CurrentPlayer.PlayerCharacter = Character.Alex;
                     CurrentPlayer.PlayerHealth = 10;
                 }
+        MasterInventory.AddInventoryItem(InventoryItem.Basket);
+        MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {

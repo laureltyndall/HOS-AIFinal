@@ -88,8 +88,8 @@ public class Inventory : MonoBehaviour
 
         #endregion
 
-        AddInventoryItem(InventoryItem.Basket);
-        AddInventoryItem(InventoryItem.Flashlight);
+       GameObject InventoryPanel = GameObject.FindGameObjectWithTag("InventoryPanel");
+       InventoryPanel.SetActive(false);
 	}
 
     public void AddInventoryItem(InventoryItem CurrentItem)
