@@ -29,6 +29,11 @@ namespace HOS
                 Clickable = true;
                 MyCollider.enabled = true;
             }
+            else
+            {
+                Clickable = false;
+                MyCollider.enabled = false;
+            }
         }
 
         void OnMouseOver()

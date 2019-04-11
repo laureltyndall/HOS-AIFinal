@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ namespace HOS
         public Scene CurrentScene;
         public bool PlayerFound = false;
         public bool UTurnSelected = false;
+        public Text TextArea;
 
         public string PlayerName;
         public string SiblingName;
@@ -86,6 +88,7 @@ namespace HOS
                             CurrentWaypoint = WaypointList[0];
                             CanUturn = true;
                             CanForward = true;
+                            TextArea.text = "Well, this certainly isn't what I expected.";
                         }
                         else if (ManagerScript.GroundsFromHouse)
                         {
@@ -132,6 +135,48 @@ namespace HOS
                 if (CurrentWaypoint == WaypointList[0])     // Near Gate
                 {
                     if (UTurnSelected)      // Looking at gate
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                    else    // Looking at crossroads
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                }
+                else if(CurrentWaypoint == WaypointList[7])
+                {
+                    if (!UTurnSelected)      // Looking at dead end
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                    else    // Looking at crossroads
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                }
+                else if (CurrentWaypoint == WaypointList[9])
+                {
+                    if (!UTurnSelected)      // Looking at hedge maze
                     {
                         CanUturn = true;
                         CanOrbit = false;
@@ -427,6 +472,8 @@ namespace HOS
                                 CanRightTurn = false;
                                 CanForward = true;      // able to move forward
                                 CanBackup = false;
+
+                                TextArea.text = "";
                             }
                         }                   // By Gate
                         else if (CurrentWaypoint == WaypointList[1])
@@ -475,6 +522,7 @@ namespace HOS
 
                                 UTurnSelected = false;
                                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                                TextArea.text = "This place is huge! I wonder how " + SiblingName + " found it?";
                             }
                             else     // Looking towards gate
                             {
@@ -494,13 +542,18 @@ namespace HOS
                         // It will no longer be possible to get back to the gate waypoint section
                         else if (CurrentWaypoint == WaypointList[4])
                         {
-                            if (!UTurnSelected)     // Looking towards house
+                            if (!UTurnSelected)     // Looking at HOUSE, controlled by restriction pane
                             {
-                                // "Move" to the next waypoint closer to the house by loading the house exterior scene
-                                UTurnSelected = false;
-                                SceneManager.LoadScene("HouseExterior");
+                                // Do not move, only look at gate.
+                                // Foward movement controlled by restirction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
                             }
-                            else     //Looking towards crossroads
+                            else    // Looking towards house, controlled by this
                             {
                                 // Move back to crossroads waypoint, initial forward movement no longer controlled here
                                 CurrentPlayer.transform.position = WaypointList[3].transform.position;
@@ -520,6 +573,8 @@ namespace HOS
                         }               // Between crossroads and house exterior SCENE
                         else if (CurrentWaypoint == WaypointList[5])
                         {
+                            TextArea.text = "";
+
                             if (!UTurnSelected)     // Looking towards Dead End area
                             {
                                 // Move closer to Dead End
@@ -552,6 +607,8 @@ namespace HOS
                         }               // Between crossroads and deadend
                         else if (CurrentWaypoint == WaypointList[6])
                         {
+                            TextArea.text = "";
+
                             if (!UTurnSelected)     // Looking towards Dead End area
                             {
                                 // Move closer to dead end
@@ -580,9 +637,39 @@ namespace HOS
                                 CanBackup = false;
                             }
                         }               // Between crossroads and deadend
-                        // To Dead End controlled by restriction planes
+                        else if (CurrentWaypoint == WaypointList[7])
+                        {
+                            if (!UTurnSelected)     // Looking at DEAD END, controlled by restriction pane
+                            {
+                                // Do not move, only look at gate.
+                                // Foward movement controlled by restirction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards house, controlled by this
+                            {
+                                // Move to next waypoint between gate and crossroads
+                                CurrentPlayer.transform.position = WaypointList[6].transform.position;
+                                CurrentWaypoint = WaypointList[6];
+
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;      // able to move forward
+                                CanBackup = false;
+
+                                TextArea.text = "";
+                            }
+                        }               // Dead End
                         else if (CurrentWaypoint == WaypointList[8])
                         {
+                            TextArea.text = "";
+
                             if (!UTurnSelected)     // Looking towards maze
                             {
                                 // Move closer to hedge maze
@@ -596,6 +683,8 @@ namespace HOS
                                 CanRightTurn = false;
                                 CanForward = false;
                                 CanBackup = false;
+
+                                TextArea.text = "Is that a  - hedge maze? I honestly can't decide if that's weird or awesome.";
                             }
                             else   // Looking back at crossroads
                             {
@@ -614,8 +703,37 @@ namespace HOS
                                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                             }
                         }               // Between crossroads and hedge maze
-                        // To Hedge Maze controlled by restriction panes
-                        
+                        else if (CurrentWaypoint == WaypointList[9])
+                        {
+                            if (!UTurnSelected)     // Looking at HEDGE MAZE, controlled by restriction pane
+                            {
+                                // Do not move, only look at gate.
+                                // Foward movement controlled by restirction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards house, controlled by this
+                            {
+                                // Move to next waypoint between gate and crossroads
+                                CurrentPlayer.transform.position = WaypointList[8].transform.position;
+                                CurrentWaypoint = WaypointList[8];
+
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;      // able to move forward
+                                CanBackup = false;
+
+                                TextArea.text = "";
+                            }
+                        }               // Hedge Maze Entrance
+
+
                         //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
                         //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
                         //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);

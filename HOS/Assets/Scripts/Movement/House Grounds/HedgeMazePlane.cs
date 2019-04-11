@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 namespace HOS
 {
-    public class GatePlane : MonoBehaviour
+    public class HedgeMazePlane : MonoBehaviour
     {
-
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
@@ -24,7 +23,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !MovementScript.UTurnSelected)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -41,8 +40,10 @@ namespace HOS
         {
             if (Clickable)
             {
-                //If your mouse hovers over the GameObject with the script attached, output this message
+                // If Inventory does not have flashlight
                 Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                // else
+                // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -61,7 +62,9 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);
+                // If Inventory does not have flashlight
+                TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
+                // else
             }
         }
     }

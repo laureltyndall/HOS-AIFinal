@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace HOS
 {
-    public class GatePlane : MonoBehaviour
+    public class DeadEndPathRestrictionPlane : MonoBehaviour
     {
 
         public bool Clickable = false;
@@ -24,9 +24,8 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
             {
-                // If we are right next to the gate and we are looking at it
                 Clickable = true;
                 MyCollider.enabled = true;
             }
@@ -42,15 +41,18 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
             }
         }
 
         void OnMouseExit()
         {
-            //The mouse is no longer hovering over the GameObject so output this message each frame
-            //      Debug.Log("Mouse is no longer on " + this.name);
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            if (Clickable)
+            {
+                //The mouse is no longer hovering over the GameObject so output this message each frame
+                //      Debug.Log("Mouse is no longer on " + this.name);
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            }
         }
 
         private void OnMouseDown()
@@ -61,7 +63,19 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);
+                // Move player along dead end path
+                // Move closer to Dead End
+                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[5].transform.position;
+                MovementScript.CurrentWaypoint = MovementScript.WaypointList[5];
+                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 306.9f, 0f);
+                MovementScript.CanUturn = true;
+                MovementScript.CanOrbit = false;
+                MovementScript.CanLeftTurn = false;
+                MovementScript.CanRightTurn = false;
+                MovementScript.CanForward = true;
+                MovementScript.CanBackup = false;
+
+                TextArea.text = "";
             }
         }
     }

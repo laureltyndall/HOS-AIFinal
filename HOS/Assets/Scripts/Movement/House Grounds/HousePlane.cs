@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class GatePlane : MonoBehaviour
+    public class HousePlane : MonoBehaviour
     {
-
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
@@ -24,9 +24,9 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !MovementScript.UTurnSelected)
             {
-                // If we are right next to the gate and we are looking at it
+                // If we are right next to the house and we are looking at it
                 Clickable = true;
                 MyCollider.enabled = true;
             }
@@ -42,7 +42,7 @@ namespace HOS
             if (Clickable)
             {
                 //If your mouse hovers over the GameObject with the script attached, output this message
-                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -61,7 +61,9 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);
+                SceneManager.LoadScene("HouseExterior");
+
+           //     TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);
             }
         }
     }

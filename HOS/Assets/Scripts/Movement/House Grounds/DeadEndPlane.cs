@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 namespace HOS
 {
-    public class GatePlane : MonoBehaviour
+    public class DeadEndPlane : MonoBehaviour
     {
-
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public int ClickCounter = 0;
 
         // Use this for initialization
         void Start()
@@ -24,16 +24,26 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[7] && !MovementScript.UTurnSelected)
             {
-                // If we are right next to the gate and we are looking at it
+                TextArea.text = "The path is gone.";
+                // If we are right next to the dead end and we are looking at it
                 Clickable = true;
                 MyCollider.enabled = true;
             }
-            else
+            else    // we are not looking at it
             {
                 Clickable = false;
                 MyCollider.enabled = false;
+            }
+
+            if (ClickCounter == 1)
+            {
+                TextArea.text = ("I don't think that this is the right way to the house.");
+            }
+            else if(ClickCounter > 1)
+            {
+                TextArea.text = ("If I keep wandering around like this, I'm going to get lost.");
             }
         }
 
@@ -57,11 +67,10 @@ namespace HOS
         {
             if (Clickable)
             {
+                ClickCounter++;
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
-                TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);
             }
         }
     }
