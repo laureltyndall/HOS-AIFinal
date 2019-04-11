@@ -39,7 +39,7 @@ namespace HOS
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-
+                //GameObject
                 CurrentGameState = GameState.GameStarted;
 
                 if (NewCharacter == Character.Anne)

@@ -6864,6 +6864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementScript: {fileID: 0}
   NewCursor: {fileID: 2800000, guid: d85b60e1ace1a5848b786318f0943654, type: 3}
+  UIOnly: 0
 --- !u!114 &1555893576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7197,12 +7198,61 @@ Prefab:
       propertyPath: WaypointList.Array.data[0]
       value: 
       objectReference: {fileID: 188628154}
+    - target: {fileID: 114074864167407748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1071204799}
+    - target: {fileID: 114074864167407748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TogglePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074864167407748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074864167407748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1607575809}
+    - target: {fileID: 114074864167407748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1684643488304230, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224763191734353748, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224514381460023448, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224039542682198926, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1607575808 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1617128764777584, guid: 62a82430d8918cf4f94a939650809d53,
+    type: 2}
+  m_PrefabInternal: {fileID: 1607575807}
+--- !u!1 &1607575809 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1684643488304230, guid: 62a82430d8918cf4f94a939650809d53,
     type: 2}
   m_PrefabInternal: {fileID: 1607575807}
 --- !u!114 &1607575819 stripped
