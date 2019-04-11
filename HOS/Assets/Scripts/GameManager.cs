@@ -20,9 +20,17 @@ namespace HOS
         public bool KilledBySnake = false;
         public bool SnakeBeaten = false;
 
+        public GameObject GameOverScreen;
+        public bool GameOver = false;
+
         void Start()
         {
-            DontDestroyOnLoad(this.gameObject);
+            if (SceneManager.GetActiveScene().name == "Menu")
+            {
+                DontDestroyOnLoad(this.gameObject);
+            }
+
+            Time.timeScale = 1;
         }
 
         private void Update()
@@ -59,11 +67,6 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-            }
-
-            if(KilledBySnake)
-            {
-
             }
         }
 

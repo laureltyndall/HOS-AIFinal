@@ -11,12 +11,14 @@ namespace HOS
         public bool Clickable = true;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
+        private MenuManager Controller;
         public GameManager ManagerScript;
         public Text TextArea;
         public bool ManagerFound = false;
         public int ClickCounter = 0;
         private bool GateComment = false;
         public GameObject Snake;
+        public GameObject GameOverPanel;
 
         // Use this for initialization
         void Start()
@@ -32,6 +34,7 @@ namespace HOS
             {
                 GameObject gm = GameObject.FindGameObjectWithTag("GameController");
                 ManagerScript = gm.gameObject.GetComponent<GameManager>();
+                Controller = gm.gameObject.GetComponent<MenuManager>();
 
                 if (ManagerScript != null)
                 {
@@ -118,14 +121,17 @@ namespace HOS
                             Snake.SetActive(true);
                             TextArea.text = "Whoah! There's a snake!";
                         }
-                        else if(ClickCounter == 2)
+                        else if(ClickCounter < 5 && ClickCounter > 0)
                         {
                             TextArea.text = "Ouch!";
                         }
                         else if (ClickCounter >= 5)
                         {
                             TextArea.text = "Oooh. I don't feel so good.";
+                            Controller.ShowGameOver(GameOverPanel);
                             ManagerScript.KilledBySnake = true;
+
+                            ClickCounter = 0;
                         }
                     }
 

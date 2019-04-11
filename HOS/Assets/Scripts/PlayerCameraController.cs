@@ -91,12 +91,12 @@ namespace HOS
                 }
                 else if (CurrentWaypoint == WaypointList[2])     // By gate
                 {
-                    CanUturn = false;
-                    CanOrbit = true;
-                    CanLeftTurn = false;
-                    CanRightTurn = false;
-                    CanForward = false;
-                    CanBackup = false;
+                    //CanUturn = false;
+                    //CanOrbit = true;
+                    //CanLeftTurn = false;
+                    //CanRightTurn = false;
+                    //CanForward = false;
+                    //CanBackup = false;
                 }
             }
         }
@@ -317,13 +317,27 @@ namespace HOS
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
                             Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
                         }
                         if (CurrentWaypoint == WaypointList[4])
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
                             CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
                         }
                     }
 
@@ -361,8 +375,8 @@ namespace HOS
             }
             else
             {
-                // USE FOR TESTING INDIVIDUAL SCENES ONLY
-                //  CurrentPlayer = GameObject.FindGameObjectWithTag("PlayerAnne");
+
+
             }
         }
     }

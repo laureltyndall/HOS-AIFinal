@@ -52,7 +52,6 @@ namespace HOS
                 if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     Cursor.SetCursor(NewCursor, Vector2.zero, CursorMode.Auto);
-
                 }
             }
         }
