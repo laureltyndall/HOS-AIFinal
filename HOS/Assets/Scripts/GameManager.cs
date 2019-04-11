@@ -58,19 +58,20 @@ namespace HOS
                     CurrentPlayer.PlayerCharacter = Character.Alex;
                     CurrentPlayer.PlayerHealth = 10;
                 }
-        MasterInventory.AddInventoryItem(InventoryItem.Basket);
-        MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
+                MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {

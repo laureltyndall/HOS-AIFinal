@@ -7302,6 +7302,46 @@ Prefab:
       propertyPath: m_TagString
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 1012559816083414, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: FlashlightSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916095325514204, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: TrowelSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1802230650276180, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: CheeseSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964029661918496, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: Move-InChecklistSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267463375364102, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: BasketSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656967542836586, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: WormsSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1794780532148556, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: MarblePieceSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1725892853325216, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: StickSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1024981039065534, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: MysteryChecklistSprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369226398407410, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_TagString
+      value: SiblingLetterSprite
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
   m_IsPrefabParent: 0

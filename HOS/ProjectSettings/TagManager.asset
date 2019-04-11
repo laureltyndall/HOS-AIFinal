@@ -29,6 +29,16 @@ TagManager:
   - UISystem
   - InventoryPanel
   - Inventory
+  - BasketSprite
+  - FlashlightSprite
+  - MarblePieceSprite
+  - WormsSprite
+  - Move-InChecklistSprite
+  - CheeseSprite
+  - TrowelSprite
+  - MysteryChecklistSprite
+  - StickSprite
+  - SiblingLetterSprite
   layers:
   - Default
   - TransparentFX
