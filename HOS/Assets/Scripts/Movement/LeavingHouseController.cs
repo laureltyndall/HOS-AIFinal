@@ -1,0 +1,100 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace HOS
+{
+    public class LeavingHouseController : MonoBehaviour
+    {
+        public bool Clickable = false;
+        public Texture2D NewCursor;
+        public PlayerCameraController MovementScript;
+        public MeshCollider MyCollider;
+        public Text TextArea;
+        public int ClickCounter = 0;
+
+        // Use this for initialization
+        void Start()
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("UISystem");
+            MovementScript = go.GetComponent<PlayerCameraController>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
+            {
+                // If we are next to the house door
+                Clickable = true;
+                MyCollider.enabled = true;
+            }
+            else
+            {
+                Clickable = false;
+                MyCollider.enabled = false;
+            }
+        }
+
+        void OnMouseOver()
+        {
+            if (Clickable)
+            {
+                // If Inventory does not have flashlight
+                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                // else
+                // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+            }
+        }
+
+        void OnMouseExit()
+        {
+            //The mouse is no longer hovering over the GameObject so output this message each frame
+            //      Debug.Log("Mouse is no longer on " + this.name);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+
+        private void OnMouseDown()
+        {
+            if (Clickable)
+            {
+                ClickCounter++;
+                Debug.Log(this.name + " has been clicked");
+                Clickable = false;
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+                if (MovementScript.InteriorGhost)
+                {
+                    // If inventory does not have flashlight
+                    if (ClickCounter == 1)
+                    {
+                        TextArea.text = ("I need to find a flashlight.");
+                    }
+                    else if (ClickCounter == 2)
+                    {
+                        TextArea.text = ("If I keep wandering around in the dark like this, I'm going to get lost.");
+                    }
+                    else if (ClickCounter == 3)
+                    {
+                        TextArea.text = ("I shouldn't keep going without a flashlight.");
+                    }
+                    else if (ClickCounter == 4)
+                    {
+                        TextArea.text = ("Ouch!");
+
+                        // Game Over
+                    }
+
+                    // else
+                    // Move to location 0
+                }
+                else
+                {
+                    TextArea.text = "I need to get inside now!";
+                }
+
+            }
+        }
+    }
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace HOS
 {
@@ -65,6 +66,7 @@ namespace HOS
                 // If Inventory does not have flashlight
                 TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
                 // else
+                //SceneManager.LoadScene("HedgeMaze");
             }
         }
     }

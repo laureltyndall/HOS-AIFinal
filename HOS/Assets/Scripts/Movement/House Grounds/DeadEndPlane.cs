@@ -24,26 +24,39 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[7] && !MovementScript.UTurnSelected)
+            if (MovementScript.CurrentScene.name == "HouseGrounds")
             {
-                TextArea.text = "The path is gone.";
-                // If we are right next to the dead end and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
-            }
-            else    // we are not looking at it
-            {
-                Clickable = false;
-                MyCollider.enabled = false;
-            }
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[7] && !MovementScript.UTurnSelected)
+                {
+                    TextArea.text = "The path is gone.";
+                    // If we are right next to the dead end and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else    // we are not looking at it
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
 
-            if (ClickCounter == 1)
-            {
-                TextArea.text = ("I don't think that this is the right way to the house.");
+                if (ClickCounter == 1)
+                {
+                    TextArea.text = ("I don't think that this is the right way to the house.");
+                }
+                else if (ClickCounter > 1)
+                {
+                    TextArea.text = ("If I keep wandering around like this, I'm going to get lost.");
+                }
             }
-            else if(ClickCounter > 1)
+            else if (MovementScript.CurrentScene.name == "HouseExterior")
             {
-                TextArea.text = ("If I keep wandering around like this, I'm going to get lost.");
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !MovementScript.UTurnSelected)
+                {
+                    TextArea.text = "I don't think I need to go this way.";
+                    // If we are right next to the dead end and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
             }
         }
 

@@ -68,7 +68,7 @@ namespace HOS
                         }
                     }
 
-                    if(MovementScript.CurrentScene.name == "Gate Scene")
+                    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior")
                     {
                         if ((Input.mousePosition.x >= 410 && Input.mousePosition.x <= 850) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
                         {

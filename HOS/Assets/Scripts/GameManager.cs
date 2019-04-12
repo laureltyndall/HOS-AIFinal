@@ -19,9 +19,13 @@ namespace HOS
 
         public bool KilledBySnake = false;
         public bool SnakeBeaten = false;
+        public bool ExteriorGhostSeen = false;
+        public bool InteriorGhostSeen = false;
 
         public bool GroundsFromGate = false;
         public bool GroundsFromHouse = false;
+        public bool HouseFromGrounds = false;
+        public bool HousefromInside = false;
 
         public GameObject GameOverScreen;
         public bool GameOver = false;
@@ -85,13 +89,36 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
 
                 // Test from gate
-                //GroundsFromGate = true;
-                //GroundsFromHouse = false;
+                GroundsFromGate = true;
+                GroundsFromHouse = false;
 
                 // Test from house
-                GroundsFromGate = false;
-                GroundsFromHouse = true;
+                //GroundsFromGate = false;
+                //GroundsFromHouse = true;
             }
+            else if (SceneManager.GetActiveScene().name == "HouseExterior" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+                MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+
+                // Test from grounds
+                HouseFromGrounds = true;
+                HousefromInside = false;
+
+                // Test from house
+                //HouseFromGrounds = false;
+                //HousefromInside = true;
+            }
+
         }
 
         public void SelectPlayerCharacter(int PlayerChoice)

@@ -20,6 +20,7 @@ namespace HOS
         public Scene CurrentScene;
         public bool PlayerFound = false;
         public bool UTurnSelected = false;
+        public bool InteriorGhost = false;
         public Text TextArea;
 
         public string PlayerName;
@@ -102,6 +103,31 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
+                    if (CurrentScene.name == "HouseExterior")
+                    {
+                        if (ManagerScript.HouseFromGrounds)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanUturn = true;
+                            CanForward = true;
+                            TextArea.text = "Wow! I didn't picture " + SiblingName + " as the Gothic type. This place is kind of creepy.";
+                        }
+                        else if (ManagerScript.HousefromInside)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            MovePlayerUturn();
+                            // Turn the player around
+                            CanUturn = true;
+                            CanForward = false;
+                            CanOrbit = true;
+                            UTurnSelected = true;
+                        }
+                    }
+
                 }
             }
 
@@ -220,6 +246,13 @@ namespace HOS
                 }
             }
 
+            if(ManagerScript != null)
+            {
+                if(ManagerScript.InteriorGhostSeen)
+                {
+                    InteriorGhost = true;
+                }
+            }
         }
 
         public void FindWaypointList()
@@ -773,35 +806,178 @@ namespace HOS
                     }
                 }
             }
+            else if (CurrentScene.name == "HouseExterior")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])     // By grounds
+                        {
+                            if (UTurnSelected)     // Looking at grounds, controlled by restriction pane
+                            {
+                                // Do not move, only look at grounds.
+                                // Foward movement controlled by restirction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards house, controlled by this
+                            {
+                                if(!ManagerScript.ExteriorGhostSeen)        // If we haven't seen the ghost tree cutscene yet
+                                {
+                                    // Move to next waypoint between gate and crossroads
+                                    CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                    CurrentWaypoint = WaypointList[1];
+
+                                    CanUturn = false;    
+                                    CanOrbit = false;
+                                    CanLeftTurn = false;
+                                    CanRightTurn = false;
+                                    CanForward = false;     
+                                    CanBackup = false;
+
+                                    TextArea.text = "";
+                                }
+                                else
+                                {
+                                    // Move to next waypoint by the door
+                                    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                    CurrentWaypoint = WaypointList[2];
+                                    //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                    CanUturn = false;
+                                    CanOrbit = true;
+                                    CanLeftTurn = false;
+                                    CanRightTurn = false;
+                                    CanForward = false;
+                                    CanBackup = false;
+                                }
+
+                            }
+                        }                   // By Grounds
+                        else if (CurrentWaypoint == WaypointList[1])
+                        {
+                            // Run the cutscene
+                        }               // By Dead Tree
+
+                        // Door Area movement controlled by restriction panes
+                        else if (CurrentWaypoint == WaypointList[3])
+                        {
+                            TextArea.text = "";
+                            if (!UTurnSelected)     // Looking at Backyard
+                            {
+                                CurrentPlayer.transform.position = WaypointList[4].transform.position;
+                                CurrentWaypoint = WaypointList[4];
+                                // Move to the next exploration waypoint
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards door
+                            {
+                                // Move back to door waypoint, initial forward movement no longer controlled here
+                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                CurrentWaypoint = WaypointList[2];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+
+                                UTurnSelected = false;
+                                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                            }
+
+                        }               // Porch exploring section 1
+                        else if (CurrentWaypoint == WaypointList[4])
+                        {
+                            TextArea.text = "";
+                            if (!UTurnSelected)     // Looking at backyard, controlled by restriction pane
+                            {
+                                // Do not move, only look at grounds.
+                                // Foward movement controlled by restirction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards door, controlled by this
+                            {
+
+                                // Move to next waypoint between gate and crossroads
+                                CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                                CurrentWaypoint = WaypointList[3];
+
+                                CanUturn = false;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+
+                                TextArea.text = "";
+                            }
+                        }               // Porch exploring section 2
+
+                        //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                        //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+                        //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+
+                    if (CurrentScene.name == "HouseExterior")
+                    {
+                        UTurnSelected = !UTurnSelected;
+                    }
+                }
+            }
+
         }
 
         public void MovePlayerUturn()
         {
             CurrentPlayer.transform.Rotate(0, 180, 0);
+
         }
 
         public void RotateLeft()
         {
-            if (CurrentScene.name == "HouseGrounds")
-            {
-                CurrentPlayer.transform.Rotate(0, -40, 0);
-            }
-            else
-            {
-                CurrentPlayer.transform.Rotate(0, -90, 0);
-            }
+            CurrentPlayer.transform.Rotate(0, -40, 0);
+            //if (CurrentScene.name == "HouseGrounds")
+            //{
+            //    CurrentPlayer.transform.Rotate(0, -40, 0);
+            //}
+            //else
+            //{
+            //    CurrentPlayer.transform.Rotate(0, -90, 0);
+            //}
         }
 
         public void RotateRight()
         {
-            if (CurrentScene.name == "HouseGrounds")
-            {
-                CurrentPlayer.transform.Rotate(0, 40, 0);
-            }
-            else
-            {
-                CurrentPlayer.transform.Rotate(0, 90, 0);
-            }
+            CurrentPlayer.transform.Rotate(0, 40, 0);
+            //if (CurrentScene.name == "HouseGrounds")
+            //{
+            //    CurrentPlayer.transform.Rotate(0, 40, 0);
+            //}
+            //else
+            //{
+            //    CurrentPlayer.transform.Rotate(0, 90, 0);
+            //}
         }
 
         public void FindCharacter()
