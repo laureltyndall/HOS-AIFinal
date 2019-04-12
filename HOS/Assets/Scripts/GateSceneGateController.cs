@@ -25,6 +25,11 @@ namespace HOS
         {
             GameObject go = GameObject.FindGameObjectWithTag("UISystem");
             MovementScript = go.GetComponent<PlayerCameraController>();
+            GameObject[] G = GameObject.FindGameObjectsWithTag("SnakeMinigame");
+            foreach (GameObject g in G)
+            {
+                g.SetActive(false);
+            }
         }
 
         // Update is called once per frame
