@@ -19,13 +19,14 @@ namespace HOS
         private bool GateComment = false;
         public GameObject Snake;
         public GameObject GameOverPanel;
+        public GameObject[] G= new GameObject[2];
 
         // Use this for initialization
         void Start()
         {
             GameObject go = GameObject.FindGameObjectWithTag("UISystem");
             MovementScript = go.GetComponent<PlayerCameraController>();
-            GameObject[] G = GameObject.FindGameObjectsWithTag("SnakeMinigame");
+            G = GameObject.FindGameObjectsWithTag("SnakeMinigame");
             foreach (GameObject g in G)
             {
                 g.SetActive(false);
@@ -104,11 +105,13 @@ namespace HOS
                         else
                         {
                             //ManagerScript.LoadScene("SnakeGameTest");
-                            GameObject[] G = GameObject.FindGameObjectsWithTag("SnakeMinigame");
+                        
                             foreach (GameObject g in G)
                             {
                                 g.SetActive(true);
                             }
+                            MovementScript.MainCamera.transform.Rotate(15,0,0);
+                            MovementScript.gameObject.SetActive(false);
                         }
                     }
                     // else, dialogue that you don't need to leave right now

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SnakeMiniGameController : MonoBehaviour 
 {
@@ -107,9 +108,9 @@ public class SnakeMiniGameController : MonoBehaviour
              if (CurrentSnakeState == SnakeState.Move)
             {
                 if (SnakeMoveDirection == 1)
-                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-5,0,0);
+                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-2,0,0);
                 else if (SnakeMoveDirection == 2)
-                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(5,0,0);
+                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(2,0,0);
             }
         MasterTimer += Time.fixedDeltaTime;
         SnakeActionTimer += Time.fixedDeltaTime;
@@ -182,7 +183,8 @@ public class SnakeMiniGameController : MonoBehaviour
         
         if (SnakeHP <= 0)
         {
-            GameActionTextBox.text = "Go it!";
+            GameActionTextBox.text = "Got it!";
+            SceneManager.LoadScene("HouseGrounds");
             PlayerWinsGame = true;
         }
 
