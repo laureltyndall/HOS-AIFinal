@@ -1,0 +1,1098 @@
+fileFormatVersion: 2
+guid: fecdbfc91e6fb5a4a8d83b8ea9531281
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: BDOOR1
+    100002: BDOOR2
+    100004: BOWL1
+    100006: BOWL2
+    100008: BOWL3
+    100010: BOWL4
+    100012: BOWL5
+    100014: BOWL6
+    100016: BOX1
+    100018: BOX10
+    100020: BOX2
+    100022: BOX3
+    100024: BOX4
+    100026: BOX5
+    100028: BOX6
+    100030: BOX7
+    100032: BOX8
+    100034: BOX9
+    100036: BOXUP1
+    100038: BOXUP2
+    100040: Camera01
+    100042: Camera01.Target
+    100044: Camera02
+    100046: Camera02.Target
+    100048: CHAIR1
+    100050: CHAIR2
+    100052: CHAIR3
+    100054: DOOR1
+    100056: DOOR2
+    100058: DOOR3
+    100060: DOOR4
+    100062: DOOR5
+    100064: DOOR6
+    100066: ELEMENTS
+    100068: FArea01
+    100070: FArea02
+    100072: FArea03
+    100074: FArea04
+    100076: FArea05
+    100078: FArea06
+    100080: FArea07
+    100082: FBOX1
+    100084: FBOX2
+    100086: GDOOR1
+    100088: GDOOR2
+    100090: GDOOR3
+    100092: GDOOR4
+    100094: GLASS
+    100096: GOBLET1
+    100098: GOBLET2
+    100100: GOBLET3
+    100102: HANDLE1
+    100104: HANDLE10
+    100106: HANDLE11
+    100108: HANDLE12
+    100110: HANDLE13
+    100112: HANDLE14
+    100114: HANDLE15
+    100116: HANDLE16
+    100118: HANDLE17
+    100120: HANDLE18
+    100122: HANDLE19
+    100124: HANDLE2
+    100126: HANDLE20
+    100128: HANDLE21
+    100130: HANDLE22
+    100132: HANDLE23
+    100134: HANDLE24
+    100136: HANDLE25
+    100138: HANDLE26
+    100140: HANDLE27
+    100142: HANDLE28
+    100144: HANDLE3
+    100146: HANDLE4
+    100148: HANDLE5
+    100150: HANDLE6
+    100152: HANDLE7
+    100154: HANDLE8
+    100156: HANDLE9
+    100158: //RootNode
+    100160: LGDOOR1
+    100162: LGDOOR2
+    100164: LGDOOR3
+    100166: LGDOOR4
+    100168: LIGHT1
+    100170: LIGHT2
+    100172: LIGHT3
+    100174: LIGHT4
+    100176: METALD
+    100178: NDOOR1
+    100180: NDOOR2
+    100182: NDOOR3
+    100184: NDOOR4
+    100186: POT
+    100188: ROOM
+    100190: SIDE1
+    100192: SIDE2
+    100194: SINK
+    100196: SMDOOR1
+    100198: SMDOOR2
+    100200: SPOT1
+    100202: SPOT10
+    100204: SPOT11
+    100206: SPOT12
+    100208: SPOT13
+    100210: SPOT14
+    100212: SPOT15
+    100214: SPOT16
+    100216: SPOT2
+    100218: SPOT3
+    100220: SPOT4
+    100222: SPOT5
+    100224: SPOT6
+    100226: SPOT7
+    100228: SPOT8
+    100230: SPOT9
+    100232: TABLE
+    100234: TAP
+    100236: WDOOR1
+    100238: WDOOR2
+    100240: WDOOR3
+    100242: WDOOR4
+    100244: WFRAME1
+    100246: WFRAME2
+    100248: WFRAME3
+    100250: WFRAME4
+    100252: WFRAME5
+    100254: WFRAME6
+    400000: BDOOR1
+    400002: BDOOR2
+    400004: BOWL1
+    400006: BOWL2
+    400008: BOWL3
+    400010: BOWL4
+    400012: BOWL5
+    400014: BOWL6
+    400016: BOX1
+    400018: BOX10
+    400020: BOX2
+    400022: BOX3
+    400024: BOX4
+    400026: BOX5
+    400028: BOX6
+    400030: BOX7
+    400032: BOX8
+    400034: BOX9
+    400036: BOXUP1
+    400038: BOXUP2
+    400040: Camera01
+    400042: Camera01.Target
+    400044: Camera02
+    400046: Camera02.Target
+    400048: CHAIR1
+    400050: CHAIR2
+    400052: CHAIR3
+    400054: DOOR1
+    400056: DOOR2
+    400058: DOOR3
+    400060: DOOR4
+    400062: DOOR5
+    400064: DOOR6
+    400066: ELEMENTS
+    400068: FArea01
+    400070: FArea02
+    400072: FArea03
+    400074: FArea04
+    400076: FArea05
+    400078: FArea06
+    400080: FArea07
+    400082: FBOX1
+    400084: FBOX2
+    400086: GDOOR1
+    400088: GDOOR2
+    400090: GDOOR3
+    400092: GDOOR4
+    400094: GLASS
+    400096: GOBLET1
+    400098: GOBLET2
+    400100: GOBLET3
+    400102: HANDLE1
+    400104: HANDLE10
+    400106: HANDLE11
+    400108: HANDLE12
+    400110: HANDLE13
+    400112: HANDLE14
+    400114: HANDLE15
+    400116: HANDLE16
+    400118: HANDLE17
+    400120: HANDLE18
+    400122: HANDLE19
+    400124: HANDLE2
+    400126: HANDLE20
+    400128: HANDLE21
+    400130: HANDLE22
+    400132: HANDLE23
+    400134: HANDLE24
+    400136: HANDLE25
+    400138: HANDLE26
+    400140: HANDLE27
+    400142: HANDLE28
+    400144: HANDLE3
+    400146: HANDLE4
+    400148: HANDLE5
+    400150: HANDLE6
+    400152: HANDLE7
+    400154: HANDLE8
+    400156: HANDLE9
+    400158: //RootNode
+    400160: LGDOOR1
+    400162: LGDOOR2
+    400164: LGDOOR3
+    400166: LGDOOR4
+    400168: LIGHT1
+    400170: LIGHT2
+    400172: LIGHT3
+    400174: LIGHT4
+    400176: METALD
+    400178: NDOOR1
+    400180: NDOOR2
+    400182: NDOOR3
+    400184: NDOOR4
+    400186: POT
+    400188: ROOM
+    400190: SIDE1
+    400192: SIDE2
+    400194: SINK
+    400196: SMDOOR1
+    400198: SMDOOR2
+    400200: SPOT1
+    400202: SPOT10
+    400204: SPOT11
+    400206: SPOT12
+    400208: SPOT13
+    400210: SPOT14
+    400212: SPOT15
+    400214: SPOT16
+    400216: SPOT2
+    400218: SPOT3
+    400220: SPOT4
+    400222: SPOT5
+    400224: SPOT6
+    400226: SPOT7
+    400228: SPOT8
+    400230: SPOT9
+    400232: TABLE
+    400234: TAP
+    400236: WDOOR1
+    400238: WDOOR2
+    400240: WDOOR3
+    400242: WDOOR4
+    400244: WFRAME1
+    400246: WFRAME2
+    400248: WFRAME3
+    400250: WFRAME4
+    400252: WFRAME5
+    400254: WFRAME6
+    2000000: Camera01
+    2000002: Camera02
+    2100000: DOOR1
+    2100002: BDOOR1
+    2100004: SMDOOR1
+    2100006: WDOOR1
+    2100008: GDOOR1
+    2100010: NDOOR1
+    2100012: FBOX1
+    2100014: LGDOOR1
+    2100016: SIDE1
+    2100018: BOX1
+    2100020: BOX7 tap
+    2100022: BOX3
+    2100024: BOX9 glass
+    2100026: BOX5
+    2100028: BOXUP
+    2100030: HANDLE1
+    2100032: TABLE
+    2100034: 'Material #14'
+    2100036: 'Material #15'
+    2100038: GOBLET1
+    2100040: 'Material #1'
+    2100042: 'Material #0'
+    2100044: METALD handle
+    2100046: 'Material #119'
+    2100048: 'Material #108'
+    2100050: 'Material #109'
+    2100052: WFRAME1
+    2100054: 'Material #25'
+    2100056: 'Material #28'
+    2100058: 'Material #36'
+    2100060: 'Material #26'
+    2100062: 'Material #27'
+    2100064: 'Material #40'
+    2100066: 'Material #41'
+    2100068: 'Material #12'
+    2100070: 'Material #11'
+    2100072: 'Material #13'
+    2100074: 'Material #38'
+    2100076: 'Material #37'
+    2100078: SINK
+    2100080: 'Material #60'
+    2100082: 'Material #70'
+    2100084: BOWLS
+    2300000: BDOOR1
+    2300002: BDOOR2
+    2300004: BOWL1
+    2300006: BOWL2
+    2300008: BOWL3
+    2300010: BOWL4
+    2300012: BOWL5
+    2300014: BOWL6
+    2300016: BOX1
+    2300018: BOX10
+    2300020: BOX2
+    2300022: BOX3
+    2300024: BOX4
+    2300026: BOX5
+    2300028: BOX6
+    2300030: BOX7
+    2300032: BOX8
+    2300034: BOX9
+    2300036: BOXUP1
+    2300038: BOXUP2
+    2300040: CHAIR1
+    2300042: CHAIR2
+    2300044: CHAIR3
+    2300046: DOOR1
+    2300048: DOOR2
+    2300050: DOOR3
+    2300052: DOOR4
+    2300054: DOOR5
+    2300056: DOOR6
+    2300058: ELEMENTS
+    2300060: FBOX1
+    2300062: FBOX2
+    2300064: GDOOR1
+    2300066: GDOOR2
+    2300068: GDOOR3
+    2300070: GDOOR4
+    2300072: GLASS
+    2300074: GOBLET1
+    2300076: GOBLET2
+    2300078: GOBLET3
+    2300080: HANDLE1
+    2300082: HANDLE10
+    2300084: HANDLE11
+    2300086: HANDLE12
+    2300088: HANDLE13
+    2300090: HANDLE14
+    2300092: HANDLE15
+    2300094: HANDLE16
+    2300096: HANDLE17
+    2300098: HANDLE18
+    2300100: HANDLE19
+    2300102: HANDLE2
+    2300104: HANDLE20
+    2300106: HANDLE21
+    2300108: HANDLE22
+    2300110: HANDLE23
+    2300112: HANDLE24
+    2300114: HANDLE25
+    2300116: HANDLE26
+    2300118: HANDLE27
+    2300120: HANDLE28
+    2300122: HANDLE3
+    2300124: HANDLE4
+    2300126: HANDLE5
+    2300128: HANDLE6
+    2300130: HANDLE7
+    2300132: HANDLE8
+    2300134: HANDLE9
+    2300136: LGDOOR1
+    2300138: LGDOOR2
+    2300140: LGDOOR3
+    2300142: LGDOOR4
+    2300144: LIGHT1
+    2300146: LIGHT2
+    2300148: LIGHT3
+    2300150: LIGHT4
+    2300152: METALD
+    2300154: NDOOR1
+    2300156: NDOOR2
+    2300158: NDOOR3
+    2300160: NDOOR4
+    2300162: POT
+    2300164: ROOM
+    2300166: SIDE1
+    2300168: SIDE2
+    2300170: SINK
+    2300172: SMDOOR1
+    2300174: SMDOOR2
+    2300176: SPOT1
+    2300178: SPOT10
+    2300180: SPOT11
+    2300182: SPOT12
+    2300184: SPOT13
+    2300186: SPOT14
+    2300188: SPOT15
+    2300190: SPOT16
+    2300192: SPOT2
+    2300194: SPOT3
+    2300196: SPOT4
+    2300198: SPOT5
+    2300200: SPOT6
+    2300202: SPOT7
+    2300204: SPOT8
+    2300206: SPOT9
+    2300208: TABLE
+    2300210: TAP
+    2300212: WDOOR1
+    2300214: WDOOR2
+    2300216: WDOOR3
+    2300218: WDOOR4
+    2300220: WFRAME1
+    2300222: WFRAME2
+    2300224: WFRAME3
+    2300226: WFRAME4
+    2300228: WFRAME5
+    2300230: WFRAME6
+    3300000: BDOOR1
+    3300002: BDOOR2
+    3300004: BOWL1
+    3300006: BOWL2
+    3300008: BOWL3
+    3300010: BOWL4
+    3300012: BOWL5
+    3300014: BOWL6
+    3300016: BOX1
+    3300018: BOX10
+    3300020: BOX2
+    3300022: BOX3
+    3300024: BOX4
+    3300026: BOX5
+    3300028: BOX6
+    3300030: BOX7
+    3300032: BOX8
+    3300034: BOX9
+    3300036: BOXUP1
+    3300038: BOXUP2
+    3300040: CHAIR1
+    3300042: CHAIR2
+    3300044: CHAIR3
+    3300046: DOOR1
+    3300048: DOOR2
+    3300050: DOOR3
+    3300052: DOOR4
+    3300054: DOOR5
+    3300056: DOOR6
+    3300058: ELEMENTS
+    3300060: FBOX1
+    3300062: FBOX2
+    3300064: GDOOR1
+    3300066: GDOOR2
+    3300068: GDOOR3
+    3300070: GDOOR4
+    3300072: GLASS
+    3300074: GOBLET1
+    3300076: GOBLET2
+    3300078: GOBLET3
+    3300080: HANDLE1
+    3300082: HANDLE10
+    3300084: HANDLE11
+    3300086: HANDLE12
+    3300088: HANDLE13
+    3300090: HANDLE14
+    3300092: HANDLE15
+    3300094: HANDLE16
+    3300096: HANDLE17
+    3300098: HANDLE18
+    3300100: HANDLE19
+    3300102: HANDLE2
+    3300104: HANDLE20
+    3300106: HANDLE21
+    3300108: HANDLE22
+    3300110: HANDLE23
+    3300112: HANDLE24
+    3300114: HANDLE25
+    3300116: HANDLE26
+    3300118: HANDLE27
+    3300120: HANDLE28
+    3300122: HANDLE3
+    3300124: HANDLE4
+    3300126: HANDLE5
+    3300128: HANDLE6
+    3300130: HANDLE7
+    3300132: HANDLE8
+    3300134: HANDLE9
+    3300136: LGDOOR1
+    3300138: LGDOOR2
+    3300140: LGDOOR3
+    3300142: LGDOOR4
+    3300144: LIGHT1
+    3300146: LIGHT2
+    3300148: LIGHT3
+    3300150: LIGHT4
+    3300152: METALD
+    3300154: NDOOR1
+    3300156: NDOOR2
+    3300158: NDOOR3
+    3300160: NDOOR4
+    3300162: POT
+    3300164: ROOM
+    3300166: SIDE1
+    3300168: SIDE2
+    3300170: SINK
+    3300172: SMDOOR1
+    3300174: SMDOOR2
+    3300176: SPOT1
+    3300178: SPOT10
+    3300180: SPOT11
+    3300182: SPOT12
+    3300184: SPOT13
+    3300186: SPOT14
+    3300188: SPOT15
+    3300190: SPOT16
+    3300192: SPOT2
+    3300194: SPOT3
+    3300196: SPOT4
+    3300198: SPOT5
+    3300200: SPOT6
+    3300202: SPOT7
+    3300204: SPOT8
+    3300206: SPOT9
+    3300208: TABLE
+    3300210: TAP
+    3300212: WDOOR1
+    3300214: WDOOR2
+    3300216: WDOOR3
+    3300218: WDOOR4
+    3300220: WFRAME1
+    3300222: WFRAME2
+    3300224: WFRAME3
+    3300226: WFRAME4
+    3300228: WFRAME5
+    3300230: WFRAME6
+    4300000: DOOR1
+    4300002: BDOOR1
+    4300004: SMDOOR1
+    4300006: WDOOR1
+    4300008: GDOOR1
+    4300010: NDOOR1
+    4300012: FBOX1
+    4300014: LGDOOR1
+    4300016: SIDE1
+    4300018: BOX1
+    4300020: BOX7
+    4300022: BOX2
+    4300024: BOX9
+    4300026: BOX5
+    4300028: BOXUP1
+    4300030: HANDLE1
+    4300032: TABLE
+    4300034: CHAIR1
+    4300036: GOBLET1
+    4300038: POT
+    4300040: METALD
+    4300042: ROOM
+    4300044: WFRAME1
+    4300046: GLASS
+    4300048: SPOT1
+    4300050: ELEMENTS
+    4300052: TAP
+    4300054: SINK
+    4300056: LIGHT1
+    4300058: DOOR2
+    4300060: DOOR3
+    4300062: DOOR4
+    4300064: DOOR5
+    4300066: DOOR6
+    4300068: BDOOR2
+    4300070: GDOOR2
+    4300072: GDOOR3
+    4300074: GDOOR4
+    4300076: LGDOOR2
+    4300078: LGDOOR3
+    4300080: LGDOOR4
+    4300082: SMDOOR2
+    4300084: NDOOR2
+    4300086: NDOOR3
+    4300088: NDOOR4
+    4300090: FBOX2
+    4300092: SIDE2
+    4300094: WDOOR2
+    4300096: WDOOR3
+    4300098: WDOOR4
+    4300100: HANDLE2
+    4300102: HANDLE3
+    4300104: HANDLE4
+    4300106: HANDLE5
+    4300108: HANDLE6
+    4300110: HANDLE7
+    4300112: HANDLE8
+    4300114: HANDLE9
+    4300116: HANDLE10
+    4300118: HANDLE11
+    4300120: HANDLE12
+    4300122: HANDLE13
+    4300124: HANDLE14
+    4300126: HANDLE15
+    4300128: HANDLE16
+    4300130: HANDLE17
+    4300132: HANDLE18
+    4300134: HANDLE19
+    4300136: HANDLE20
+    4300138: HANDLE21
+    4300140: HANDLE22
+    4300142: HANDLE23
+    4300144: HANDLE24
+    4300146: HANDLE25
+    4300148: HANDLE26
+    4300150: HANDLE27
+    4300152: HANDLE28
+    4300154: CHAIR2
+    4300156: CHAIR3
+    4300158: BOX3
+    4300160: BOX4
+    4300162: BOX6
+    4300164: WFRAME2
+    4300166: WFRAME3
+    4300168: WFRAME4
+    4300170: WFRAME5
+    4300172: WFRAME6
+    4300174: GOBLET2
+    4300176: GOBLET3
+    4300178: BOWL1
+    4300180: BOWL2
+    4300182: BOWL3
+    4300184: BOWL4
+    4300186: BOWL5
+    4300188: BOWL6
+    4300190: SPOT2
+    4300192: SPOT3
+    4300194: SPOT4
+    4300196: SPOT5
+    4300198: SPOT6
+    4300200: SPOT7
+    4300202: SPOT8
+    4300204: SPOT9
+    4300206: SPOT10
+    4300208: SPOT11
+    4300210: SPOT12
+    4300212: SPOT13
+    4300214: SPOT14
+    4300216: SPOT15
+    4300218: SPOT16
+    4300220: LIGHT2
+    4300222: LIGHT3
+    4300224: LIGHT4
+    4300226: BOXUP2
+    4300228: BOX8
+    4300230: BOX10
+    6400000: BDOOR1
+    6400002: BDOOR2
+    6400004: BOWL1
+    6400006: BOWL2
+    6400008: BOWL3
+    6400010: BOWL4
+    6400012: BOWL5
+    6400014: BOWL6
+    6400016: BOX1
+    6400018: BOX10
+    6400020: BOX2
+    6400022: BOX3
+    6400024: BOX4
+    6400026: BOX5
+    6400028: BOX6
+    6400030: BOX7
+    6400032: BOX8
+    6400034: BOX9
+    6400036: BOXUP1
+    6400038: BOXUP2
+    6400040: CHAIR1
+    6400042: CHAIR2
+    6400044: CHAIR3
+    6400046: DOOR1
+    6400048: DOOR2
+    6400050: DOOR3
+    6400052: DOOR4
+    6400054: DOOR5
+    6400056: DOOR6
+    6400058: ELEMENTS
+    6400060: FBOX1
+    6400062: FBOX2
+    6400064: GDOOR1
+    6400066: GDOOR2
+    6400068: GDOOR3
+    6400070: GDOOR4
+    6400072: GLASS
+    6400074: GOBLET1
+    6400076: GOBLET2
+    6400078: GOBLET3
+    6400080: HANDLE1
+    6400082: HANDLE10
+    6400084: HANDLE11
+    6400086: HANDLE12
+    6400088: HANDLE13
+    6400090: HANDLE14
+    6400092: HANDLE15
+    6400094: HANDLE16
+    6400096: HANDLE17
+    6400098: HANDLE18
+    6400100: HANDLE19
+    6400102: HANDLE2
+    6400104: HANDLE20
+    6400106: HANDLE21
+    6400108: HANDLE22
+    6400110: HANDLE23
+    6400112: HANDLE24
+    6400114: HANDLE25
+    6400116: HANDLE26
+    6400118: HANDLE27
+    6400120: HANDLE28
+    6400122: HANDLE3
+    6400124: HANDLE4
+    6400126: HANDLE5
+    6400128: HANDLE6
+    6400130: HANDLE7
+    6400132: HANDLE8
+    6400134: HANDLE9
+    6400136: LGDOOR1
+    6400138: LGDOOR2
+    6400140: LGDOOR3
+    6400142: LGDOOR4
+    6400144: LIGHT1
+    6400146: LIGHT2
+    6400148: LIGHT3
+    6400150: LIGHT4
+    6400152: METALD
+    6400154: NDOOR1
+    6400156: NDOOR2
+    6400158: NDOOR3
+    6400160: NDOOR4
+    6400162: POT
+    6400164: ROOM
+    6400166: SIDE1
+    6400168: SIDE2
+    6400170: SINK
+    6400172: SMDOOR1
+    6400174: SMDOOR2
+    6400176: SPOT1
+    6400178: SPOT10
+    6400180: SPOT11
+    6400182: SPOT12
+    6400184: SPOT13
+    6400186: SPOT14
+    6400188: SPOT15
+    6400190: SPOT16
+    6400192: SPOT2
+    6400194: SPOT3
+    6400196: SPOT4
+    6400198: SPOT5
+    6400200: SPOT6
+    6400202: SPOT7
+    6400204: SPOT8
+    6400206: SPOT9
+    6400208: TABLE
+    6400210: TAP
+    6400212: WDOOR1
+    6400214: WDOOR2
+    6400216: WDOOR3
+    6400218: WDOOR4
+    6400220: WFRAME1
+    6400222: WFRAME2
+    6400224: WFRAME3
+    6400226: WFRAME4
+    6400228: WFRAME5
+    6400230: WFRAME6
+    9500000: //RootNode
+    10800000: FArea01
+    10800002: FArea02
+    10800004: FArea03
+    10800006: FArea04
+    10800008: FArea05
+    10800010: FArea06
+    10800012: FArea07
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BDOOR1
+    second: {fileID: 2100000, guid: 3e92e16718cb1d54681c4c2a1d0cc278, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOWLS
+    second: {fileID: 2100000, guid: 28f7e38fb1f33cc4bb33f36f80e3cbce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOX1
+    second: {fileID: 2100000, guid: cde200da1e59a7e42acffeafa5798a8a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOX3
+    second: {fileID: 2100000, guid: 367f6112c8e87604eac66789f4e7e54e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOX5
+    second: {fileID: 2100000, guid: 7181a0ba9c6631a43a1bf9bae1c58619, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOX7 tap
+    second: {fileID: 2100000, guid: a951ae49013d778438a6513f5a9f52d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOX9 glass
+    second: {fileID: 2100000, guid: 080dce2547179544c9e2c036caed72ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BOXUP
+    second: {fileID: 2100000, guid: 2b3d744eb41d0bd4584237ef780f2af7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DOOR1
+    second: {fileID: 2100000, guid: ee2c538b70fc7e349829e171bde74e39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FBOX1
+    second: {fileID: 2100000, guid: 136612c30d06f3b42876b09978fb77e6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GDOOR1
+    second: {fileID: 2100000, guid: 9a7eec4b3b3190c42be1cb6120ecf2e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GOBLET1
+    second: {fileID: 2100000, guid: d72d59c272f00074f95745745cdf2942, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HANDLE1
+    second: {fileID: 2100000, guid: ffec09e1049008847b2f33e49435b4d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LGDOOR1
+    second: {fileID: 2100000, guid: bb5ec50a8dfbd794d90a42738d5e3e4b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: METALD handle
+    second: {fileID: 2100000, guid: e94d96f53d0d9d041ab95b267c2d7512, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #0'
+    second: {fileID: 2100000, guid: 44daa2e7d826559449e0b3361e55d769, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #1'
+    second: {fileID: 2100000, guid: e1263bef42a4ee64db4f1d860d3b993b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #108'
+    second: {fileID: 2100000, guid: 1fa8064fccac1014d8885db5c2cd9632, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #109'
+    second: {fileID: 2100000, guid: ef0c68172d92dc24dbf63fe663c35438, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #11'
+    second: {fileID: 2100000, guid: 59907d5e435659a49b0f87dada7d1c7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #119'
+    second: {fileID: 2100000, guid: 3764b20b5c487954fad85e4ff4fd3d44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #12'
+    second: {fileID: 2100000, guid: 5044b15896da37d478f8e4243b586767, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #13'
+    second: {fileID: 2100000, guid: 7bdf10ecc7fc6d84384fd8fbc2c8ad74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #14'
+    second: {fileID: 2100000, guid: b90861c156b1d524581462c6e67db752, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #15'
+    second: {fileID: 2100000, guid: 483d9d79f20309e418848c8c799e00bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #25'
+    second: {fileID: 2100000, guid: 34c617238866efc4cb4dce28c3234846, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 8a36d4f6835d01447998070b6c2ea62f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: c0bd596b46e1c7045a40c89fac7e2408, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: 7c2d43194bc6f274685db33fab8deb33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #36'
+    second: {fileID: 2100000, guid: afbeb8ec6c7b6fd48b31e95dc629bfa5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #37'
+    second: {fileID: 2100000, guid: 1c9b5f2809406d440a2c35eabf4382d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #38'
+    second: {fileID: 2100000, guid: 8197c2e3fcc89ec47a76c137fbecd5ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #40'
+    second: {fileID: 2100000, guid: cdca94e7111522545917b5932c1a1bca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #41'
+    second: {fileID: 2100000, guid: a575280d98f19a24da9285de78ada488, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #60'
+    second: {fileID: 2100000, guid: 75d7ac675f851684db98e2ab1d3158cd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #70'
+    second: {fileID: 2100000, guid: 7e541879efb15d34e83d9a7197536f4a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NDOOR1
+    second: {fileID: 2100000, guid: 14d9fc1013b630448a223dca9f003937, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SIDE1
+    second: {fileID: 2100000, guid: ef5ec56efc180704e82d41c56a6bf371, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SINK
+    second: {fileID: 2100000, guid: 65d0444a65ed339448d1abc288a260c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SMDOOR1
+    second: {fileID: 2100000, guid: 2917280c16954e3438f091c98154c599, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TABLE
+    second: {fileID: 2100000, guid: f4f4d5ad22098ce48888c39daebbf3a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WDOOR1
+    second: {fileID: 2100000, guid: fc40bf780f9940543a165073478da13f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WFRAME1
+    second: {fileID: 2100000, guid: 5ce6e1281642836438065af9376f8d51, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: brownwall
+    second: {fileID: 2800000, guid: 5896fdd2ceca78c469a4bf7237702394, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor
+    second: {fileID: 2800000, guid: 13cd0c10a89846046a4963c3c71d8ab8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: texture
+    second: {fileID: 2800000, guid: 6670f3bdfca134b4cb69c3119352a577, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2800000, guid: e62b818041b8f2d43b0354fe454fea45, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: woodM
+    second: {fileID: 2800000, guid: d1cdfb48c37f07c4bbe8085d5772efb1, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
