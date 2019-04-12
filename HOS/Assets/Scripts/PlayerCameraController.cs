@@ -25,6 +25,7 @@ namespace HOS
 
         public string PlayerName;
         public string SiblingName;
+        private string pronoun;
 
         public bool CanUturn = false;
         public bool CanOrbit = false;
@@ -57,11 +58,13 @@ namespace HOS
                     {
                         PlayerName = "Alex";
                         SiblingName = "Anne";
+                        pronoun = "she";
                     }
                     else if (CurrentPlayer.tag == "PlayerAnne")
                     {
                         PlayerName = "Anne";
                         SiblingName = "Alex";
+                        pronoun = "he";
                     }
 
                     if (CurrentScene.name == "Intro")
@@ -127,7 +130,28 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
-
+                    else if (CurrentScene.name == "Kitchen")
+                    {
+                        if (ManagerScript.KitchenFromHall)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanUturn = true;
+                            CanForward = true;
+                            TextArea.text = "I wonder why " + SiblingName + " would leave the radio on if " + pronoun + " left the house.";
+                        }
+                        else if (ManagerScript.KitchenFromGame)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[4].transform.position;
+                            CurrentWaypoint = WaypointList[4];
+                            CanUturn = true;
+                            CanForward = false;
+                            CanOrbit = true;
+                            UTurnSelected = false;
+                        }
+                    }
                 }
             }
 
@@ -246,7 +270,15 @@ namespace HOS
                 }
             }
 
-            if(ManagerScript != null)
+            if (CurrentScene.name == "HouseGrounds")
+            {
+                if(CurrentWaypoint == WaypointList[4])
+                {
+                    UTurnSelected = false;
+                }
+            }
+
+                if (ManagerScript != null)
             {
                 if(ManagerScript.InteriorGhostSeen)
                 {
@@ -561,7 +593,7 @@ namespace HOS
                                 CanBackup = false;
                             }
                         }               // Between gate and crossroads
-                        else if (CurrentWaypoint == WaypointList[2])                
+                        else if (CurrentWaypoint == WaypointList[2])
                         {
                             if (!UTurnSelected)     // Looking towards house
                             {
@@ -800,7 +832,7 @@ namespace HOS
                 {
                     MovePlayerUturn();
 
-                    if(CurrentScene.name == "HouseGrounds")
+                    if (CurrentScene.name == "HouseGrounds")
                     {
                         UTurnSelected = !UTurnSelected;
                     }
@@ -827,17 +859,17 @@ namespace HOS
                             }
                             else    // Looking towards house, controlled by this
                             {
-                                if(!ManagerScript.ExteriorGhostSeen)        // If we haven't seen the ghost tree cutscene yet
+                                if (!ManagerScript.ExteriorGhostSeen)        // If we haven't seen the ghost tree cutscene yet
                                 {
                                     // Move to next waypoint between gate and crossroads
                                     CurrentPlayer.transform.position = WaypointList[1].transform.position;
                                     CurrentWaypoint = WaypointList[1];
 
-                                    CanUturn = false;    
+                                    CanUturn = false;
                                     CanOrbit = false;
                                     CanLeftTurn = false;
                                     CanRightTurn = false;
-                                    CanForward = false;     
+                                    CanForward = false;
                                     CanBackup = false;
 
                                     TextArea.text = "";
@@ -945,7 +977,152 @@ namespace HOS
                     }
                 }
             }
+            else if (CurrentScene.name == "Kitchen")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])     // By door
+                        {
+                            if (UTurnSelected)     // Looking at door, controlled by restriction pane
+                            {
+                                // Do not move, only look at door.
+                                // Foward movement controlled by restriction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards fridge, controlled by this
+                            {
+                                // Move to next waypoint between door and fridge
+                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                CurrentWaypoint = WaypointList[2];
 
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;      // able to move forward
+                                CanBackup = false;
+
+                                TextArea.text = "I should probably turn the radio off.";
+                            }
+                        }                   // By Gate
+                        else if (CurrentWaypoint == WaypointList[2])
+                        {
+                            if (!UTurnSelected)     // Looking towards fridge
+                            {
+                                // Move to next waypoint between door and fridge
+                                CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                                CurrentWaypoint = WaypointList[3];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;
+                                CanBackup = false;
+                            }
+                            else     // Looking towards door
+                            {
+                                // Move to previous waypoint closer to door
+                                CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                                CurrentWaypoint = WaypointList[0];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;
+                                CanBackup = false;
+                            }
+                        }               // Between gate and crossroads
+                        else if (CurrentWaypoint == WaypointList[3])
+                        {
+                            if (!UTurnSelected)     // Looking towards fridge
+                            {
+                                // Move to counter area waypoint, initial forward movement no longer controlled here
+                                CurrentPlayer.transform.position = WaypointList[4].transform.position;
+                                CurrentWaypoint = WaypointList[4];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+
+                                UTurnSelected = false;
+                                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                                TextArea.text = "This place is huge! I wonder how " + SiblingName + " found it?";
+                            }
+                            else     // Looking towards gate
+                            {
+                                // Move to previous waypoint closer to gate
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;
+                                CanBackup = false;
+                            }
+                        }               // Between gate and crossroads
+                                        // Counter Area movement controlled by separate script
+                        else if (CurrentWaypoint == WaypointList[1])
+                        {
+                            if (!UTurnSelected)     // Looking at Box Counter, controlled by box script
+                            {
+                                // Do not move, only look at box.
+                                // Foward movement controlled by restriction pane
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                            else    // Looking towards door, controlled by this
+                            {
+                                // Move back to crossroads waypoint, initial forward movement no longer controlled here
+                                CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                                CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 146.75f, 0f);
+                                CurrentWaypoint = WaypointList[0];
+                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;
+                                CanBackup = false;
+
+                                UTurnSelected = false;
+                            }
+
+                        }               // By box counter
+
+                        //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                        //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+                        //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+
+                    if (CurrentScene.name == "Kitchen")
+                    {
+                        UTurnSelected = !UTurnSelected;
+                    }
+                }
+            }
         }
 
         public void MovePlayerUturn()
