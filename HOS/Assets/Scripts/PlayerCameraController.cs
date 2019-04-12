@@ -502,7 +502,8 @@ namespace HOS
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
-                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);                            
 
                             CanUturn = false;
                             CanOrbit = true;
@@ -515,8 +516,8 @@ namespace HOS
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
-                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                            Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);
 
                             CanUturn = false;
                             CanOrbit = false;
