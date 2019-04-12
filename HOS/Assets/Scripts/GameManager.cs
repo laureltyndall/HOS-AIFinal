@@ -26,6 +26,8 @@ namespace HOS
         public bool GroundsFromHouse = false;
         public bool HouseFromGrounds = false;
         public bool HousefromInside = false;
+        public bool KitchenFromHall = false;
+        public bool KitchenFromGame = false;
 
         public GameObject GameOverScreen;
         public bool GameOver = false;
@@ -115,6 +117,28 @@ namespace HOS
                 // Test from house
                 //HouseFromGrounds = false;
                 //HousefromInside = true;
+            }
+            else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+                MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+
+                // Test from Hall
+                KitchenFromHall = true;
+                KitchenFromGame = false;
+
+                // Test from Mouse MiniGame
+                //KitchenFromHall = false;
+                //KitchenFromGame = true;
             }
 
         }
