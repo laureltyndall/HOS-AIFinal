@@ -94,43 +94,43 @@ public class Inventory : MonoBehaviour
 
     public void AddInventoryItem(InventoryItem CurrentItem)
     {
-        if (CurrentItem == InventoryItem.Basket)
+        if (CurrentItem == InventoryItem.Basket && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Basket))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Basket, ItemsInInventory[InventoryItem.Basket]);
         }
-        else if (CurrentItem == InventoryItem.Cheese)
+        else if (CurrentItem == InventoryItem.Cheese && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Cheese))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Cheese, ItemsInInventory[InventoryItem.Cheese]);
         }
-        else if (CurrentItem == InventoryItem.Flashlight)
+        else if (CurrentItem == InventoryItem.Flashlight && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Flashlight, ItemsInInventory[InventoryItem.Flashlight]);
         }
-        else if (CurrentItem == InventoryItem.MarblePiece)
+        else if (CurrentItem == InventoryItem.MarblePiece && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.MarblePiece))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.MarblePiece, ItemsInInventory[InventoryItem.MarblePiece]);
         }
-        else if (CurrentItem == InventoryItem.MoveInChecklist)
+        else if (CurrentItem == InventoryItem.MoveInChecklist && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.MoveInChecklist))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.MoveInChecklist, ItemsInInventory[InventoryItem.MoveInChecklist]);
         }
-        else if (CurrentItem == InventoryItem.MysteryChecklist)
+        else if (CurrentItem == InventoryItem.MysteryChecklist && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.MysteryChecklist))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.MysteryChecklist, ItemsInInventory[InventoryItem.MysteryChecklist]);
         }
-        else if (CurrentItem == InventoryItem.SiblingLetter)
+        else if (CurrentItem == InventoryItem.SiblingLetter && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.SiblingLetter))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.SiblingLetter, ItemsInInventory[InventoryItem.SiblingLetter]);
         }
-        else if (CurrentItem == InventoryItem.Stick)
+        else if (CurrentItem == InventoryItem.Stick && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Stick))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Stick, ItemsInInventory[InventoryItem.Stick]);
         }
-        else if (CurrentItem == InventoryItem.Trowel)
+        else if (CurrentItem == InventoryItem.Trowel && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Trowel, ItemsInInventory[InventoryItem.Trowel]);
         }
-        else if (CurrentItem == InventoryItem.Worms)
+        else if (CurrentItem == InventoryItem.Worms && !Manager.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Worms))
         {
             Manager.CurrentPlayer.PlayerInventory.Add(InventoryItem.Worms, ItemsInInventory[InventoryItem.Worms]);
         }

@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-		
+		PlayerInventory = new Dictionary<InventoryItem, Item>();
 	}
 	
 }
