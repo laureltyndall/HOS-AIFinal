@@ -39,6 +39,7 @@ TagManager:
   - MysteryChecklistSprite
   - StickSprite
   - SiblingLetterSprite
+  - SnakeMinigame
   layers:
   - Default
   - TransparentFX
