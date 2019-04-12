@@ -171,7 +171,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b3f1982d77aa609468660480b5eb0c90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf19e0f7b76b02e459460186732562e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5792,6 +5792,8 @@ MonoBehaviour:
   GroundsFromHouse: 0
   HouseFromGrounds: 0
   HousefromInside: 0
+  KitchenFromHall: 0
+  KitchenFromGame: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
 --- !u!114 &1789720877

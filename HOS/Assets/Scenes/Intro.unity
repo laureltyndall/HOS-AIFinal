@@ -1407,8 +1407,14 @@ MonoBehaviour:
   MasterInventory: {fileID: 0}
   KilledBySnake: 0
   SnakeBeaten: 0
+  ExteriorGhostSeen: 0
+  InteriorGhostSeen: 0
   GroundsFromGate: 0
   GroundsFromHouse: 0
+  HouseFromGrounds: 0
+  HousefromInside: 0
+  KitchenFromHall: 0
+  KitchenFromGame: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
 --- !u!4 &263795700
@@ -7342,6 +7348,12 @@ Prefab:
       propertyPath: m_TagString
       value: SiblingLetterSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 114088668684415024, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bf19e0f7b76b02e459460186732562e0,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
   m_IsPrefabParent: 0
