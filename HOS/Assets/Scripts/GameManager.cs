@@ -76,8 +76,6 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {

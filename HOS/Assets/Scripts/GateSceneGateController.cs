@@ -98,7 +98,12 @@ namespace HOS
                         }
                         else
                         {
-                            ManagerScript.LoadScene("SnakeGameTest");
+                            //ManagerScript.LoadScene("SnakeGameTest");
+                            GameObject[] G = GameObject.FindGameObjectsWithTag("SnakeMinigame");
+                            foreach (GameObject g in G)
+                            {
+                                g.SetActive(true);
+                            }
                         }
                     }
                     // else, dialogue that you don't need to leave right now
