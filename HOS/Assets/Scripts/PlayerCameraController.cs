@@ -26,6 +26,7 @@ namespace HOS
         public string PlayerName;
         public string SiblingName;
         private string pronoun;
+        public bool TurnOffCloseup = false;
 
         public bool CanUturn = false;
         public bool CanOrbit = false;
@@ -136,9 +137,11 @@ namespace HOS
                         {
                             MainCamera = Camera.main;
                             CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 146.75f, 0f);
                             CurrentWaypoint = WaypointList[0];
-                            CanUturn = true;
-                            CanForward = true;
+                            CanUturn = false;
+                            CanForward = false;
+                            CanOrbit = true;
                             TextArea.text = "I wonder why " + SiblingName + " would leave the radio on if " + pronoun + " left the house.";
                         }
                         else if (ManagerScript.KitchenFromGame)
@@ -270,15 +273,19 @@ namespace HOS
                 }
             }
 
-            if (CurrentScene.name == "HouseGrounds")
+            if (CurrentScene.name == "Kitchen")
             {
                 if(CurrentWaypoint == WaypointList[4])
                 {
                     UTurnSelected = false;
                 }
+
+                
             }
 
-                if (ManagerScript != null)
+
+
+            if (ManagerScript != null)
             {
                 if(ManagerScript.InteriorGhostSeen)
                 {
@@ -498,12 +505,12 @@ namespace HOS
                 {
                     if (CurrentScene.name == "Gate Scene")
                     {
-                        if (CurrentWaypoint == WaypointList[3])
+                        if (CurrentWaypoint == WaypointList[4])
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
                             CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);                            
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);
 
                             CanUturn = false;
                             CanOrbit = true;
@@ -984,36 +991,7 @@ namespace HOS
                 {
                     if (CanForward)
                     {
-                        if (CurrentWaypoint == WaypointList[0])     // By door
-                        {
-                            if (UTurnSelected)     // Looking at door, controlled by restriction pane
-                            {
-                                // Do not move, only look at door.
-                                // Foward movement controlled by restriction pane
-                                CanUturn = true;        // Uturn able to turn on
-                                CanOrbit = false;
-                                CanLeftTurn = false;
-                                CanRightTurn = false;
-                                CanForward = false;      // forward able to 
-                                CanBackup = false;
-                            }
-                            else    // Looking towards fridge, controlled by this
-                            {
-                                // Move to next waypoint between door and fridge
-                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                                CurrentWaypoint = WaypointList[2];
-
-                                CanUturn = true;        // Uturn able to turn on
-                                CanOrbit = false;
-                                CanLeftTurn = false;
-                                CanRightTurn = false;
-                                CanForward = true;      // able to move forward
-                                CanBackup = false;
-
-                                TextArea.text = "I should probably turn the radio off.";
-                            }
-                        }                   // By Gate
-                        else if (CurrentWaypoint == WaypointList[2])
+                        if (CurrentWaypoint == WaypointList[2])
                         {
                             if (!UTurnSelected)     // Looking towards fridge
                             {
@@ -1032,18 +1010,20 @@ namespace HOS
                             {
                                 // Move to previous waypoint closer to door
                                 CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
                                 CurrentWaypoint = WaypointList[0];
                                 //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                                CanUturn = true;
-                                CanOrbit = false;
+                                CanUturn = false;
+                                CanOrbit = true;
                                 CanLeftTurn = false;
                                 CanRightTurn = false;
-                                CanForward = true;
+                                CanForward = false;
                                 CanBackup = false;
                             }
                         }               // Between gate and crossroads
                         else if (CurrentWaypoint == WaypointList[3])
                         {
+                            TextArea.text = "";
                             if (!UTurnSelected)     // Looking towards fridge
                             {
                                 // Move to counter area waypoint, initial forward movement no longer controlled here
@@ -1059,13 +1039,12 @@ namespace HOS
 
                                 UTurnSelected = false;
                                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                                TextArea.text = "This place is huge! I wonder how " + SiblingName + " found it?";
                             }
                             else     // Looking towards gate
                             {
                                 // Move to previous waypoint closer to gate
-                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                                CurrentWaypoint = WaypointList[1];
+                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                CurrentWaypoint = WaypointList[2];
                                 //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                                 CanUturn = true;
                                 CanOrbit = false;
@@ -1093,14 +1072,14 @@ namespace HOS
                             {
                                 // Move back to crossroads waypoint, initial forward movement no longer controlled here
                                 CurrentPlayer.transform.position = WaypointList[0].transform.position;
-                                CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 146.75f, 0f);
+                                //      CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 146.75f, 0f);
                                 CurrentWaypoint = WaypointList[0];
-                                //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                                CanUturn = true;
-                                CanOrbit = false;
+                                //    Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                                CanUturn = false;
+                                CanOrbit = true;
                                 CanLeftTurn = false;
                                 CanRightTurn = false;
-                                CanForward = true;
+                                CanForward = false;
                                 CanBackup = false;
 
                                 UTurnSelected = false;
@@ -1113,6 +1092,7 @@ namespace HOS
                         //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
                     }
                 }
+            
 
                 if (CurrentCursor == CursorType.TurnAround)
                 {
@@ -1121,6 +1101,20 @@ namespace HOS
                     if (CurrentScene.name == "Kitchen")
                     {
                         UTurnSelected = !UTurnSelected;
+
+                        if(CurrentWaypoint == WaypointList[1])
+                        {
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 77f, 0f);
+                            TextArea.text = "";
+                        }
+                    }
+                }
+
+                if(CurrentCursor == CursorType.Backup)
+                {
+                    if (CurrentWaypoint == WaypointList[4])
+                    {
+                        TurnOffCloseup = true;
                     }
                 }
             }

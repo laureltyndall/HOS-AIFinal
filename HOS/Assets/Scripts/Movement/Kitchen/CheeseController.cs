@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class FridgeController : MonoBehaviour
+    public class CheeseController : MonoBehaviour
     {
         public bool Clickable = false;
         public Texture2D NewCursor;
@@ -14,7 +14,7 @@ namespace HOS
         public BoxCollider MyCollider;
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
-        public Animation MyAnimation;
+        public Animation FridgeAnimation;
 
         // Use this for initialization
         void Start()
@@ -26,7 +26,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && KitchenManager.LookingForCheese && !KitchenManager.HasCheese)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[5] && !KitchenManager.HasCheese)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -45,8 +45,6 @@ namespace HOS
             {
                 // If Inventory does not have flashlight
                 Cursor.SetCursor(MovementScript.CursorList[5], Vector2.zero, CursorMode.Auto);
-                // else
-                // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -65,16 +63,16 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                MyAnimation.Play("open");
+                FridgeAnimation.Play("close");
 
                 // Move back to crossroads waypoint, initial forward movement no longer controlled here
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[5].transform.position;
-                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 242.5f, 0f);
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[5];
-                //  Camera.main.transform.rotation = Quaternion.Euler(31.22f, 0f, 0f);
-                Camera.main.transform.Rotate(31.22f, 0, 0);
+                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[4].transform.position;
+                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                MovementScript.CurrentWaypoint = MovementScript.WaypointList[4];
+                Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                //Camera.main.transform.Rotate(0, 0, 0);
                 MovementScript.CanUturn = false;
-                MovementScript.CanOrbit = false;
+                MovementScript.CanOrbit = true;
                 MovementScript.CanLeftTurn = false;
                 MovementScript.CanRightTurn = false;
                 MovementScript.CanForward = false;
@@ -82,7 +80,21 @@ namespace HOS
 
                 MovementScript.UTurnSelected = false;
 
-                TextArea.text = ("I can try to lure the mouse away with this cheese.");
+                if(KitchenManager.HasBox)
+                {
+                    TextArea.text = ("That should be everything I need to deal with the mouse.");
+                }
+                else
+                {
+                    TextArea.text = ("I still need to find something to trap the mouse in.");
+                }
+
+                
+                KitchenManager.HasCheese = true;
+
+
+
+                // Add cheese to inventory
             }
         }
     }
