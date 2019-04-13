@@ -1,22 +1,28 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using HOS;
 
-[Serializable]
 public class MouseGameManager : MonoBehaviour
 {
-
-    [HideInInspector] public GameObject mouse;
+    public MouseManager[] Mice;
+    public GameObject[] MousePrefabs;
     public List<Transform> wayPointsForAI;
-    private StateController sc;
-   
-    public void SetupAI(List<Transform> wayPointList)
+
+    public void SpawnAllMice()
     {
-        sc = mouse.GetComponent<StateController>();
-        sc.SetupAI(true, wayPointList);
-
-
+        for (int i = 1; i < Mice.Length; i++)
+        {
+            Mice[i].m_Instance = Instantiate(MousePrefabs[0], Mice[0].SpawnPoint.position, Mice[0].SpawnPoint.rotation) as GameObject;
+            Mice[i].SetupAI(wayPointsForAI);
+        }
+    }
+    
+    void Start()
+    {
+        SpawnAllMice();
+        
     }
 }
