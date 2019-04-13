@@ -1701,6 +1701,7 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 300580929}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -6369,6 +6370,7 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -9209,7 +9211,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1529222225054880, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
@@ -69509,6 +69511,7 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -79084,8 +79087,9 @@ MonoBehaviour:
   AnneCamera: {fileID: 1004777455}
   AlexCamera: {fileID: 1581181089}
   WolfCamera: {fileID: 592311002}
-  MovementSystem: {fileID: 0}
+  CanMove: 0
   MovementScript: {fileID: 0}
+  TextArea: {fileID: 300580929}
 --- !u!1001 &1380622496
 Prefab:
   m_ObjectHideFlags: 0
@@ -94443,6 +94447,7 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0

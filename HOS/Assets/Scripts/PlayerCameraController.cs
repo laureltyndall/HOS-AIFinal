@@ -23,6 +23,7 @@ namespace HOS
         public bool InteriorGhost = false;
         public Text TextArea;
         public bool LRMniGameFin = false;
+        public bool CenterGameFin = false;
 
         public string PlayerName;
         public string SiblingName;
@@ -132,7 +133,7 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
-                    else if (CurrentScene.name == "Kitchen")
+                    if (CurrentScene.name == "Kitchen")
                     {
                         if (ManagerScript.KitchenFromHall)
                         {
@@ -178,7 +179,28 @@ namespace HOS
                             LRMniGameFin = true;
                         }
                     }
-
+                    if (CurrentScene.name == "HedgeMazeCenter")
+                    {
+                        if (ManagerScript.CenterFromMaze)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanUturn = true;
+                            CanForward = true;
+                            CanOrbit = false;
+                        }
+                        else if (ManagerScript.CenterFromGame)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            CanUturn = true;
+                            CanForward = false;
+                            CanOrbit = false;
+                            CenterGameFin = true;
+                        }
+                    }
                 }
             }
 
@@ -1151,7 +1173,7 @@ namespace HOS
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
                             CanUturn = false;
-                            CanOrbit = transform;
+                            CanOrbit = true;
                             CanLeftTurn = false;
                             CanRightTurn = false;
                             CanForward = false;
@@ -1207,6 +1229,111 @@ namespace HOS
                                 CanBackup = false;
                             }
                         }
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+
+                }
+                if (CurrentCursor == CursorType.Backup)
+                {
+                    if (CurrentScene.name == "Intro")
+                    {
+                        if (CurrentWaypoint == WaypointList[2])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                            CurrentWaypoint = WaypointList[1];
+
+                        }
+                    }
+
+                }
+            }
+            else if (CurrentScene.name == "HedgeMazeCenter")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])
+                        {
+                            if (!UTurnSelected)         // Looking at Fountain
+                            {
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                                UTurnSelected = false;
+                            }
+                            else
+                            {
+                                // Looking at Exit to maze - controlled by restriction script
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                        } // By maze entrance
+                        // Waypoint 1 between maze entrance and fountain controlled by panes
+                        else if (CurrentWaypoint == WaypointList[2])
+                        {
+                            if (!UTurnSelected)         // Looking at fountain
+                            {
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Looking at maze entrance
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                                UTurnSelected = false;
+                            }
+                        } // Up on fountain base
+                        else if (CurrentWaypoint == WaypointList[3])
+                        {
+                            if (!UTurnSelected)         // Looking at puzzle
+                            {
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Looking at maze entrance
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                                UTurnSelected = false;
+                            }
+                        } // By puzzle
+
                     }
                 }
 
