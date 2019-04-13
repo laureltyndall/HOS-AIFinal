@@ -6,7 +6,7 @@ using HOS;
 public class TopDownCamera : MonoBehaviour
 {
     #region Variables
-    public Transform m_target;      //my target for camera
+    //public Transform m_target;      //my target for camera
     [SerializeField]
     private float m_Height = 3f;    //my height for camera
     [SerializeField]
