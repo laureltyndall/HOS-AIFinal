@@ -22,6 +22,7 @@ namespace HOS
         public GameObject MouseObject;
         public GameObject Cheese;
         public GameObject BoxObject;
+        public GameObject GameOverPanel;
 
         // Use this for initialization
         void Start()
@@ -50,6 +51,11 @@ namespace HOS
             if(HasBox && HasCheese)
             {
                 LookingForCheese = false;
+            }
+
+            if(PlayerKilledByMouse)
+            {
+                GameOverPanel.SetActive(true);
             }
         }
 

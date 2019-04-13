@@ -77,6 +77,7 @@ namespace HOS
             if(ClickCounter >= 5)
             {
                 KitchenManager.PlayerKilledByMouse = true;
+                ClickCounter = 0;
             }
         }
 

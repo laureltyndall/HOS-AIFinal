@@ -1023,7 +1023,7 @@ namespace HOS
                         }               // Between gate and crossroads
                         else if (CurrentWaypoint == WaypointList[3])
                         {
-                            TextArea.text = "";
+
                             if (!UTurnSelected)     // Looking towards fridge
                             {
                                 // Move to counter area waypoint, initial forward movement no longer controlled here
