@@ -19,7 +19,7 @@ namespace HOS
         public GameObject CrowWithStar;
         public GameObject GameOverPanel;
         public GameObject WormsPane;
-
+        public GameObject CrowGame;
         public bool CanMove = false;
         private bool WolfActive = true;
         private bool SmokeActive = false;
@@ -45,6 +45,8 @@ namespace HOS
         {
             GameObject go = GameObject.FindGameObjectWithTag("UISystem");
             MovementScript = go.GetComponent<PlayerCameraController>();
+            CrowGame = GameObject.FindGameObjectWithTag("CrowGameObject");
+            CrowGame.SetActive(false);
         }
 
         // Update is called once per frame
@@ -183,6 +185,7 @@ namespace HOS
                 }
                 else
                 {
+                    CrowGame.SetActive(true);
                     // Move the fountain
                 }
             }

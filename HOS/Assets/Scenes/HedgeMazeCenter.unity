@@ -11354,11 +11354,11 @@ GameObject:
   - component: {fileID: 487322794}
   m_Layer: 0
   m_Name: CrowGame
-  m_TagString: Untagged
+  m_TagString: CrowGameObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &487322794
 Transform:
   m_ObjectHideFlags: 0
@@ -79018,7 +79018,7 @@ Prefab:
     - target: {fileID: 224323758354468876, guid: 889f29b9318e87f4e8667dd3e167b690,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114927338657775470, guid: 889f29b9318e87f4e8667dd3e167b690,
         type: 2}
@@ -79954,27 +79954,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a56934a9d2d2c74bad25000744dba6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementScript: {fileID: 0}
+  Controller: {fileID: 1373353006}
   Wolf: {fileID: 1291392172}
   Smoke: {fileID: 1929427771}
   AnneCamera: {fileID: 1004777455}
   AlexCamera: {fileID: 1581181089}
   WolfCamera: {fileID: 592311002}
+  CrowWithStar: {fileID: 1523598690}
+  GameOverPanel: {fileID: 1145316156}
+  WormsPane: {fileID: 1088593668}
   CanMove: 0
-  MovementScript: {fileID: 0}
-  Controller: {fileID: 1373353006}
-  TextArea: {fileID: 300580929}
   ClothFound: 0
   PuzzleFound: 0
   PuzzleFinished: 0
   HasStar: 0
-  CrowWithStar: {fileID: 1523598690}
   CrowGameStarted: 0
   HasWorms: 0
   KilledByBird: 0
-  GameOverPanel: {fileID: 1145316156}
-  GOText: {fileID: 1063256022}
   RavenFound: 0
-  WormsPane: {fileID: 1088593668}
+  TextArea: {fileID: 300580929}
+  GOText: {fileID: 1063256022}
 --- !u!1001 &1380622496
 Prefab:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ TagManager:
   - StickSprite
   - SiblingLetterSprite
   - SnakeMinigame
+  - CrowGameObject
   layers:
   - Default
   - TransparentFX
