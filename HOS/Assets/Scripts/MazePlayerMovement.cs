@@ -9,10 +9,11 @@ public class MazePlayerMovement : MonoBehaviour
     public GameManager Manager;
     public GameObject Player;
     public Rigidbody PlayerBody;
+    public float Speed = 5.0f;
 	// Use this for initialization
 	void Start () 
     {
-        Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -20,19 +21,28 @@ public class MazePlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerBody.velocity = Vector3.forward;
+            PlayerBody.velocity = Vector3.forward * Speed;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            PlayerBody.velocity = Vector3.back;
+            PlayerBody.velocity = Vector3.back * Speed;
         } 
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerBody.velocity = Vector3.left;
+            PlayerBody.velocity = Vector3.left * Speed;
         } 
         if (Input.GetKey(KeyCode.D))
         {
-            PlayerBody.velocity = Vector3.right;
+            PlayerBody.velocity = Vector3.right * Speed;
         }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            Player.transform.Rotate(0,-5,0);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            Player.transform.Rotate(0,5,0);
+        } 
+
 	}
 }
