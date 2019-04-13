@@ -201,11 +201,11 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 //Test from Maze
-                //CenterFromMaze = true;
-                //CenterFromGame = false;
+                CenterFromMaze = true;
+                CenterFromGame = false;
                 //Test from mini game
-                CenterFromMaze = false;
-                CenterFromGame = true;
+                //CenterFromMaze = false;
+                //CenterFromGame = true;
             }
 
         }
