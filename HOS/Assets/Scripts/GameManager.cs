@@ -50,11 +50,11 @@ namespace HOS
         private void Update()
         {
 
-            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            {
-                CurrentGameState = GameState.None;
-                CurrentSceneName = SceneManager.GetActiveScene().name;
-            }
+            //if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            //{
+            //    CurrentGameState = GameState.None;
+            //    CurrentSceneName = SceneManager.GetActiveScene().name;
+            //}
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
@@ -201,11 +201,11 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 //Test from Maze
-                CenterFromMaze = true;
-                CenterFromGame = false;
+                //CenterFromMaze = true;
+                //CenterFromGame = false;
                 //Test from mini game
-                //CenterFromMaze = false;
-                //CenterFromGame = true;
+                CenterFromMaze = false;
+                CenterFromGame = true;
             }
 
         }

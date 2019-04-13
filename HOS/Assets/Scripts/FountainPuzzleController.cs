@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI;
+using HOS;
 
-public class FountainPuzzleController : MonoBehaviour {
+public class FountainPuzzleController : MonoBehaviour
+{
 
     public List<GameObject> StarLocations;
     public List<GameObject> ClickableStars;
@@ -22,26 +25,37 @@ public class FountainPuzzleController : MonoBehaviour {
     public int TryCount = 0;
     public int NumberCorrect = 0;
     private bool GameOver = false;
+    public GameManager ManagerScript;
+    private bool ManagerFound = false;
 
     public GameObject RainbowHelper;
 
     private int WrongClicksCount = 0;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         TextAreaSmall.text = "It looks like I should put the star I found in that empty space.";
         StarRiddleSphere.SetActive(true);
+        FindManagerScript();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!ManagerFound)
+        {
+            FindManagerScript();
+        }
+
+
         if (!GameOver)
         {
             if (!MoonstoneInsterted)
             {
                 CloseUpCamera.SetActive(false);
-                if(MoonstoneStarEmpty.GetComponent<MoonstoneStarController>().Clicked)
+                if (MoonstoneStarEmpty.GetComponent<MoonstoneStarController>().Clicked)
                 {
                     MoonstoneInsterted = true;
                 }
@@ -78,7 +92,7 @@ public class FountainPuzzleController : MonoBehaviour {
                     }
                     else
                     {
-                        if(TryCount >= 5)
+                        if (TryCount >= 5)
                         {
                             RainbowHelper.SetActive(true);
                         }
@@ -185,7 +199,11 @@ public class FountainPuzzleController : MonoBehaviour {
         }
         else
         {
-
+            {
+                ManagerScript.CenterFromGame = true;
+                ManagerScript.CenterFromMaze = false;
+                ManagerScript.LoadScene("HedgeMazeCenter");
+            }
         }
     }
 
@@ -199,7 +217,7 @@ public class FountainPuzzleController : MonoBehaviour {
     {
         CloseUpCamera.SetActive(false);
 
-        if(WrongClicksCount >= 2)
+        if (WrongClicksCount >= 2)
         {
             TextAreaSmall.text = "Right. Rainbow. Of course.";
         }
@@ -210,5 +228,25 @@ public class FountainPuzzleController : MonoBehaviour {
 
         BeginStars = true;
         RiddleSolved = true;
+    }
+
+    void FindManagerScript()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("GameController");
+
+        if (go != null)
+        {
+            ManagerScript = go.gameObject.GetComponent<GameManager>();
+
+            if (ManagerScript != null)
+            {
+                ManagerFound = true;
+
+                if (ManagerScript.CurrentPlayer != null)
+                {
+                    
+                }
+            }
+        }
     }
 }
