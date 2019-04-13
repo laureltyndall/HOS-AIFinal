@@ -110,6 +110,9 @@ namespace HOS
                 {
                     TextArea.text = "Here birdie! Give " + MovementScript.PlayerName + " the star!";
                     HMCManager.RavenFound = true;
+                    Clicked = true;
+                    TimetoSettle = 2f;
+                    ClickCount++;
                 }
                 else
                 {

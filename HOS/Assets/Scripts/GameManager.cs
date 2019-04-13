@@ -50,11 +50,11 @@ namespace HOS
         private void Update()
         {
 
-            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            {
-                CurrentGameState = GameState.None;
-                CurrentSceneName = SceneManager.GetActiveScene().name;
-            }
+            //if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            //{
+            //    CurrentGameState = GameState.None;
+            //    CurrentSceneName = SceneManager.GetActiveScene().name;
+            //}
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
