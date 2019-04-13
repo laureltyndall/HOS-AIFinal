@@ -22,6 +22,10 @@ namespace HOS
         private float AfterWolf = 2f;
         public PlayerCameraController MovementScript;
         public Text TextArea;
+        public bool ClothFound = false;
+        public bool PuzzleFound = false;
+        public bool PuzzleFinished = false;
+        public bool HasStar = false;
 
         // Use this for initialization
         void Start()
@@ -50,6 +54,8 @@ namespace HOS
                     MovementScript.CanBackup = false;
                     CanMove = true;
                 }
+
+                PuzzleFinished = true;
             }
 
             if (WolfActive)
@@ -116,6 +122,18 @@ namespace HOS
                     MovementScript.CanForward = true;
                     MovementScript.CanBackup = false;
                     CanMove = true;
+                }
+            }
+
+            if(CanMove)
+            {
+                if (!ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                {
+                    TextArea.text = "I wonder what " + MovementScript.pronoun + " meant by 'Open the fountain'? Maybe I should take a look at it.";
+                }
+                else if (ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                {
+                    TextArea.text = "There must be some way to open this. I bet " + MovementScript.SiblingName + " found a way in!";
                 }
             }
         }

@@ -27,7 +27,7 @@ namespace HOS
 
         public string PlayerName;
         public string SiblingName;
-        private string pronoun;
+        public string pronoun;
         public bool TurnOffCloseup = false;
 
         public bool CanUturn = false;
@@ -327,6 +327,51 @@ namespace HOS
                 }
             }
 
+            if (CurrentScene.name == "HedgeMazeCenter")
+            {
+                if (CurrentWaypoint == WaypointList[2])     // Near fountain
+                {
+                    if (UTurnSelected)      // Looking at maze entrance
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                    else    // Looking at fountain
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                }
+                if (CurrentWaypoint == WaypointList[3])
+                {
+                    if (!UTurnSelected)      // Looking at puzzle
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                    else    // Looking at maze entrance
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                }
+            }
 
 
             if (ManagerScript != null)
@@ -1340,7 +1385,16 @@ namespace HOS
                 if (CurrentCursor == CursorType.TurnAround)
                 {
                     MovePlayerUturn();
+                    if (CurrentScene.name == "HedgeMazeCenter")
+                    {
+                        UTurnSelected = !UTurnSelected;
 
+                        if (CurrentWaypoint == WaypointList[3])
+                        {
+                              Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                            //Camera.main.transform.Rotate(40f, -175f, 0);
+                        }
+                    }
                 }
                 if (CurrentCursor == CursorType.Backup)
                 {
