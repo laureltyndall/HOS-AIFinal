@@ -11,7 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
-        public LRManager SceneManager;
+        public LRManager RoomManager;
         public MeshCollider MyCollider;
         public Text TextArea;
 
@@ -25,7 +25,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !SceneManager.WaitingForGame)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !RoomManager.WaitingForGame)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;

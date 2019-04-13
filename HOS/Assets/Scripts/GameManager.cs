@@ -32,6 +32,8 @@ namespace HOS
         public bool LRFromGame = false;
         public bool CenterFromMaze = false;
         public bool CenterFromGame = false;
+        public bool HallfromOutside = false;
+        public bool HallFromRoom = false;
 
         public GameObject GameOverScreen;
         public bool GameOver = false;
@@ -128,6 +130,27 @@ namespace HOS
                 //HouseFromGrounds = false;
                 //HousefromInside = true;
             }
+            else if (SceneManager.GetActiveScene().name == "HouseHallway" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+
+                // Test from grounds
+                HallfromOutside = true;
+                HallFromRoom = false;
+
+                // Test from house
+                //HallfromOutside = false;
+                //HallFromRoom = true;
+            }
+
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY

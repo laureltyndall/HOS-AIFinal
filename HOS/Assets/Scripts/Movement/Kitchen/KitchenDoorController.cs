@@ -64,7 +64,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                //SceneManager.LoadScene("HouseInterior");
+                SceneManager.LoadScene("HouseHallway");
             }
         }
     }

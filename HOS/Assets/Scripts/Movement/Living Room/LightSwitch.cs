@@ -11,7 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
-        public LRManager SceneManager;
+        public LRManager RoomManager;
         public BoxCollider MyCollider;
         public Text TextArea;
         public GameObject On;
@@ -27,7 +27,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && !SceneManager.LightsOn)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && !RoomManager.LightsOn)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -70,7 +70,7 @@ namespace HOS
                 Off.SetActive(false);
 
                 TextArea.text = ("Let's put some light on the subject. \n Maybe " + MovementScript.SiblingName + " has a flashlight in one of these boxes.");
-                SceneManager.LightsOn = true;
+                RoomManager.LightsOn = true;
             }
         }
     }
