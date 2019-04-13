@@ -25,7 +25,7 @@ public class CrowMinigameController : MonoBehaviour
     public Canvas UICanvas;
     public int TimesCrowDistracted = 0;
     public float CrowResetTimer = 0;
-    public int IsCrowReset = false;
+    public bool IsCrowReset = false;
     public Text WormText;
     public HMCenterManager CenterManager;
 
