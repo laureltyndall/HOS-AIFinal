@@ -22,6 +22,7 @@ namespace HOS
         public bool UTurnSelected = false;
         public bool InteriorGhost = false;
         public Text TextArea;
+        public bool LRMniGameFin = false;
 
         public string PlayerName;
         public string SiblingName;
@@ -155,6 +156,29 @@ namespace HOS
                             UTurnSelected = false;
                         }
                     }
+                    if (CurrentScene.name == "Living Room")
+                    {
+                        if (ManagerScript.LRFromHall)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanUturn = false;
+                            CanForward = false;
+                            CanOrbit = true;
+                        }
+                        else if (ManagerScript.LRFromGame)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[4].transform.position;
+                            CurrentWaypoint = WaypointList[4];
+                            CanUturn = false;
+                            CanForward = false;
+                            CanOrbit = true;
+                            LRMniGameFin = true;
+                        }
+                    }
+
                 }
             }
 
@@ -279,8 +303,6 @@ namespace HOS
                 {
                     UTurnSelected = false;
                 }
-
-                
             }
 
 
@@ -1118,6 +1140,96 @@ namespace HOS
                     }
                 }
             }
+            else if (CurrentScene.name == "Living Room")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[1])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                            CurrentWaypoint = WaypointList[2];
+                            CanUturn = false;
+                            CanOrbit = transform;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }
+                        else if (CurrentWaypoint == WaypointList[1])
+                        {
+                            if (!UTurnSelected)         // Looking at door
+                            {
+                                CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                                CurrentWaypoint = WaypointList[0];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Looking at midroom
+                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                CurrentWaypoint = WaypointList[2];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                        }
+                        else if (CurrentWaypoint == WaypointList[3])
+                        {
+                            if (!UTurnSelected)         // Looking at fireplace
+                            {
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Looking at midroom
+                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                                CurrentWaypoint = WaypointList[2];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                        }
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+
+                }
+                if (CurrentCursor == CursorType.Backup)
+                {
+                    if (CurrentScene.name == "Intro")
+                    {
+                        if (CurrentWaypoint == WaypointList[2])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                            CurrentWaypoint = WaypointList[1];
+
+                        }
+                    }
+
+                }
+            }
+
         }
 
         public void MovePlayerUturn()
