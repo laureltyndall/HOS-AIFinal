@@ -8,24 +8,37 @@ namespace HOS
 {
     public class HMCenterManager : MonoBehaviour
     {
+        public PlayerCameraController MovementScript;
+        public MenuManager Controller;
+
         public GameObject Wolf;
         public GameObject Smoke;
         public GameObject AnneCamera;
         public GameObject AlexCamera;
         public GameObject WolfCamera;
+        public GameObject CrowWithStar;
+        public GameObject GameOverPanel;
+        public GameObject WormsPane;
+
         public bool CanMove = false;
         private bool WolfActive = true;
         private bool SmokeActive = false;
         private bool WolfDisappear = false;
-        private float WolfCounter = 5.5f;
-        private float SmokeCounter = 2f;
-        private float AfterWolf = 2f;
-        public PlayerCameraController MovementScript;
-        public Text TextArea;
         public bool ClothFound = false;
         public bool PuzzleFound = false;
         public bool PuzzleFinished = false;
         public bool HasStar = false;
+        public bool CrowGameStarted = false;
+        public bool HasWorms = false;
+        public bool KilledByBird = false;
+        public bool RavenFound = false;
+
+        private float WolfCounter = 5.5f;
+        private float SmokeCounter = 2f;
+        private float AfterWolf = 2f;
+
+        public Text TextArea;
+        public Text GOText;
 
         // Use this for initialization
         void Start()
@@ -39,6 +52,16 @@ namespace HOS
         {
             if(MovementScript.CenterGameFin)
             {
+                bool SmokeActive = false;
+                bool ClothFound = true;
+                bool PuzzleFound = true;
+                bool PuzzleFinished = true;
+                bool HasStar = true;
+                bool CrowGameStarted = true;
+                bool HasWorms = true;
+                bool KilledByBird = false;
+                bool RavenFound = true;
+
                 WolfCamera.SetActive(false);
                 AnneCamera.SetActive(true);
                 AlexCamera.SetActive(true);
@@ -127,14 +150,54 @@ namespace HOS
 
             if(CanMove)
             {
-                if (!ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                if (!PuzzleFinished)
                 {
-                    TextArea.text = "I wonder what " + MovementScript.pronoun + " meant by 'Open the fountain'? Maybe I should take a look at it.";
+                    if (!ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                    {
+                        TextArea.text = "I wonder what " + MovementScript.pronoun + " meant by 'Open the fountain'? Maybe I should take a look at it.";
+                    }
+                    else if (ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                    {
+                        TextArea.text = "There must be some way to open this. I bet " + MovementScript.SiblingName + " found a way in!";
+                    }
+
+                    if (HasWorms && MovementScript.CurrentWaypoint == MovementScript.WaypointList[2] && !CrowGameStarted)
+                    {
+                        TextArea.text = "Polly want a yummy - disgusting -  worm?";
+                    }
+
+                    if (PuzzleFound && !HasStar && !CrowGameStarted)
+                    {
+                        CrowWithStar.SetActive(true);
+                    }
+
+                    if (HasWorms)
+                    {
+                        WormsPane.SetActive(false);
+                    }
+
+                    if (CrowGameStarted)
+                    {
+                        CrowWithStar.SetActive(false);
+                    }
                 }
-                else if (ClothFound && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !PuzzleFound)
+                else
                 {
-                    TextArea.text = "There must be some way to open this. I bet " + MovementScript.SiblingName + " found a way in!";
+                    // Move the fountain
                 }
+            }
+
+            if(KilledByBird)
+            {
+                if(HasWorms)
+                {
+                    GOText.text = "The good news? \n Now you know that earthworms are very hard to throw. \n \n The bad news? \n That crow has better aim than you.";
+                }
+                else
+                {
+                    GOText.text = "You couldn't find a way to distract the bird. \n \n Until it managed to peck you in the eye. \n \n Then you were very distracting.";
+                }
+                Controller.ShowGameOver(GameOverPanel);
             }
         }
     }

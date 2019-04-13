@@ -11416,8 +11416,11 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
@@ -11548,8 +11551,13 @@ MonoBehaviour:
   HousefromInside: 0
   KitchenFromHall: 0
   KitchenFromGame: 0
+  LRFromHall: 0
+  LRFromGame: 0
+  CenterFromMaze: 0
+  CenterFromGame: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
+  PlayerCopy: {fileID: 0}
 --- !u!114 &743422305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14862,8 +14870,11 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
@@ -16813,8 +16824,11 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
@@ -23739,8 +23753,11 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 1921428175}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
@@ -31741,7 +31758,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f41f41cd34a10a04984bcea95851875a, type: 2}
+  - {fileID: 2100000, guid: f26b6183c4e201942ac387456c7b760a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

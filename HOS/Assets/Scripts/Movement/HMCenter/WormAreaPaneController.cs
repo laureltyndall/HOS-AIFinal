@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class FountainPaneController : MonoBehaviour
+    public class WormAreaPaneController : MonoBehaviour
     {
         public bool Clickable = false;
         public Texture2D NewCursor;
@@ -26,7 +26,7 @@ namespace HOS
         void Update()
         {
 
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !HMCManager.HasWorms)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -66,21 +66,17 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
-                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
+                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[4].transform.position;
+                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                Camera.main.transform.rotation = Quaternion.Euler(40f, 0f, 0f);
+                MovementScript.CurrentWaypoint = MovementScript.WaypointList[4];
                 MovementScript.CanUturn = true;
                 MovementScript.CanOrbit = false;
                 MovementScript.CanLeftTurn = false;
                 MovementScript.CanRightTurn = false;
-                MovementScript.CanForward = true;
+                MovementScript.CanForward = false;
                 MovementScript.CanBackup = false;
                 MovementScript.UTurnSelected = false;
-
-                if(HMCManager.PuzzleFound)
-                {
-                    TextArea.text = "That bird has the star!";
-                }
             }
         }
     }
