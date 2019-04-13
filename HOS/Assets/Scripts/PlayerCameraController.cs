@@ -44,18 +44,20 @@ namespace HOS
             CurrentScene = SceneManager.GetActiveScene();
             GameObject GO = GameObject.FindGameObjectWithTag("GameController");
             ManagerScript = GO.GetComponent<GameManager>();
-
-            FindCharacter();
+            MainCamera = Camera.main;
+            //FindCharacter();
         }
 
         void Update()
         {
+
             if (CurrentPlayer == null)
             {
                 FindCharacter();
 
                 if (CurrentPlayer != null)
                 {
+
                     if(CurrentPlayer.tag == "PlayerAlex")
 
                     {

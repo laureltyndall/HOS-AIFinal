@@ -3530,8 +3530,21 @@ MonoBehaviour:
   MasterInventory: {fileID: 0}
   KilledBySnake: 0
   SnakeBeaten: 0
+  ExteriorGhostSeen: 0
+  InteriorGhostSeen: 0
+  GroundsFromGate: 0
+  GroundsFromHouse: 0
+  HouseFromGrounds: 0
+  HousefromInside: 0
+  KitchenFromHall: 0
+  KitchenFromGame: 0
+  LRFromHall: 0
+  LRFromGame: 0
+  CenterFromMaze: 0
+  CenterFromGame: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
+  PlayerCopy: {fileID: 0}
 --- !u!1 &907728205
 GameObject:
   m_ObjectHideFlags: 0

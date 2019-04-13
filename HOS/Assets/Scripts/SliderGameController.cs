@@ -91,7 +91,7 @@ namespace HOS
                 {
                     if (ManagerScript.CurrentPlayer != null)
                     {
-                        PlayerName = ManagerScript.CurrentPlayer.name;
+                        PlayerName = ManagerScript.CurrentPlayer.PlayerName;
 
                         if (PlayerName != null)
                         {
