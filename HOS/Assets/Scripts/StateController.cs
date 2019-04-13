@@ -8,7 +8,7 @@ public class StateController : MonoBehaviour
 {
 
     public State currentState;
-    public MouseStats enemyStats;
+    public MouseStats mouseStats;
     public Transform eyes;
     public State remainState;
 
@@ -57,7 +57,7 @@ public class StateController : MonoBehaviour
         if (currentState != null && eyes != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(eyes.position, enemyStats.lookSphereCastRadius);
+            Gizmos.DrawWireSphere(eyes.position, mouseStats.lookSphereCastRadius);
         }
     }
 
