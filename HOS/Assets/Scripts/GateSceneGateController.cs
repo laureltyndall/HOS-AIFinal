@@ -100,6 +100,8 @@ namespace HOS
                     {
                         if (ManagerScript.SnakeBeaten)
                         {
+                            ManagerScript.GroundsFromGate = true;
+                            ManagerScript.GroundsFromHouse = false;
                             ManagerScript.LoadScene("HouseGrounds");
                         }
                         else

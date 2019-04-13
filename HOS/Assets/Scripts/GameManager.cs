@@ -31,7 +31,8 @@ namespace HOS
 
         public GameObject GameOverScreen;
         public bool GameOver = false;
-
+        private string CurrentSceneName = "";
+        public Player PlayerCopy = new Player();
         void Start()
         {
             if (SceneManager.GetActiveScene().name == "Menu")
@@ -44,6 +45,13 @@ namespace HOS
 
         private void Update()
         {
+
+            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            {
+                CurrentGameState = GameState.None;
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+            }
+
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
@@ -64,6 +72,7 @@ namespace HOS
                     CurrentPlayer.PlayerCharacter = Character.Alex;
                     CurrentPlayer.PlayerHealth = 10;
                 }
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {
@@ -71,11 +80,25 @@ namespace HOS
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
                 MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
+                if (NewCharacter == Character.Anne)
+                {
+                    alex.SetActive(false);
+                    CurrentPlayer = anne.GetComponent<Player>();
+                    CurrentPlayer = PlayerCopy;
+                    CurrentPlayer.PlayerCharacter = Character.Anne;
+                    CurrentPlayer.PlayerHealth = 10;
+                }
+                else if (NewCharacter == Character.Alex)
+                {
+                    anne.SetActive(false);
+                    CurrentPlayer = alex.GetComponent<Player>();
+                    CurrentPlayer = PlayerCopy;
+                    CurrentPlayer.PlayerCharacter = Character.Alex;
+                    CurrentPlayer.PlayerHealth = 10;
+                }
                 CurrentPlayer.PlayerHealth = 10;
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {
@@ -87,7 +110,7 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-
+                CurrentSceneName = SceneManager.GetActiveScene().name;
                 // Test from gate
                 GroundsFromGate = true;
                 GroundsFromHouse = false;
@@ -107,8 +130,6 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 // Test from grounds
                 HouseFromGrounds = true;
@@ -129,8 +150,6 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 // Test from Hall
                 KitchenFromHall = true;

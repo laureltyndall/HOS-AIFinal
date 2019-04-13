@@ -12,8 +12,9 @@ namespace HOS
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
         public KitchenSceneManager KitchenManager;
-        public MeshCollider MyCollider;
+        public BoxCollider MyCollider;
         public Text TextArea;
+        public GameObject CloseUpCamera;
 
         // Use this for initialization
         void Start()
@@ -36,6 +37,15 @@ namespace HOS
                 Clickable = false;
                 MyCollider.enabled = false;
             }
+
+            if(MovementScript.TurnOffCloseup)
+            {
+                CloseUpCamera.SetActive(false);
+                MovementScript.CanOrbit = true;
+                MovementScript.CanBackup = false;
+                MovementScript.TurnOffCloseup = false;
+                KitchenManager.InCloseUp = false;
+            }
         }
 
         void OnMouseOver()
@@ -44,8 +54,6 @@ namespace HOS
             {
                 // If Inventory does not have flashlight
                 Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
-                // else
-                // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -64,10 +72,42 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                // If Inventory does not have flashlight
-                TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
-                // else
-                //SceneManager.LoadScene("HedgeMaze");
+                if(!KitchenManager.MouseOn)
+                {
+                    CloseUpCamera.SetActive(true);
+                    MovementScript.CanBackup = true;
+                    MovementScript.CanOrbit = false;
+                    KitchenManager.InCloseUp = true;
+                }
+                else
+                {
+                    if(KitchenManager.HasBox && KitchenManager.HasCheese)
+                    {
+                        CloseUpCamera.SetActive(true);
+                        MovementScript.CanBackup = true;
+                        MovementScript.CanOrbit = false;
+                        KitchenManager.InCloseUp = true;
+                    }
+                    else
+                    {
+                        if(!KitchenManager.HasBox && !KitchenManager.HasCheese)
+                        {
+                            // Has neither
+                            TextArea.text = "I need to find a way to get rid of that mouse.";
+                            KitchenManager.LookingForCheese = true;
+                        }
+                        else if (KitchenManager.HasBox && !KitchenManager.HasCheese)
+                        {
+                            // Has only box
+                            TextArea.text = "I still need to find a way to lure the mouse into the box.";
+                        }
+                        else if (!KitchenManager.HasBox && KitchenManager.HasCheese)
+                        {
+                            // Has only cheese
+                            TextArea.text = "I still need to find something to trap the mouse in.";
+                        }
+                    }
+                }
             }
         }
     }

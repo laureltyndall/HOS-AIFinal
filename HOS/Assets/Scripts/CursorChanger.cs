@@ -79,21 +79,26 @@ namespace HOS
                     }
                 }
 
-                if ((Input.mousePosition.x >= 100 && Input.mousePosition.x <= 1100) && (Input.mousePosition.y >= 50 && Input.mousePosition.y <= 120))
+                if (MovementScript.CanBackup)
                 {
-                    if (MovementScript.CanBackup)
+                    if ((Input.mousePosition.x >= 100 && Input.mousePosition.x <= 1100) && (Input.mousePosition.y >= 50 && Input.mousePosition.y <= 200))
                     {
                         Debug.Log("Changing to Backup Cursor");
                         Cursor.SetCursor(MovementScript.CursorList[0], Vector2.zero, CursorMode.Auto);
                         MovementScript.CurrentCursor = CursorType.Backup;
                     }
-                    else if (MovementScript.CanUturn)
+                }
+
+                if (MovementScript.CanUturn)
+                {
+                    if ((Input.mousePosition.x >= 100 && Input.mousePosition.x <= 1100) && (Input.mousePosition.y >= 50 && Input.mousePosition.y <= 200))
                     {
                         Debug.Log("Changing to U-Turn Cursor");
                         Cursor.SetCursor(MovementScript.CursorList[8], Vector2.zero, CursorMode.Auto);
                         MovementScript.CurrentCursor = CursorType.TurnAround;
                     }
                 }
+                
             }
 
             if(UIOnly)
