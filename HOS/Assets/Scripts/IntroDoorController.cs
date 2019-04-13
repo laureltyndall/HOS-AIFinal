@@ -79,6 +79,7 @@ namespace HOS
                     // If the player has the letter in inventory, leave the house
                     if(ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.SiblingLetter))
                     {
+                        ManagerScript.PlayerCopy = ManagerScript.CurrentPlayer;
                         ManagerScript.LoadScene("Gate Scene");
                     }
                     // else, dialogue that you don't need to leave right now
