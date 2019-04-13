@@ -35,3 +35,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LivingRoomPuzzleGame.unity
     guid: 93b51f6c0d3988445bcf2e5dd72bf7af
+  - enabled: 1
+    path: Assets/Scenes/HedgeMaze.unity
+    guid: 671666bb08090f344865b95973045ea1
+  - enabled: 1
+    path: Assets/Scenes/HedgeMazeCenter.unity
+    guid: 25e6a552321f17d46852baef173af54c
+  - enabled: 1
+    path: Assets/Scenes/FountainMiniGame.unity
+    guid: 6caaf67021a806c4a90fc60b9ecbc943
+  - enabled: 1
+    path: Assets/Scenes/Underground Passage.unity
+    guid: 14a2c64dbd956d346b9f674d144cc297
+  - enabled: 1
+    path: Assets/Scenes/UndergroundSliderGame.unity
+    guid: ce4fa4ac902d0fb44b80f9fb2396337f

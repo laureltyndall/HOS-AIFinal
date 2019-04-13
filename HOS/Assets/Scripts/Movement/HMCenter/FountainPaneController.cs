@@ -26,7 +26,7 @@ namespace HOS
         void Update()
         {
 
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !HMCManager.PuzzleFinished)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;

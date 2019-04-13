@@ -25,6 +25,7 @@ public class CrowMinigameController : MonoBehaviour
     public Canvas UICanvas;
     public int TimesCrowDistracted = 0;
     public Text WormText;
+        public HMCenterManager CenterManager;
 
 	// Use this for initialization
 	void Start () 
@@ -107,6 +108,7 @@ public class CrowMinigameController : MonoBehaviour
         {
             IsGameOver = true;
             Manager.MasterInventory.AddInventoryItem(InventoryItem.MarblePiece);
+                CenterManager.HasStar = true;
         }   
         UpdateWorms();
 	}
