@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+namespace HOS
+{
 public class CrowMinigameController : MonoBehaviour 
 {
     public int NumberOfWorms = 8;
@@ -14,6 +15,7 @@ public class CrowMinigameController : MonoBehaviour
     public bool IsCrowDistracted = false;
     public GameObject WormThrowerObject;
     public WormThrower WormThrowerScript;
+    public GameManager Manager;
     public GameObject AttackerCrow;
     public GameObject Player;
     public float speed = .1f;
@@ -27,6 +29,7 @@ public class CrowMinigameController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 		GenerateLives();
 	}
 	
@@ -103,6 +106,7 @@ public class CrowMinigameController : MonoBehaviour
         if (TimesCrowDistracted >= 5)
         {
             IsGameOver = true;
+            Manager.MasterInventory.AddInventoryItem(InventoryItem.MarblePiece);
         }   
         UpdateWorms();
 	}
@@ -163,4 +167,5 @@ public class CrowMinigameController : MonoBehaviour
         WormText.text = "Number of Worms Remaining: " + NumberOfWorms.ToString();
 
     }
+}
 }
