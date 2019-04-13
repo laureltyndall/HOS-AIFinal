@@ -28,6 +28,8 @@ namespace HOS
         public bool HousefromInside = false;
         public bool KitchenFromHall = false;
         public bool KitchenFromGame = false;
+        public bool LRFromHall = false;
+        public bool LRFromGame = false;
 
         public GameObject GameOverScreen;
         public bool GameOver = false;
@@ -46,11 +48,11 @@ namespace HOS
         private void Update()
         {
 
-            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            {
-                CurrentGameState = GameState.None;
-                CurrentSceneName = SceneManager.GetActiveScene().name;
-            }
+            //if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            //{
+            //    CurrentGameState = GameState.None;
+            //    CurrentSceneName = SceneManager.GetActiveScene().name;
+            //}
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
@@ -159,6 +161,45 @@ namespace HOS
                 //KitchenFromHall = false;
                 //KitchenFromGame = true;
             }
+            else if (SceneManager.GetActiveScene().name == "Living Room" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+                MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+
+                //Test from hall
+                LRFromHall = true;
+                LRFromGame = false;
+                //Test from mini game
+                //LRFromHall = false;
+                //LRFromGame = true;
+            }
+            else if (SceneManager.GetActiveScene().name == "LivingRoomPuzzleGame" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+           //     MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+                //        MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                //      MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+
+                LRFromHall = false;
+                LRFromGame = true;
+            }
+
 
         }
 

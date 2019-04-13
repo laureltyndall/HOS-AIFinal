@@ -64,6 +64,17 @@ public class LibraryPuzzleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(!ManagerFound)
+        {
+            FindManagerScript();
+            FindNames();
+
+            if (NamesFound)
+            {
+                TextArea.text = "If I don't put these back in order, " + SiblingName + " is going to skin me alive!";
+            }
+        }
+
         if (!GameOver)
         {
             if (!TextAreaFilled)
@@ -134,7 +145,13 @@ public class LibraryPuzzleController : MonoBehaviour {
         else if (GameOver)
         {
             TextArea.text = "Got it!";
-            Time.timeScale = 0;
+            if(ManagerFound)
+            {
+                ManagerScript.LRFromGame = true;
+                ManagerScript.LRFromHall = false;
+                ManagerScript.LoadScene("Living Room");
+            }
+        //    Time.timeScale = 0;
         }
     }
 
@@ -376,7 +393,7 @@ public class LibraryPuzzleController : MonoBehaviour {
 
     void FindManagerScript()
     {
-        GameObject go = GameObject.FindGameObjectWithTag("GameManager");
+        GameObject go = GameObject.FindGameObjectWithTag("GameController");
 
         if (go != null)
         {
@@ -384,14 +401,17 @@ public class LibraryPuzzleController : MonoBehaviour {
 
             if (ManagerScript != null)
             {
-                PlayerName = ManagerScript.CurrentPlayer.name;
-
-                if (PlayerName != "")
+                if (ManagerScript.CurrentPlayer != null)
                 {
-                    FindNames();
-                }
+                    PlayerName = ManagerScript.CurrentPlayer.name;
 
-                ManagerFound = true;
+                    if (PlayerName != "")
+                    {
+                        FindNames();
+                    }
+
+                    ManagerFound = true;
+                }
             }
         }
     }

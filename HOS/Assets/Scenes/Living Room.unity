@@ -279,6 +279,7 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -1930,6 +1931,7 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -3676,6 +3678,7 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 574857156}
+  LRMniGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -5558,8 +5561,11 @@ MonoBehaviour:
   HousefromInside: 0
   KitchenFromHall: 0
   KitchenFromGame: 0
+  LRFromHall: 0
+  LRFromGame: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
+  PlayerCopy: {fileID: 0}
 --- !u!114 &708840928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10571,6 +10577,8 @@ MonoBehaviour:
   UprightBox: {fileID: 354574084}
   FallingBox: {fileID: 1026495559}
   Flashlight: {fileID: 652189457}
+  WaitingForGame: 0
+  MovementScript: {fileID: 0}
 --- !u!1 &1380975793
 GameObject:
   m_ObjectHideFlags: 0
@@ -10769,6 +10777,7 @@ MonoBehaviour:
   UTurnSelected: 0
   InteriorGhost: 0
   TextArea: {fileID: 0}
+  LRMniGameFin: 0
   PlayerName: 
   SiblingName: 
   TurnOffCloseup: 0
@@ -11286,7 +11295,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476800926}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0.59, y: 14.49, z: 0.17}
+  m_LocalPosition: {x: -0.59, y: 9.31, z: 0.17}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 1926604400}
