@@ -11,7 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
-        public LRManager SceneManager;
+        public LRManager RoomManager;
         public MeshCollider MyCollider;
         public Text TextArea;
 

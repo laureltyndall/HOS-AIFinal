@@ -11,7 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
-        public LRManager SceneManager;
+        public LRManager RoomManager;
         public BoxCollider MyCollider;
         public Text TextArea;
 
@@ -25,7 +25,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && SceneManager.HaveFlashlight)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && RoomManager.HaveFlashlight)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -64,7 +64,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                //SceneManager.LoadScene("HouseInterior");
+                SceneManager.LoadScene("HouseHallway");
             }
         }
     }

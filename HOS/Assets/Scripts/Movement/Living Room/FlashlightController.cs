@@ -13,7 +13,7 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public CapsuleCollider MyCollider;
         public Text TextArea;
-        public LRManager SceneManager;
+        public LRManager RoomManager;
 
         // Use this for initialization
         void Start()
@@ -25,7 +25,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !SceneManager.HaveFlashlight)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !RoomManager.HaveFlashlight)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -63,7 +63,7 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
                 TextArea.text = ("A flashlight! Perfect!");
-                SceneManager.HaveFlashlight = true;
+                RoomManager.HaveFlashlight = true;
 
                 // Add flashlight to inventory
             }

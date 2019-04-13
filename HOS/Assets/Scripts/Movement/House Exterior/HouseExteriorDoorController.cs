@@ -105,7 +105,7 @@ namespace HOS
                 else
 {                   if (MovementScript.InteriorGhost)
                     {
-                        SceneManager.LoadScene("HouseInterior");
+                        SceneManager.LoadScene("HouseHallway");
                     }
                     else
                     {
