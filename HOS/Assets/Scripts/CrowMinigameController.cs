@@ -24,8 +24,10 @@ public class CrowMinigameController : MonoBehaviour
     public GameObject PlayerLifeImage;
     public Canvas UICanvas;
     public int TimesCrowDistracted = 0;
+    public float CrowResetTimer = 0;
+    public int IsCrowReset = false;
     public Text WormText;
-        public HMCenterManager CenterManager;
+    public HMCenterManager CenterManager;
 
 	// Use this for initialization
 	void Start () 
@@ -36,16 +38,26 @@ public class CrowMinigameController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update()
-    {
-        if (!IsCrowDistracted)
         {
-            AttackPlayer();
-        }
-        else
-        {
-            MoveToWorm();
-        }
-
+            if (!IsCrowDistracted && !IsCrowReset)
+            {
+                AttackPlayer();
+            }
+            else
+            {
+                MoveToWorm();
+            }
+        
+            if (IsCrowReset && CrowResetTimer > 3)
+            {
+                IsCrowReset = false;
+                IsCrowDistracted = false;
+            }
+            if (IsCrowReset)
+            {
+                RunFromPlayer();
+            }
+            CrowResetTimer += Time.deltaTime;
         if (Input.GetKey(KeyCode.W))
         {
             WormThrowerObject.transform.position += Vector3.up / 2;
@@ -109,6 +121,7 @@ public class CrowMinigameController : MonoBehaviour
             IsGameOver = true;
             Manager.MasterInventory.AddInventoryItem(InventoryItem.MarblePiece);
                 CenterManager.HasStar = true;
+                this.gameObject.transform.parent.gameObject.SetActive(false);
         }   
         UpdateWorms();
 	}
@@ -126,6 +139,13 @@ public class CrowMinigameController : MonoBehaviour
         AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position,timeStep);
         AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,WormThrowerScript.WormThrown.transform.position);
     }
+
+        void RunFromPlayer()
+        {
+            float timeStep = speed * Time.deltaTime;
+            AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, -Player.transform.position,timeStep);
+            AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,-Player.transform.position);
+        }
 
     void DetermineNumberOfWorms()
     {
@@ -156,6 +176,9 @@ public class CrowMinigameController : MonoBehaviour
         {
             LifeArray[PlayerHP -1].SetActive(false);
             PlayerHP -= 1;
+            IsCrowReset = true;
+                IsCrowDistracted = true;
+            CrowResetTimer = 0;
         }
 
         if (PlayerHP <= 0)
