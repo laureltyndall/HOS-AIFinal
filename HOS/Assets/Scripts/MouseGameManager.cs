@@ -5,10 +5,10 @@ using System;
 using HOS;
 
 [Serializable]
-public class MouseGameManager
-{ 
+public class MouseGameManager : MonoBehaviour
+{
 
-    public GameObject mouse;
+    [HideInInspector] public GameObject mouse;
     public List<Transform> wayPointsForAI;
     private StateController sc;
    
