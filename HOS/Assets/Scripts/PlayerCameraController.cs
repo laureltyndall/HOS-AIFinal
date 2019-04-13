@@ -371,6 +371,28 @@ namespace HOS
                         CanBackup = false;
                     }
                 }
+                if (CurrentWaypoint == WaypointList[4])
+                {
+                    if (!UTurnSelected)      // Looking at rock
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = false;
+                        CanBackup = false;
+                    }
+                    else    // Looking at maze entrance
+                    {
+                        CanUturn = true;
+                        CanOrbit = false;
+                        CanLeftTurn = false;
+                        CanRightTurn = false;
+                        CanForward = true;
+                        CanBackup = false;
+                    }
+                }
+
             }
 
 
@@ -1378,7 +1400,31 @@ namespace HOS
                                 UTurnSelected = false;
                             }
                         } // By puzzle
-
+                        else if (CurrentWaypoint == WaypointList[4])
+                        {
+                            if (!UTurnSelected)         // Looking at bushes
+                            {
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Looking at maze entrance
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                                UTurnSelected = false;
+                            }
+                        } // By rock bushes
                     }
                 }
 
@@ -1393,6 +1439,10 @@ namespace HOS
                         {
                               Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                             //Camera.main.transform.Rotate(40f, -175f, 0);
+                        }
+                        if(CurrentWaypoint == WaypointList[4])
+                        {
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                         }
                     }
                 }

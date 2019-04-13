@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class FountainPaneController : MonoBehaviour
+    public class RockController : MonoBehaviour
     {
         public bool Clickable = false;
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
         public HMCenterManager HMCManager;
-        public MeshCollider MyCollider;
+        public BoxCollider MyCollider;
         public Text TextArea;
+        public GameObject RockSpot1;
+        public GameObject RockDisplaced;
+        public GameObject Worms;
 
         // Use this for initialization
         void Start()
@@ -25,8 +28,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !HMCManager.HasWorms)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -37,7 +39,6 @@ namespace HOS
                 Clickable = false;
                 MyCollider.enabled = false;
             }
-
         }
 
         void OnMouseOver()
@@ -45,7 +46,7 @@ namespace HOS
             if (Clickable)
             {
                 // If Inventory does not have flashlight
-                Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(MovementScript.CursorList[5], Vector2.zero, CursorMode.Auto);
                 // else
                 // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }
@@ -66,21 +67,11 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
-                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
-                MovementScript.CanUturn = true;
-                MovementScript.CanOrbit = false;
-                MovementScript.CanLeftTurn = false;
-                MovementScript.CanRightTurn = false;
-                MovementScript.CanForward = true;
-                MovementScript.CanBackup = false;
-                MovementScript.UTurnSelected = false;
+                TextArea.text = "These earthworms should do the trick.";
 
-                if(HMCManager.PuzzleFound)
-                {
-                    TextArea.text = "That bird has the star!";
-                }
+                RockDisplaced.SetActive(true);
+                Worms.SetActive(true);
+                RockSpot1.SetActive(false);
             }
         }
     }
