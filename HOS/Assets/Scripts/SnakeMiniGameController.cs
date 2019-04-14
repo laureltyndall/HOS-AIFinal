@@ -82,9 +82,9 @@ public class SnakeMiniGameController : MonoBehaviour
             if (CurrentSnakeState == SnakeState.Move)
             {
                 if (SnakeMoveDirection == 1)
-                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.2,0,0);
+                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.2f,0,0);
                 else if (SnakeMoveDirection == 2)
-                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.2,0,0);
+                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.2f,0,0);
             }
             if (CurrentSnakeState == SnakeState.Attack)
             {
