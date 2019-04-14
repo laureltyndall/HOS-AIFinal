@@ -24,7 +24,7 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && !HallScript.HaveList)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !HallScript.HaveList)
             {
                 // If we are right next to the gate and we are looking at it
                 Clickable = true;
@@ -63,10 +63,10 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
-                //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
+                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 200f, 0f);
+                Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
+                MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
                 MovementScript.CanUturn = false;
                 MovementScript.CanOrbit = false;
                 MovementScript.CanLeftTurn = false;

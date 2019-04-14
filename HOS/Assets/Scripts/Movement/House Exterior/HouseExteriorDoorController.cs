@@ -122,7 +122,7 @@ namespace HOS
                     {
                         ManagerScript.HallFromRoom = false;
                         ManagerScript.HallfromOutside = true;
-                        SceneManager.LoadScene("HouseHallway");
+                        SceneManager.LoadScene("HouseHallWay");
                     }
                     else
                     {

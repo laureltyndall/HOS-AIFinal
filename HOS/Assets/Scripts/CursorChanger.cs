@@ -68,7 +68,7 @@ namespace HOS
                         }
                     }
 
-                    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior" || MovementScript.CurrentScene.name == "Kitchen" || MovementScript.CurrentScene.name == "Living Room" || MovementScript.CurrentScene.name == "HedgeMazeCenter")
+                    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior" || MovementScript.CurrentScene.name == "Kitchen" || MovementScript.CurrentScene.name == "Living Room" || MovementScript.CurrentScene.name == "HedgeMazeCenter" || MovementScript.CurrentScene.name == "HouseHallWay")
                     {
                         if ((Input.mousePosition.x >= 410 && Input.mousePosition.x <= 850) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
                         {

@@ -280,8 +280,10 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
@@ -1932,8 +1934,10 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
@@ -3679,8 +3683,10 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 574857156}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
@@ -5157,7 +5163,9 @@ MonoBehaviour:
   MovementScript: {fileID: 0}
   MyCollider: {fileID: 652189458}
   TextArea: {fileID: 574857156}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1 &669948470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5563,6 +5571,10 @@ MonoBehaviour:
   KitchenFromGame: 0
   LRFromHall: 0
   LRFromGame: 0
+  CenterFromMaze: 0
+  CenterFromGame: 0
+  HallfromOutside: 0
+  HallFromRoom: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}
@@ -6167,9 +6179,11 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 1886570734}
   TextArea: {fileID: 574857156}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1 &805866420
 GameObject:
   m_ObjectHideFlags: 0
@@ -7663,7 +7677,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 958684463}
   TextArea: {fileID: 574857156}
   On: {fileID: 1829250497}
@@ -9004,7 +9018,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 1154934503}
   TextArea: {fileID: 574857156}
 --- !u!23 &1154934502
@@ -10778,8 +10792,10 @@ MonoBehaviour:
   InteriorGhost: 0
   TextArea: {fileID: 0}
   LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
   TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
@@ -11212,7 +11228,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 1464050069}
   TextArea: {fileID: 574857156}
 --- !u!23 &1464050068
@@ -11614,7 +11630,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 1517954954}
   TextArea: {fileID: 574857156}
 --- !u!23 &1517954953
@@ -13083,7 +13099,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 1348225016}
+  RoomManager: {fileID: 1348225016}
   MyCollider: {fileID: 1819217368}
   TextArea: {fileID: 574857156}
 --- !u!23 &1819217367

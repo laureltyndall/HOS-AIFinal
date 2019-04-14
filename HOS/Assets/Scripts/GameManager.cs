@@ -142,7 +142,7 @@ namespace HOS
                 //HouseFromGrounds = false;
                 //HousefromInside = true;
             }
-            else if (SceneManager.GetActiveScene().name == "HouseHallway" && CurrentGameState == GameState.None)
+            else if (SceneManager.GetActiveScene().name == "HouseHallWay" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
@@ -153,6 +153,8 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
+                MasterInventory.AddInventoryItem(InventoryItem.Basket);
+                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 // Test from grounds
                 HallfromOutside = true;

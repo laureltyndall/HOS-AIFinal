@@ -31,6 +31,11 @@ namespace HOS
                 Clickable = true;
                 MyCollider.enabled = true;
             }
+            else if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+            {
+                Clickable = true;
+                MyCollider.enabled = true;
+            }
             else
             {
                 Clickable = false;

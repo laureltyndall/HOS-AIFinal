@@ -11,7 +11,8 @@ namespace HOS
         public bool LightsOn = false;
         public bool HaveList = false;
         public Text TextArea;
-        private bool GhostSeen = false;
+        public bool GhostSeen = false;
+        public bool GhostAttacking = false;
         public GameObject Ghost;
         private float GhostActiveCounter = 3f;
         public GameObject List;
@@ -48,7 +49,7 @@ namespace HOS
                     List.SetActive(false);
                 }
 
-                if(!GhostSeen && ManagerScript.HallfromOutside)
+                if(!GhostSeen && ManagerScript.HallfromOutside & !HaveList)
                 {
                     TextArea.text = "Hello? " + MovementScript.SiblingName + "?";
                 }
@@ -82,20 +83,9 @@ namespace HOS
 
                 }
 
-                if(HaveList && MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+                if(HaveList && MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     List.SetActive(false);
-
-                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[0].transform.position;
-                    //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
-                    //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
-                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[0];
-                    MovementScript.CanUturn = false;
-                    MovementScript.CanOrbit = true;
-                    MovementScript.CanLeftTurn = false;
-                    MovementScript.CanRightTurn = false;
-                    MovementScript.CanForward = false;
-                    MovementScript.CanBackup = false;
                 }
             }
         }
@@ -104,6 +94,19 @@ namespace HOS
         {
             // Turn on music
             TextArea.text = "Where's that music coming from?";
+
+            HaveList = true;
+
+            MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
+            MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            Camera.main.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+            MovementScript.CanUturn = false;
+            MovementScript.CanOrbit = true;
+            MovementScript.CanLeftTurn = false;
+            MovementScript.CanRightTurn = false;
+            MovementScript.CanForward = false;
+            MovementScript.CanBackup = false;
         }
     }
 }
