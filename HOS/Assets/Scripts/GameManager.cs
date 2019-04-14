@@ -88,7 +88,8 @@ namespace HOS
                 MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(-949.59f,-365.04f,649.05f);
-                CurrentPlayer.transform.Rotate(0f,180f,0f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
