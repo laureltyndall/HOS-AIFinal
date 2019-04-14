@@ -157,12 +157,12 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 // Test from grounds
-                HallfromOutside = true;
-                HallFromRoom = false;
+                //HallfromOutside = true;
+                //HallFromRoom = false;
 
                 // Test from house
-                //HallfromOutside = false;
-                //HallFromRoom = true;
+                HallfromOutside = false;
+                HallFromRoom = true;
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {

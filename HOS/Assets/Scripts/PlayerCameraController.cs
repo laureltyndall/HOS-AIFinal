@@ -146,7 +146,7 @@ namespace HOS
                             CanForward = true;
                             CanOrbit = false;
                         }
-                        else if(ManagerScript.HallFromRoom)
+                        else if(ManagerScript.HallFromRoom && !ManagerScript.InteriorGhostSeen)
                         {
                             MainCamera = Camera.main;
                             CurrentPlayer.transform.position = WaypointList[3].transform.position;
@@ -154,6 +154,12 @@ namespace HOS
                             CanUturn = false;
                             CanForward = false;
                             CanOrbit = true;
+                        }
+                        else if (ManagerScript.HallFromRoom && ManagerScript.InteriorGhostSeen)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
                         }
                     }
                     else if (CurrentScene.name == "Kitchen")
