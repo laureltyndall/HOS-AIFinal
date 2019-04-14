@@ -7,16 +7,26 @@ using UnityEngine.AI;
 [Serializable]
 public class MouseManager
 {
-    public Transform SpawnPoint;
+    public Transform m_SpawnPoint;
+    [HideInInspector] public int m_PlayerNumber;
     [HideInInspector] public GameObject m_Instance;
+    [HideInInspector] public int m_Wins;
     [HideInInspector] public List<Transform> m_WayPointList;
-    private StateController controller;
-    
+
+    private GameObject m_CanvasGameObject;
+    private StateController m_StateController;
 
     public void SetupAI(List<Transform> waypointList)
     {
-        controller = m_Instance.GetComponent<StateController>();
-        controller.SetupAI(true, waypointList);
+        m_StateController = m_Instance.GetComponent<StateController>();
+        m_StateController.SetupAI(true, waypointList);
+
+        m_CanvasGameObject = m_Instance.GetComponentInChildren<Canvas>().gameObject;
+
+        MeshRenderer[] renderers = m_Instance.GetComponentsInChildren<MeshRenderer>();
+        
     }
+
     
+
 }
