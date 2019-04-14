@@ -4,6 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu (menuName = "PluggableAI/Action/Patrol")] 
 public class PatrolAction : Action {
+    public bool navmeshstop = false;
+
     
     public override void Act (StateController controller)
     {
@@ -13,7 +15,7 @@ public class PatrolAction : Action {
     private void Patrol (StateController controller)
     {
         controller.navMeshAgent.destination = controller.wayPointList[controller.nextWayPoint].position;
-        controller.navMeshAgent.Resume();
+        controller.navMeshAgent.isStopped = false;
 
         if (controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance && !controller.navMeshAgent.pathPending)
         {
