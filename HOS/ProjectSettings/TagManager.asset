@@ -41,6 +41,7 @@ TagManager:
   - SiblingLetterSprite
   - SnakeMinigame
   - CrowGameObject
+  - Waypoint
   layers:
   - Default
   - TransparentFX

@@ -74731,6 +74731,8 @@ MonoBehaviour:
   HMCManager: {fileID: 1373353007}
   MyCollider: {fileID: 1088593670}
   TextArea: {fileID: 300580929}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1001 &1088668774
 Prefab:
   m_ObjectHideFlags: 0
@@ -80002,6 +80004,7 @@ MonoBehaviour:
   FountainClosed: {fileID: 860717207}
   FountainOpen: {fileID: 512608615}
   CrowScript: {fileID: 1045530072}
+  PlayerCameraFound: 0
   CanMove: 0
   ClothFound: 0
   PuzzleFound: 0
@@ -90454,13 +90457,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1373353006}
         m_MethodName: LoadOnClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
