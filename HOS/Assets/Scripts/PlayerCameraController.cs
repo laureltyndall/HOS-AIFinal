@@ -80,7 +80,7 @@ namespace HOS
                         CanUturn = true;
                         CanForward = true;
                     }
-                    if (CurrentScene.name == "Gate Scene")
+                    else if (CurrentScene.name == "Gate Scene")
                     {
                         MainCamera = Camera.main;
                         CurrentPlayer.transform.position = WaypointList[0].transform.position;
@@ -88,7 +88,7 @@ namespace HOS
                         CanUturn = true;
                         CanForward = true;
                     }
-                    if (CurrentScene.name == "HouseGrounds")
+                    else if (CurrentScene.name == "HouseGrounds")
                     {
                         if (ManagerScript.GroundsFromGate)
                         {
@@ -111,7 +111,7 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
-                    if (CurrentScene.name == "HouseExterior")
+                    else if(CurrentScene.name == "HouseExterior")
                     {
                         if (ManagerScript.HouseFromGrounds)
                         {
@@ -135,7 +135,28 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
-                    if (CurrentScene.name == "Kitchen")
+                    else if (CurrentScene.name == "HouseHallWay")
+                    {
+                        if (ManagerScript.HallfromOutside)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanUturn = true;
+                            CanForward = true;
+                            CanOrbit = false;
+                        }
+                        else if(ManagerScript.HallFromRoom)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            CanUturn = false;
+                            CanForward = false;
+                            CanOrbit = true;
+                        }
+                    }
+                    else if (CurrentScene.name == "Kitchen")
                     {
                         if (ManagerScript.KitchenFromHall)
                         {
@@ -159,7 +180,7 @@ namespace HOS
                             UTurnSelected = false;
                         }
                     }
-                    if (CurrentScene.name == "Living Room")
+                    else if (CurrentScene.name == "Living Room")
                     {
                         if (ManagerScript.LRFromHall)
                         {
@@ -181,7 +202,7 @@ namespace HOS
                             LRMniGameFin = true;
                         }
                     }
-                    if (CurrentScene.name == "HedgeMazeCenter")
+                    else if (CurrentScene.name == "HedgeMazeCenter")
                     {
                         if (ManagerScript.CenterFromMaze)
                         {
@@ -233,7 +254,7 @@ namespace HOS
                     CanBackup = true;
                 }
             }
-            if (CurrentScene.name == "HouseGrounds")
+            else if(CurrentScene.name == "HouseGrounds")
             {
                 if (CurrentWaypoint == WaypointList[0])     // Near Gate
                 {
@@ -320,14 +341,14 @@ namespace HOS
                     }
                 }
             }
-            if (CurrentScene.name == "Kitchen")
+            else if (CurrentScene.name == "Kitchen")
             {
                 if(CurrentWaypoint == WaypointList[4])
                 {
                     UTurnSelected = false;
                 }
             }
-            if (CurrentScene.name == "HedgeMazeCenter")
+            else if (CurrentScene.name == "HedgeMazeCenter")
             {
                 if (CurrentWaypoint == WaypointList[2])     // Near fountain
                 {
@@ -601,7 +622,7 @@ namespace HOS
                 {
                     if (CurrentScene.name == "Gate Scene")
                     {
-                        if (CurrentWaypoint == WaypointList[4])
+                        if (CurrentWaypoint == WaypointList[3])
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
@@ -1081,6 +1102,45 @@ namespace HOS
                     }
                 }
             }
+            if (CurrentScene.name == "HouseHallWay")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])
+                        {
+                            if (!UTurnSelected)
+                            {
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = true;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                CanUturn = true;        // Uturn able to turn on
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;      // forward able to 
+                                CanBackup = false;
+                            }
+                        }
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+                    UTurnSelected = true;
+                }
+            }
+
             else if (CurrentScene.name == "Kitchen")
             {
                 if (CurrentCursor == CursorType.Forward)
@@ -1475,6 +1535,12 @@ namespace HOS
                 }
             }
 
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            CurrentCursor = CursorType.Default;
+
+            //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+            //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+            //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
         }
 
         public void MovePlayerUturn()

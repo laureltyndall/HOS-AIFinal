@@ -62,7 +62,6 @@ namespace HOS
         public void TurnOffNote()
         {
             TextArea.text = "'Open the fountain? I didn't see a fountain out there. Could it be somewhere in the hedge maze?";
-            // Add note to inventory
         }
     }
 }

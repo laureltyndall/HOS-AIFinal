@@ -486,7 +486,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: f539a507dbd2b17419fb2e81233b1c08, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3e13ef90273da63488c50a408a69f152, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -585,6 +585,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07da47c3767d1f144afadb0baf13c72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 99803976}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!23 &99803975
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1466,7 +1473,7 @@ Transform:
   - {fileID: 477698361}
   - {fileID: 1861591291}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &147903348
 Mesh:
@@ -3637,6 +3644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e3586263b8148408c085c220a86963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 460599483}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
 --- !u!1 &464746431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,7 +4270,6 @@ GameObject:
   - component: {fileID: 495901154}
   - component: {fileID: 495901153}
   - component: {fileID: 495901152}
-  - component: {fileID: 495901151}
   - component: {fileID: 495901157}
   m_Layer: 0
   m_Name: To-Do
@@ -4267,25 +4278,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &495901151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495901150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe595c33488054242bd40cb925ee554b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Clickable: 0
-  NewCursor: {fileID: 2800000, guid: d85b60e1ace1a5848b786318f0943654, type: 3}
-  MovementScript: {fileID: 0}
-  MyCollider: {fileID: 495901154}
-  TextArea: {fileID: 1166121729}
-  KitchenManager: {fileID: 0}
-  ClickCount: 0
-  NotePanel: {fileID: 694384262}
 --- !u!114 &495901152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4379,6 +4371,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a33989626a6bc4a911403e8709ef88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 495901154}
+  TextArea: {fileID: 1166121729}
+  HallManager: {fileID: 1132347713}
+  NotePanel: {fileID: 694384262}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1 &497258991
 GameObject:
   m_ObjectHideFlags: 0
@@ -4494,6 +4494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13d0f1d281e4d4438f3b62f71241715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 502813716}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!23 &502813715
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4968,6 +4975,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe0e6bbe0cd013d43aebb1477e51af56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 578930175}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
 --- !u!23 &578930174
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5491,7 +5503,7 @@ GameObject:
   - component: {fileID: 694384264}
   - component: {fileID: 694384263}
   m_Layer: 5
-  m_Name: Mysterious Note Panel
+  m_Name: Note Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9988,7 +10000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &838526026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12973,6 +12985,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b209dcf6a3a89c8489bcf82fe2e67de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LightsOn: 0
+  HaveList: 0
+  TextArea: {fileID: 1166121729}
+  GhostSeen: 0
+  GhostAttacking: 0
+  Ghost: {fileID: 2042440408}
+  List: {fileID: 495901150}
+  MovementScript: {fileID: 0}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!4 &1132347714
 Transform:
   m_ObjectHideFlags: 0
@@ -14070,87 +14092,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819d124993b77114e94cbcfa7a3802a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1359245464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1359245467}
-  - component: {fileID: 1359245466}
-  - component: {fileID: 1359245465}
-  m_Layer: 0
-  m_Name: Controller - Delete Before Build
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1359245465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359245464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75fe2c6fc440b6c44a8f73c57accc272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentGameState: 0
-  CurrentGameCheckpoint: 0
-  CurrentGameSavepoint: 0
-  CurrentPlayer: {fileID: 0}
-  NewCharacter: 0
-  AudioLibrary: []
-  PuzzleComplete: 0
-  MasterInventory: {fileID: 0}
-  KilledBySnake: 0
-  SnakeBeaten: 0
-  ExteriorGhostSeen: 0
-  InteriorGhostSeen: 0
-  GroundsFromGate: 0
-  GroundsFromHouse: 0
-  HouseFromGrounds: 0
-  HousefromInside: 0
-  KitchenFromHall: 0
-  KitchenFromGame: 0
-  LRFromHall: 0
-  LRFromGame: 0
-  CenterFromMaze: 0
-  CenterFromGame: 0
-  GameOverScreen: {fileID: 0}
-  GameOver: 0
-  PlayerCopy: {fileID: 0}
---- !u!114 &1359245466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359245464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed15228f749e91c418637c171cb16871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeStamp: 10
-  scene_number: 0
-  PauseMenu: {fileID: 0}
-  CurrentGameTime: 0
---- !u!4 &1359245467
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1359245464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.91, y: 3.7881482, z: 32.2899}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 1345110378}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1001 &1360218102
 Prefab:
   m_ObjectHideFlags: 0
@@ -14217,6 +14165,68 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 449748, guid: 8b0e041139b374b4e869fec62970a236, type: 2}
   m_PrefabInternal: {fileID: 1360218102}
+--- !u!1 &1363163320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1363163323}
+  - component: {fileID: 1363163322}
+  - component: {fileID: 1363163321}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1363163321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363163320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1363163322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363163320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1363163323
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363163320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390921701
 GameObject:
   m_ObjectHideFlags: 0
@@ -14465,7 +14475,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7b96f81f11d58804287ce1e6ea9fb797, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b96f81f11d58804287ce1e6ea9fb797, type: 3}
@@ -14488,7 +14498,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 0}
+  RoomManager: {fileID: 0}
   MyCollider: {fileID: 1438612894}
   TextArea: {fileID: 0}
   On: {fileID: 324555170}
@@ -14943,7 +14953,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh920364
+  m_Name: pb_Mesh67072
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15740,7 +15750,7 @@ Transform:
   - {fileID: 578930172}
   - {fileID: 1345110376}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1627206673
 Prefab:
@@ -15879,7 +15889,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1132347713}
         m_MethodName: TurnOffNote
         m_Mode: 1
         m_Arguments:
@@ -15936,6 +15946,89 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1672330098}
+--- !u!1 &1699217404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1699217407}
+  - component: {fileID: 1699217406}
+  - component: {fileID: 1699217405}
+  m_Layer: 0
+  m_Name: Controller - Delete Before Build (1)
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1699217405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699217404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fe2c6fc440b6c44a8f73c57accc272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentGameState: 0
+  CurrentGameCheckpoint: 0
+  CurrentGameSavepoint: 0
+  CurrentPlayer: {fileID: 0}
+  NewCharacter: 0
+  AudioLibrary: []
+  PuzzleComplete: 0
+  MasterInventory: {fileID: 0}
+  KilledBySnake: 0
+  SnakeBeaten: 0
+  ExteriorGhostSeen: 0
+  InteriorGhostSeen: 0
+  GroundsFromGate: 0
+  GroundsFromHouse: 0
+  HouseFromGrounds: 0
+  HousefromInside: 0
+  KitchenFromHall: 0
+  KitchenFromGame: 0
+  LRFromHall: 0
+  LRFromGame: 0
+  CenterFromMaze: 0
+  CenterFromGame: 0
+  HallfromOutside: 0
+  HallFromRoom: 0
+  GameOverScreen: {fileID: 0}
+  GameOver: 0
+  PlayerCopy: {fileID: 0}
+--- !u!114 &1699217406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699217404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed15228f749e91c418637c171cb16871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeStamp: 10
+  scene_number: 0
+  PauseMenu: {fileID: 0}
+  CurrentGameTime: 0
+--- !u!4 &1699217407
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1699217404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.91, y: 3.7881482, z: 32.2899}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1699718099
 Prefab:
   m_ObjectHideFlags: 0
@@ -19545,6 +19638,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 449748, guid: 8b0e041139b374b4e869fec62970a236, type: 2}
   m_PrefabInternal: {fileID: 2041394926}
+--- !u!1 &2042440408 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1414172965916956, guid: 113d357703fe77c4c8a7db352d3ce666,
+    type: 2}
+  m_PrefabInternal: {fileID: 24014617}
 --- !u!1 &2052278137
 GameObject:
   m_ObjectHideFlags: 0
@@ -20231,7 +20329,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2069494877}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.98, y: -2.55, z: -1.6}
+  m_LocalPosition: {x: -3.97, y: -2.55, z: -2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 143522124}
