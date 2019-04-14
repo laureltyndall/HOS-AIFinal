@@ -19,30 +19,37 @@ public class MazePlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()  
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            PlayerBody.velocity = Vector3.forward * Speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            PlayerBody.velocity = Vector3.back * Speed;
-        } 
-        if (Input.GetKey(KeyCode.A))
-        {
-            PlayerBody.velocity = Vector3.left * Speed;
-        } 
-        if (Input.GetKey(KeyCode.D))
-        {
-            PlayerBody.velocity = Vector3.right * Speed;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        float HorzMovement = Input.GetAxis("Horizontal");
+        float VertMovement = Input.GetAxis("Vertical");
+//        if (Input.GetKey(KeyCode.W))
+//        {
+//            //PlayerBody.velocity = Vector3.forward * Speed;
+//        }
+//        if (Input.GetKey(KeyCode.S))
+//        {
+//           // PlayerBody.velocity = Vector3.back * Speed;
+//        } 
+//        if (Input.GetKey(KeyCode.A))
+//        {
+//            //PlayerBody.velocity = Vector3.left * Speed;
+//            Player.transform.Rotate(0,-5,0);
+//
+//        } 
+//        if (Input.GetKey(KeyCode.D))
+//        {
+//            //PlayerBody.velocity = Vector3.right * Speed;
+//            Player.transform.Rotate(0,5,0);
+//
+//        }
+        if (Input.GetKey(KeyCode.Q))
         {
             Player.transform.Rotate(0,-5,0);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.E))
         {
             Player.transform.Rotate(0,5,0);
-        } 
-
+       } 
+        Vector3 Movement = new Vector3(HorzMovement, 0 , VertMovement);
+        PlayerBody.AddForce(Movement * Speed);
 	}
 }
