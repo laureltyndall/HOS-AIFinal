@@ -13,6 +13,8 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -24,25 +26,37 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            // If player does not have flashlight in inventory
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+            if (!ManagerFound)
             {
-                // If we are right next to the grounds and we are looking at them
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
-            //else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && !MovementScript.UTurnSelected && XXX)player has flashlight in inventory
-            //{
-            //    // If we are right next to the grounds and we are looking at them
-            //    Clickable = true;
-            //    MyCollider.enabled = true;
-            //}
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                // If player does not have flashlight in inventory
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+                {
+                    // If we are right next to the grounds and we are looking at them
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                //else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && !MovementScript.UTurnSelected && XXX)player has flashlight in inventory
+                //{
+                //    // If we are right next to the grounds and we are looking at them
+                //    Clickable = true;
+                //    MyCollider.enabled = true;
+                //}
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
-
         }
 
         void OnMouseOver()
@@ -71,10 +85,18 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                // If Inventory does not have flashlight
-                TextArea.text = ("I shouldn't go back out there right now.");
-                // else
-                //SceneManager.LoadScene("HouseGrounds");
+                if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
+                {
+                    ManagerScript.GroundsFromHouse = true;
+                    ManagerScript.GroundsFromGate = false;
+                    SceneManager.LoadScene("HouseGrounds");
+                }
+                else
+                {
+                    // If Inventory does not have flashlight
+                    TextArea.text = ("I shouldn't go back out there right now.");
+                }
+
             }
         }
     }

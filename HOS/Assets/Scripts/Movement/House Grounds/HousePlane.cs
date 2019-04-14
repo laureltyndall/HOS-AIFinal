@@ -13,6 +13,8 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -24,16 +26,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !MovementScript.UTurnSelected)
+            if (!ManagerFound)
             {
-                // If we are right next to the house and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !MovementScript.UTurnSelected)
+                {
+                    // If we are right next to the house and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -61,6 +76,8 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+                ManagerScript.HouseFromGrounds = true;
+                ManagerScript.HousefromInside = false;
                 SceneManager.LoadScene("HouseExterior");
 
            //     TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);

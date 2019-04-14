@@ -14,6 +14,8 @@ namespace HOS
         public CapsuleCollider MyCollider;
         public Text TextArea;
         public LRManager RoomManager;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -25,16 +27,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !RoomManager.HaveFlashlight)
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !RoomManager.HaveFlashlight)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -62,10 +77,10 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+                // Add flashlight to inventory
+                ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
                 TextArea.text = ("A flashlight! Perfect!");
                 RoomManager.HaveFlashlight = true;
-
-                // Add flashlight to inventory
             }
         }
     }

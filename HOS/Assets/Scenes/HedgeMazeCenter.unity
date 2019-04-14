@@ -9305,7 +9305,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1529222225054880, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4721871082162954, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_LocalRotation.x
@@ -73287,11 +73287,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 472700, guid: d638ef2ca2fe20c4c9c08e125692d3f4, type: 2}
   m_PrefabInternal: {fileID: 995622005}
---- !u!1 &1004777455 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1529222225054880, guid: 180fa1ade9116834b88ce30201e719bf,
-    type: 2}
-  m_PrefabInternal: {fileID: 438010478}
 --- !u!4 &1008121540 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4877536263689732, guid: b4c7a05607a7a354d88bc72eee629bd4,
@@ -73881,6 +73876,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae53dd95b9e800b448c5bd624b6429e8, type: 3}
   m_IsPrefabParent: 0
+--- !u!114 &1045530072 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114994011034658106, guid: b4c7a05607a7a354d88bc72eee629bd4,
+    type: 2}
+  m_PrefabInternal: {fileID: 885113786}
+  m_Script: {fileID: 11500000, guid: 0456122fe5330c84fabc2a2d12db1647, type: 3}
 --- !u!1001 &1054921667
 Prefab:
   m_ObjectHideFlags: 0
@@ -77071,7 +77072,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1259182129491376, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4718569997935362, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -79991,8 +79992,8 @@ MonoBehaviour:
   Controller: {fileID: 1373353006}
   Wolf: {fileID: 1291392172}
   Smoke: {fileID: 1929427771}
-  AnneCamera: {fileID: 1004777455}
-  AlexCamera: {fileID: 1581181089}
+  PlayerCamera: {fileID: 0}
+  PlayerAvatar: {fileID: 0}
   WolfCamera: {fileID: 592311002}
   CrowWithStar: {fileID: 1523598690}
   GameOverPanel: {fileID: 1145316156}
@@ -80000,6 +80001,7 @@ MonoBehaviour:
   CrowGame: {fileID: 0}
   FountainClosed: {fileID: 860717207}
   FountainOpen: {fileID: 512608615}
+  CrowScript: {fileID: 1045530072}
   CanMove: 0
   ClothFound: 0
   PuzzleFound: 0
@@ -83584,11 +83586,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 472700, guid: d638ef2ca2fe20c4c9c08e125692d3f4, type: 2}
   m_PrefabInternal: {fileID: 1575676359}
---- !u!1 &1581181089 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1259182129491376, guid: f59f18ac13fd09b46aef2f1bf8f777c8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1219166004}
 --- !u!1001 &1582472738
 Prefab:
   m_ObjectHideFlags: 0

@@ -14,6 +14,8 @@ namespace HOS
         public BoxCollider MyCollider;
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -25,16 +27,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !KitchenManager.HasBox)
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !KitchenManager.HasBox)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -61,6 +76,8 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                // Add box to inventory
+                ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Basket);
 
                 if (KitchenManager.HasCheese)
                 {
@@ -73,8 +90,6 @@ namespace HOS
 
 
                 KitchenManager.HasBox = true;
-
-                // Add box to inventory
             }
         }
     }
