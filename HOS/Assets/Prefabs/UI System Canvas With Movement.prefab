@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114889770152506834}
   m_Layer: 5
   m_Name: RawImage
-  m_TagString: Flashlight
+  m_TagString: FlashlightSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 114042151245126032}
   m_Layer: 5
   m_Name: RawImage (8)
-  m_TagString: MysteryChecklist
+  m_TagString: MysteryChecklistSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 114333728785277844}
   m_Layer: 5
   m_Name: Slot 9
-  m_TagString: Untagged
+  m_TagString: B9
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 114251013232474446}
   m_Layer: 5
   m_Name: Slot 3
-  m_TagString: Untagged
+  m_TagString: B3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 114204194493311716}
   m_Layer: 5
   m_Name: Slot 1
-  m_TagString: Untagged
+  m_TagString: B1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 114735958275316176}
   m_Layer: 5
   m_Name: Slot 2
-  m_TagString: Untagged
+  m_TagString: B2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 114088668684415024}
   m_Layer: 5
   m_Name: RawImage (4)
-  m_TagString: Basket
+  m_TagString: BasketSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 114509970045553662}
   m_Layer: 5
   m_Name: RawImage (9)
-  m_TagString: SiblingLetter
+  m_TagString: SiblingLetterSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,7 +443,7 @@ GameObject:
   - component: {fileID: 114084504157294592}
   m_Layer: 5
   m_Name: Slot 11
-  m_TagString: Untagged
+  m_TagString: B11
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 114163387245328990}
   m_Layer: 5
   m_Name: Slot 4
-  m_TagString: Untagged
+  m_TagString: B4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 114374418219347824}
   m_Layer: 5
   m_Name: Slot 12
-  m_TagString: Untagged
+  m_TagString: B12
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 114970310588692804}
   m_Layer: 5
   m_Name: Slot 10
-  m_TagString: Untagged
+  m_TagString: B10
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 114835694292513272}
   m_Layer: 5
   m_Name: RawImage (5)
-  m_TagString: Worms
+  m_TagString: WormsSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   - component: {fileID: 114748105979498028}
   m_Layer: 5
   m_Name: RawImage (7)
-  m_TagString: Stick
+  m_TagString: StickSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -722,7 +722,7 @@ GameObject:
   - component: {fileID: 114074864167407748}
   m_Layer: 5
   m_Name: Inventory Button
-  m_TagString: Untagged
+  m_TagString: InventoryActiveButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 114993591000089042}
   m_Layer: 5
   m_Name: Slot 7
-  m_TagString: Untagged
+  m_TagString: B7
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 114311104702200344}
   m_Layer: 5
   m_Name: RawImage (6)
-  m_TagString: MarblePiece
+  m_TagString: MarblePieceSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 114506556541161954}
   m_Layer: 5
   m_Name: RawImage (2)
-  m_TagString: Cheese
+  m_TagString: CheeseSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -889,7 +889,6 @@ GameObject:
   - component: {fileID: 222735380480598218}
   - component: {fileID: 114460030097516064}
   - component: {fileID: 114861078476956138}
-  - component: {fileID: 114325894197430522}
   m_Layer: 5
   m_Name: Permanent UI System
   m_TagString: Untagged
@@ -910,7 +909,7 @@ GameObject:
   - component: {fileID: 114719846041522566}
   m_Layer: 5
   m_Name: Slot 6
-  m_TagString: Untagged
+  m_TagString: B6
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +927,7 @@ GameObject:
   - component: {fileID: 114822573707346048}
   m_Layer: 5
   m_Name: Slot 8
-  m_TagString: Untagged
+  m_TagString: B8
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -945,7 +944,7 @@ GameObject:
   - component: {fileID: 114119831973429508}
   m_Layer: 5
   m_Name: RawImage (1)
-  m_TagString: Trowel
+  m_TagString: TrowelSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -963,7 +962,7 @@ GameObject:
   - component: {fileID: 114113987779844134}
   m_Layer: 5
   m_Name: Slot 5
-  m_TagString: Untagged
+  m_TagString: B5
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -980,7 +979,7 @@ GameObject:
   - component: {fileID: 114401615907032890}
   m_Layer: 5
   m_Name: RawImage (3)
-  m_TagString: Move-InChecklist
+  m_TagString: Move-InChecklistSprite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,17 +1170,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114325894197430522}
-        m_MethodName: ActivateMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_MethodName: TogglePanel
         m_Mode: 2
@@ -1255,7 +1243,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b3f1982d77aa609468660480b5eb0c90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf19e0f7b76b02e459460186732562e0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1340,8 +1328,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
   CanLeftTurn: 0
@@ -1463,8 +1457,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
   CanLeftTurn: 0
@@ -1850,32 +1850,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &114325894197430522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1902344125516146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d81e04e6849d22e48bb2dc2fda9676d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
-  InventoryButtonList:
-  - {fileID: 114425341174695192}
-  - {fileID: 114735958275316176}
-  - {fileID: 114251013232474446}
-  - {fileID: 114163387245328990}
-  - {fileID: 114113987779844134}
-  - {fileID: 114719846041522566}
-  - {fileID: 114993591000089042}
-  - {fileID: 114822573707346048}
-  - {fileID: 114333728785277844}
-  - {fileID: 114970310588692804}
-  - {fileID: 114084504157294592}
-  - {fileID: 114374418219347824}
-  ThisPicture: {fileID: 114889770152506834}
 --- !u!114 &114333728785277844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2088,8 +2062,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
   CanLeftTurn: 0
@@ -2973,8 +2953,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
   CanLeftTurn: 0
@@ -3180,8 +3166,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 1
   CanLeftTurn: 0
@@ -3385,8 +3377,14 @@ MonoBehaviour:
   CurrentCursor: 1
   PlayerFound: 0
   UTurnSelected: 0
+  InteriorGhost: 0
+  TextArea: {fileID: 0}
+  LRMniGameFin: 0
+  CenterGameFin: 0
   PlayerName: 
   SiblingName: 
+  pronoun: 
+  TurnOffCloseup: 0
   CanUturn: 0
   CanOrbit: 0
   CanLeftTurn: 0

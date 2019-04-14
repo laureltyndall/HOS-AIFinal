@@ -12697,6 +12697,7 @@ MonoBehaviour:
   KitchenFromGame: 0
   LRFromHall: 0
   LRFromGame: 0
+  LRFromUnderground: 0
   CenterFromMaze: 0
   CenterFromGame: 0
   HallfromOutside: 0
@@ -14030,7 +14031,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1069012345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d81e04e6849d22e48bb2dc2fda9676d2, type: 3}
   m_Name: 
