@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HOS;
 
-public class Patrol : StateMachineBehaviour {
+public class Patrol : NPCBaseFSM {
 
-    GameObject NPC;
     GameObject[] waypoints;
     int currentWP;
 
@@ -16,7 +16,7 @@ public class Patrol : StateMachineBehaviour {
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        NPC = animator.gameObject;
+        base.OnStateEnter(animator, stateInfo, layerIndex);
         currentWP = 0;
 	
 	}
@@ -32,7 +32,7 @@ public class Patrol : StateMachineBehaviour {
         }
 
         //works out where the NPC object is in relation to the waypoints
-        if (Vector3.Distance(waypoints[currentWP].transform.position, NPC.transform.position) < 3.0f)
+        if (Vector3.Distance(waypoints[currentWP].transform.position, NPC.transform.position) < accuracy)
         {
             currentWP++;
             if (currentWP >= waypoints.Length)
@@ -43,8 +43,8 @@ public class Patrol : StateMachineBehaviour {
 
         //rotate towards target
         var direction = waypoints[currentWP].transform.position - NPC.transform.position;
-        NPC.transform.rotation = Quaternion.Slerp(NPC.transform.rotation, Quaternion.LookRotation(direction), 1.0f * Time.deltaTime);
-        NPC.transform.Translate(0, 0, Time.deltaTime * 2.0f);
+        NPC.transform.rotation = Quaternion.Slerp(NPC.transform.rotation, Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
+        NPC.transform.Translate(0, 0, Time.deltaTime * speed);
 	
 	}
 
