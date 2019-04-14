@@ -13,6 +13,8 @@ namespace HOS
         public MeshCollider MyCollider;
         public Text TextArea;
         public int ClickCounter = 0;
+        public GameObject GOScreen;
+        public MenuManager Controller;
 
         // Use this for initialization
         void Start()
@@ -84,6 +86,7 @@ namespace HOS
                         TextArea.text = ("Ouch!");
 
                         // Game Over
+                        Controller.ShowGameOver(GOScreen);
                     }
 
                     // else

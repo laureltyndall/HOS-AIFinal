@@ -135,12 +135,13 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
 
                 // Test from grounds
-                HouseFromGrounds = true;
-                HousefromInside = false;
+                //HouseFromGrounds = true;
+                //HousefromInside = false;
 
                 // Test from house
-                //HouseFromGrounds = false;
-                //HousefromInside = true;
+                HouseFromGrounds = false;
+                HousefromInside = true;
+                InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "HouseHallWay" && CurrentGameState == GameState.None)
             {

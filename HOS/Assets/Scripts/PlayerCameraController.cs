@@ -125,8 +125,8 @@ namespace HOS
                         else if (ManagerScript.HousefromInside)
                         {
                             MainCamera = Camera.main;
-                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
-                            CurrentWaypoint = WaypointList[3];
+                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                            CurrentWaypoint = WaypointList[2];
                             MovePlayerUturn();
                             // Turn the player around
                             CanUturn = true;
