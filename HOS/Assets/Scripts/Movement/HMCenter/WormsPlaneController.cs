@@ -14,6 +14,8 @@ namespace HOS
         public HMCenterManager HMCManager;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -25,16 +27,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !HMCManager.HasWorms)
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && !HMCManager.HasWorms)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -66,6 +81,7 @@ namespace HOS
 
                 TextArea.text = "Oh, these are gross. You better appreciate these, bird!";
                 //Add worms to inventory
+                ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Worms);
                 HMCManager.HasWorms = true;
             }
         }
