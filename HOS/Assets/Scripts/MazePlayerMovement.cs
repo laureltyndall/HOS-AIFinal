@@ -53,6 +53,6 @@ public class MazePlayerMovement : MonoBehaviour
         VertMovement *=Time.deltaTime;
         //Vector3 Movement = new Vector3(HorzMovement, 0 , VertMovement);
         //PlayerBody.AddForce(Movement * Speed);
-        Player.transform.Translate(HorzMovement,0,VertMovement);
+        Player.transform.Translate(HorzMovement * Speed,0,VertMovement * Speed);
 	}
 }
