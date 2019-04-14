@@ -1117,7 +1117,7 @@ MonoBehaviour:
         m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 126022653}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1598,6 +1598,11 @@ Prefab:
 --- !u!224 &126022652 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224213482890529682, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
+    type: 2}
+  m_PrefabInternal: {fileID: 126022651}
+--- !u!1 &126022653 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1060584094319316, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
     type: 2}
   m_PrefabInternal: {fileID: 126022651}
 --- !u!1001 &129332717
@@ -18271,6 +18276,8 @@ MonoBehaviour:
   MovementScript: {fileID: 0}
   MyCollider: {fileID: 1396032109}
   TextArea: {fileID: 988158140}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!4 &1397437660 stripped
 Transform:
   m_PrefabParentObject: {fileID: 442488, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 2}
