@@ -2222,7 +2222,7 @@ MonoBehaviour:
         m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1820854516}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2742,7 +2742,7 @@ GameObject:
   - component: {fileID: 1545868282}
   m_Layer: 5
   m_Name: Permanent UI System
-  m_TagString: Inventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4063,6 +4063,11 @@ Prefab:
 --- !u!224 &1820854515 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224213482890529682, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
+    type: 2}
+  m_PrefabInternal: {fileID: 1820854514}
+--- !u!1 &1820854516 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1060584094319316, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
     type: 2}
   m_PrefabInternal: {fileID: 1820854514}
 --- !u!1 &1923783311
