@@ -1,22 +1,85 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using HOS;
+using System.Collections;
 
-[Serializable]
 public class MouseGameManager : MonoBehaviour
 {
-
-    [HideInInspector] public GameObject mouse;
+    
+    public GameObject[] MousePrefabs;
+    public MouseManager[] m_Mice;
     public List<Transform> wayPointsForAI;
-    private StateController sc;
-   
-    public void SetupAI(List<Transform> wayPointList)
+    public Text m_MessageText;
+    private WaitForSeconds m_StartWait;
+    private WaitForSeconds m_EndWait;
+    private bool m_GameWinner;
+ 
+    private void Start()
     {
-        sc = mouse.GetComponent<StateController>();
-        sc.SetupAI(true, wayPointList);
+        SpawnAllMice();
+        
+    }
 
+    public void SpawnAllMice()
+    {
+        m_Mice[0].m_Instance =
+            Instantiate(MousePrefabs[0], m_Mice[0].m_SpawnPoint.position, m_Mice[0].m_SpawnPoint.rotation) as GameObject;
+        m_Mice[0].m_PlayerNumber = 1;
+        for (int i = 1; i < m_Mice.Length; i++)
+        {
+            m_Mice[i].m_Instance = Instantiate(MousePrefabs[0], m_Mice[0].m_SpawnPoint.position, m_Mice[0].m_SpawnPoint.rotation) as GameObject;
+            m_Mice[i].m_PlayerNumber = i + 1;
+            m_Mice[i].SetupAI(wayPointsForAI);
+        }
+    }
+    // This is called from start and will run each phase of the game one after another.
+    private IEnumerator GameLoop()
+    {
+        // Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
+        yield return StartCoroutine(GameStarting());
 
+        // Once the 'RoundStarting' coroutine is finished, run the 'RoundPlaying' coroutine but don't return until it's finished.
+        yield return StartCoroutine(PlayingGame());
+
+        // Once execution has returned here, run the 'RoundEnding' coroutine, again don't return until it's finished.
+        yield return StartCoroutine(RoundEnding());
+
+        // This code is not run until 'RoundEnding' has finished.  At which point, check if a game winner has been found.
+        if (m_GameWinner)
+        {
+            // If there is a game winner, restart the level.
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            // If there isn't a winner yet, restart this coroutine so the loop continues.
+            // Note that this coroutine doesn't yield.  This means that the current version of the GameLoop will end.
+            StartCoroutine(GameLoop());
+        }
+    }
+    private IEnumerator GameStarting()
+    {
+        
+        // Increment the round number and display text showing the players what round it is.
+        m_MessageText.text = "Lure the mouse with cheese to a box. ";
+
+        // Wait for the specified length of time until yielding control back to the game loop.
+        yield return m_StartWait;
+    }
+
+    private IEnumerator PlayingGame()
+    {
+        // Clear the text from the screen.
+        m_MessageText.text = string.Empty;
+        // ... return on the next frame.
+        yield return null;
+    }
+
+    private IEnumerator RoundEnding()
+    {
+        yield return null;
     }
 }
