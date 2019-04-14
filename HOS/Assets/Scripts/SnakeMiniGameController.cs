@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using HOS;
 
 public class SnakeMiniGameController : MonoBehaviour 
 {
@@ -81,9 +82,9 @@ public class SnakeMiniGameController : MonoBehaviour
             if (CurrentSnakeState == SnakeState.Move)
             {
                 if (SnakeMoveDirection == 1)
-                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-1,0,0);
+                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.2,0,0);
                 else if (SnakeMoveDirection == 2)
-                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(1,0,0);
+                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.2,0,0);
             }
             if (CurrentSnakeState == SnakeState.Attack)
             {
@@ -184,8 +185,9 @@ public class SnakeMiniGameController : MonoBehaviour
         if (SnakeHP <= 0)
         {
             GameActionTextBox.text = "Got it!";
-            SceneManager.LoadScene("HouseGrounds");
             PlayerWinsGame = true;
+            GameManager GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            GM.SnakeBeaten = true;
         }
 
         if (PlayerHP <= 0)
