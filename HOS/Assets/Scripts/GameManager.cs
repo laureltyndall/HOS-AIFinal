@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace HOS
 {
@@ -52,11 +53,11 @@ namespace HOS
         private void Update()
         {
 
-            //if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            //{
-            //    CurrentGameState = GameState.None;
-            //    CurrentSceneName = SceneManager.GetActiveScene().name;
-            //}
+            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            {
+                CurrentGameState = GameState.None;
+               CurrentSceneName = SceneManager.GetActiveScene().name;
+            }
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
@@ -64,6 +65,8 @@ namespace HOS
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
                 CurrentGameState = GameState.GameStarted;
                 MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
                 if (NewCharacter == Character.Anne)
                 {
                     alex.SetActive(false);
@@ -85,34 +88,29 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "Gate Scene" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(-949.59f, -365.04f, 649.05f);
                 CurrentPlayer.transform.Rotate(0f, 180f, 0f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
-
-                //GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                //GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                //MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                //alex.SetActive(false);
-                //CurrentGameState = GameState.GameStarted;
-                //CurrentPlayer = anne.GetComponent<Player>();
-                //CurrentPlayer.PlayerCharacter = Character.Anne;
-                //CurrentPlayer.PlayerHealth = 10;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
+                CurrentPlayer.transform.position = new Vector3(2.59f, 3.26f, 78.97f);
+                CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
                 // Test from gate
                 GroundsFromGate = true;
@@ -125,15 +123,16 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "HouseExterior" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
-
+                CurrentPlayer.transform.position = new Vector3(8.39f, -0.3f, 146.96f);
+                CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
+                CurrentSceneName = SceneManager.GetActiveScene().name;
                 // Test from grounds
                 HouseFromGrounds = true;
                 HousefromInside = false;
@@ -144,18 +143,16 @@ namespace HOS
             }
             else if (SceneManager.GetActiveScene().name == "HouseHallWay" && CurrentGameState == GameState.None)
             {
-                // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
-
+                CurrentPlayer.transform.position = new Vector3(4.64f, 1.02f, -10.95f);
+                CurrentPlayer.transform.Rotate(0f, 90f, 0f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
+                CurrentSceneName = SceneManager.GetActiveScene().name;
                 // Test from grounds first time entering house
                 HallfromOutside = true;
                 HallFromRoom = false;
