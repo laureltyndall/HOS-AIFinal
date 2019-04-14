@@ -21,5 +21,9 @@ public class PatrolAction : Action {
         {
             controller.nextWayPoint = (controller.nextWayPoint + 1) % controller.wayPointList.Count;
         }
+        else
+        {
+            Debug.Log("Can't get waypointList");
+        }
     }
 }

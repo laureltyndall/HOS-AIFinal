@@ -8,11 +8,12 @@ using System.Collections;
 
 public class MouseGameManager : MonoBehaviour
 {
-    
+    public float m_StartDelay = 3f;
+    public float m_EndDelay = 3f;
+    public Text m_MessageText;
     public GameObject[] MousePrefabs;
     public MouseManager[] m_Mice;
     public List<Transform> wayPointsForAI;
-    public Text m_MessageText;
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
     private bool m_GameWinner;
@@ -20,14 +21,18 @@ public class MouseGameManager : MonoBehaviour
     private void Start()
     {
         SpawnAllMice();
+        //StartCoroutine(GameLoop());
         
     }
 
     public void SpawnAllMice()
     {
+
         m_Mice[0].m_Instance =
             Instantiate(MousePrefabs[0], m_Mice[0].m_SpawnPoint.position, m_Mice[0].m_SpawnPoint.rotation) as GameObject;
         m_Mice[0].m_PlayerNumber = 1;
+        
+        //setUp AI Mice
         for (int i = 1; i < m_Mice.Length; i++)
         {
             m_Mice[i].m_Instance = Instantiate(MousePrefabs[0], m_Mice[0].m_SpawnPoint.position, m_Mice[0].m_SpawnPoint.rotation) as GameObject;
@@ -38,19 +43,19 @@ public class MouseGameManager : MonoBehaviour
     // This is called from start and will run each phase of the game one after another.
     private IEnumerator GameLoop()
     {
-        // Start off by running the 'RoundStarting' coroutine but don't return until it's finished.
+        // Start off by running the 'GameStarting' coroutine but don't return until it's finished.
         yield return StartCoroutine(GameStarting());
 
-        // Once the 'RoundStarting' coroutine is finished, run the 'RoundPlaying' coroutine but don't return until it's finished.
+        // Once the 'GaneStarting' coroutine is finished, run the 'PlayingGame' coroutine but don't return until it's finished.
         yield return StartCoroutine(PlayingGame());
 
-        // Once execution has returned here, run the 'RoundEnding' coroutine, again don't return until it's finished.
-        yield return StartCoroutine(RoundEnding());
+        // Once execution has returned here, run the 'GameEnding' coroutine, again don't return until it's finished.
+        yield return StartCoroutine(GameEnding());
 
-        // This code is not run until 'RoundEnding' has finished.  At which point, check if a game winner has been found.
-        if (m_GameWinner)
+        // This code is not run until 'GameEnding' has finished.  At which point, check if a game winner has been found.
+        if (!m_GameWinner)
         {
-            // If there is a game winner, restart the level.
+            // If there is a game winner, go to next scene.
             SceneManager.LoadScene(0);
         }
         else
@@ -78,8 +83,24 @@ public class MouseGameManager : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator RoundEnding()
+    //Need help to determine when the player wins
+    private IEnumerator GameEnding()
     {
+        string message = EndMessage();
+        m_MessageText.text = message;
+        m_GameWinner = true;
         yield return null;
+    }
+
+    private string EndMessage()
+    {
+        string message = "You have run out of time the Mouse has eaten the map.";
+
+        if (m_GameWinner)
+        {
+            message = "You now have the map of the maze.";
+        }
+
+        return message;
     }
 }
