@@ -16,6 +16,8 @@ namespace HOS
         public bool Knocked = false;
         public int KnockCount = 0;
         public DoorknobController KnobScript;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -27,50 +29,63 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
-            }
-
-            if(MovementScript.InteriorGhost)
-            {
-                Knocked = true;
-            }
-
-            if (KnockCount == 1)
-            {
-                TextArea.text = (MovementScript.SiblingName + "! It's " + MovementScript.PlayerName + "!");
-            }
-            else if (KnockCount == 2)
-            {
-                TextArea.text = ("Hello?");
-            }
-            else if (KnockCount == 3)
-            {
-                string pronoun = "";
-
-                if(MovementScript.SiblingName == "Alex")
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
-                    pronoun = "he";
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
                 }
-                else if(MovementScript.SiblingName == "Anne")
+                else
                 {
-                    pronoun = "she";
+                    Clickable = false;
+                    MyCollider.enabled = false;
                 }
 
-                TextArea.text = ("Maybe " + pronoun + " isn't home");
-            }
-            else if (KnockCount == 4)
-            {
-                TextArea.text = ("I should try the door handle. I don't want to be stuck out here if I can help it.");
-                Knocked = true;
+                if (MovementScript.InteriorGhost)
+                {
+                    Knocked = true;
+                }
+
+                if (KnockCount == 1)
+                {
+                    TextArea.text = (MovementScript.SiblingName + "! It's " + MovementScript.PlayerName + "!");
+                }
+                else if (KnockCount == 2)
+                {
+                    TextArea.text = ("Hello?");
+                }
+                else if (KnockCount == 3)
+                {
+                    string pronoun = "";
+
+                    if (MovementScript.SiblingName == "Alex")
+                    {
+                        pronoun = "he";
+                    }
+                    else if (MovementScript.SiblingName == "Anne")
+                    {
+                        pronoun = "she";
+                    }
+
+                    TextArea.text = ("Maybe " + pronoun + " isn't home");
+                }
+                else if (KnockCount == 4)
+                {
+                    TextArea.text = ("I should try the door handle. I don't want to be stuck out here if I can help it.");
+                    Knocked = true;
+                }
             }
         }
 
@@ -105,6 +120,8 @@ namespace HOS
                 else
 {                   if (MovementScript.InteriorGhost)
                     {
+                        ManagerScript.HallFromRoom = false;
+                        ManagerScript.HallfromOutside = true;
                         SceneManager.LoadScene("HouseHallway");
                     }
                     else

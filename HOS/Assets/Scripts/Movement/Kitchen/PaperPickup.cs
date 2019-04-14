@@ -16,6 +16,8 @@ namespace HOS
         public KitchenSceneManager KitchenManager;
         public int ClickCount = 0;
         public GameObject NotePanel;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -27,16 +29,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && KitchenManager.InCloseUp && !KitchenManager.RadioOn && !KitchenManager.MouseOn)
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[4] && KitchenManager.InCloseUp && !KitchenManager.RadioOn && !KitchenManager.MouseOn)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -72,6 +87,8 @@ namespace HOS
                 else
                 {
                     TextArea.text = "Now let's see what this says, shall we?";
+                    // Add box to inventory
+                    ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.MysteryChecklist);
                     NotePanel.SetActive(true);
                 }
                 ClickCount++;
