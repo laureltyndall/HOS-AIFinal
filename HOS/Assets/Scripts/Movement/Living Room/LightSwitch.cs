@@ -45,7 +45,7 @@ namespace HOS
             if (Clickable)
             {
                 // If Inventory does not have flashlight
-                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(MovementScript.CursorList[5], Vector2.zero, CursorMode.Auto);
                 // else
                 // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }

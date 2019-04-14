@@ -62,7 +62,7 @@ namespace HOS
                     TextArea.text = "Hello? " + MovementScript.SiblingName + "?";
                 }
 
-                if (!LightsOn && GhostSeen && ManagerScript.HallfromOutside)
+                if (!LightsOn && ManagerScript.InteriorGhostSeen && ManagerScript.HallfromOutside)
                 {
                     TextArea.text = "Maybe if I turn the lights on, this place wouldn't be so creepy.";
                 }

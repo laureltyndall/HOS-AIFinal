@@ -1938,7 +1938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &213150535
 Transform:
   m_ObjectHideFlags: 0
@@ -5678,7 +5678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &700774099
 Transform:
   m_ObjectHideFlags: 0
@@ -14562,7 +14562,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 7b96f81f11d58804287ce1e6ea9fb797, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b96f81f11d58804287ce1e6ea9fb797, type: 3}
@@ -14579,17 +14579,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1438612892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5580f5e46ebed4fb2089aa9ba8b3ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fdf6f825c50c434997e2ed015ff6f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  RoomManager: {fileID: 0}
+  RoomManager: {fileID: 1132347713}
   MyCollider: {fileID: 1438612894}
-  TextArea: {fileID: 0}
+  TextArea: {fileID: 1166121729}
   On: {fileID: 324555170}
   Off: {fileID: 1438612892}
+  Light1: {fileID: 213150534}
+  Light2: {fileID: 700774098}
 --- !u!65 &1438612894
 BoxCollider:
   m_ObjectHideFlags: 0

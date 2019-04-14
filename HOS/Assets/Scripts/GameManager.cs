@@ -156,13 +156,18 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Basket);
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
-                // Test from grounds
-                //HallfromOutside = true;
-                //HallFromRoom = false;
+                // Test from grounds first time entering house
+                HallfromOutside = true;
+                HallFromRoom = false;
 
                 // Test from house
-                HallfromOutside = false;
-                HallFromRoom = true;
+                //HallfromOutside = false;
+                //HallFromRoom = true;
+
+                // Test from grounds second time entering house
+                //HallfromOutside = true;
+                //HallFromRoom = false;
+                //InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {

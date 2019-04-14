@@ -6,15 +6,18 @@ using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class HallLRDoorController : MonoBehaviour
+    public class LightStwitchHall : MonoBehaviour
     {
         public bool Clickable = false;
+        public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
-        public MeshCollider MyCollider;
-        public HallwayMananger HallScript;
+        public HallwayMananger RoomManager;
+        public BoxCollider MyCollider;
         public Text TextArea;
-        public GameManager ManagerScript;
-        public bool ManagerFound = false;
+        public GameObject On;
+        public GameObject Off;
+        public GameObject Light1;
+        public GameObject Light2;
 
         // Use this for initialization
         void Start()
@@ -26,29 +29,16 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (!ManagerFound)
+            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && !RoomManager.LightsOn && RoomManager.GhostSeen)
             {
-                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
-                ManagerScript = gm.gameObject.GetComponent<GameManager>();
-
-                if (ManagerScript != null)
-                {
-                    ManagerFound = true;
-                }
+                // If we are right next to the gate and we are looking at it
+                Clickable = true;
+                MyCollider.enabled = true;
             }
             else
             {
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[3] && ManagerScript.InteriorGhostSeen && ManagerScript.HallfromOutside)
-                {
-                    // If we are right next to the gate and we are looking at it
-                    Clickable = true;
-                    MyCollider.enabled = true;
-                }
-                else
-                {
-                    Clickable = false;
-                    MyCollider.enabled = false;
-                }
+                Clickable = false;
+                MyCollider.enabled = false;
             }
         }
 
@@ -77,9 +67,15 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                ManagerScript.LRFromHall = true;
-                ManagerScript.LRFromGame = false;
-                SceneManager.LoadScene("Living Room");
+
+                On.SetActive(true);
+                Off.SetActive(false);
+
+                Light1.SetActive(true);
+                Light2.SetActive(true);
+
+                TextArea.text = ("There! That's much better. Now, there must be a flashlight around here somewhere.");
+                RoomManager.LightsOn = true;
             }
         }
     }
