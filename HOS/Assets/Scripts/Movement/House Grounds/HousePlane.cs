@@ -76,8 +76,19 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+                ManagerScript.GroundsFromGate = false;
+                ManagerScript.GroundsFromHouse = false;
                 ManagerScript.HouseFromGrounds = true;
                 ManagerScript.HousefromInside = false;
+                ManagerScript.KitchenFromHall = false;
+                ManagerScript.KitchenFromGame = false;
+                ManagerScript.LRFromHall = false;
+                ManagerScript.LRFromGame = false;
+                ManagerScript.LRFromUnderground = false;
+                ManagerScript.CenterFromMaze = false;
+                ManagerScript.CenterFromGame = false;
+                ManagerScript.HallfromOutside = false;
+                ManagerScript.HallFromRoom = false;
                 SceneManager.LoadScene("HouseExterior");
 
            //     TextArea.text = ("I shouldn't leave without finding " + MovementScript.SiblingName);

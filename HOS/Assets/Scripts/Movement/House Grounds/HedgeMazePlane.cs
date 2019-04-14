@@ -13,6 +13,8 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -24,16 +26,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !MovementScript.UTurnSelected)
+            if (!ManagerFound)
             {
-                // If we are right next to the gate and we are looking at it
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !MovementScript.UTurnSelected)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -64,9 +79,27 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
                 // If Inventory does not have flashlight
-                TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
-                // else
-                //SceneManager.LoadScene("HedgeMaze");
+                if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
+                {
+                    TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
+                }
+                else
+                {
+                    ManagerScript.GroundsFromGate = false;
+                    ManagerScript.GroundsFromHouse = false;
+                    ManagerScript.HouseFromGrounds = false;
+                    ManagerScript.HousefromInside = false;
+                    ManagerScript.KitchenFromHall = false;
+                    ManagerScript.KitchenFromGame = false;
+                    ManagerScript.LRFromHall = false;
+                    ManagerScript.LRFromGame = false;
+                    ManagerScript.LRFromUnderground = false;
+                    ManagerScript.CenterFromMaze = false;
+                    ManagerScript.CenterFromGame = false;
+                    ManagerScript.HallfromOutside = false;
+                    ManagerScript.HallFromRoom = false;
+                    SceneManager.LoadScene("HedgeMaze");
+                }
             }
         }
     }

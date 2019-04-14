@@ -54,10 +54,10 @@ namespace HOS
         private void Update()
         {
 
-            if(SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            if (SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
             {
                 CurrentGameState = GameState.None;
-               CurrentSceneName = SceneManager.GetActiveScene().name;
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
@@ -113,13 +113,6 @@ namespace HOS
                 B.onClick.AddListener(MasterInventory.ActivateMenu);
                 MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
-                // Test from gate
-                GroundsFromGate = true;
-                GroundsFromHouse = false;
-
-                // Test from house
-                //GroundsFromGate = false;
-                //GroundsFromHouse = true;
             }
             else if (SceneManager.GetActiveScene().name == "HouseExterior" && CurrentGameState == GameState.None)
             {
@@ -134,14 +127,6 @@ namespace HOS
                 B.onClick.AddListener(MasterInventory.ActivateMenu);
                 MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
-                // Test from grounds
-                //HouseFromGrounds = true;
-                //HousefromInside = false;
-
-                // Test from house
-                HouseFromGrounds = false;
-                HousefromInside = true;
-                InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "HouseHallWay" && CurrentGameState == GameState.None)
             {
@@ -155,18 +140,6 @@ namespace HOS
                 B.onClick.AddListener(MasterInventory.ActivateMenu);
                 MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
-                // Test from grounds first time entering house
-                HallfromOutside = true;
-                HallFromRoom = false;
-
-                // Test from house
-                //HallfromOutside = false;
-                //HallFromRoom = true;
-
-                // Test from grounds second time entering house
-                //HallfromOutside = true;
-                //HallFromRoom = false;
-                //InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {
@@ -179,14 +152,6 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-
-                // Test from Hall
-                KitchenFromHall = true;
-                KitchenFromGame = false;
-
-                // Test from Mouse MiniGame
-                //KitchenFromHall = false;
-                //KitchenFromGame = true;
             }
             else if (SceneManager.GetActiveScene().name == "Living Room" && CurrentGameState == GameState.None)
             {
@@ -199,22 +164,8 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
-
-                //Test from hall
-                //LRFromHall = true;
-                //LRFromGame = false;
-                //LRFromUnderground = false;
-                //Test from mini game
-                //LRFromHall = false;
-                //LRFromGame = true;
-                //LRFromUnderground = false;
-
-                // Test from Passageway
-                LRFromHall = false;
-                LRFromGame = false;
-                LRFromUnderground = true;
+             //   MasterInventory.AddInventoryItem(InventoryItem.Basket);
+              //  MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if (SceneManager.GetActiveScene().name == "LivingRoomPuzzleGame" && CurrentGameState == GameState.None)
             {
@@ -229,9 +180,6 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
                 //        MasterInventory.AddInventoryItem(InventoryItem.Basket);
                 //      MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
-
-                LRFromHall = false;
-                LRFromGame = true;
             }
             else if (SceneManager.GetActiveScene().name == "HedgeMazeCenter" && CurrentGameState == GameState.None)
             {
@@ -244,15 +192,8 @@ namespace HOS
                 CurrentPlayer = anne.GetComponent<Player>();
                 CurrentPlayer.PlayerCharacter = Character.Anne;
                 CurrentPlayer.PlayerHealth = 10;
-                MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
-
-                //Test from Maze
-                CenterFromMaze = true;
-                CenterFromGame = false;
-                //Test from mini game
-                //CenterFromMaze = false;
-                //CenterFromGame = true;
+         //       MasterInventory.AddInventoryItem(InventoryItem.Basket);
+         //       MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
             }
             else if (SceneManager.GetActiveScene().name == "FountainMiniGame" && CurrentGameState == GameState.None)
             {
@@ -267,10 +208,22 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
                 //        MasterInventory.AddInventoryItem(InventoryItem.Basket);
                 //      MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
-
-                CenterFromMaze = false;
-                CenterFromGame = true;
             }
+            else if (SceneManager.GetActiveScene().name == "Underground Passage" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+        //        MasterInventory.AddInventoryItem(InventoryItem.Basket);
+        //        MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+            }
+
         }
 
         public void SelectPlayerCharacter(int PlayerChoice)

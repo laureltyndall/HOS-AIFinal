@@ -87,8 +87,19 @@ namespace HOS
 
                 if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
                 {
-                    ManagerScript.GroundsFromHouse = true;
                     ManagerScript.GroundsFromGate = false;
+                    ManagerScript.GroundsFromHouse = true;
+                    ManagerScript.HouseFromGrounds = false;
+                    ManagerScript.HousefromInside = false;
+                    ManagerScript.KitchenFromHall = false;
+                    ManagerScript.KitchenFromGame = false;
+                    ManagerScript.LRFromHall = false;
+                    ManagerScript.LRFromGame = false;
+                    ManagerScript.LRFromUnderground = false;
+                    ManagerScript.CenterFromMaze = false;
+                    ManagerScript.CenterFromGame = false;
+                    ManagerScript.HallfromOutside = false;
+                    ManagerScript.HallFromRoom = false;
                     SceneManager.LoadScene("HouseGrounds");
                 }
                 else

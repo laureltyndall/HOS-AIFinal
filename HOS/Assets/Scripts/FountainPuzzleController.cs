@@ -209,8 +209,19 @@ public class FountainPuzzleController : MonoBehaviour
             else
             {
                 {
-                    ManagerScript.CenterFromGame = true;
+                    ManagerScript.GroundsFromGate = false;
+                    ManagerScript.GroundsFromHouse = false;
+                    ManagerScript.HouseFromGrounds = false;
+                    ManagerScript.HousefromInside = false;
+                    ManagerScript.KitchenFromHall = false;
+                    ManagerScript.KitchenFromGame = false;
+                    ManagerScript.LRFromHall = false;
+                    ManagerScript.LRFromGame = false;
+                    ManagerScript.LRFromUnderground = false;
                     ManagerScript.CenterFromMaze = false;
+                    ManagerScript.CenterFromGame = true;
+                    ManagerScript.HallfromOutside = false;
+                    ManagerScript.HallFromRoom = false;
                     ManagerScript.LoadScene("HedgeMazeCenter");
                 }
             }
