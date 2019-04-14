@@ -444,14 +444,13 @@ namespace HOS
             }
             else if (CurrentScene.name == "Underground Passage")
             {
-                if(CurrentWaypoint == WaypointList[3])
+                if(CurrentWaypoint == WaypointList[2] || CurrentWaypoint == WaypointList[5] || CurrentWaypoint == WaypointList[7] || CurrentWaypoint == WaypointList[10] || CurrentWaypoint == WaypointList[14] || CurrentWaypoint == WaypointList[24])
                 {
-                    if(UTurnSelected)
-                    {
-                        CanUturn = true;
-                        CanForward = true;
-                    }
+                    CanUturn = false;
+                    CanForward = false;
+                    CanOrbit = true;
                 }
+                
             }
 
             if (ManagerScript != null)
@@ -1713,6 +1712,7 @@ namespace HOS
                             // 17 Can't move at all, player about to die
                             CurrentPlayer.transform.position = WaypointList[17].transform.position;
                             CurrentWaypoint = WaypointList[17];
+                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 6f, 0f);
                             CanUturn = false;
                             CanOrbit = false;
                             CanLeftTurn = false;
