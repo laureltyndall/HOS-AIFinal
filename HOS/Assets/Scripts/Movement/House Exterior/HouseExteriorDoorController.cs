@@ -120,8 +120,19 @@ namespace HOS
                 else
 {                   if (MovementScript.InteriorGhost)
                     {
-                        ManagerScript.HallFromRoom = false;
+                        ManagerScript.GroundsFromGate = false;
+                        ManagerScript.GroundsFromHouse = false;
+                        ManagerScript.HouseFromGrounds = false;
+                        ManagerScript.HousefromInside = false;
+                        ManagerScript.KitchenFromHall = false;
+                        ManagerScript.KitchenFromGame = false;
+                        ManagerScript.LRFromHall = false;
+                        ManagerScript.LRFromGame = false;
+                        ManagerScript.LRFromUnderground = false;
+                        ManagerScript.CenterFromMaze = false;
+                        ManagerScript.CenterFromGame = false;
                         ManagerScript.HallfromOutside = true;
+                        ManagerScript.HallFromRoom = false;
                         SceneManager.LoadScene("HouseHallWay");
                     }
                     else

@@ -14,6 +14,8 @@ public class Inventory : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        GameObject.DontDestroyOnLoad(this);
+
         Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         #region Create Inventory Items
         NewItem.ItemImage = GameObject.FindGameObjectWithTag("FlashlightSprite").GetComponent<Image>(); // Find Item Image
@@ -220,7 +222,28 @@ public class Inventory : MonoBehaviour
     {
         ItemsInInventory.Clear();
     }
-    
+
+    public void FindButtons()
+    {
+        InventoryButtonList = new List<Button>();
+
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B1").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B2").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B3").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B4").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B5").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B6").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B7").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B8").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B9").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B10").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B11").GetComponent<Button>());
+        InventoryButtonList.Add(GameObject.FindGameObjectWithTag("B12").GetComponent<Button>());
+        ActivateMenu();
+       GameObject InventoryPanel = GameObject.FindGameObjectWithTag("InventoryPanel");
+       InventoryPanel.SetActive(false);
+    }
+  
     private void UpdateItems()
     {
         int counter = 0;

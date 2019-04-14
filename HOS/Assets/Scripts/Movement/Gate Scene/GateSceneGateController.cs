@@ -100,14 +100,25 @@ namespace HOS
                     {
                         if (ManagerScript.SnakeBeaten)
                         {
+                            Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);
+
                             ManagerScript.GroundsFromGate = true;
                             ManagerScript.GroundsFromHouse = false;
+                            ManagerScript.HouseFromGrounds = false;
+                            ManagerScript.HousefromInside = false;
+                            ManagerScript.KitchenFromHall = false;
+                            ManagerScript.KitchenFromGame = false;
+                            ManagerScript.LRFromHall = false;
+                            ManagerScript.LRFromGame = false;
+                            ManagerScript.LRFromUnderground = false;
+                            ManagerScript.CenterFromMaze = false;
+                            ManagerScript.CenterFromGame = false;
+                            ManagerScript.HallfromOutside = false;
+                            ManagerScript.HallFromRoom = false;
                             ManagerScript.LoadScene("HouseGrounds");
                         }
                         else
                         {
-                            //ManagerScript.LoadScene("SnakeGameTest");
-                        
                             foreach (GameObject g in G)
                             {
                                 g.SetActive(true);

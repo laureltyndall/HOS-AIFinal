@@ -442,6 +442,17 @@ namespace HOS
                 }
 
             }
+            else if (CurrentScene.name == "Underground Passage")
+            {
+                if(CurrentWaypoint == WaypointList[3])
+                {
+                    if(UTurnSelected)
+                    {
+                        CanUturn = true;
+                        CanForward = true;
+                    }
+                }
+            }
 
             if (ManagerScript != null)
             {
@@ -1129,7 +1140,7 @@ namespace HOS
                     }
                 }
             }
-            if (CurrentScene.name == "HouseHallWay")
+            else if (CurrentScene.name == "HouseHallWay")
             {
                 if (CurrentCursor == CursorType.Forward)
                 {
@@ -1568,30 +1579,221 @@ namespace HOS
                     {
                         if (CurrentWaypoint == WaypointList[0])
                         {
-                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
-                            CurrentWaypoint = WaypointList[1];
+                            // By Entrance. Forward and Uturn
+                            if (UTurnSelected)
+                            {
+                                // Looking at stairs up, controlled by restriction pane
+                                CanUturn = true;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = false;
+                                CanBackup = false;
+                            }
+                            else
+                            {
+                                // Move to the next waypoint, can no longer go back
+                                CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                                CurrentWaypoint = WaypointList[1];
+                                CanUturn = false;
+                                CanOrbit = false;
+                                CanLeftTurn = false;
+                                CanRightTurn = false;
+                                CanForward = true;      // Can ONLY forward
+                                CanBackup = false;
+                            }
+                        }   // By Entrance, move only to WP1
+                        else if (CurrentWaypoint == WaypointList[1])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                            CurrentWaypoint = WaypointList[2];
+                            CanUturn = false;
+                            CanOrbit = true;            // Movement controlled by panes
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // Between Entrance and Cell, can only move forward to WP2
+                        // Waypoint 2 controlled by movement panes
+                        // Waypoint 3 - By cell - controlled by scene's manager
+                        else if (CurrentWaypoint == WaypointList[4])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[5].transform.position;
+                            CurrentWaypoint = WaypointList[5];
                             CanUturn = false;
                             CanOrbit = true;
                             CanLeftTurn = false;
                             CanRightTurn = false;
                             CanForward = false;
                             CanBackup = false;
-                        }
+                        }   // On Path
+                        // Waypoint 5 controlled by movement pane
+                        else if (CurrentWaypoint == WaypointList[6])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[7].transform.position;
+                            CurrentWaypoint = WaypointList[7];
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // On Path
+                        // Waypoint 7 controlled by movement pane
+                        else if (CurrentWaypoint == WaypointList[8])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[9].transform.position;
+                            CurrentWaypoint = WaypointList[9];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On Path
+                        else if (CurrentWaypoint == WaypointList[9])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[10].transform.position;
+                            CurrentWaypoint = WaypointList[10];
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // On Path
+                        // Waypoint 10 controlled by movement pane
+                        else if (CurrentWaypoint == WaypointList[11])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[12].transform.position;
+                            CurrentWaypoint = WaypointList[12];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On Path
+                        else if (CurrentWaypoint == WaypointList[12])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[13].transform.position;
+                            CurrentWaypoint = WaypointList[13];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On Path
+                        else if (CurrentWaypoint == WaypointList[13])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[14].transform.position;
+                            CurrentWaypoint = WaypointList[14];
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // On Path
+                        // Waypoint 14 controlled by movement panes
+                        else if (CurrentWaypoint == WaypointList[15])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[16].transform.position;
+                            CurrentWaypoint = WaypointList[16];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On Death Path
+                        else if (CurrentWaypoint == WaypointList[16])
+                        {
+                            // 17 Can't move at all, player about to die
+                            CurrentPlayer.transform.position = WaypointList[17].transform.position;
+                            CurrentWaypoint = WaypointList[17];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // On Death Path
+                        else if (CurrentWaypoint == WaypointList[18])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[19].transform.position;
+                            CurrentWaypoint = WaypointList[19];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        else if (CurrentWaypoint == WaypointList[19])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[20].transform.position;
+                            CurrentWaypoint = WaypointList[20];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        else if (CurrentWaypoint == WaypointList[20])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[21].transform.position;
+                            CurrentWaypoint = WaypointList[21];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        else if (CurrentWaypoint == WaypointList[21])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[22].transform.position;
+                            CurrentWaypoint = WaypointList[22];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        else if (CurrentWaypoint == WaypointList[22])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[23].transform.position;
+                            CurrentWaypoint = WaypointList[23];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        else if (CurrentWaypoint == WaypointList[23])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[24].transform.position;
+                            CurrentWaypoint = WaypointList[24];
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }   // On MiniGame Path
+                        // Waypoint 24 controlled by restrition panes
                     }
                 }
 
                 if (CurrentCursor == CursorType.TurnAround)
                 {
                     MovePlayerUturn();
-                    UTurnSelected = true;
-                }
-                if (CurrentCursor == CursorType.Backup)
-                {
-                    if (CurrentScene.name == "Underground Passage")
-                    {
-
-                    }
-
+                    UTurnSelected = !UTurnSelected;
                 }
             }
 

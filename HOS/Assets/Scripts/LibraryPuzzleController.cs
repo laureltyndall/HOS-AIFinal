@@ -147,8 +147,19 @@ public class LibraryPuzzleController : MonoBehaviour {
             TextArea.text = "Got it!";
             if(ManagerFound)
             {
-                ManagerScript.LRFromGame = true;
+                ManagerScript.GroundsFromGate = false;
+                ManagerScript.GroundsFromHouse = false;
+                ManagerScript.HouseFromGrounds = false;
+                ManagerScript.HousefromInside = false;
+                ManagerScript.KitchenFromHall = false;
+                ManagerScript.KitchenFromGame = false;
                 ManagerScript.LRFromHall = false;
+                ManagerScript.LRFromGame = true;
+                ManagerScript.LRFromUnderground = false;
+                ManagerScript.CenterFromMaze = false;
+                ManagerScript.CenterFromGame = false;
+                ManagerScript.HallfromOutside = false;
+                ManagerScript.HallFromRoom = false;
                 ManagerScript.LoadScene("Living Room");
             }
         //    Time.timeScale = 0;
