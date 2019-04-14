@@ -135,6 +135,24 @@ namespace HOS
                             UTurnSelected = true;
                         }
                     }
+                    if (CurrentScene.name == "HouseHallway")
+                    {
+                        if (ManagerScript.HallfromOutside)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                            CurrentWaypoint = WaypointList[0];
+                            CanOrbit = true;
+                        }
+                        else if(ManagerScript.HallFromRoom)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            MovePlayerUturn();
+                            CanOrbit = true;
+                        }
+                    }
                     if (CurrentScene.name == "Kitchen")
                     {
                         if (ManagerScript.KitchenFromHall)
@@ -601,7 +619,7 @@ namespace HOS
                 {
                     if (CurrentScene.name == "Gate Scene")
                     {
-                        if (CurrentWaypoint == WaypointList[4])
+                        if (CurrentWaypoint == WaypointList[3])
                         {
                             CurrentPlayer.transform.position = WaypointList[2].transform.position;
                             CurrentWaypoint = WaypointList[2];
@@ -1475,6 +1493,10 @@ namespace HOS
                 }
             }
 
+
+            //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+            //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+            //    Camera.main.transform.rotation = Quaternion.Euler(25f, 19f, 0f);
         }
 
         public void MovePlayerUturn()

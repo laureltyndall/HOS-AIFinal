@@ -486,7 +486,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: f539a507dbd2b17419fb2e81233b1c08, type: 3}
+  m_Texture: {fileID: 2800000, guid: 3e13ef90273da63488c50a408a69f152, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1466,7 +1466,7 @@ Transform:
   - {fileID: 477698361}
   - {fileID: 1861591291}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &147903348
 Mesh:
@@ -3637,6 +3637,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e3586263b8148408c085c220a86963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 460599483}
+  HallScript: {fileID: 1132347713}
+  TextArea: {fileID: 1166121729}
 --- !u!1 &464746431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4258,7 +4263,6 @@ GameObject:
   - component: {fileID: 495901154}
   - component: {fileID: 495901153}
   - component: {fileID: 495901152}
-  - component: {fileID: 495901151}
   - component: {fileID: 495901157}
   m_Layer: 0
   m_Name: To-Do
@@ -4267,25 +4271,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &495901151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 495901150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe595c33488054242bd40cb925ee554b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Clickable: 0
-  NewCursor: {fileID: 2800000, guid: d85b60e1ace1a5848b786318f0943654, type: 3}
-  MovementScript: {fileID: 0}
-  MyCollider: {fileID: 495901154}
-  TextArea: {fileID: 1166121729}
-  KitchenManager: {fileID: 0}
-  ClickCount: 0
-  NotePanel: {fileID: 694384262}
 --- !u!114 &495901152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4379,6 +4364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a33989626a6bc4a911403e8709ef88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Clickable: 0
+  MovementScript: {fileID: 0}
+  MyCollider: {fileID: 495901154}
+  TextArea: {fileID: 1166121729}
+  HallManager: {fileID: 1132347713}
+  NotePanel: {fileID: 694384262}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1 &497258991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,7 +5484,7 @@ GameObject:
   - component: {fileID: 694384264}
   - component: {fileID: 694384263}
   m_Layer: 5
-  m_Name: Mysterious Note Panel
+  m_Name: Note Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9988,7 +9981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &838526026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12973,6 +12966,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b209dcf6a3a89c8489bcf82fe2e67de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LightsOn: 0
+  HaveList: 0
+  TextArea: {fileID: 0}
+  Ghost: {fileID: 0}
+  List: {fileID: 0}
+  MovementScript: {fileID: 0}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!4 &1132347714
 Transform:
   m_ObjectHideFlags: 0
@@ -14120,6 +14121,8 @@ MonoBehaviour:
   LRFromGame: 0
   CenterFromMaze: 0
   CenterFromGame: 0
+  HallfromOutside: 0
+  HallFromRoom: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}
@@ -14488,7 +14491,7 @@ MonoBehaviour:
   Clickable: 0
   NewCursor: {fileID: 0}
   MovementScript: {fileID: 0}
-  SceneManager: {fileID: 0}
+  RoomManager: {fileID: 0}
   MyCollider: {fileID: 1438612894}
   TextArea: {fileID: 0}
   On: {fileID: 324555170}
@@ -14943,7 +14946,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh920364
+  m_Name: pb_Mesh67072
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15879,7 +15882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1132347713}
         m_MethodName: TurnOffNote
         m_Mode: 1
         m_Arguments:

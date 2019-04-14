@@ -87,15 +87,25 @@ namespace HOS
                 // TESTING INDIVIDUAL SCENES ONLY
                 MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer.transform.position = new Vector3(-949.59f,-365.04f,649.05f);
-                CurrentPlayer.transform.Rotate(0f,180f,0f);
+                CurrentPlayer.transform.position = new Vector3(-949.59f, -365.04f, 649.05f);
+                CurrentPlayer.transform.Rotate(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
+
+                //GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                //GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                //MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                //alex.SetActive(false);
+                //CurrentGameState = GameState.GameStarted;
+                //CurrentPlayer = anne.GetComponent<Player>();
+                //CurrentPlayer.PlayerCharacter = Character.Anne;
+                //CurrentPlayer.PlayerHealth = 10;
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
                 GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
                 alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer = anne.GetComponent<Player>();
