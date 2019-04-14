@@ -43,19 +43,18 @@ TagManager:
   - CrowGameObject
   - Waypoint
   - InventoryActiveButton
+  - B9
+  - B3
   - B1
   - B2
-  - B3
-  - B4
-  - B5
-  - B6
-  - B7
-  - B8
-  - B9
-  - B10
   - B11
+  - B4
   - B12
-  - MazeExit
+  - B10
+  - B7
+  - B6
+  - B8
+  - B5
   layers:
   - Default
   - TransparentFX
