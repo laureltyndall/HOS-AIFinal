@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 469181262}
   m_Layer: 0
   m_Name: Waypoint 1
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,6 +918,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myDest: {fileID: 732831154}
+--- !u!1 &1393922259 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 137886, guid: af84330b1a0c88c4dba7e488529ef703, type: 2}
+  m_PrefabInternal: {fileID: 2038455268}
+--- !u!95 &1393922260
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1393922259}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 071ef01d992a90d44a84f2c70db3ebf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &1402249042
 Prefab:
   m_ObjectHideFlags: 0
@@ -1071,7 +1092,7 @@ GameObject:
   - component: {fileID: 1780258600}
   m_Layer: 0
   m_Name: Waypoint 2
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1135,13 +1156,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 14349112, guid: af84330b1a0c88c4dba7e488529ef703, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11406118, guid: af84330b1a0c88c4dba7e488529ef703, type: 2}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 54116517831849598, guid: af84330b1a0c88c4dba7e488529ef703,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 64715223624609034, guid: af84330b1a0c88c4dba7e488529ef703,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114723641052389268, guid: af84330b1a0c88c4dba7e488529ef703, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: af84330b1a0c88c4dba7e488529ef703, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2042475436
@@ -1154,7 +1186,7 @@ GameObject:
   - component: {fileID: 2042475437}
   m_Layer: 0
   m_Name: Waypoint 3
-  m_TagString: Untagged
+  m_TagString: Waypoint
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
