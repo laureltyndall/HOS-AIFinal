@@ -6,13 +6,14 @@ using UnityEngine.SceneManagement;
 
 namespace HOS
 {
-    public class CellDoorController : MonoBehaviour
+    public class EntranceRestriction : MonoBehaviour
     {
         private bool Clickable = false;
         private PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
-        public PassageManager UPScript;
         public Text TextArea;
+        private GameManager ManagerScript;
+        private bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -24,16 +25,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2] && !UPScript.FoundTwin)
+            if (!ManagerFound)
             {
-                // If we are near the cell but haven't talked to our twin yet
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] && MovementScript.UTurnSelected)
+                {
+                    // If we are right next to the gate and we are looking at it
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -41,7 +55,7 @@ namespace HOS
         {
             if (Clickable)
             {
-                Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
             }
         }
 
@@ -60,18 +74,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[3].transform.position;
-                MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
-                //    Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[3];
-                MovementScript.CanUturn = false;
-                MovementScript.CanOrbit = false;
-                MovementScript.CanLeftTurn = false;
-                MovementScript.CanRightTurn = false;
-                MovementScript.CanForward = false;
-                MovementScript.CanBackup = false;
-
-                UPScript.FoundTwin = true;
+                TextArea.text = "I need to find " + MovementScript.SiblingName + " before I try to get back out there.";
             }
         }
     }
