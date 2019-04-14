@@ -96,7 +96,7 @@ namespace HOS
 
                 if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0] || MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
                 {
-                    if (HallScript.GhostSeen && !HallScript.GhostAttacking)
+                    if (HallScript.GhostSeen && !HallScript.GhostOn)
                     {
                         ManagerScript.HousefromInside = true;
                         ManagerScript.HouseFromGrounds = false;

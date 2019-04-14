@@ -79,7 +79,7 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 ManagerScript.LRFromHall = true;
                 ManagerScript.LRFromGame = false;
-                SceneManager.LoadScene("LivingRoom");
+                SceneManager.LoadScene("Living Room");
             }
         }
     }

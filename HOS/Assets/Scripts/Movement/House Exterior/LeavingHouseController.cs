@@ -13,6 +13,10 @@ namespace HOS
         public MeshCollider MyCollider;
         public Text TextArea;
         public int ClickCounter = 0;
+        public GameObject GOScreen;
+        public MenuManager Controller;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
         // Use this for initialization
         void Start()
@@ -24,16 +28,29 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
+            if (!ManagerFound)
             {
-                // If we are next to the house door
-                Clickable = true;
-                MyCollider.enabled = true;
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
             else
             {
-                Clickable = false;
-                MyCollider.enabled = false;
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
+                {
+                    // If we are next to the house door
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
             }
         }
 
@@ -67,27 +84,45 @@ namespace HOS
                 if (MovementScript.InteriorGhost)
                 {
                     // If inventory does not have flashlight
-                    if (ClickCounter == 1)
+                    if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
                     {
-                        TextArea.text = ("I need to find a flashlight.");
-                    }
-                    else if (ClickCounter == 2)
-                    {
-                        TextArea.text = ("If I keep wandering around in the dark like this, I'm going to get lost.");
-                    }
-                    else if (ClickCounter == 3)
-                    {
-                        TextArea.text = ("I shouldn't keep going without a flashlight.");
-                    }
-                    else if (ClickCounter == 4)
-                    {
-                        TextArea.text = ("Ouch!");
+                        if (ClickCounter == 1)
+                        {
+                            TextArea.text = ("I need to find a flashlight.");
+                        }
+                        else if (ClickCounter == 2)
+                        {
+                            TextArea.text = ("If I keep wandering around in the dark like this, I'm going to get lost.");
+                        }
+                        else if (ClickCounter == 3)
+                        {
+                            TextArea.text = ("I shouldn't keep going without a flashlight.");
+                        }
+                        else if (ClickCounter == 4)
+                        {
+                            TextArea.text = ("Ouch!");
 
-                        // Game Over
+                            // Game Over
+                            Controller.ShowGameOver(GOScreen);
+                        }
                     }
+                    else
+                    {
+                        TextArea.text = ("Now I should be able to find the maze with no problem. I hope " + MovementScript.SiblingName + " is there.");
 
-                    // else
-                    // Move to location 0
+                        // Move to location 0
+                        MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[0].transform.position;
+                        MovementScript.CurrentWaypoint = MovementScript.WaypointList[0];
+                        //     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);
+                      //  Camera.main.transform.rotation = Quaternion.Euler(41.62f, 180f, 0f);
+
+                        MovementScript.CanUturn = false;
+                        MovementScript.CanOrbit = false;
+                        MovementScript.CanLeftTurn = false;
+                        MovementScript.CanRightTurn = false;
+                        MovementScript.CanForward = false;
+                        MovementScript.CanBackup = false;
+                    }
                 }
                 else
                 {

@@ -30,6 +30,7 @@ namespace HOS
         public bool KitchenFromGame = false;
         public bool LRFromHall = false;
         public bool LRFromGame = false;
+        public bool LRFromUnderground = false;
         public bool CenterFromMaze = false;
         public bool CenterFromGame = false;
         public bool HallfromOutside = false;
@@ -135,12 +136,13 @@ namespace HOS
                 CurrentPlayer.PlayerHealth = 10;
 
                 // Test from grounds
-                HouseFromGrounds = true;
-                HousefromInside = false;
+                //HouseFromGrounds = true;
+                //HousefromInside = false;
 
                 // Test from house
-                //HouseFromGrounds = false;
-                //HousefromInside = true;
+                HouseFromGrounds = false;
+                HousefromInside = true;
+                InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "HouseHallWay" && CurrentGameState == GameState.None)
             {
@@ -156,13 +158,18 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Basket);
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
-                // Test from grounds
+                // Test from grounds first time entering house
                 HallfromOutside = true;
                 HallFromRoom = false;
 
                 // Test from house
                 //HallfromOutside = false;
                 //HallFromRoom = true;
+
+                // Test from grounds second time entering house
+                //HallfromOutside = true;
+                //HallFromRoom = false;
+                //InteriorGhostSeen = true;
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {
@@ -199,11 +206,18 @@ namespace HOS
                 MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
 
                 //Test from hall
-                LRFromHall = true;
-                LRFromGame = false;
+                //LRFromHall = true;
+                //LRFromGame = false;
+                //LRFromUnderground = false;
                 //Test from mini game
                 //LRFromHall = false;
                 //LRFromGame = true;
+                //LRFromUnderground = false;
+
+                // Test from Passageway
+                LRFromHall = false;
+                LRFromGame = false;
+                LRFromUnderground = true;
             }
             else if (SceneManager.GetActiveScene().name == "LivingRoomPuzzleGame" && CurrentGameState == GameState.None)
             {

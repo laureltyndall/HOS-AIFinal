@@ -125,8 +125,8 @@ namespace HOS
                         else if (ManagerScript.HousefromInside)
                         {
                             MainCamera = Camera.main;
-                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
-                            CurrentWaypoint = WaypointList[3];
+                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                            CurrentWaypoint = WaypointList[2];
                             MovePlayerUturn();
                             // Turn the player around
                             CanUturn = true;
@@ -146,7 +146,7 @@ namespace HOS
                             CanForward = true;
                             CanOrbit = false;
                         }
-                        else if(ManagerScript.HallFromRoom)
+                        else if(ManagerScript.HallFromRoom && !ManagerScript.InteriorGhostSeen)
                         {
                             MainCamera = Camera.main;
                             CurrentPlayer.transform.position = WaypointList[3].transform.position;
@@ -154,6 +154,12 @@ namespace HOS
                             CanUturn = false;
                             CanForward = false;
                             CanOrbit = true;
+                        }
+                        else if (ManagerScript.HallFromRoom && ManagerScript.InteriorGhostSeen)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
                         }
                     }
                     else if (CurrentScene.name == "Kitchen")
@@ -201,6 +207,18 @@ namespace HOS
                             CanOrbit = true;
                             LRMniGameFin = true;
                         }
+                        else if(ManagerScript.LRFromUnderground)
+                        {
+                            MainCamera = Camera.main;
+                            CurrentPlayer.transform.position = WaypointList[3].transform.position;
+                            CurrentWaypoint = WaypointList[3];
+                            MovePlayerUturn();
+                            UTurnSelected = true;
+                            CanUturn = true;
+                            CanForward = true;
+                            CanOrbit = false;
+                            LRMniGameFin = true;
+                        }
                     }
                     else if (CurrentScene.name == "HedgeMazeCenter")
                     {
@@ -225,6 +243,15 @@ namespace HOS
                             CenterGameFin = true;
                         }
                     }
+                    else if (CurrentScene.name == "Underground Passage")
+                    {
+                        MainCamera = Camera.main;
+                        CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                        CurrentWaypoint = WaypointList[0];
+                        CanUturn = true;
+                        CanForward = true;
+                    }
+
                 }
             }
 
@@ -1140,7 +1167,6 @@ namespace HOS
                     UTurnSelected = true;
                 }
             }
-
             else if (CurrentScene.name == "Kitchen")
             {
                 if (CurrentCursor == CursorType.Forward)
@@ -1530,6 +1556,40 @@ namespace HOS
                             CurrentWaypoint = WaypointList[1];
 
                         }
+                    }
+
+                }
+            }
+            else if (CurrentScene.name == "Underground Passage")
+            {
+                if (CurrentCursor == CursorType.Forward)
+                {
+                    if (CanForward)
+                    {
+                        if (CurrentWaypoint == WaypointList[0])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[1].transform.position;
+                            CurrentWaypoint = WaypointList[1];
+                            CanUturn = false;
+                            CanOrbit = true;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = false;
+                            CanBackup = false;
+                        }
+                    }
+                }
+
+                if (CurrentCursor == CursorType.TurnAround)
+                {
+                    MovePlayerUturn();
+                    UTurnSelected = true;
+                }
+                if (CurrentCursor == CursorType.Backup)
+                {
+                    if (CurrentScene.name == "Underground Passage")
+                    {
+
                     }
 
                 }
