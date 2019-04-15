@@ -55,6 +55,7 @@ namespace HOS
                     MouseOn = false;
                     HasCheese = true;
                     HasBox = true;
+                    RadioOn = false;
                 }
 
                 if (MouseOn)

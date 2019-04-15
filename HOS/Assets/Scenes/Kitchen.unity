@@ -7397,6 +7397,11 @@ Transform:
   m_Father: {fileID: 1936822975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &460011917 stripped
+BoxCollider:
+  m_PrefabParentObject: {fileID: 65631383118086840, guid: d92b476592f4a804982feb25e257301c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1045620188}
 --- !u!1 &460537731
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,6 +11560,7 @@ MonoBehaviour:
   KitchenFromGame: 0
   LRFromHall: 0
   LRFromGame: 0
+  LRFromUnderground: 0
   CenterFromMaze: 0
   CenterFromGame: 0
   HallfromOutside: 0
@@ -15617,6 +15623,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114761441536960804, guid: d92b476592f4a804982feb25e257301c,
+        type: 2}
+      propertyPath: MyCollider
+      value: 
+      objectReference: {fileID: 460011917}
+    - target: {fileID: 114761441536960804, guid: d92b476592f4a804982feb25e257301c,
+        type: 2}
+      propertyPath: TextArea
+      value: 
+      objectReference: {fileID: 1921428175}
+    - target: {fileID: 114761441536960804, guid: d92b476592f4a804982feb25e257301c,
+        type: 2}
+      propertyPath: KitchenScript
+      value: 
+      objectReference: {fileID: 1376214653}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d92b476592f4a804982feb25e257301c, type: 2}
   m_IsPrefabParent: 0
@@ -21195,6 +21216,10 @@ MonoBehaviour:
   Cheese: {fileID: 247468399}
   BoxObject: {fileID: 1796421926}
   GameOverPanel: {fileID: 77554356}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
+  MiniGameWon: 0
+  Notefound: 0
 --- !u!1 &1381909362
 GameObject:
   m_ObjectHideFlags: 0

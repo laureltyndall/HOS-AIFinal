@@ -18,6 +18,7 @@ namespace HOS
         public GameObject NotePanel;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public GameObject CloseUpCamera;
 
         // Use this for initialization
         void Start()
@@ -92,6 +93,12 @@ namespace HOS
                         // Add note to inventory
                         ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.MysteryChecklist);
                         NotePanel.SetActive(true);
+
+                        CloseUpCamera.SetActive(false);
+                        MovementScript.CanOrbit = true;
+                        MovementScript.CanBackup = false;
+                        MovementScript.TurnOffCloseup = false;
+                        KitchenManager.InCloseUp = false;
                     }
                 }
                 ClickCount++;
