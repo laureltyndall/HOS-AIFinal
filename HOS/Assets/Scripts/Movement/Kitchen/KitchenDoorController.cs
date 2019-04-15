@@ -12,7 +12,7 @@ namespace HOS
         public Texture2D NewCursor;
         public PlayerCameraController MovementScript;
         public KitchenSceneManager KitchenScript;
-        public MeshCollider MyCollider;
+        public BoxCollider MyCollider;
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
