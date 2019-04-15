@@ -7,6 +7,7 @@ public class Patrol : NPCBaseFSM {
 
     GameObject[] waypoints;
     int currentWP;
+    Animator wolfani;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class Patrol : NPCBaseFSM {
 	//OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetTrigger("Walk");
         //if there are any point's at all 
         if (waypoints.Length == 0)
         {

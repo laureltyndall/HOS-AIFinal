@@ -54,11 +54,11 @@ namespace HOS
         private void Update()
         {
 
-            if (SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            {
-                CurrentGameState = GameState.None;
-                CurrentSceneName = SceneManager.GetActiveScene().name;
-            }
+            //if (SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            //{
+            //    CurrentGameState = GameState.None;
+            //    CurrentSceneName = SceneManager.GetActiveScene().name;
+            //}
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
@@ -142,6 +142,18 @@ namespace HOS
                 CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
+            {
+                // TESTING INDIVIDUAL SCENES ONLY
+                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
+                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
+                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+                alex.SetActive(false);
+                CurrentGameState = GameState.GameStarted;
+                CurrentPlayer = anne.GetComponent<Player>();
+                CurrentPlayer.PlayerCharacter = Character.Anne;
+                CurrentPlayer.PlayerHealth = 10;
+            }
+            else if (SceneManager.GetActiveScene().name == "MouseGame" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
                 GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
