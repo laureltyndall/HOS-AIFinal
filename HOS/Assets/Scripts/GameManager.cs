@@ -92,6 +92,7 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(-949.59f, -365.04f, 649.05f);
                 CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(2.75f,2.75f,2.75f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -106,6 +107,7 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(2.59f, 3.26f, 78.97f);
                 CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(2.75f,2.75f,2.75f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -120,6 +122,7 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(8.39f, -0.3f, 146.96f);
                 CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(4f,4f,4f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -133,6 +136,7 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(4.64f, 1.02f, -10.95f);
                 CurrentPlayer.transform.Rotate(0f, 90f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -143,29 +147,18 @@ namespace HOS
             }
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {
-                // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
-
+                CurrentPlayer.transform.position = new Vector3(6.4f, 0.5f, 38.5f);
+                CurrentPlayer.transform.Rotate(0f, 180f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
+                CurrentSceneName = SceneManager.GetActiveScene().name;
                 KitchenFromGame = true;
-            }
-            else if (SceneManager.GetActiveScene().name == "MouseGame" && CurrentGameState == GameState.None)
-            {
-                // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
-                CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
             }
             else if (SceneManager.GetActiveScene().name == "MouseGame" && CurrentGameState == GameState.None)
             {
@@ -209,17 +202,17 @@ namespace HOS
             }
             else if (SceneManager.GetActiveScene().name == "HedgeMazeCenter" && CurrentGameState == GameState.None)
             {
-                // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
-         //       MasterInventory.AddInventoryItem(InventoryItem.Basket);
-         //       MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+                CurrentPlayer.transform.position = new Vector3(4.64f, 1.02f, -10.95f);
+                CurrentPlayer.transform.Rotate(0f, 90f, 0f);
+                CurrentPlayer.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+                B.onClick.AddListener(MasterInventory.ActivateMenu);
+                MasterInventory.FindButtons();
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "FountainMiniGame" && CurrentGameState == GameState.None)
             {
