@@ -7214,7 +7214,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f41f41cd34a10a04984bcea95851875a, type: 2}
+  - {fileID: 2100000, guid: 2ee9ad37daeef6f4a9a7ff0f81771173, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7746,6 +7746,14 @@ Prefab:
       propertyPath: Footstep
       value: 
       objectReference: {fileID: 558198597}
+    - target: {fileID: 1266757560897652, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1623505754131556, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
   m_IsPrefabParent: 0
