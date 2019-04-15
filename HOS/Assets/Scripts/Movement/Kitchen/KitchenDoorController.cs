@@ -79,20 +79,27 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                ManagerScript.GroundsFromGate = false;
-                ManagerScript.GroundsFromHouse = false;
-                ManagerScript.HouseFromGrounds = false;
-                ManagerScript.HousefromInside = false;
-                ManagerScript.KitchenFromHall = false;
-                ManagerScript.KitchenFromGame = false;
-                ManagerScript.LRFromHall = false;
-                ManagerScript.LRFromGame = false;
-                ManagerScript.LRFromUnderground = false;
-                ManagerScript.CenterFromMaze = false;
-                ManagerScript.CenterFromGame = false;
-                ManagerScript.HallfromOutside = false;
-                ManagerScript.HallFromRoom = true;
-                SceneManager.LoadScene("HouseHallway");
+                if (KitchenScript.Notefound)
+                {
+                    ManagerScript.GroundsFromGate = false;
+                    ManagerScript.GroundsFromHouse = false;
+                    ManagerScript.HouseFromGrounds = false;
+                    ManagerScript.HousefromInside = false;
+                    ManagerScript.KitchenFromHall = false;
+                    ManagerScript.KitchenFromGame = false;
+                    ManagerScript.LRFromHall = false;
+                    ManagerScript.LRFromGame = false;
+                    ManagerScript.LRFromUnderground = false;
+                    ManagerScript.CenterFromMaze = false;
+                    ManagerScript.CenterFromGame = false;
+                    ManagerScript.HallfromOutside = false;
+                    ManagerScript.HallFromRoom = true;
+                    SceneManager.LoadScene("HouseHallway");
+                }
+                else
+                {
+                    TextArea.text = "I haven't finished searching this room yet.";
+                }
             }
         }
     }

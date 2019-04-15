@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public List<string> TwinConvo;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

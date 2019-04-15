@@ -80,16 +80,19 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 if(ClickCount == 0)
                 {
-                    TextArea.text = "*Gasp!*";
-                    KitchenManager.MouseOn = true;
-                    KitchenManager.LookingForCheese = true;
-                }
-                else
-                {
-                    TextArea.text = "Now let's see what this says, shall we?";
-                    // Add box to inventory
-                    ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.MysteryChecklist);
-                    NotePanel.SetActive(true);
+                    if (!KitchenManager.MiniGameWon)
+                    {
+                        TextArea.text = "*Gasp!*";
+                        KitchenManager.MouseOn = true;
+                        KitchenManager.LookingForCheese = true;
+                    }
+                    else
+                    {
+                        TextArea.text = "Now let's see what this says, shall we?";
+                        // Add note to inventory
+                        ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.MysteryChecklist);
+                        NotePanel.SetActive(true);
+                    }
                 }
                 ClickCount++;
             }

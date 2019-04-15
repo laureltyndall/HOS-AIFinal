@@ -27,6 +27,7 @@ namespace HOS
         public bool RightPath = false;
         private bool Dead = false;
         private bool GORun = false;
+        public bool Talking = false;
 
         private float DeathGhostCounter = 1f;
 
@@ -53,74 +54,81 @@ namespace HOS
             {
                 if (!Dead)
                 {
-                    if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+                    if (!Talking)
                     {
-                        TextArea.text = "";
-                    }
-
-                    if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[14])
-                    {
-                        TextArea.text = MovementScript.SiblingName + ": 'Which way should we go, " + MovementScript.PlayerName + "? The door or the stairs?";
-                    }
-                    if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[15] || MovementScript.CurrentWaypoint == MovementScript.WaypointList[18])
-                    {
-                        TextArea.text = "";
-                    }
-                    if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[17])
-                    {
-                        TextArea.text = "*Gasp* \n " + MovementScript.SiblingName + ": 'Oh no! It's caught us!";
-                        DeathGhost.SetActive(true);
-                        if (DeathGhostCounter <= 0)
+                        if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
                         {
-                            Dead = true;
+                            TextArea.text = "";
                         }
-                        else
+
+                        if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[14])
                         {
-                            DeathGhostCounter -= Time.deltaTime;
+                            TextArea.text = MovementScript.SiblingName + ": 'Which way should we go, " + MovementScript.PlayerName + "? The door or the stairs?";
+                        }
+                        if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[15] || MovementScript.CurrentWaypoint == MovementScript.WaypointList[18])
+                        {
+                            TextArea.text = "";
+                        }
+                        if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[17])
+                        {
+                            TextArea.text = "*Gasp* \n " + MovementScript.SiblingName + ": 'Oh no! It's caught us!";
+                            DeathGhost.SetActive(true);
+                            if (DeathGhostCounter <= 0)
+                            {
+                                Dead = true;
+                            }
+                            else
+                            {
+                                DeathGhostCounter -= Time.deltaTime;
+                            }
+                        }
+                        if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[24])
+                        {
+                            TextArea.text = MovementScript.SiblingName + ": 'Try the door, " + MovementScript.PlayerName + "! Quick!";
+                        }
+
+                        if (FoundTwin && MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+                        {
+                            // Run Dialogue Cutscene
+                            //TwinAnimation.SetBool("Talking", true);
+
+                            // Move twin to their first position
+                            TwinFree = true;
+                        }
+
+                        if (TwinFree && !GhostChasing)
+                        {
+                            MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
+                            MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 190f, 0f);
+                            //    Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
+                            MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
+                            MovementScript.CanUturn = false;
+                            MovementScript.CanOrbit = true;
+                            MovementScript.CanLeftTurn = false;
+                            MovementScript.CanRightTurn = false;
+                            MovementScript.CanForward = false;
+                            MovementScript.CanBackup = false;
+
+                            TwinAnimation.SetBool("Talking", false);
+                            TwinAnimation.SetBool("Scared", true);
+                            // Turn on Ghost
+                            Ghost.SetActive(true);
+                            GhostOn = true;
+
+                            // Have twin instruct to start running and that you need to find another way out
+
+                            GhostChasing = true;
+                        }
+
+                        if (GhostChasing && GhostOn)
+                        {
+                            UpdateGhostPosition();
+                            UpdateTwinPosition();
                         }
                     }
-                    if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[24])
+                    else
                     {
-                        TextArea.text = MovementScript.SiblingName + ": 'Try the door, " + MovementScript.PlayerName + "! Quick!";
-                    }
-
-                    if (FoundTwin && MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
-                    {
-                        // Run Dialogue Cutscene
-                        //TwinAnimation.SetBool("Talking", true);
-
-                        // Move twin to their first position
-                        TwinFree = true;
-                    }
-
-                    if (TwinFree && !GhostChasing)
-                    {
-                        MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
-                        MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 190f, 0f);
-                        //    Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
-                        MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
-                        MovementScript.CanUturn = false;
-                        MovementScript.CanOrbit = true;
-                        MovementScript.CanLeftTurn = false;
-                        MovementScript.CanRightTurn = false;
-                        MovementScript.CanForward = false;
-                        MovementScript.CanBackup = false;
-
-                        TwinAnimation.SetBool("Talking", false);
-                        TwinAnimation.SetBool("Scared", true);
-                        // Turn on Ghost
-                        Ghost.SetActive(true);
-                        GhostOn = true;
-
-                        // Have twin instruct to start running and that you need to find another way out
-
-                        GhostChasing = true;
-                    }
-
-                    if (GhostChasing && GhostOn)
-                    {
-                        UpdateGhostPosition();
-                        UpdateTwinPosition();
+                        //Talking
                     }
                 }
                 else
