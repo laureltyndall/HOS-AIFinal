@@ -19,6 +19,7 @@ namespace HOS
         public GameObject DialoguePanel;
         public DialogueController Dialogue;
         public Text DiaText;
+        public GameObject GhostMoveTo;
 
         public bool TwinFree = false;
         public bool GhostChasing = false;
@@ -34,6 +35,7 @@ namespace HOS
         private float TimeBetweenDialogue = 4f;
         private float ResetDiaTimer = 4f;
         private int DiaCounter = 0;
+        public bool DontFollow = false;
 
         private float DeathGhostCounter = 1f;
 
@@ -122,6 +124,7 @@ namespace HOS
 
                             TextArea.text = MovementScript.SiblingName + ": 'It's here! We need to run!'";
                             // Turn on Ghost
+                            DontFollow = true;
                             Ghost.SetActive(true);
                             GhostOn = true;
 
@@ -201,31 +204,38 @@ namespace HOS
         void UpdateGhostPosition()
         {
             if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[5])
-            {            
+            {
                 // Constantly Move ghost to always be one movement script waypoint list behind the twins
                 // If possible, always have it moving towards their current position with the animator
+                DontFollow = false;
                 Ghost.transform.position = MovementScript.WaypointList[2].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                GhostMoveTo = MovementScript.WaypointList[3];
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[7])
             {
                 Ghost.transform.position = MovementScript.WaypointList[5].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                GhostMoveTo = MovementScript.WaypointList[6];
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[10])
             {
                 Ghost.transform.position = MovementScript.WaypointList[7].transform.position;
-            //    Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                //    Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                GhostMoveTo = MovementScript.WaypointList[8];
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[14])
             {
                 Ghost.transform.position = MovementScript.WaypointList[12].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                GhostMoveTo = MovementScript.WaypointList[13];
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[24])
             {
                 Ghost.transform.position = MovementScript.WaypointList[19].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+                DontFollow = true;
+
             }
         }
 

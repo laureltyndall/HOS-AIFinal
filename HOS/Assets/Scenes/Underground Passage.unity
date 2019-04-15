@@ -8739,6 +8739,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95057445255171758, guid: 2588712b3682e9840b58f3897012a7b0,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b6a2298c7ba97848b3ea416da5a85cc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2588712b3682e9840b58f3897012a7b0, type: 2}
   m_IsPrefabParent: 0
@@ -20673,6 +20678,7 @@ MonoBehaviour:
   DialoguePanel: {fileID: 589186826}
   Dialogue: {fileID: 388131499}
   DiaText: {fileID: 615872623}
+  GhostMoveTo: {fileID: 0}
   TwinFree: 0
   GhostChasing: 0
   GhostOn: 0
@@ -20680,6 +20686,7 @@ MonoBehaviour:
   WrongPath: 0
   RightPath: 0
   Talking: 0
+  DontFollow: 0
   TwinWaypointList: []
 --- !u!1 &396256755
 GameObject:
@@ -57452,6 +57459,54 @@ GameObject:
   m_PrefabParentObject: {fileID: 1414172965916956, guid: 113d357703fe77c4c8a7db352d3ce666,
     type: 2}
   m_PrefabInternal: {fileID: 1466915540}
+--- !u!136 &1451487550
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451487549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5954551
+  m_Height: 2.9514859
+  m_Direction: 1
+  m_Center: {x: -0.09545513, y: 0.97574204, z: -0.0000000020461126}
+--- !u!54 &1451487551
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451487549}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!95 &1451487552 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95520325892401718, guid: 113d357703fe77c4c8a7db352d3ce666,
+    type: 2}
+  m_PrefabInternal: {fileID: 1466915540}
+--- !u!114 &1451487553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451487549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e10aa39e5ab95046902564494f65c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementScript: {fileID: 0}
+  UPManager: {fileID: 388131502}
+  MyAnimation: {fileID: 1451487552}
+  IsAttacking: 0
 --- !u!1 &1455917853
 GameObject:
   m_ObjectHideFlags: 0
@@ -58050,6 +58105,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95520325892401718, guid: 113d357703fe77c4c8a7db352d3ce666,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ff6362ffddbac764e8b5b91cdd3f0eeb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 113d357703fe77c4c8a7db352d3ce666, type: 2}
   m_IsPrefabParent: 0
