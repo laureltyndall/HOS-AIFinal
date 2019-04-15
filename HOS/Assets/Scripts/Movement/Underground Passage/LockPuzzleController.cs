@@ -1,16 +1,94 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class LockPuzzleController : MonoBehaviour {
+namespace HOS
+{
+    public class LockPuzzleController : MonoBehaviour
+    {
+        private bool Clickable = false;
+        private PlayerCameraController MovementScript;
+        public BoxCollider MyCollider;
+        public PassageManager UPScript;
+        public Text TextArea;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        // Use this for initialization
+        void Start()
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("UISystem");
+            MovementScript = go.GetComponent<PlayerCameraController>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (!ManagerFound)
+            {
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
+            }
+            else
+            {
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[24])
+                {
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
+                else
+                {
+                    Clickable = false;
+                    MyCollider.enabled = false;
+                }
+            }
+        }
+
+        void OnMouseOver()
+        {
+            if (Clickable)
+            {
+                Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+            }
+        }
+
+        void OnMouseExit()
+        {
+            //The mouse is no longer hovering over the GameObject so output this message each frame
+            //      Debug.Log("Mouse is no longer on " + this.name);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+
+        private void OnMouseDown()
+        {
+            if (Clickable)
+            {
+                Debug.Log(this.name + " has been clicked");
+                Clickable = false;
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+                ManagerScript.GroundsFromGate = false;
+                ManagerScript.GroundsFromHouse = false;
+                ManagerScript.HouseFromGrounds = false;
+                ManagerScript.HousefromInside = false;
+                ManagerScript.KitchenFromHall = false;
+                ManagerScript.KitchenFromGame = false;
+                ManagerScript.LRFromHall = false;
+                ManagerScript.LRFromGame = false;
+                ManagerScript.LRFromUnderground = false;
+                ManagerScript.CenterFromMaze = false;
+                ManagerScript.CenterFromGame = false;
+                ManagerScript.HallfromOutside = false;
+                ManagerScript.HallFromRoom = false;
+                SceneManager.LoadScene("UndergroundSliderGame");
+            }
+        }
+    }
 }

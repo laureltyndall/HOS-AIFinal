@@ -107,7 +107,7 @@ namespace HOS
 
                 if(KitchenManager.HasBox && KitchenManager.HasCheese)
                 {
-                 //   SceneManager.LoadScene("MouseTestScene");
+                    SceneManager.LoadScene("MouseScene");
                 }
                 else
                 {

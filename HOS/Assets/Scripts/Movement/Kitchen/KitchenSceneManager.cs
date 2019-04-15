@@ -23,6 +23,10 @@ namespace HOS
         public GameObject Cheese;
         public GameObject BoxObject;
         public GameObject GameOverPanel;
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
+        public bool MiniGameWon = false;
+        public bool Notefound = false;
 
         // Use this for initialization
         void Start()
@@ -33,35 +37,57 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if(MouseOn)
+            if (!ManagerFound)
             {
-                MouseObject.SetActive(true);
-            }
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
 
-            if(HasCheese)
-            {
-                Cheese.SetActive(false);
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
             }
-
-            if(HasBox)
+            else
             {
-                BoxObject.SetActive(false);
-            }
+                if (ManagerScript.KitchenFromGame)
+                {
+                    MiniGameWon = true;
+                    MouseOn = false;
+                    HasCheese = true;
+                    HasBox = true;
+                }
 
-            if(HasBox && HasCheese)
-            {
-                LookingForCheese = false;
-            }
+                if (MouseOn)
+                {
+                    MouseObject.SetActive(true);
+                }
 
-            if(PlayerKilledByMouse)
-            {
-                GameOverPanel.SetActive(true);
+                if (HasCheese)
+                {
+                    Cheese.SetActive(false);
+                }
+
+                if (HasBox)
+                {
+                    BoxObject.SetActive(false);
+                }
+
+                if (HasBox && HasCheese)
+                {
+                    LookingForCheese = false;
+                }
+
+                if (PlayerKilledByMouse)
+                {
+                    GameOverPanel.SetActive(true);
+                }
             }
         }
 
         public void TurnOffNote()
         {
             TextArea.text = "'Open the fountain? I didn't see a fountain out there. Could it be somewhere in the hedge maze?";
+            Notefound = true;
         }
     }
 }
