@@ -10,7 +10,7 @@ namespace HOS
     {
         private bool Clickable = false;
         private PlayerCameraController MovementScript;
-        public BoxCollider MyCollider;
+        public MeshCollider MyCollider;
         public PassageManager UPScript;
         public Text TextArea;
         public GameManager ManagerScript;

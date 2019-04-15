@@ -31763,6 +31763,7 @@ MonoBehaviour:
   NotePanel: {fileID: 1158499691}
   ManagerScript: {fileID: 0}
   ManagerFound: 0
+  CloseUpCamera: {fileID: 2073864401}
 --- !u!114 &2061374767
 MonoBehaviour:
   m_ObjectHideFlags: 0

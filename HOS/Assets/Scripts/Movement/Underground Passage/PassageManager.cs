@@ -16,6 +16,9 @@ namespace HOS
         private Animator TwinAnimation;
         public GameObject GOPanel;
         public MenuManager Controller;
+        public GameObject DialoguePanel;
+        public DialogueController Dialogue;
+        public Text DiaText;
 
         public bool TwinFree = false;
         public bool GhostChasing = false;
@@ -28,6 +31,9 @@ namespace HOS
         private bool Dead = false;
         private bool GORun = false;
         public bool Talking = false;
+        private float TimeBetweenDialogue = 4f;
+        private float ResetDiaTimer = 4f;
+        private int DiaCounter = 0;
 
         private float DeathGhostCounter = 1f;
 
@@ -87,17 +93,19 @@ namespace HOS
                             TextArea.text = MovementScript.SiblingName + ": 'Try the door, " + MovementScript.PlayerName + "! Quick!";
                         }
 
-                        if (FoundTwin && MovementScript.CurrentWaypoint == MovementScript.WaypointList[3])
+                        if (FoundTwin && MovementScript.CurrentWaypoint == MovementScript.WaypointList[3] && !Talking && !TwinFree)
                         {
                             // Run Dialogue Cutscene
-                            //TwinAnimation.SetBool("Talking", true);
-
-                            // Move twin to their first position
-                            TwinFree = true;
+                            TwinAnimation.SetBool("Talking", true);
+                            DiaText.text = Dialogue.TwinConvo[DiaCounter];
+                            DiaCounter++;
+                            DialoguePanel.SetActive(true);
+                            Talking = true;
                         }
 
                         if (TwinFree && !GhostChasing)
                         {
+                            DialoguePanel.SetActive(false);
                             MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
                             MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 190f, 0f);
                             //    Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
@@ -111,6 +119,8 @@ namespace HOS
 
                             TwinAnimation.SetBool("Talking", false);
                             TwinAnimation.SetBool("Scared", true);
+
+                            TextArea.text = MovementScript.SiblingName + ": 'It's here! We need to run!'";
                             // Turn on Ghost
                             Ghost.SetActive(true);
                             GhostOn = true;
@@ -129,6 +139,25 @@ namespace HOS
                     else
                     {
                         //Talking
+                        if (DiaCounter <= 23)
+                        {
+                            if (TimeBetweenDialogue <= 0)
+                            {
+                                DiaText.text = Dialogue.TwinConvo[DiaCounter];
+                                DiaCounter++;
+                                TimeBetweenDialogue = ResetDiaTimer;
+                            }
+                            else
+                            {
+                                TimeBetweenDialogue -= Time.deltaTime;
+                            }
+                        }
+                        else
+                        {
+                            // Move twin to their first position
+                            TwinFree = true;
+                            Talking = false;
+                        }
                     }
                 }
                 else
