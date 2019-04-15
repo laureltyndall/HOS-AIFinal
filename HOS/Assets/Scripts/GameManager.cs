@@ -26,6 +26,8 @@ namespace HOS
         public bool ExteriorGhostSeen = false;
         public bool InteriorGhostSeen = false;
 
+        public bool GameWon = false;
+
         public bool GroundsFromGate = false;
         public bool GroundsFromHouse = false;
         public bool HouseFromGrounds = false;
