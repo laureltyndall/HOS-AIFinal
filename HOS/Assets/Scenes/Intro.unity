@@ -1405,10 +1405,13 @@ MonoBehaviour:
   AudioLibrary: []
   PuzzleComplete: 0
   MasterInventory: {fileID: 0}
+  RadioMusic: {fileID: 0}
+  AmbientMusic: {fileID: 0}
   KilledBySnake: 0
   SnakeBeaten: 0
   ExteriorGhostSeen: 0
   InteriorGhostSeen: 0
+  GameWon: 0
   GroundsFromGate: 0
   GroundsFromHouse: 0
   HouseFromGrounds: 0
@@ -2952,7 +2955,7 @@ MonoBehaviour:
   LetterCursorScript: {fileID: 1555893575}
   LetterInventoryScript: {fileID: 1555893576}
   MyCollider: {fileID: 579756880}
-  Footstep: {fileID: 0}
+  Footstep: {fileID: 558198597}
 --- !u!65 &579756880
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -12,11 +12,11 @@ namespace HOS
         public BoxCollider MyCollider;
         public Texture2D NewCursor;
         public AudioSource DoorOpen;
-
+        public GameManager Manager;
         // Use this for initialization
         void Start()
         {
-
+            Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         }
 
         // Update is called once per frame
@@ -57,7 +57,7 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
                 DoorOpen.Play();
-
+                Manager.HallfromOutside = true;
                 SceneManager.LoadScene("HouseHallway");
             }
         }
