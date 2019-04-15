@@ -17,11 +17,32 @@ public class MouseGameManager : MonoBehaviour
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
     private bool m_GameWinner;
+    private bool gameManagerFlag = false;
+    private GameManager gm;
  
     private void Start()
     {
         SpawnAllMice();
         //StartCoroutine(GameLoop());
+        
+    }
+
+    private void Update()
+    {
+        if (!gameManagerFlag)
+        {
+            GameObject go = GameObject.FindGameObjectWithTag("GameController");
+            gm = go.GetComponent<GameManager>();
+
+            if (gm != null)
+            {
+                gameManagerFlag = false;
+            }
+            else
+            {
+                gameManagerFlag = true;
+            }
+        }
         
     }
 
@@ -55,8 +76,21 @@ public class MouseGameManager : MonoBehaviour
         // This code is not run until 'GameEnding' has finished.  At which point, check if a game winner has been found.
         if (!m_GameWinner)
         {
+            gm.GroundsFromGate = false;
+            gm.GroundsFromHouse = false;
+            gm.HouseFromGrounds = false;
+            gm.HousefromInside = false;
+            gm.KitchenFromHall = false;
+            gm.KitchenFromGame = true;
+            gm.LRFromHall = false;
+            gm.LRFromGame = false;
+            gm.LRFromUnderground = false;
+            gm.CenterFromMaze = false;
+            gm.CenterFromGame = false;
+            gm.HallfromOutside = false;
+            gm.HallFromRoom = false;
             // If there is a game winner, go to next scene.
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Kitchen");
         }
         else
         {
@@ -86,12 +120,17 @@ public class MouseGameManager : MonoBehaviour
     //Need help to determine when the player wins
     private IEnumerator GameEnding()
     {
+        //OnCollisionEnter();
         string message = EndMessage();
         m_MessageText.text = message;
         m_GameWinner = true;
         yield return null;
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    gameObject.GetComponent<>()
+    //}
     private string EndMessage()
     {
         string message = "You have run out of time the Mouse has eaten the map.";
