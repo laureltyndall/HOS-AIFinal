@@ -15,6 +15,7 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -75,6 +76,8 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+                Footstep.Play();
 
                 ManagerScript.GroundsFromGate = false;
                 ManagerScript.GroundsFromHouse = false;

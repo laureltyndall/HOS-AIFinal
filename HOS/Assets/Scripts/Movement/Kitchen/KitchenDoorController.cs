@@ -16,6 +16,7 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource DoorOpen;
 
         // Use this for initialization
         void Start()
@@ -81,6 +82,8 @@ namespace HOS
 
                 if (KitchenScript.Notefound)
                 {
+                    DoorOpen.Play();
+                    ManagerScript.AmbientMusic.Play();
                     ManagerScript.GroundsFromGate = false;
                     ManagerScript.GroundsFromHouse = false;
                     ManagerScript.HouseFromGrounds = false;

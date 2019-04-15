@@ -15,6 +15,8 @@ namespace HOS
         public GameManager ManagerScript;
         public Text TextArea;
         public bool ManagerFound = false;
+        public AudioSource DoorOpen;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -79,6 +81,7 @@ namespace HOS
                     // If the player has the letter in inventory, leave the house
                     if(ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.SiblingLetter))
                     {
+                        DoorOpen.Play();
                         ManagerScript.PlayerCopy = ManagerScript.CurrentPlayer;
                         ManagerScript.LoadScene("Gate Scene");
                     }
@@ -102,6 +105,8 @@ namespace HOS
                     MovementScript.CanRightTurn = false;
                     MovementScript.CanForward = true;
                     MovementScript.CanBackup = false;
+
+                    Footstep.Play();
                 }
             }
         }

@@ -20,6 +20,10 @@ namespace HOS
         public GameObject Snake;
         public GameObject GameOverPanel;
         public GameObject[] G= new GameObject[2];
+        public AudioSource Footstep;
+        public AudioSource GateLocked;
+        public AudioSource GateOpen;
+        public AudioSource SnakeHiss;
 
         // Use this for initialization
         void Start()
@@ -95,11 +99,11 @@ namespace HOS
 
                 if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
-                    // If the player has the letter in inventory, leave the house
                     if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
                     {
                         if (ManagerScript.SnakeBeaten)
                         {
+                            GateOpen.Play();
                             Camera.main.transform.rotation = Quaternion.Euler(0f, 180, 0f);
 
                             ManagerScript.GroundsFromGate = true;
@@ -125,6 +129,7 @@ namespace HOS
                             }
                             MovementScript.MainCamera.transform.Rotate(15,0,0);
                             MovementScript.gameObject.SetActive(false);
+                            SnakeHiss.Play();
                         }
                     }
                     // else, dialogue that you don't need to leave right now
@@ -143,6 +148,7 @@ namespace HOS
                             MovementScript.CanRightTurn = false;
                             MovementScript.CanForward = false;
                             MovementScript.CanBackup = true;
+                            GateLocked.Play();
 
                             Snake.SetActive(true);
                             TextArea.text = "Whoah! There's a snake!";
@@ -162,7 +168,7 @@ namespace HOS
                     }
 
                     ClickCounter++;
-
+                    SnakeHiss.Play();
                 }
             }
         }

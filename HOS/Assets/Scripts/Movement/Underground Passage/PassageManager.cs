@@ -41,6 +41,10 @@ namespace HOS
 
         public List<GameObject> TwinWaypointList = new List<GameObject>();
 
+        public AudioSource Footstep;
+        public AudioSource GhostLaugh;
+        public AudioSource DoorOpen;
+
         // Use this for initialization
         void Start()
         {
@@ -80,6 +84,7 @@ namespace HOS
                         if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[17])
                         {
                             TextArea.text = "*Gasp* \n " + MovementScript.SiblingName + ": 'Oh no! It's caught us!";
+                            GhostLaugh.Play();
                             DeathGhost.SetActive(true);
                             if (DeathGhostCounter <= 0)
                             {
@@ -127,7 +132,7 @@ namespace HOS
                             DontFollow = true;
                             Ghost.SetActive(true);
                             GhostOn = true;
-
+                            GhostLaugh.Play();
                             // Have twin instruct to start running and that you need to find another way out
 
                             GhostChasing = true;
@@ -158,6 +163,7 @@ namespace HOS
                         else
                         {
                             // Move twin to their first position
+                            DoorOpen.Play();
                             TwinFree = true;
                             Talking = false;
                         }
@@ -211,31 +217,35 @@ namespace HOS
                 Ghost.transform.position = MovementScript.WaypointList[2].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 GhostMoveTo = MovementScript.WaypointList[3];
+                GhostLaugh.Play();
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[7])
             {
                 Ghost.transform.position = MovementScript.WaypointList[5].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 GhostMoveTo = MovementScript.WaypointList[6];
+                GhostLaugh.Play();
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[10])
             {
                 Ghost.transform.position = MovementScript.WaypointList[7].transform.position;
                 //    Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 GhostMoveTo = MovementScript.WaypointList[8];
+                GhostLaugh.Play();
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[14])
             {
                 Ghost.transform.position = MovementScript.WaypointList[12].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 GhostMoveTo = MovementScript.WaypointList[13];
+                GhostLaugh.Play();
             }
             else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[24])
             {
                 Ghost.transform.position = MovementScript.WaypointList[19].transform.position;
                 Ghost.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 DontFollow = true;
-
+                GhostLaugh.Play();
             }
         }
 

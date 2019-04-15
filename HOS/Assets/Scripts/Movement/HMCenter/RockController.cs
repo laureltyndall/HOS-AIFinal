@@ -17,6 +17,7 @@ namespace HOS
         public GameObject RockSpot1;
         public GameObject RockDisplaced;
         public GameObject Worms;
+        public AudioSource RockMoving;
 
         // Use this for initialization
         void Start()
@@ -68,7 +69,7 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
                 TextArea.text = "These earthworms should do the trick.";
-
+                RockMoving.Play();
                 RockDisplaced.SetActive(true);
                 Worms.SetActive(true);
                 RockSpot1.SetActive(false);

@@ -11,6 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -60,7 +61,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                Footstep.Play();
                 // Move closer to box
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];

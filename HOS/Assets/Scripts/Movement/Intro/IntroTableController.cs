@@ -13,6 +13,7 @@ namespace HOS
         public CursorChanger LetterCursorScript;
         public PickupInventoryItem LetterInventoryScript;
         public BoxCollider MyCollider;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -69,10 +70,9 @@ namespace HOS
                 MovementScript.CanForward = false;
                 MovementScript.CanBackup = true;
 
-                MyCollider.enabled = false;
+                Footstep.Play();
 
-          //      LetterCursorScript.Clickable = true;
-           //     LetterInventoryScript.Clickable = true;
+                MyCollider.enabled = false;
             }
         }
     }

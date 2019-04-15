@@ -14,7 +14,8 @@ namespace HOS
         public BoxCollider MyCollider;
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
-      
+        public AudioSource RadioClick;
+
         // Use this for initialization
         void Start()
         {
@@ -61,7 +62,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                RadioClick.Play();
                 KitchenManager.RadioOn = false;
                 TextArea.text = "Hm. I wonder if that paper is a note from " + MovementScript.SiblingName + ".";
             }

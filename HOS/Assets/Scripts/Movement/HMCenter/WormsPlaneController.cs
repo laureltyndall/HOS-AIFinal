@@ -16,6 +16,7 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Pickup;
 
         // Use this for initialization
         void Start()
@@ -78,7 +79,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                Pickup.Play();
                 TextArea.text = "Oh, these are gross. You better appreciate these, bird!";
                 //Add worms to inventory
                 ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Worms);

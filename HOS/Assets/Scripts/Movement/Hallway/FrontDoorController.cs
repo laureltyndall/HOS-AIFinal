@@ -15,6 +15,8 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource DoorOpen;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -98,6 +100,7 @@ namespace HOS
                 {
                     if (HallScript.GhostSeen && !HallScript.GhostOn)
                     {
+                        DoorOpen.Play();
                         ManagerScript.GroundsFromGate = false;
                         ManagerScript.GroundsFromHouse = false;
                         ManagerScript.HouseFromGrounds = false;
@@ -122,6 +125,7 @@ namespace HOS
                 {
                     if(HallScript.GhostSeen)
                     {
+                        
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
                         MovementScript.CanUturn = false;
@@ -130,6 +134,7 @@ namespace HOS
                         MovementScript.CanRightTurn = false;
                         MovementScript.CanForward = false;
                         MovementScript.CanBackup = false;
+                        Footstep.Play();
                     }
                 }
             }

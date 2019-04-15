@@ -15,6 +15,7 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -85,6 +86,7 @@ namespace HOS
                 }
                 else
                 {
+                    Footstep.Play();
                     ManagerScript.GroundsFromGate = false;
                     ManagerScript.GroundsFromHouse = false;
                     ManagerScript.HouseFromGrounds = false;

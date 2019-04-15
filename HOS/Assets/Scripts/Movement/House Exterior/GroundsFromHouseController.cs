@@ -15,6 +15,7 @@ namespace HOS
         public Text TextArea;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -87,6 +88,7 @@ namespace HOS
 
                 if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
                 {
+                    Footstep.Play();
                     ManagerScript.GroundsFromGate = false;
                     ManagerScript.GroundsFromHouse = true;
                     ManagerScript.HouseFromGrounds = false;

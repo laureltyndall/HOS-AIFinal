@@ -17,6 +17,8 @@ namespace HOS
         public Animation FridgeAnimation;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource CheesePickup;
+        public AudioSource FridgeClick;
 
         // Use this for initialization
         void Start()
@@ -77,7 +79,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                CheesePickup.Play();
                 FridgeAnimation.Play("close");
 
                 // Move back to crossroads waypoint, initial forward movement no longer controlled here
@@ -93,6 +95,7 @@ namespace HOS
                 MovementScript.CanForward = false;
                 MovementScript.CanBackup = false;
 
+
                 MovementScript.UTurnSelected = false;
                 // Add cheese to inventory
                 ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Cheese);
@@ -106,6 +109,7 @@ namespace HOS
                 }
 
                 KitchenManager.HasCheese = true;
+                FridgeClick.Play();
             }
         }
     }

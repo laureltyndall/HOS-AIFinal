@@ -16,6 +16,7 @@ namespace HOS
         public bool ManagerFound = false;
         public MeshRenderer Shovel;
         public CapsuleCollider MyCollider;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -88,6 +89,8 @@ namespace HOS
                     MovementScript.CanRightTurn = false;
                     MovementScript.CanForward = false;
                     MovementScript.CanBackup = true;
+
+                    Footstep.Play();
 
                     MyCollider.enabled = false;
                 }

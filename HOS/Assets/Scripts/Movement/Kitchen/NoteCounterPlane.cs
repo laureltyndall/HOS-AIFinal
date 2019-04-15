@@ -15,6 +15,7 @@ namespace HOS
         public BoxCollider MyCollider;
         public Text TextArea;
         public GameObject CloseUpCamera;
+        public AudioSource MouseSqueak;
 
         // Use this for initialization
         void Start()
@@ -81,6 +82,7 @@ namespace HOS
                 }
                 else
                 {
+                    MouseSqueak.Play();
                     if(KitchenManager.HasBox && KitchenManager.HasCheese)
                     {
                         CloseUpCamera.SetActive(true);

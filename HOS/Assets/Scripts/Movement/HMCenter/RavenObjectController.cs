@@ -22,6 +22,8 @@ namespace HOS
         public GameObject RavenFlying;
         private float TimetoSettle = 2f;
         private bool Flying = false;
+        public AudioSource BirdCall;
+        public AudioSource Wings;
 
         // Use this for initialization
         void Start()
@@ -49,6 +51,7 @@ namespace HOS
             {
                 if(TimetoSettle <= 0)
                 {
+                    BirdCall.Play();
                     RavenStillMesh.enabled = true;
                     RavenEyesMesh.enabled = true;
                     RavenStillStar.enabled = true;
@@ -63,6 +66,7 @@ namespace HOS
                         RavenEyesMesh.enabled = false;
                         RavenStillStar.enabled = false;
                         RavenFlying.SetActive(true);
+                        Wings.Play();
 
                         if(ClickCount <= 1)
                         {

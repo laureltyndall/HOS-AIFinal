@@ -17,6 +17,9 @@ namespace HOS
         public Dictionary<string,bool> LevelPuzzleCompleted = new Dictionary<string, bool>();
         public bool PuzzleComplete;
         public Inventory MasterInventory = new Inventory();
+        public AudioSource RadioMusic;
+        public AudioSource AmbientMusic;
+        private AudioSource[] GameMusic;
 
         public bool KilledBySnake = false;
         public bool SnakeBeaten = false;
@@ -47,6 +50,10 @@ namespace HOS
             {
                 DontDestroyOnLoad(this.gameObject);
             }
+
+            GameMusic = this.GetComponents<AudioSource>();
+            AmbientMusic = GameMusic[0];
+            RadioMusic = GameMusic[1];
 
             Time.timeScale = 1;
         }
@@ -100,6 +107,8 @@ namespace HOS
                 B.onClick.AddListener(MasterInventory.ActivateMenu);
                 MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
+
+                AmbientMusic.Play();
             }
             else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {

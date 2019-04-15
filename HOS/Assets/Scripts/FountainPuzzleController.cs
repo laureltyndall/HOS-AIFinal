@@ -35,6 +35,8 @@ public class FountainPuzzleController : MonoBehaviour
     public bool PlayerCameraFound = false;
     public GameObject PlayerCamera;
 
+    public AudioSource Revolve;
+
     // Use this for initialization
     void Start()
     {
@@ -77,6 +79,7 @@ public class FountainPuzzleController : MonoBehaviour
                         {
                             if (StarTurnTimer > 0f)
                             {
+                                Revolve.Play();
                                 TextAreaSmall.text = "It looks like the stars are turning around.";
 
                                 StarTurnTimer -= Time.deltaTime;

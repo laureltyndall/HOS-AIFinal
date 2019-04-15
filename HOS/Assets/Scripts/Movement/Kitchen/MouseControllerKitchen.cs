@@ -21,6 +21,7 @@ namespace HOS
         private bool EndReached = false;
         private float Speed = 2f;
         public int ClickCounter = 0;
+        public AudioSource Squeak;
 
         // Use this for initialization
         void Start()
@@ -111,6 +112,7 @@ namespace HOS
                 }
                 else
                 {
+                    Squeak.Play();
                     KitchenManager.LookingForCheese = true;
                     TextArea.text = "It bit me! I need to find a way to get rid of that mouse.";
                     ClickCounter++;

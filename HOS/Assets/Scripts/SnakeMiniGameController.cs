@@ -30,6 +30,9 @@ public class SnakeMiniGameController : MonoBehaviour
     public float FlashTimer = 1f;
     public float FlashTimerReset = 1f;
 
+    public AudioSource SnakeHiss;
+    public AudioSource HitSnake;
+
     public SnakeState CurrentSnakeState = SnakeState.None;
 	// Use this for initialization
 	void Start () 
@@ -58,6 +61,7 @@ public class SnakeMiniGameController : MonoBehaviour
             {
                 EvadeButton.gameObject.SetActive(true);
                 PlayerDodge = true;
+                SnakeHiss.Play();
                 GameActionTextBox.text = "Quick dodge the snake's bite!";
                 SnakeActionTimerInterval = Random.Range(1.25f, 2f);
                 PlayerActionTimerInterval = Random.Range(0.6f, 1.00f);
@@ -199,6 +203,7 @@ public class SnakeMiniGameController : MonoBehaviour
 
     public void DamageSnake()
     {
+        HitSnake.Play();
         SnakeHP -= 1;
     }
 

@@ -12,6 +12,7 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public BoxCollider MyCollider;
         public HouseExteriorDoorController DoorScript;
+        public AudioSource Doorbell;
 
         // Use this for initialization
         void Start()
@@ -60,6 +61,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+                Doorbell.Play();
                 DoorScript.KnockCount++;
             }
         }

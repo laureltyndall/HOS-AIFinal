@@ -7,6 +7,7 @@ public class MoonstoneStarController : MonoBehaviour {
     public bool Clicked = false;
     private bool Clickable = true;
     public Texture2D NewCursor;
+    public AudioSource StarSound;
 
     // Use this for initialization
     void Start () {
@@ -45,6 +46,7 @@ public class MoonstoneStarController : MonoBehaviour {
             Clicked = true;
             Clickable = false;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            StarSound.Play();
         }
     }
 }

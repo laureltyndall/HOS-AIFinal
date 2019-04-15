@@ -14,6 +14,7 @@ namespace HOS
         public HMCenterManager HMCManager;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -68,6 +69,7 @@ namespace HOS
 
                 if (!HMCManager.HasStar)
                 {
+                    Footstep.Play();
                     MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[3].transform.position;
                     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 185f, 0f);
                     MovementScript.CurrentWaypoint = MovementScript.WaypointList[3];

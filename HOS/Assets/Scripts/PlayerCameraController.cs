@@ -37,6 +37,8 @@ namespace HOS
         public bool CanForward = false;
         public bool CanBackup = false;
 
+        public AudioSource Footstep;
+
         // Use this for initialization
         void Start()
         {
@@ -1799,6 +1801,8 @@ namespace HOS
 
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             CurrentCursor = CursorType.Default;
+
+            Footstep.Play();
 
             //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
             //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);

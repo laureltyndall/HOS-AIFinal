@@ -18,6 +18,8 @@ namespace HOS
         public DoorknobController KnobScript;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource DoorKnock;
+        public AudioSource DoorOpen;
 
         // Use this for initialization
         void Start()
@@ -115,11 +117,13 @@ namespace HOS
 
                 if(!Knocked)
                 {
+                    DoorKnock.Play();
                     KnockCount++;
                 }
                 else
 {                   if (MovementScript.InteriorGhost)
                     {
+                        DoorOpen.Play();
                         ManagerScript.GroundsFromGate = false;
                         ManagerScript.GroundsFromHouse = false;
                         ManagerScript.HouseFromGrounds = false;

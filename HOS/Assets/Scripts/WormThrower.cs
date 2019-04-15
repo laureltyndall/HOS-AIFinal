@@ -18,6 +18,7 @@ public class WormThrower : MonoBehaviour
     private float m_ChargeSpeed;                // How fast the launch force increases, based on the max charge time.
     private bool m_Fired;                       // Whether or not the shell has been launched with this button press.
     public GameObject WormThrown;
+    public AudioSource ThrowWorm;
 
     private void OnEnable()
     {
@@ -51,6 +52,7 @@ public class WormThrower : MonoBehaviour
             {
                 Fire();
                 Manager.NumberOfWorms -= 1;
+                ThrowWorm.Play();
             }
         }
         // Otherwise, if the fire button has just started being pressed...
@@ -76,6 +78,7 @@ public class WormThrower : MonoBehaviour
             {
                 Fire();
                 Manager.NumberOfWorms -= 1;
+                ThrowWorm.Play();
             }
         }
     }

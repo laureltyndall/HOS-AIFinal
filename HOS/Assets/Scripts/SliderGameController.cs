@@ -24,6 +24,8 @@ namespace HOS
         private string Narration4 = ": It's here!";
         private string Narration5 = "Got it!";
 
+        public AudioSource GhostLaugh;
+
         // Use this for initialization
         void Start()
         {
@@ -62,19 +64,23 @@ namespace HOS
                 if (TimeLeft <= 60)
                 {
                     NarrativeBox.text = Narration2;
+                    GhostLaugh.Play();
                 }
                 if (TimeLeft <= 30)
                 {
                     NarrativeBox.text = Narration3;
+                    GhostLaugh.Play();
                 }
                 if (TimeLeft <= 10)
                 {
                     NarrativeBox.text = Narration4;
+                    GhostLaugh.Play();
                 }
                 if (TimeLeft <= 0)
                 {
                     GameOver = true;
                     RunGameOver();
+                    GhostLaugh.Play();
                 }
             }
         }

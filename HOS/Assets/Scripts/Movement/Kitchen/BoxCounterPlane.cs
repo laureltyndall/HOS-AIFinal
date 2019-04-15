@@ -14,6 +14,7 @@ namespace HOS
         public MeshCollider MyCollider;
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -64,6 +65,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+                Footstep.Play();
                 // Move closer to box
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];

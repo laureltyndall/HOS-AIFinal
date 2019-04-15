@@ -16,6 +16,7 @@ namespace HOS
         public KitchenSceneManager KitchenManager;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource BoxSound;
 
         // Use this for initialization
         void Start()
@@ -77,6 +78,7 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 // Add box to inventory
+                BoxSound.Play();
                 ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Basket);
 
                 if (KitchenManager.HasCheese)

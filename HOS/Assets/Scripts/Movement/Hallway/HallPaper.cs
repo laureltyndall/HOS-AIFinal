@@ -16,6 +16,7 @@ namespace HOS
         public GameObject NotePanel;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource PaperCrinkle;
 
         // Use this for initialization
         void Start()
@@ -76,7 +77,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                PaperCrinkle.Play();
                 HallManager.HaveList = true;
                 TextArea.text = "What's this?";
                 // Add box to inventory

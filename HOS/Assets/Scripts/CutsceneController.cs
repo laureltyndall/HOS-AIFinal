@@ -18,6 +18,9 @@ namespace HOS
         private bool TimeToMove = false;
         public Text TextArea;
         public int Count = 7;
+        public AudioSource Footstep;
+        public AudioSource WoodFootstep;
+        public AudioSource GhostLaugh;
 
         // Use this for initialization
         void Start()
@@ -39,6 +42,7 @@ namespace HOS
                         Ghost.SetActive(true);
                         GhostActive = true;
                         TextArea.text = "*Gasp!*";
+                        GhostLaugh.Play();
                     }
                 }
                 else
@@ -49,6 +53,7 @@ namespace HOS
                     {
                         TextArea.text = "What in the-";
                         Ghost.SetActive(false);
+                        GhostLaugh.Stop();
                         TimeToMove = true;
                     }
                 }
@@ -63,37 +68,44 @@ namespace HOS
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[5].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[5];
+                        Footstep.Play();
                     }
                     else if (Count == 6)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[6].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[6];
+                        Footstep.Play();
                     }
                     else if (Count == 5)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[7].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[7];
+                        Footstep.Play();
                     }
                     else if (Count == 4)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[8].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[8];
+                        Footstep.Play();
                     }
                     else if (Count == 3)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[9].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[9];
+                        Footstep.Play();
                     }
                     else if (Count == 2)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[10].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[10];
+                        Footstep.Play();
                     }
                     else if (Count == 1)
                     {
                         MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
                         MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
                         Camera.main.transform.rotation = Quaternion.Euler(13.028f, -180f, 0f);
+                        WoodFootstep.Play();
                     }
 
                     Count -= 1;

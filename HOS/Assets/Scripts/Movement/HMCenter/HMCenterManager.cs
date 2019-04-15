@@ -46,6 +46,10 @@ namespace HOS
         public Text TextArea;
         public Text GOText;
 
+        public AudioSource DogWhine;
+        public AudioSource StarDrop;
+        public AudioSource PassageOpen;
+
         // Use this for initialization
         void Start()
         {
@@ -82,6 +86,7 @@ namespace HOS
                 {
                     if (WolfActive)
                     {
+                        DogWhine.Play();
                         PlayerCamera.SetActive(false);
 
                         MovementScript.CanUturn = false;
@@ -105,6 +110,7 @@ namespace HOS
                                     Wolf.SetActive(false);
                                     Smoke.SetActive(false);
                                     WolfDisappear = true;
+                                    DogWhine.Stop();
                                     TextArea.text = "It just - disappeared!";
                                 }
                                 else
@@ -188,6 +194,7 @@ namespace HOS
                                 else
                                 {
                                     PlayerAvatar.SetActive(true);
+                                    StarDrop.Play();
                                     TextArea.text = "Yes! It dropped the star!";
                                     CrowGame.SetActive(false);
                                 }
@@ -211,6 +218,7 @@ namespace HOS
 
                 if (PuzzleFinished)
                 {
+                    PassageOpen.Play();
                     TextArea.text = "*Gasp!* There was a secret passage!";
                     // Move the fountain
                     FountainOpen.SetActive(true);

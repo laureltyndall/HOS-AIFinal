@@ -13,6 +13,7 @@ namespace HOS
         public PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -74,6 +75,8 @@ namespace HOS
                 MovementScript.CanRightTurn = false;
                 MovementScript.CanForward = true;
                 MovementScript.CanBackup = false;
+
+                Footstep.Play();
 
                 TextArea.text = "";
             }

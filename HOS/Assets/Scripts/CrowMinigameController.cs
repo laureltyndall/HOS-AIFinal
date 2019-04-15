@@ -28,9 +28,11 @@ public class CrowMinigameController : MonoBehaviour
     public bool IsCrowReset = false;
     public Text WormText;
     public HMCenterManager CenterManager;
+        public AudioSource BirdCall;
+        public AudioSource BirdsWings;
 
-	// Use this for initialization
-	void Start () 
+        // Use this for initialization
+        void Start () 
     {
         Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 		GenerateLives();
@@ -128,6 +130,7 @@ public class CrowMinigameController : MonoBehaviour
 
     void AttackPlayer()
     {
+            BirdCall.Play();
         float timeStep = speed * Time.deltaTime;
         AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, Player.transform.position,timeStep);
         AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,Player.transform.position);
@@ -135,6 +138,7 @@ public class CrowMinigameController : MonoBehaviour
     
     void MoveToWorm()
     {
+            BirdsWings.Play();
         float timeStep = speed * Time.deltaTime;
         AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position,timeStep);
         AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,WormThrowerScript.WormThrown.transform.position);
@@ -142,6 +146,7 @@ public class CrowMinigameController : MonoBehaviour
 
         void RunFromPlayer()
         {
+            BirdsWings.Play();
             float timeStep = speed * Time.deltaTime;
             AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, -Player.transform.position,timeStep);
             AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,-Player.transform.position);

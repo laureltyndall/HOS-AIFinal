@@ -12,6 +12,7 @@ namespace HOS
         private PlayerCameraController MovementScript;
         public MeshCollider MyCollider;
         public PassageManager UPScript;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -58,7 +59,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                Footstep.Play();
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[15].transform.position;
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[15];
                 MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);

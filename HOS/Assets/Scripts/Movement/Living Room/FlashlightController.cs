@@ -16,6 +16,7 @@ namespace HOS
         public LRManager RoomManager;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Pickup;
 
         // Use this for initialization
         void Start()
@@ -76,7 +77,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                Pickup.Play();
                 // Add flashlight to inventory
                 ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
                 TextArea.text = ("A flashlight! Perfect!");

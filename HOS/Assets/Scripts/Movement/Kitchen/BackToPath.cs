@@ -14,6 +14,7 @@ namespace HOS
         public MeshCollider MyCollider;
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -75,6 +76,8 @@ namespace HOS
                 MovementScript.CanForward = true;
                 MovementScript.CanBackup = false;
                 MovementScript.UTurnSelected = true;
+
+                Footstep.Play();
             }
         }
     }

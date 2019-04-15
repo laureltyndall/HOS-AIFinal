@@ -27,6 +27,7 @@ namespace HOS
         public bool ManagerFound = false;
         public bool MiniGameWon = false;
         public bool Notefound = false;
+        public AudioSource PaperCrinkle;
 
         // Use this for initialization
         void Start()
@@ -82,11 +83,17 @@ namespace HOS
                 {
                     GameOverPanel.SetActive(true);
                 }
+
+                if(!RadioOn)
+                {
+                    ManagerScript.RadioMusic.Stop();
+                }
             }
         }
 
         public void TurnOffNote()
         {
+            PaperCrinkle.Play();
             TextArea.text = "'Open the fountain? I didn't see a fountain out there. Could it be somewhere in the hedge maze?";
             Notefound = true;
         }

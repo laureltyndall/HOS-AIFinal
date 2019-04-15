@@ -11,6 +11,7 @@ namespace HOS
         public bool Clickable = false;
         public BoxCollider MyCollider;
         public Texture2D NewCursor;
+        public AudioSource DoorOpen;
 
         // Use this for initialization
         void Start()
@@ -54,6 +55,8 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+                DoorOpen.Play();
 
                 SceneManager.LoadScene("HouseHallway");
             }

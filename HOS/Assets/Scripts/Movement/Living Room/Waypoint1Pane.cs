@@ -14,6 +14,7 @@ namespace HOS
         public LRManager RoomManager;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -76,7 +77,7 @@ namespace HOS
                 {
                     MovementScript.UTurnSelected = true;
                 }
-
+                Footstep.Play();
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
                 MovementScript.CanUturn = true;

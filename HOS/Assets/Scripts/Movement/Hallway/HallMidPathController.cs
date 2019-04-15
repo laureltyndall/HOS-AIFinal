@@ -13,6 +13,7 @@ namespace HOS
         public MeshCollider MyCollider;
         public HallwayMananger HallScript;
         public Text TextArea;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -73,6 +74,7 @@ namespace HOS
                 MovementScript.CanRightTurn = false;
                 MovementScript.CanForward = false;
                 MovementScript.CanBackup = false;
+                Footstep.Play();
             }
         }
     }

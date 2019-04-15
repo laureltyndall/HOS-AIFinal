@@ -11,6 +11,7 @@ public class StarIndicator : MonoBehaviour {
     public int ClickOrder = 0;
     public Text TextArea;
     private FountainPuzzleController PuzzleController;
+    public AudioSource StarSound;
 
     // Use this for initialization
     void Start () {
@@ -48,6 +49,7 @@ public class StarIndicator : MonoBehaviour {
         {
             Debug.Log(this.name + " has been clicked");
             Clicked = true;
+            StarSound.Play();
         }
     }
 }

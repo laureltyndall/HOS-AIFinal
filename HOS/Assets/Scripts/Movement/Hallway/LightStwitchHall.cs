@@ -18,6 +18,7 @@ namespace HOS
         public GameObject Off;
         public GameObject Light1;
         public GameObject Light2;
+        public AudioSource SwitchSound;
 
         // Use this for initialization
         void Start()
@@ -73,6 +74,8 @@ namespace HOS
 
                 Light1.SetActive(true);
                 Light2.SetActive(true);
+
+                SwitchSound.Play();
 
                 TextArea.text = ("There! That's much better. Now, there must be a flashlight around here somewhere.");
                 RoomManager.LightsOn = true;

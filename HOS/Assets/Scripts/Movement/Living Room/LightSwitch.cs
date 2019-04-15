@@ -16,6 +16,7 @@ namespace HOS
         public Text TextArea;
         public GameObject On;
         public GameObject Off;
+        public AudioSource Switch;
 
         // Use this for initialization
         void Start()
@@ -68,7 +69,7 @@ namespace HOS
 
                 On.SetActive(true);
                 Off.SetActive(false);
-
+                Switch.Play();
                 TextArea.text = ("Let's put some light on the subject. \n Maybe " + MovementScript.SiblingName + " has a flashlight in one of these boxes.");
                 RoomManager.LightsOn = true;
             }

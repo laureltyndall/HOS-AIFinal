@@ -14,6 +14,8 @@ namespace HOS
         public HMCenterManager HMCManager;
         public MeshCollider MyCollider;
         public Text TextArea;
+        public AudioSource Footstep;
+        public AudioSource BirdCall;
 
         // Use this for initialization
         void Start()
@@ -65,7 +67,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                Footstep.Play();
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
                 MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
@@ -79,6 +81,7 @@ namespace HOS
 
                 if(HMCManager.PuzzleFound)
                 {
+                    BirdCall.Play();
                     TextArea.text = "That bird has the star!";
                 }
             }

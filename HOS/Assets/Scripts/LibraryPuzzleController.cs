@@ -27,6 +27,8 @@ public class LibraryPuzzleController : MonoBehaviour {
     private bool ManagerFound = false;
     private bool NamesFound = false;
 
+    public AudioSource FolderNoise;
+
     private Vector3 CorrectEnglish1 = new Vector3(0f, 0f, 0f);
     private Vector3 CorrectEnglish2 = new Vector3(0f, 0f, 4f);
     private Vector3 CorrectEnglish3 = new Vector3(0f, 0f, 8f);
@@ -120,6 +122,8 @@ public class LibraryPuzzleController : MonoBehaviour {
                     ClickedFolder1 = null;
                     ClickedFolder2 = null;
                     SwitchingPosition = new Vector3();
+
+                    FolderNoise.Play();
                 }
             }
 

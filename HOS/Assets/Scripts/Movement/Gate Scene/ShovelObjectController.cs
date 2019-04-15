@@ -19,6 +19,8 @@ namespace HOS
         private bool ShovelClicked = false;
         public bool ShovelinInventory = false;
         public GameObject ShovelUIObject;
+        public AudioSource ShovelPickUp;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -71,6 +73,8 @@ namespace HOS
                     MovementScript.CanRightTurn = false;
                     MovementScript.CanForward = false;
                     MovementScript.CanBackup = false;
+
+                    Footstep.Play();
                 }
             }
         }
@@ -107,6 +111,7 @@ namespace HOS
 
                 if(tag == "Trowel")
                 {
+                    ShovelPickUp.Play();
                     TextArea.text = "This should help me get that snake out of the way.";
                     ShovelClicked = true;
                     Controller.TogglePanel(ShovelUIObject);

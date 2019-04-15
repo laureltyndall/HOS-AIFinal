@@ -15,6 +15,7 @@ namespace HOS
         public Text TextArea;
         public KitchenSceneManager KitchenManager;
         public Animation MyAnimation;
+        public AudioSource FridgeClick;
 
         // Use this for initialization
         void Start()
@@ -66,6 +67,7 @@ namespace HOS
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
                 MyAnimation.Play("open");
+                FridgeClick.Play();
 
                 // Move back to crossroads waypoint, initial forward movement no longer controlled here
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[5].transform.position;

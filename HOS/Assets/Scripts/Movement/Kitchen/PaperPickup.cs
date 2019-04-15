@@ -19,6 +19,8 @@ namespace HOS
         public GameManager ManagerScript;
         public bool ManagerFound = false;
         public GameObject CloseUpCamera;
+        public AudioSource PaperCrinkle;
+        public AudioSource MouseSqueak;
 
         // Use this for initialization
         void Start()
@@ -86,11 +88,13 @@ namespace HOS
                         TextArea.text = "*Gasp!*";
                         KitchenManager.MouseOn = true;
                         KitchenManager.LookingForCheese = true;
+                        MouseSqueak.Play();
                     }
                     else
                     {
                         TextArea.text = "Now let's see what this says, shall we?";
                         // Add note to inventory
+                        PaperCrinkle.Play();
                         ManagerScript.MasterInventory.AddInventoryItem(InventoryItem.MysteryChecklist);
                         NotePanel.SetActive(true);
 

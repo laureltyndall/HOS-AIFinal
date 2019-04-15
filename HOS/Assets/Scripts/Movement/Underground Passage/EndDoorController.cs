@@ -13,6 +13,7 @@ namespace HOS
         public BoxCollider MyCollider;
         public PassageManager UPScript;
         public Text TextArea;
+        public AudioSource LockedSound;
 
         // Use this for initialization
         void Start()
@@ -58,7 +59,7 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
+                LockedSound.Play();
                 TextArea.text = "It's locked! \n" + MovementScript.SiblingName + ": Look around! There must be some way to get it open!";
             }
         }

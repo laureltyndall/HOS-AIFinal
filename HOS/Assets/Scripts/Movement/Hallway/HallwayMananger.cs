@@ -27,6 +27,11 @@ namespace HOS
         private bool TimeToMove = false;
         public int Count = 3;
 
+        public AudioSource GhostLaugh;
+        public AudioSource Footstep;
+        public AudioSource DoorOpen;
+        public AudioSource PaperCrinkle;
+
         // Use this for initialization
         void Start()
         {
@@ -81,14 +86,17 @@ namespace HOS
                         {
                             MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
                             MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                            Footstep.Play();
                         }
                         else if (Count == 2)
                         {
                             MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[0].transform.position;
                             MovementScript.CurrentWaypoint = MovementScript.WaypointList[0];
+                            Footstep.Play();
                         }
                         else if (Count == 1)
                         {
+                            DoorOpen.Play();
                             ManagerScript.HousefromInside = true;
                             ManagerScript.HouseFromGrounds = false;
                             SceneManager.LoadScene("HouseExterior");
@@ -108,6 +116,7 @@ namespace HOS
                         MovementScript.CurrentPlayer.transform.Rotate(0f, 180f, 0f);
 
                         Ghost.SetActive(true);
+                        GhostLaugh.Play();
                         GhostOn = true;
 
                         TextArea.text = "*Gasp!";
@@ -117,6 +126,7 @@ namespace HOS
                         if (GhostInPosition)
                         {
                             Ghost.SetActive(false);
+                            GhostLaugh.Stop();
                             GhostSeen = true;
                             GhostOn = false;
                             TextArea.text = "I need to get out of here!";
@@ -134,6 +144,9 @@ namespace HOS
 
         public void TurnOffNote()
         {
+            PaperCrinkle.Play();
+            ManagerScript.AmbientMusic.Stop();
+            ManagerScript.RadioMusic.Play();
             // Turn on music
             TextArea.text = "Where's that music coming from?";
 

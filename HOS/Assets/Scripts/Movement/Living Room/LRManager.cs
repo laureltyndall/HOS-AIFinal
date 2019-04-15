@@ -21,6 +21,8 @@ namespace HOS
         private float TimetoMiniGame = 2f;
         public bool WaitingForGame = false;
         public PlayerCameraController MovementScript;
+        public AudioSource GhostLaugh;
+        public AudioSource BoxSound;
 
         // Use this for initialization
         void Start()
@@ -51,6 +53,7 @@ namespace HOS
             if(HaveFlashlight && !GhostSeen)
             {
                 Ghost.SetActive(true);
+                GhostLaugh.Play();
                 Flashlight.SetActive(false);
                 TextArea.text = "*Gasp!";
 
@@ -58,7 +61,7 @@ namespace HOS
                 {
                     TextArea.text = "What in the-";
                     Ghost.SetActive(false);
-                    Ghost.SetActive(false);
+                    GhostLaugh.Stop();
                     WaitingForGame = true;
                     GhostSeen = true;
                 }
@@ -69,6 +72,7 @@ namespace HOS
                     {
                         UprightBox.SetActive(false);
                         FallingBox.SetActive(true);
+                        BoxSound.Play();
                         BoxFalling = true;
                     }
                 }

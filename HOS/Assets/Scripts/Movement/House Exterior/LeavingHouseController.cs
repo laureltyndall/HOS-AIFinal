@@ -17,6 +17,7 @@ namespace HOS
         public MenuManager Controller;
         public GameManager ManagerScript;
         public bool ManagerFound = false;
+        public AudioSource Footstep;
 
         // Use this for initialization
         void Start()
@@ -83,6 +84,7 @@ namespace HOS
 
                 if (MovementScript.InteriorGhost)
                 {
+                    Footstep.Play();
                     // If inventory does not have flashlight
                     if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
                     {

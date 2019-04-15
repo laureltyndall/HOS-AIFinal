@@ -47,6 +47,9 @@ namespace HOS
 
         public Text NarrativeText;
         public Text SceneText;
+
+        public AudioSource PaperCrinkle;
+        public AudioSource Footstep;
         #endregion
 
         // Use this for initialization
@@ -168,6 +171,7 @@ namespace HOS
                                 {
                                     OpenLetter();
                                     PaperOpen = false;
+                                PaperCrinkle.Play();
 
                                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
                                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
@@ -181,6 +185,8 @@ namespace HOS
                                 MovementScript.CanRightTurn = false;
                                 MovementScript.CanForward = false;
                                 MovementScript.CanBackup = false;
+
+                                Footstep.Play();
 
                                 Manager.MasterInventory.AddInventoryItem(InventoryItem.SiblingLetter);
                             }
@@ -209,6 +215,7 @@ namespace HOS
                     }
 
                     LetterClicked = true;
+                    PaperCrinkle.Play();
                     MovementScript.CanBackup = false;
                 }
          //   }
