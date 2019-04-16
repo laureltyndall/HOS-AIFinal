@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000000, guid: a1a21df98c4ce61418b36c0ce6457b52,
+  m_LightingDataAsset: {fileID: 112000002, guid: 5e85aa8ec43474e4fbdc078fe7b4986f,
     type: 2}
   m_UseShadowmask: 0
 --- !u!196 &5
