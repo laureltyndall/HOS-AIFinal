@@ -54,8 +54,8 @@ namespace HOS
             }
 
             GameMusic = this.GetComponents<AudioSource>();
-      //      AmbientMusic = GameMusic[0];
-        //    RadioMusic = GameMusic[1];
+            AmbientMusic = GameMusic[0];
+            RadioMusic = GameMusic[1];
 
             Time.timeScale = 1;
         }
