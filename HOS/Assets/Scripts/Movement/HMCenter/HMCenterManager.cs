@@ -73,6 +73,7 @@ namespace HOS
                 ManagerScript = gm.gameObject.GetComponent<GameManager>();
                 PlayerCamera = ManagerScript.CurrentPlayer.gameObject;
                 PlayerCameraFound = true;
+                MovementScript.MainCamera = Camera.main;
                 if (ManagerScript != null)
                 {
                     ManagerFound = true;
@@ -161,6 +162,7 @@ namespace HOS
                         if (!CanMove)
                         {
                             ManagerScript.CurrentPlayer.gameObject.SetActive(true);
+                            MovementScript.MainCamera = Camera.main;
                             MovementScript.CanUturn = true;
                             MovementScript.CanOrbit = false;
                             MovementScript.CanLeftTurn = false;

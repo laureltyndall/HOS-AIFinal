@@ -27,7 +27,8 @@ public class AnimalAI : MonoBehaviour {
     private void Update()
     {
         anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
-        
+        MyAnimation = GetComponentInChildren<Animation>();
+        MyAnimation.Play("Run");
     }
 
     private void OnCollisionEnter(Collision collision)

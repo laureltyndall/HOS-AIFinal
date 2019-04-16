@@ -9,6 +9,7 @@ namespace HOS
     {
 
         public GameObject Ghost;
+        public GameObject LightningRig;
         public PlayerCameraController MovementScript;
         private float BeforeGhostCounter = 2f;
         private float GhostActiveCounter = 2f;
@@ -21,6 +22,7 @@ namespace HOS
         public AudioSource Footstep;
         public AudioSource WoodFootstep;
         public AudioSource GhostLaugh;
+        public AudioSource Lightning;
 
         // Use this for initialization
         void Start()
@@ -39,6 +41,8 @@ namespace HOS
                     if (BeforeGhostCounter <= 0)
                     {
                         // Lightning Strike
+                        LightningRig.SetActive(true);
+                        Lightning.Play();
                         Ghost.SetActive(true);
                         GhostActive = true;
                         TextArea.text = "*Gasp!*";
@@ -51,6 +55,7 @@ namespace HOS
 
                     if(GhostActiveCounter <= 0)
                     {
+                        LightningRig.SetActive(false);
                         TextArea.text = "What in the-";
                         Ghost.SetActive(false);
                         GhostLaugh.Stop();
