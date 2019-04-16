@@ -133,7 +133,7 @@ public class LibraryPuzzleController : MonoBehaviour {
             }
             if (TotalClicks == 10)
             {
-                TextArea.text = "I looks like the black folders are the English alphabet, the geen are runes (geek), blue is the Greek alphabet, and red looks like - Russian?";
+                TextArea.text = "I looks like the black folders are the English alphabet, the green are runes (geek), blue is the Greek alphabet, and red looks like - Russian?";
             }
 
             if (CorrectFolders >= 17)
