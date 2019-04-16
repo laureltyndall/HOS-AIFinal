@@ -49,7 +49,7 @@ namespace HOS
                     CloseUpCamera.SetActive(false);
                 }
 
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !CameraOn)
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && CameraOn)
                 {
                     // If we are right next to the gate and we are looking at it
                     Clickable = true;
