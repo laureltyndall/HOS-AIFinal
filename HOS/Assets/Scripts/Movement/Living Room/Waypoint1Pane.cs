@@ -76,10 +76,12 @@ namespace HOS
                 else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     MovementScript.UTurnSelected = true;
+                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
+                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                    MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 65f, 0f);
+
                 }
                 Footstep.Play();
-                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
-                MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
                 MovementScript.CanUturn = true;
                 MovementScript.CanOrbit = false;
                 MovementScript.CanLeftTurn = false;
@@ -87,7 +89,7 @@ namespace HOS
                 MovementScript.CanForward = true;
                 MovementScript.CanBackup = false;
 
-                
+
             }
         }
     }
