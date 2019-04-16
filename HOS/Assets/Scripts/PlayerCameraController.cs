@@ -852,6 +852,7 @@ namespace HOS
                                 CanRightTurn = false;
                                 CanForward = false;
                                 CanBackup = false;
+                                TextArea.text = "";
 
                                 UTurnSelected = false;
                                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);

@@ -3536,6 +3536,7 @@ MonoBehaviour:
   SnakeBeaten: 0
   ExteriorGhostSeen: 0
   InteriorGhostSeen: 0
+  GameWon: 0
   GroundsFromGate: 0
   GroundsFromHouse: 0
   HouseFromGrounds: 0
@@ -3972,7 +3973,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2de08b5d7aed4b843a75e3d5f7605066, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

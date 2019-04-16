@@ -85,13 +85,13 @@ namespace HOS
                 {
                     TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
                 }
-                if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Stick) && ManagerScript.GroundsFromHouse)
+                else if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Stick) && ManagerScript.GroundsFromHouse)
                 {
                     // Turn on Closeup camera
                     StickScript.CameraOn = true;
                     TextArea.text = ("'Beware of dog?' This must be an old sign. " + MovementScript.SiblingName + "is allergic to dogs.");
                 }
-                else
+                else if(ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Stick))
                 {
                     Footstep.Play();
                     ManagerScript.GroundsFromGate = false;

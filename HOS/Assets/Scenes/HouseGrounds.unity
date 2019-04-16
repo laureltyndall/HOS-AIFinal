@@ -18427,7 +18427,7 @@ MonoBehaviour:
   ManagerScript: {fileID: 0}
   ManagerFound: 0
   Footstep: {fileID: 1705734574}
-  StickScript: {fileID: 0}
+  StickScript: {fileID: 977798591}
 --- !u!4 &1397437660 stripped
 Transform:
   m_PrefabParentObject: {fileID: 442488, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 2}
