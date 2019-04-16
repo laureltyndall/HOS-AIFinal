@@ -206,6 +206,7 @@ public class FountainPuzzleController : MonoBehaviour
             else
             {
                 {
+                    ManagerScript.FountainPuzzleFin = true;
                     ManagerScript.CurrentPlayer.gameObject.SetActive(true);
                     ManagerScript.GroundsFromGate = false;
                     ManagerScript.GroundsFromHouse = false;

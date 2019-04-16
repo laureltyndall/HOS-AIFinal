@@ -42,6 +42,8 @@ namespace HOS
         public bool HallfromOutside = false;
         public bool HallFromRoom = false;
 
+        public bool FountainPuzzleFin = false;
+
         public GameObject GameOverScreen;
         public bool GameOver = false;
         private string CurrentSceneName = "";

@@ -82,7 +82,7 @@ namespace HOS
             }
             else
             {
-                if (MovementScript.CenterGameFin)
+                if (ManagerScript.FountainPuzzleFin)
                 {
                     SmokeActive = false;
                     ClothFound = true;
