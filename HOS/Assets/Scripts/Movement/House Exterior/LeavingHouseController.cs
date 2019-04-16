@@ -82,11 +82,10 @@ namespace HOS
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-                if (MovementScript.InteriorGhost)
+                if (ManagerScript.InteriorGhostSeen)
                 {
-                    Footstep.Play();
                     // If inventory does not have flashlight
-                    if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Trowel))
+                    if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
                     {
                         if (ClickCounter == 1)
                         {
