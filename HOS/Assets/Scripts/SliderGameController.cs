@@ -15,6 +15,7 @@ namespace HOS
         public bool GameOver = false;
         public string PlayerName;
         private string SiblingName;
+        private bool CharacterTurnedOff = false;
 
         private float TimeLeft = 180.0f;
 
@@ -49,6 +50,60 @@ namespace HOS
                         Narration2 = SiblingName + Narration2 + PlayerName + "!";
                         Narration3 = SiblingName + Narration3;
                         Narration4 = SiblingName + Narration4;
+
+                        if (CharacterTurnedOff)
+                        {
+
+                            TimeLeft -= Time.deltaTime;
+                            if (TimeLeft <= 60)
+                            {
+                                NarrativeBox.text = Narration2;
+                                GhostLaugh.Play();
+                            }
+                            if (TimeLeft <= 30)
+                            {
+                                NarrativeBox.text = Narration3;
+                                GhostLaugh.Play();
+                            }
+                            if (TimeLeft <= 10)
+                            {
+                                NarrativeBox.text = Narration4;
+                                GhostLaugh.Play();
+                            }
+                            if (TimeLeft <= 0)
+                            {
+                                GameOver = true;
+                                RunGameOver();
+                                GhostLaugh.Play();
+                            }
+                        }
+                        else
+                        {
+                            GameObject go = GameObject.FindGameObjectWithTag("PlayerAnne");
+                            if(go == null)
+                            {
+                                go = GameObject.FindGameObjectWithTag("PlayerAlex");
+                                if(go == null)
+                                {
+                                    go = GameObject.FindGameObjectWithTag("MainCamera");
+                                    if(go != null)
+                                    {
+                                        go.SetActive(false);
+                                        CharacterTurnedOff = true;
+                                    }
+                                }
+                                else
+                                {
+                                    go.SetActive(false);
+                                    CharacterTurnedOff = true;
+                                }
+                            }
+                            else
+                            {
+                                go.SetActive(false);
+                                CharacterTurnedOff = true;
+                            }
+                        }
                     }
                     else
                     {
@@ -58,29 +113,6 @@ namespace HOS
                 else
                 {
                     FindManagerScript();
-                }
-
-                TimeLeft -= Time.deltaTime;
-                if (TimeLeft <= 60)
-                {
-                    NarrativeBox.text = Narration2;
-                    GhostLaugh.Play();
-                }
-                if (TimeLeft <= 30)
-                {
-                    NarrativeBox.text = Narration3;
-                    GhostLaugh.Play();
-                }
-                if (TimeLeft <= 10)
-                {
-                    NarrativeBox.text = Narration4;
-                    GhostLaugh.Play();
-                }
-                if (TimeLeft <= 0)
-                {
-                    GameOver = true;
-                    RunGameOver();
-                    GhostLaugh.Play();
                 }
             }
         }

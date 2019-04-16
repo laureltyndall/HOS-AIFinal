@@ -139,6 +139,7 @@ public class LibraryPuzzleController : MonoBehaviour {
             if (CorrectFolders >= 17)
             {
                 Debug.Log("Game Won!");
+                TextArea.text = "Got it!";
                 GameOver = true;
             }
             else
