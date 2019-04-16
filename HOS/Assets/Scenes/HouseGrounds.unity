@@ -12373,7 +12373,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1689256535751416, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
@@ -12717,6 +12717,7 @@ MonoBehaviour:
   CenterFromGame: 0
   HallfromOutside: 0
   HallFromRoom: 0
+  FountainPuzzleFin: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}

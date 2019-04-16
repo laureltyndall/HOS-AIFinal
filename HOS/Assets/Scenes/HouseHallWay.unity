@@ -478,7 +478,7 @@ MonoBehaviour:
   TextArea: {fileID: 1166121729}
   ManagerScript: {fileID: 0}
   ManagerFound: 0
-  DoorOpen: {fileID: 0}
+  DoorOpen: {fileID: 490224232}
 --- !u!23 &99803975
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14652,6 +14652,7 @@ MonoBehaviour:
   CenterFromGame: 0
   HallfromOutside: 0
   HallFromRoom: 0
+  FountainPuzzleFin: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}
