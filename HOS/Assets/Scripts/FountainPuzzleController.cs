@@ -205,7 +205,6 @@ public class FountainPuzzleController : MonoBehaviour
             }
             else
             {
-                {
                     ManagerScript.FountainPuzzleFin = true;
                     //ManagerScript.CurrentPlayer.gameObject.SetActive(true);
                     ManagerScript.GroundsFromGate = false;
@@ -222,7 +221,7 @@ public class FountainPuzzleController : MonoBehaviour
                     ManagerScript.HallfromOutside = false;
                     ManagerScript.HallFromRoom = false;
                     ManagerScript.LoadScene("HedgeMazeCenter");
-                }
+
             }
         }
     }
