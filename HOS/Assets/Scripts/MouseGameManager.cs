@@ -18,7 +18,7 @@ public class MouseGameManager : MonoBehaviour
     public List<Transform> wayPointsForAI;
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
-    private bool m_GameWinner = false;
+    public bool m_GameWinner = false;
     private bool gameManagerFlag = false;
 
     private GameManager gm;
@@ -96,6 +96,7 @@ public class MouseGameManager : MonoBehaviour
             gm.HallFromRoom = false;
             // If there is a game winner, go to next scene.
             SceneManager.LoadScene("Kitchen");
+            Debug.Log("GameWon!");
         }
         else
         {
@@ -120,7 +121,7 @@ public class MouseGameManager : MonoBehaviour
         // Clear the text from the screen.
         m_MessageText.text = string.Empty;
         // ... return on the next frame.
-        while(m_GameWinner == false)
+        if(m_GameWinner == false)
         {
             for (int i = 0; i < m_Mice.Length; i++)
             {
@@ -129,7 +130,7 @@ public class MouseGameManager : MonoBehaviour
                     mouseCaught++;
                 }
             }
-            m_GameWinner = true;
+        //    m_GameWinner = true;
         }
         yield return null;
     }
@@ -159,11 +160,11 @@ public class MouseGameManager : MonoBehaviour
 
     private string EndMessage()
     {
-        string message = "You have run out of time the Mouse has eaten the map.";
+        string message = "Oh no! It got away!";
 
         if (m_GameWinner == true)
         {
-            message = "You now have the map of the maze.";
+            message = "Got you!";
         }
 
         return message;

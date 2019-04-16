@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1800,7 +1800,7 @@ GameObject:
   - component: {fileID: 846827358}
   m_Layer: 0
   m_Name: MouseGameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1831,6 +1831,7 @@ MonoBehaviour:
   - {fileID: 469181262}
   - {fileID: 1780258600}
   - {fileID: 2042475437}
+  m_GameWinner: 0
 --- !u!4 &846827359
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,7 +2151,6 @@ GameObject:
   - component: {fileID: 866914707}
   - component: {fileID: 866914717}
   - component: {fileID: 866914716}
-  - component: {fileID: 866914715}
   - component: {fileID: 866914714}
   - component: {fileID: 866914713}
   - component: {fileID: 866914712}
@@ -2266,28 +2266,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &866914715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114972656327043182, guid: ce2af3eb3448add42851672addf16ca5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 866914706}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519e2d0d6b9e5e8419d2447ee8761da5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Clickable: 0
-  NewCursor: {fileID: 2800000, guid: d85b60e1ace1a5848b786318f0943654, type: 3}
-  MovementScript: {fileID: 0}
-  MyCollider: {fileID: 65671499689099612, guid: ce2af3eb3448add42851672addf16ca5,
-    type: 2}
-  TextArea: {fileID: 0}
-  KitchenManager: {fileID: 0}
-  ManagerScript: {fileID: 0}
-  ManagerFound: 0
-  BoxSound: {fileID: 0}
 --- !u!23 &866914716
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3632,6 +3610,10 @@ Prefab:
     - {fileID: 65393939256393340, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
     - {fileID: 111194036892890728, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
     - {fileID: 65671499689099612, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
+    - {fileID: 114592061187846808, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
+    - {fileID: 114428251324711824, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
+    - {fileID: 114909500235024784, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
+    - {fileID: 114972656327043182, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce2af3eb3448add42851672addf16ca5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1402573220
@@ -4659,7 +4641,6 @@ GameObject:
   - component: {fileID: 1742698009}
   - component: {fileID: 1742698019}
   - component: {fileID: 1742698018}
-  - component: {fileID: 1742698017}
   - component: {fileID: 1742698016}
   - component: {fileID: 1742698015}
   - component: {fileID: 1742698014}
@@ -4775,28 +4756,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1742698017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114972656327043182, guid: ce2af3eb3448add42851672addf16ca5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1742698008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 519e2d0d6b9e5e8419d2447ee8761da5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Clickable: 0
-  NewCursor: {fileID: 2800000, guid: d85b60e1ace1a5848b786318f0943654, type: 3}
-  MovementScript: {fileID: 0}
-  MyCollider: {fileID: 65671499689099612, guid: ce2af3eb3448add42851672addf16ca5,
-    type: 2}
-  TextArea: {fileID: 0}
-  KitchenManager: {fileID: 0}
-  ManagerScript: {fileID: 0}
-  ManagerFound: 0
-  BoxSound: {fileID: 0}
 --- !u!23 &1742698018
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class AnimalAI : MonoBehaviour {
 
     Animator anim;
     public GameObject Target;
+    public MouseGameManager GameScript;
     
     public GameObject GetTarget()
     {
@@ -16,7 +17,8 @@ public class AnimalAI : MonoBehaviour {
     private void Start()
     {
         anim = GetComponent<Animator>();
-
+        GameObject go = GameObject.FindGameObjectWithTag("GameManager");
+        GameScript = go.GetComponent<MouseGameManager>();
     }
 
     private void Update()
@@ -29,6 +31,7 @@ public class AnimalAI : MonoBehaviour {
     {
         if (collision.gameObject.name == "USABLE BOX" || collision.gameObject.name == "USABLE BOX (1)" || collision.gameObject.name == "USABLE BOX (2)")
         {
+            GameScript.m_GameWinner = true;
             Destroy(this.gameObject);
         }
     }
