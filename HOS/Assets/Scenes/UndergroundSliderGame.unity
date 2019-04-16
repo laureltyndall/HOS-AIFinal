@@ -3543,7 +3543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &447796459
 Transform:
   m_ObjectHideFlags: 0
@@ -3596,6 +3596,7 @@ MonoBehaviour:
   SnakeBeaten: 0
   ExteriorGhostSeen: 0
   InteriorGhostSeen: 0
+  GameWon: 0
   GroundsFromGate: 0
   GroundsFromHouse: 0
   HouseFromGrounds: 0
