@@ -46,6 +46,11 @@ namespace HOS
                     Clickable = true;
                     MyCollider.enabled = true;
                 }
+                else if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[1] && RoomManager.HaveFlashlight)
+                {
+                    Clickable = true;
+                    MyCollider.enabled = true;
+                }
                 else
                 {
                     Clickable = false;
@@ -59,7 +64,7 @@ namespace HOS
             if (Clickable)
             {
                 // If Inventory does not have flashlight
-                Cursor.SetCursor(MovementScript.CursorList[2], Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
                 // else
                 // Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
             }
@@ -79,21 +84,33 @@ namespace HOS
                 Debug.Log(this.name + " has been clicked");
                 Clickable = false;
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                DoorOpen.Play();
-                ManagerScript.GroundsFromGate = false;
-                ManagerScript.GroundsFromHouse = false;
-                ManagerScript.HouseFromGrounds = false;
-                ManagerScript.HousefromInside = false;
-                ManagerScript.KitchenFromHall = false;
-                ManagerScript.KitchenFromGame = false;
-                ManagerScript.LRFromHall = false;
-                ManagerScript.LRFromGame = false;
-                ManagerScript.LRFromUnderground = false;
-                ManagerScript.CenterFromMaze = false;
-                ManagerScript.CenterFromGame = false;
-                ManagerScript.HallfromOutside = false;
-                ManagerScript.HallFromRoom = true;
-                SceneManager.LoadScene("HouseHallway");
+
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0])
+                {
+                    DoorOpen.Play();
+                    ManagerScript.GroundsFromGate = false;
+                    ManagerScript.GroundsFromHouse = false;
+                    ManagerScript.HouseFromGrounds = false;
+                    ManagerScript.HousefromInside = false;
+                    ManagerScript.KitchenFromHall = false;
+                    ManagerScript.KitchenFromGame = false;
+                    ManagerScript.LRFromHall = false;
+                    ManagerScript.LRFromGame = false;
+                    ManagerScript.LRFromUnderground = false;
+                    ManagerScript.CenterFromMaze = false;
+                    ManagerScript.CenterFromGame = false;
+                    ManagerScript.HallfromOutside = false;
+                    ManagerScript.HallFromRoom = true;
+                    SceneManager.LoadScene("HouseHallway");
+                }
+                else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[1])
+                {
+                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[0].transform.position;
+                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[0];
+                    MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                }
+
+
             }
         }
     }

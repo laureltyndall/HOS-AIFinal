@@ -70,26 +70,31 @@ namespace HOS
 
                 if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[0])
                 {
-                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
-                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
                     MovementScript.UTurnSelected = false;
                     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 181.25f, 0f);
+                    MovementScript.CanUturn = false;
+                    MovementScript.CanOrbit = false;
+                    MovementScript.CanLeftTurn = false;
+                    MovementScript.CanRightTurn = false;
+                    MovementScript.CanForward = true;
+                    MovementScript.CanBackup = false;
                 }
                 else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
                 {
                     MovementScript.UTurnSelected = true;
                     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 65f, 0f);
-                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
-                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                    MovementScript.CanUturn = true;
+                    MovementScript.CanOrbit = false;
+                    MovementScript.CanLeftTurn = false;
+                    MovementScript.CanRightTurn = false;
+                    MovementScript.CanForward = true;
+                    MovementScript.CanBackup = false;
                 }
                 Footstep.Play();
+                MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[1].transform.position;
+                MovementScript.CurrentWaypoint = MovementScript.WaypointList[1];
+                
 
-                MovementScript.CanUturn = true;
-                MovementScript.CanOrbit = false;
-                MovementScript.CanLeftTurn = false;
-                MovementScript.CanRightTurn = false;
-                MovementScript.CanForward = true;
-                MovementScript.CanBackup = false;
 
                 
             }
