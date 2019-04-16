@@ -93,7 +93,6 @@ namespace HOS
                     HasWorms = true;
                     KilledByBird = false;
                     RavenFound = true;
-
                     PlayerCamera.SetActive(true);
                     WolfActive = false;
                     CanMove = true;

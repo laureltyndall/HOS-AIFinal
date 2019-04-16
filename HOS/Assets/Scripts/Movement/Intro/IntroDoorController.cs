@@ -85,7 +85,7 @@ namespace HOS
                         ManagerScript.PlayerCopy = ManagerScript.CurrentPlayer;
                         //ManagerScript.LoadScene("Gate Scene");
                         ManagerScript.CenterFromMaze = true;
-                        ManagerScript.LoadScene("HedgeMazeCenter");
+                        ManagerScript.LoadScene("Gate Scene");
                         //ManagerScript.LoadScene("UndergroundSliderGame");
                     }
                     // else, dialogue that you don't need to leave right now

@@ -102,7 +102,7 @@ namespace HOS
                 // TESTING INDIVIDUAL SCENES ONLY
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(-949.59f, -365.04f, 649.05f);
-                CurrentPlayer.transform.localScale = new Vector3(2.75f,2.75f,2.75f);
+                CurrentPlayer.transform.localScale = new Vector3(2.75f, 2.75f, 2.75f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -113,14 +113,14 @@ namespace HOS
 
                 AmbientMusic.Play();
             }
-            else if(SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
+            else if (SceneManager.GetActiveScene().name == "HouseGrounds" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(2.59f, 3.26f, 78.97f);
                 //CurrentPlayer.transform.Rotate(0f, 0f, 0f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                CurrentPlayer.transform.localScale = new Vector3(2.75f,2.75f,2.75f);
+                CurrentPlayer.transform.localScale = new Vector3(2.75f, 2.75f, 2.75f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -136,7 +136,7 @@ namespace HOS
                 CurrentPlayer.transform.position = new Vector3(8.39f, -0.3f, 146.96f);
                 //CurrentPlayer.transform.Rotate(0f, 0f, 0f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                CurrentPlayer.transform.localScale = new Vector3(4f,4f,4f);
+                CurrentPlayer.transform.localScale = new Vector3(4f, 4f, 4f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -150,7 +150,7 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.transform.position = new Vector3(4.64f, 1.02f, -10.95f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
-                CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
+                CurrentPlayer.transform.localScale = new Vector3(3f, 3f, 3f);
                 //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 90f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -162,8 +162,9 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "Kitchen" && CurrentGameState == GameState.None)
             {
                 CurrentGameState = GameState.GameStarted;
+                CurrentPlayer.gameObject.SetActive(true);
                 CurrentPlayer.transform.position = new Vector3(6.4f, 0.5f, 38.5f);
-                CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
+                CurrentPlayer.transform.localScale = new Vector3(3f, 3f, 3f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
@@ -177,19 +178,15 @@ namespace HOS
                 // TESTING INDIVIDUAL SCENES ONLY
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.gameObject.SetActive(false);
-                //CurrentPlayer.transform.position = new Vector3(6.4f, 0.5f, 38.5f);
-                //CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
-                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                //Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
 
             }
             else if (SceneManager.GetActiveScene().name == "Living Room" && CurrentGameState == GameState.None)
             {
                 CurrentGameState = GameState.GameStarted;
-               // CurrentPlayer.gameObject.SetActive(true);
+                // CurrentPlayer.gameObject.SetActive(true);
                 CurrentPlayer.transform.position = new Vector3(14.8f, 0f, 17.72f);
-                CurrentPlayer.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
+                CurrentPlayer.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
@@ -208,6 +205,10 @@ namespace HOS
             {
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.gameObject.SetActive(false);
+                if (FountainPuzzleFin)
+                {
+                    CurrentPlayer.gameObject.SetActive(true);
+                }
                 CurrentPlayer.transform.position = new Vector3(1.78f, -3.02f, 5.25f);
                 CurrentPlayer.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
