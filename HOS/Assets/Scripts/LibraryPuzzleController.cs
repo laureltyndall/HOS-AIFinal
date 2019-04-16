@@ -152,7 +152,7 @@ public class LibraryPuzzleController : MonoBehaviour {
             TextArea.text = "Got it!";
             if(ManagerFound)
             {
-                ManagerScript.CurrentPlayer.gameObject.SetActive(false);
+                ManagerScript.CurrentPlayer.gameObject.SetActive(true);
                 ManagerScript.GroundsFromGate = false;
                 ManagerScript.GroundsFromHouse = false;
                 ManagerScript.HouseFromGrounds = false;

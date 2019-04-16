@@ -79,29 +79,14 @@ namespace HOS
                         }
                         else
                         {
-                            GameObject go = GameObject.FindGameObjectWithTag("PlayerAnne");
-                            if(go == null)
+                            if (ManagerScript.CurrentPlayer != null)
                             {
-                                go = GameObject.FindGameObjectWithTag("PlayerAlex");
-                                if(go == null)
-                                {
-                                    go = GameObject.FindGameObjectWithTag("MainCamera");
-                                    if(go != null)
-                                    {
-                                        go.SetActive(false);
-                                        CharacterTurnedOff = true;
-                                    }
-                                }
-                                else
-                                {
-                                    go.SetActive(false);
-                                    CharacterTurnedOff = true;
-                                }
+                                ManagerScript.CurrentPlayer.gameObject.SetActive(false);
+                                CharacterTurnedOff = true;
                             }
                             else
                             {
-                                go.SetActive(false);
-                                CharacterTurnedOff = true;
+                                CharacterTurnedOff = false;
                             }
                         }
                     }
@@ -173,7 +158,7 @@ namespace HOS
             }
             NarrativeBox.text = Narration5;
 
-
+            ManagerScript.CurrentPlayer.gameObject.SetActive(true);
             ManagerScript.GroundsFromGate = false;
             ManagerScript.GroundsFromHouse = false;
             ManagerScript.HouseFromGrounds = false;
