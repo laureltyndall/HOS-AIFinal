@@ -56,6 +56,8 @@ TagManager:
   - B10
   - TwinWaypoints
   - InventoryActiveButton
+  - MazeExit
+  - Mouse
   layers:
   - Default
   - TransparentFX

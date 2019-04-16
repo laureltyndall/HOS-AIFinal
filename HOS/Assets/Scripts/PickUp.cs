@@ -12,6 +12,7 @@ public class PickUp : MonoBehaviour {
         GetComponent<Rigidbody>().useGravity = false;
         this.transform.position = myDest.position;
         this.transform.parent = GameObject.Find("Destination").transform;
+        this.gameObject.transform.rotation = Quaternion.Euler(new Vector3(180f, 180, 0));
         
     }
 
@@ -22,4 +23,12 @@ public class PickUp : MonoBehaviour {
         GetComponent<BoxCollider>().enabled = true;
         
     }
+
+    //private void OnTriggerEnter(Collider collider)
+    //{
+    //    if (collider.name == "Mouse_b")
+    //    {
+    //        Destroy(collider.gameObject);
+    //    }
+    //}
 }

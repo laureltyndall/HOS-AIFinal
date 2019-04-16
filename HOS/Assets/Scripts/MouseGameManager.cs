@@ -8,6 +8,8 @@ using System.Collections;
 
 public class MouseGameManager : MonoBehaviour
 {
+    private int m_NumberOfMiceCaught = 0;
+    private int numberOfMiceDestroyed = 1; 
     public float m_StartDelay = 3f;
     public float m_EndDelay = 3f;
     public Text m_MessageText;
@@ -16,14 +18,17 @@ public class MouseGameManager : MonoBehaviour
     public List<Transform> wayPointsForAI;
     private WaitForSeconds m_StartWait;
     private WaitForSeconds m_EndWait;
-    private bool m_GameWinner;
+    private bool m_GameWinner = false;
     private bool gameManagerFlag = false;
+
     private GameManager gm;
  
     private void Start()
     {
+        m_StartWait = new WaitForSeconds(m_StartDelay);
+        m_EndWait = new WaitForSeconds(m_EndDelay);
         SpawnAllMice();
-        //StartCoroutine(GameLoop());
+        StartCoroutine(GameLoop());
         
     }
 
@@ -74,7 +79,7 @@ public class MouseGameManager : MonoBehaviour
         yield return StartCoroutine(GameEnding());
 
         // This code is not run until 'GameEnding' has finished.  At which point, check if a game winner has been found.
-        if (!m_GameWinner)
+        if (m_GameWinner == true)
         {
             gm.GroundsFromGate = false;
             gm.GroundsFromHouse = false;
@@ -111,31 +116,52 @@ public class MouseGameManager : MonoBehaviour
 
     private IEnumerator PlayingGame()
     {
+        int mouseCaught = 0;
         // Clear the text from the screen.
         m_MessageText.text = string.Empty;
         // ... return on the next frame.
+        while(m_GameWinner == false)
+        {
+            for (int i = 0; i < m_Mice.Length; i++)
+            {
+                if (m_Mice[i].m_Instance.activeSelf)
+                {
+                    mouseCaught++;
+                }
+            }
+            m_GameWinner = true;
+        }
         yield return null;
     }
 
     //Need help to determine when the player wins
     private IEnumerator GameEnding()
     {
-        //OnCollisionEnter();
+        
         string message = EndMessage();
         m_MessageText.text = message;
-        m_GameWinner = true;
         yield return null;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    gameObject.GetComponent<>()
-    //}
+    private bool OneMouseLeft()
+    {
+        int mouseCaught = 0;
+
+        for (int i = 0; i < m_Mice.Length; i++)
+        {
+            if (m_Mice[i].m_Instance.activeSelf )
+            {
+                mouseCaught++;
+            }
+        }
+        return mouseCaught <= 1;
+    }
+
     private string EndMessage()
     {
         string message = "You have run out of time the Mouse has eaten the map.";
 
-        if (m_GameWinner)
+        if (m_GameWinner == true)
         {
             message = "You now have the map of the maze.";
         }

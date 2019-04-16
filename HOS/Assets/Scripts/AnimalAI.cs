@@ -24,4 +24,12 @@ public class AnimalAI : MonoBehaviour {
         anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
         
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "USABLE BOX" || collision.gameObject.name == "USABLE BOX (1)" || collision.gameObject.name == "USABLE BOX (2)")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

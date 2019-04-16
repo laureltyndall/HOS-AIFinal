@@ -54,8 +54,8 @@ namespace HOS
             }
 
             GameMusic = this.GetComponents<AudioSource>();
-            AmbientMusic = GameMusic[0];
-            RadioMusic = GameMusic[1];
+            //AmbientMusic = GameMusic[0];
+            //RadioMusic = GameMusic[1];
 
             Time.timeScale = 1;
         }
@@ -63,11 +63,11 @@ namespace HOS
         private void Update()
         {
 
-            if (SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
-            {
-                CurrentGameState = GameState.None;
-                CurrentSceneName = SceneManager.GetActiveScene().name;
-            }
+            //if (SceneManager.GetActiveScene().name != CurrentSceneName && CurrentGameState != GameState.None)
+            //{
+            //    CurrentGameState = GameState.None;
+            //    CurrentSceneName = SceneManager.GetActiveScene().name;
+            //}
 
             if (SceneManager.GetActiveScene().name == "Intro" && CurrentGameState == GameState.None)
             {
