@@ -173,14 +173,14 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "MouseGame" && CurrentGameState == GameState.None)
             {
                 // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
+                CurrentPlayer.gameObject.SetActive(false);
+                //CurrentPlayer.transform.position = new Vector3(6.4f, 0.5f, 38.5f);
+                //CurrentPlayer.transform.localScale = new Vector3(3f,3f,3f);
+                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                //Camera.main.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
+
             }
             else if (SceneManager.GetActiveScene().name == "Living Room" && CurrentGameState == GameState.None)
             {
