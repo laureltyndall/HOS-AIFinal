@@ -64,7 +64,7 @@ namespace HOS
             }
             else
             {
-                if (ManagerScript.LRFromGame)
+                if (ManagerScript.LRFromUnderground)
                 {
                     if(!NamedTwin)
                     {
