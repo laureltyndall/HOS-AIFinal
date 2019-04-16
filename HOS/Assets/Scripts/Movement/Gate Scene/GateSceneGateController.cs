@@ -77,6 +77,9 @@ namespace HOS
                 //  MovementScript.MainCamera.transform.Rotate(15, 0, 0);
                 MovementScript.gameObject.SetActive(true);
                 Clickable = true;
+
+                Snake.SetActive(false);
+                TextArea.text = "I should be able to get through the gate safely now.";
             }
             }
 
