@@ -53,14 +53,8 @@ public class FountainPuzzleController : MonoBehaviour
         {
             FindManagerScript();
         }
-        else if (!PlayerCameraFound)
-        {
-            FindCamera();
-        }
         else
         {
-            PlayerCamera.SetActive(false);
-
             if (!GameOver)
             {
                 if (!MoonstoneInsterted)
@@ -265,36 +259,14 @@ public class FountainPuzzleController : MonoBehaviour
 
             if (ManagerScript != null)
             {
-
-
                 if (ManagerScript.CurrentPlayer != null)
                 {
-                    PlayerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                    ManagerScript.CurrentPlayer.gameObject.SetActive(false);
 
-                    if(PlayerCamera == null)
-                    {
-                        ManagerFound = false;
-                    }
-                    else
-                    {
-                        ManagerFound = true;
-                        PlayerCameraFound = true;
-                    }
+                    
                 }
+                ManagerFound = true;
             }
-        }
-    }
-
-    void FindCamera()
-    {
-        PlayerCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        if (PlayerCamera == null)
-        {
-            PlayerCameraFound = false;
-        }
-        else
-        {
-            PlayerCameraFound = true;
         }
     }
 }
