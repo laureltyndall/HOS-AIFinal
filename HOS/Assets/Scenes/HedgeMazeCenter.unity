@@ -738,7 +738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1495902654301170, guid: 3fa1a2ac9fc33fd4988436adb0647928, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3fa1a2ac9fc33fd4988436adb0647928, type: 2}
@@ -8936,7 +8936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1992268808304514, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
@@ -75930,7 +75930,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1689256535751416, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
@@ -78897,6 +78897,8 @@ MonoBehaviour:
   DogWhine: {fileID: 1358475547}
   StarDrop: {fileID: 1654512445}
   PassageOpen: {fileID: 191010257}
+  ManagerScript: {fileID: 0}
+  ManagerFound: 0
 --- !u!1001 &1380622496
 Prefab:
   m_ObjectHideFlags: 0

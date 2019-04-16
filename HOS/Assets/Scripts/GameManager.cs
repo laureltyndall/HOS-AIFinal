@@ -205,10 +205,9 @@ namespace HOS
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.gameObject.SetActive(false);
                 CurrentPlayer.transform.position = new Vector3(1.78f, -3.02f, 5.25f);
-                CurrentPlayer.transform.Rotate(0f, 90f, 0f);
                 CurrentPlayer.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
-                //CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                //Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                //CurrentPlayer.GetComponent<Camera>().transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                 Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
                 B.onClick.AddListener(MasterInventory.ActivateMenu);
                 MasterInventory.FindButtons();
