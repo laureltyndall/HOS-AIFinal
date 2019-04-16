@@ -1319,18 +1319,18 @@ namespace HOS
                 {
                     if (CanForward)
                     {
+                        //if (CurrentWaypoint == WaypointList[1])
+                        //{
+                        //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                        //    CurrentWaypoint = WaypointList[2];
+                        //    CanUturn = false;
+                        //    CanOrbit = true;
+                        //    CanLeftTurn = false;
+                        //    CanRightTurn = false;
+                        //    CanForward = false;
+                        //    CanBackup = false;
+                        //}
                         if (CurrentWaypoint == WaypointList[1])
-                        {
-                            CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                            CurrentWaypoint = WaypointList[2];
-                            CanUturn = false;
-                            CanOrbit = true;
-                            CanLeftTurn = false;
-                            CanRightTurn = false;
-                            CanForward = false;
-                            CanBackup = false;
-                        }
-                        else if (CurrentWaypoint == WaypointList[1])
                         {
                             if (!UTurnSelected)         // Looking at door
                             {
