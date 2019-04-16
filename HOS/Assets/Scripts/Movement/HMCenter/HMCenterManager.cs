@@ -162,7 +162,7 @@ namespace HOS
                         if (!CanMove)
                         {
                             ManagerScript.CurrentPlayer.gameObject.SetActive(true);
-                            MovementScript.MainCamera = Camera.main;
+                            MovementScript.FindCharacter();
                             MovementScript.CanUturn = true;
                             MovementScript.CanOrbit = false;
                             MovementScript.CanLeftTurn = false;
