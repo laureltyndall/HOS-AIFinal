@@ -72,6 +72,7 @@ namespace HOS
                 GameObject gm = GameObject.FindGameObjectWithTag("GameController");
                 ManagerScript = gm.gameObject.GetComponent<GameManager>();
                 PlayerCamera = ManagerScript.CurrentPlayer.gameObject;
+                PlayerAvatar = ManagerScript.CurrentPlayer.gameObject;
                 PlayerCameraFound = true;
                 MovementScript.MainCamera = Camera.main;
                 if (ManagerScript != null)

@@ -226,17 +226,9 @@ namespace HOS
             }
             else if (SceneManager.GetActiveScene().name == "FountainMiniGame" && CurrentGameState == GameState.None)
             {
-                // TESTING INDIVIDUAL SCENES ONLY
-                GameObject alex = GameObject.FindGameObjectWithTag("PlayerAlex");
-                GameObject anne = GameObject.FindGameObjectWithTag("PlayerAnne");
-                //     MasterInventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
-                alex.SetActive(false);
                 CurrentGameState = GameState.GameStarted;
-                CurrentPlayer = anne.GetComponent<Player>();
-                CurrentPlayer.PlayerCharacter = Character.Anne;
-                CurrentPlayer.PlayerHealth = 10;
-                //        MasterInventory.AddInventoryItem(InventoryItem.Basket);
-                //      MasterInventory.AddInventoryItem(InventoryItem.Flashlight);
+                CurrentPlayer.gameObject.SetActive(false);
+                CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "Underground Passage" && CurrentGameState == GameState.None)
             {

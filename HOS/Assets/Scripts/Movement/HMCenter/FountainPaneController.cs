@@ -70,7 +70,7 @@ namespace HOS
                 Footstep.Play();
                 MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[2].transform.position;
                 MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                Camera.main.transform.rotation = Quaternion.Euler(14f, 0f, 0f);
+                Camera.main.transform.rotation = Quaternion.Euler(14f, 180f, 0f);
                 MovementScript.CurrentWaypoint = MovementScript.WaypointList[2];
                 MovementScript.CanUturn = true;
                 MovementScript.CanOrbit = false;

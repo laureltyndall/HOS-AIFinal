@@ -118,7 +118,7 @@ public class CrowMinigameController : MonoBehaviour
 
         }
 
-        if (TimesCrowDistracted >= 5)
+        if (TimesCrowDistracted >= 2)
         {
             IsGameOver = true;
             Manager.MasterInventory.AddInventoryItem(InventoryItem.MarblePiece);
@@ -138,10 +138,13 @@ public class CrowMinigameController : MonoBehaviour
     
     void MoveToWorm()
     {
-            BirdsWings.Play();
+        BirdsWings.Play();
         float timeStep = speed * Time.deltaTime;
-        AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position,timeStep);
-        AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position,WormThrowerScript.WormThrown.transform.position);
+        if (WormThrowerScript.WormThrown != null)
+        {
+            AttackerCrow.transform.position = Vector3.MoveTowards(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position, timeStep);
+            AttackerCrow.transform.rotation.SetFromToRotation(AttackerCrow.transform.position, WormThrowerScript.WormThrown.transform.position);
+        }
     }
 
         void RunFromPlayer()
@@ -176,16 +179,18 @@ public class CrowMinigameController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.name == "Crow")
         {
-            LifeArray[PlayerHP -1].SetActive(false);
-            PlayerHP -= 1;
-            IsCrowReset = true;
-                IsCrowDistracted = true;
-            CrowResetTimer = 0;
-        }
-
+            if (!PlayerDead)
+            {
+                if (collision.gameObject.name == "Crow")
+                {
+                    LifeArray[PlayerHP - 1].SetActive(false);
+                    PlayerHP -= 1;
+                    IsCrowReset = true;
+                    IsCrowDistracted = true;
+                    CrowResetTimer = 0;
+                }
+            }
         if (PlayerHP <= 0)
         {
             PlayerDead = true;

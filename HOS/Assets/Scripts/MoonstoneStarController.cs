@@ -8,10 +8,11 @@ public class MoonstoneStarController : MonoBehaviour {
     private bool Clickable = true;
     public Texture2D NewCursor;
     public AudioSource StarSound;
-
+    
     // Use this for initialization
-    void Start () {
-		
+    void Start () 
+    {
+	    	
 	}
 	
 	// Update is called once per frame
@@ -46,7 +47,7 @@ public class MoonstoneStarController : MonoBehaviour {
             Clicked = true;
             Clickable = false;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-            StarSound.Play();
+            //StarSound.Play();
         }
     }
 }
