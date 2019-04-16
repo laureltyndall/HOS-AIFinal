@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Kitchen.unity
     guid: 3c022a6c90bdfbd4ea4fb0aafc1237fb
   - enabled: 1
-    path: Assets/Scenes/MouseTestScene.unity
+    path: Assets/Scenes/MouseGame.unity
     guid: 813b9bc68b260fc44b1db52031ebdc57
   - enabled: 1
     path: Assets/Scenes/Living Room.unity
