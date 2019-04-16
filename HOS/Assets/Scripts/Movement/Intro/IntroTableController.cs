@@ -68,7 +68,7 @@ namespace HOS
                 MovementScript.CanLeftTurn = false;
                 MovementScript.CanRightTurn = false;
                 MovementScript.CanForward = false;
-                MovementScript.CanBackup = true;
+                MovementScript.CanBackup = false;
 
                 Footstep.Play();
 

@@ -52,6 +52,7 @@ namespace HOS
             {
                 if (ManagerScript.KitchenFromGame)
                 {
+                    TextArea.text = "With the mouse in the box, I should be able to get that paper now.";
                     MiniGameWon = true;
                     MouseOn = false;
                     HasCheese = true;

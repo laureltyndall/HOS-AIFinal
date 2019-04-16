@@ -43,7 +43,7 @@ namespace HOS
             }
             else
             {
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2])
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[2] && KnockCount != 4)
                 {
                     // If we are right next to the gate and we are looking at it
                     Clickable = true;

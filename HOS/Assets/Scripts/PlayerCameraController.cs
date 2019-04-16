@@ -1243,6 +1243,7 @@ namespace HOS
                                 // Move to previous waypoint closer to gate
                                 CurrentPlayer.transform.position = WaypointList[2].transform.position;
                                 CurrentWaypoint = WaypointList[2];
+                                CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 15f, 0f);
                                 //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                                 CanUturn = true;
                                 CanOrbit = false;

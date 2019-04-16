@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.434
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24735633, g: 0.25273836, b: 0.237192, a: 0.434}
+  m_IndirectSpecularColor: {r: 0.2992366, g: 0.33443165, b: 0.38980427, a: 0.434}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1753,7 +1753,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &310109816
 Light:
   m_ObjectHideFlags: 0
@@ -4372,7 +4372,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 857d51860da6d5048a87d29e87000b25, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4770,6 +4770,7 @@ MonoBehaviour:
   CenterFromGame: 0
   HallfromOutside: 0
   HallFromRoom: 0
+  FountainPuzzleFin: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}
@@ -5649,7 +5650,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5683,7 +5684,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 882661690}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -6.763207, y: 5.3755665, z: 2.8182342}
+  m_LocalPosition: {x: -8.56, y: 8.38, z: 5.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8880,7 +8881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1296506540
 Light:
   m_ObjectHideFlags: 0
@@ -9220,6 +9221,7 @@ MonoBehaviour:
   Ghost: {fileID: 1155382073}
   UprightBox: {fileID: 354574084}
   FallingBox: {fileID: 1026495559}
+  Light: {fileID: 882661690}
   Flashlight: {fileID: 652189457}
   WaitingForGame: 0
   MovementScript: {fileID: 0}
