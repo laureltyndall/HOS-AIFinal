@@ -24,6 +24,7 @@ namespace HOS
         public AudioSource GateLocked;
         public AudioSource GateOpen;
         public AudioSource SnakeHiss;
+        public SnakeMiniGameController SnakeScript;
 
         // Use this for initialization
         void Start()
@@ -65,7 +66,22 @@ namespace HOS
             {
                 TextArea.text = "I need to find some way to get that snake away from the gate latch.";
             }
-        }
+
+            if (ManagerScript.SnakeBeaten)
+            {
+                foreach (GameObject g in G)
+                {
+                    g.SetActive(false);
+                }
+
+                //  MovementScript.MainCamera.transform.Rotate(15, 0, 0);
+                MovementScript.gameObject.SetActive(true);
+                Clickable = true;
+
+                Snake.SetActive(false);
+                TextArea.text = "I should be able to get through the gate safely now.";
+            }
+            }
 
         void OnMouseOver()
         {
@@ -127,6 +143,7 @@ namespace HOS
                             {
                                 g.SetActive(true);
                             }
+                            Clickable = false;
                             MovementScript.MainCamera.transform.Rotate(15,0,0);
                             MovementScript.gameObject.SetActive(false);
                             SnakeHiss.Play();

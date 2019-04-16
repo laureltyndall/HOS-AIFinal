@@ -738,7 +738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1495902654301170, guid: 3fa1a2ac9fc33fd4988436adb0647928, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3fa1a2ac9fc33fd4988436adb0647928, type: 2}
@@ -1041,6 +1041,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &53967184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3125,6 +3126,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &133507500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4426,6 +4428,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &202038978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5135,6 +5138,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &241194778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5890,6 +5894,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &287688355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7391,6 +7396,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &357487893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8543,7 +8549,7 @@ GameObject:
   - component: {fileID: 420632682}
   m_Layer: 5
   m_Name: Inventory Button
-  m_TagString: Untagged
+  m_TagString: InventoryActiveButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8611,7 +8617,7 @@ MonoBehaviour:
         m_MethodName: TogglePanel
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1306375626}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8930,7 +8936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1992268808304514, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
@@ -10602,6 +10608,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &458752743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11577,6 +11584,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &509127027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68019,6 +68027,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &735286009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -68431,6 +68440,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &767998389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70101,6 +70111,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &879941387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70393,6 +70404,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &890607969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71784,6 +71796,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &963654170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -73208,6 +73221,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1067884912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74576,6 +74590,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1142831733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74682,6 +74697,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1143282289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75717,6 +75733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clicked: 0
   NewCursor: {fileID: 2800000, guid: 295b8ca27024e414eb0c95085555feca, type: 3}
+  StarSound: {fileID: 0}
 --- !u!65 &1211746676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75913,7 +75930,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1689256535751416, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f59f18ac13fd09b46aef2f1bf8f777c8, type: 2}
@@ -77748,6 +77765,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224213482890529682, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
     type: 2}
   m_PrefabInternal: {fileID: 1306375624}
+--- !u!1 &1306375626 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1060584094319316, guid: e7d4c090dd0139d4ebdc5f28a4c5dc68,
+    type: 2}
+  m_PrefabInternal: {fileID: 1306375624}
 --- !u!1001 &1306479812
 Prefab:
   m_ObjectHideFlags: 0
@@ -77892,6 +77914,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1310385996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -78714,6 +78737,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1363879812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79845,6 +79869,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1428074902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82875,6 +82900,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1599160100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84742,6 +84768,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1700375134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85919,6 +85946,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1770810823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -86429,6 +86457,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1784337893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -86577,6 +86606,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1796379913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88492,6 +88522,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1838911069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89570,6 +89601,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1906568709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90290,6 +90322,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &1955397492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90858,6 +90891,7 @@ MonoBehaviour:
   Clickable: 0
   ClickOrder: 0
   TextArea: {fileID: 0}
+  StarSound: {fileID: 0}
 --- !u!65 &2007705960
 BoxCollider:
   m_ObjectHideFlags: 0

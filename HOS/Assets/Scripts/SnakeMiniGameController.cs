@@ -29,6 +29,7 @@ public class SnakeMiniGameController : MonoBehaviour
     public int SnakeMoveDirection;
     public float FlashTimer = 1f;
     public float FlashTimerReset = 1f;
+    public bool SnakeGameOn = false;
 
     public AudioSource SnakeHiss;
     public AudioSource HitSnake;
@@ -47,139 +48,144 @@ public class SnakeMiniGameController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-
-        if (GenerateAction)
+        if (!GameOver)
         {
-            if (CurrentSnakeState == SnakeState.Move)
+            if (GenerateAction)
             {
-                GameActionTextBox.text = "";
-                SnakeActionTimerInterval = Random.Range(1.25f, 2.5f);
-                CurrentSnakeState = SnakeState.Attack;
-                GenerateAction = false;
-            }
-            else if (CurrentSnakeState == SnakeState.Attack)
-            {
-                EvadeButton.gameObject.SetActive(true);
-                PlayerDodge = true;
-                SnakeHiss.Play();
-                GameActionTextBox.text = "Quick dodge the snake's bite!";
-                SnakeActionTimerInterval = Random.Range(1.25f, 2f);
-                PlayerActionTimerInterval = Random.Range(0.6f, 1.00f);
-                CurrentSnakeState = SnakeState.Recover;
-                GenerateAction = false;
-            }
-            else if (CurrentSnakeState == SnakeState.Recover)
-            {
-                PlayerAttack = true;
-                AttackButton.gameObject.SetActive(true);
-                GameActionTextBox.text = "I can probably strike the snake now before it coils back up.";
-                SnakeActionTimerInterval = Random.Range(1.0f, 4f);
-                PlayerActionTimerInterval = Random.Range(0.45f, 1.00f);
-                SnakeMoveDirection = Random.Range(1, 2);
-                CurrentSnakeState = SnakeState.Move;
-                GenerateAction = false;
-            }
-        }
-
-        if (SnakeActionTimer >= SnakeActionTimerInterval)
-        {
-            if (CurrentSnakeState == SnakeState.Move)
-            {
-                if (SnakeMoveDirection == 1)
-                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.2f,0,0);
-                else if (SnakeMoveDirection == 2)
-                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.2f,0,0);
-            }
-            if (CurrentSnakeState == SnakeState.Attack)
-            {
-                if (!SnakeMissAttack)
+                if (CurrentSnakeState == SnakeState.Move)
                 {
-                    PlayerHP -= 1;
+                    GameActionTextBox.text = "";
+                    SnakeActionTimerInterval = Random.Range(1.25f, 2.5f);
+                    CurrentSnakeState = SnakeState.Attack;
+                    GenerateAction = false;
                 }
-                SnakeMissAttack = false;
-                EvadeButton.gameObject.SetActive(false);
-                PlayerActionTimer += Time.fixedDeltaTime;
+                else if (CurrentSnakeState == SnakeState.Attack)
+                {
+                    EvadeButton.gameObject.SetActive(true);
+                    PlayerDodge = true;
+                    SnakeHiss.Play();
+                    GameActionTextBox.text = "Quick dodge the snake's bite!";
+                    SnakeActionTimerInterval = Random.Range(1.25f, 2f);
+                    PlayerActionTimerInterval = Random.Range(0.6f, 1.00f);
+                    CurrentSnakeState = SnakeState.Recover;
+                    GenerateAction = false;
+                }
+                else if (CurrentSnakeState == SnakeState.Recover)
+                {
+                    PlayerAttack = true;
+                    AttackButton.gameObject.SetActive(true);
+                    GameActionTextBox.text = "I can probably strike the snake now before it coils back up.";
+                    SnakeActionTimerInterval = Random.Range(1.0f, 4f);
+                    PlayerActionTimerInterval = Random.Range(0.45f, 1.00f);
+                    SnakeMoveDirection = Random.Range(1, 2);
+                    CurrentSnakeState = SnakeState.Move;
+                    GenerateAction = false;
+                }
             }
-            if (CurrentSnakeState == SnakeState.Recover)
-            {
-                AttackButton.gameObject.SetActive(false);
-                PlayerActionTimer += Time.fixedDeltaTime;
-            }
-            GameActionTextBox.text = "";
-            SnakeActionTimer = 0;
-            GenerateAction = true;
 
-        }
-             if (CurrentSnakeState == SnakeState.Move)
+            if (SnakeActionTimer >= SnakeActionTimerInterval)
+            {
+                if (CurrentSnakeState == SnakeState.Move)
+                {
+                    if (SnakeMoveDirection == 1)
+                        SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.05f, 0, 0);
+                    else if (SnakeMoveDirection == 2)
+                        SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.05f, 0, 0);
+                }
+                if (CurrentSnakeState == SnakeState.Attack)
+                {
+                    if (!SnakeMissAttack)
+                    {
+                        PlayerHP -= 1;
+                    }
+                    SnakeMissAttack = false;
+                    EvadeButton.gameObject.SetActive(false);
+                    PlayerActionTimer += Time.fixedDeltaTime;
+                }
+                if (CurrentSnakeState == SnakeState.Recover)
+                {
+                    AttackButton.gameObject.SetActive(false);
+                    PlayerActionTimer += Time.fixedDeltaTime;
+                }
+                GameActionTextBox.text = "";
+                SnakeActionTimer = 0;
+                GenerateAction = true;
+
+            }
+            if (CurrentSnakeState == SnakeState.Move)
             {
                 if (SnakeMoveDirection == 1)
-                   SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-2,0,0);
+                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(-.05f, 0, 0);
                 else if (SnakeMoveDirection == 2)
-                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(2,0,0);
+                    SnakeObject.GetComponent<Rigidbody>().velocity = new Vector3(.05f, 0, 0);
             }
-        MasterTimer += Time.fixedDeltaTime;
-        SnakeActionTimer += Time.fixedDeltaTime;
+            MasterTimer += Time.fixedDeltaTime;
+            SnakeActionTimer += Time.fixedDeltaTime;
 
 
-        if (MasterTimer >= MasterTimerResetInterval)
-        {
-            MasterTimer = 0;
-            GameActionTextBox.text = "";
-            CurrentSnakeState = SnakeState.Move;
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Right Mouse Button Down");
-            if (PlayerAttack && PlayerActionTimer < PlayerActionTimerInterval)
+            if (MasterTimer >= MasterTimerResetInterval)
             {
-                DamageSnake();
-                PlayerAttack = false;
-                AttackButton.gameObject.SetActive(false);
-                PlayerActionTimer = 0;
+                MasterTimer = 0;
+                GameActionTextBox.text = "";
+                CurrentSnakeState = SnakeState.Move;
             }
-        }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Left Mouse Button Down");
-            if (PlayerDodge && PlayerActionTimer < PlayerActionTimerInterval)
+            if (Input.GetMouseButtonDown(1))
             {
-                SnakeMissAttack = true;
-                PlayerDodge = false;
-                EvadeButton.gameObject.SetActive(false);
-                PlayerActionTimer = 0;
-            }
-        }
-
-        if (PlayerActionTimer >= PlayerActionTimerInterval)
-        {
-            if (PlayerAttack)
-            {
-                if (Input.GetMouseButtonDown(1))
+                Debug.Log("Right Mouse Button Down");
+                if (PlayerAttack && PlayerActionTimer < PlayerActionTimerInterval)
                 {
+                    DamageSnake();
                     PlayerAttack = false;
                     AttackButton.gameObject.SetActive(false);
-                    GameActionTextBox.text = "";
+                    PlayerActionTimer = 0;
                 }
             }
-            else if (PlayerDodge)
+
+            if (Input.GetMouseButtonDown(0))
             {
-                if (Input.GetMouseButtonDown(0))
+                Debug.Log("Left Mouse Button Down");
+                if (PlayerDodge && PlayerActionTimer < PlayerActionTimerInterval)
                 {
+                    SnakeMissAttack = true;
                     PlayerDodge = false;
-                    AttackButton.gameObject.SetActive(false);
-                    GameActionTextBox.text = "";
+                    EvadeButton.gameObject.SetActive(false);
+                    PlayerActionTimer = 0;
                 }
             }
-            PlayerActionTimer = 0;
-        }
 
-        DetermineGameOver();
+            if (PlayerActionTimer >= PlayerActionTimerInterval)
+            {
+                if (PlayerAttack)
+                {
+                    if (Input.GetMouseButtonDown(1))
+                    {
+                        PlayerAttack = false;
+                        AttackButton.gameObject.SetActive(false);
+                        GameActionTextBox.text = "";
+                    }
+                }
+                else if (PlayerDodge)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        PlayerDodge = false;
+                        AttackButton.gameObject.SetActive(false);
+                        GameActionTextBox.text = "";
+                    }
+                }
+                PlayerActionTimer = 0;
+            }
 
-        if(PlayerWinsGame || SnakeWinsGame)
-        {
-            Time.timeScale = 0;
+            DetermineGameOver();
+
+            if (PlayerWinsGame || SnakeWinsGame)
+            {
+                Time.timeScale = 0;
+                // Testing
+                GameOver = true;
+                SnakeGameOn = false;
+            }
         }
 	}
 

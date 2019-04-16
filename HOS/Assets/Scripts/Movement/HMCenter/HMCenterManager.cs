@@ -50,6 +50,9 @@ namespace HOS
         public AudioSource StarDrop;
         public AudioSource PassageOpen;
 
+        public GameManager ManagerScript;
+        public bool ManagerFound = false;
+
         // Use this for initialization
         void Start()
         {
@@ -62,7 +65,19 @@ namespace HOS
         // Update is called once per frame
         void Update()
         {
-            if (PlayerCameraFound)
+            //if (PlayerCameraFound)
+            //{
+            if (!ManagerFound)
+            {
+                GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+                ManagerScript = gm.gameObject.GetComponent<GameManager>();
+
+                if (ManagerScript != null)
+                {
+                    ManagerFound = true;
+                }
+            }
+            else
             {
                 if (MovementScript.CenterGameFin)
                 {
@@ -144,6 +159,7 @@ namespace HOS
                     {
                         if (!CanMove)
                         {
+                            ManagerScript.CurrentPlayer.gameObject.SetActive(true);
                             MovementScript.CanUturn = true;
                             MovementScript.CanOrbit = false;
                             MovementScript.CanLeftTurn = false;
@@ -228,41 +244,41 @@ namespace HOS
                     Camera.main.transform.rotation = Quaternion.Euler(50f, -180f, 0f);
                 }
             }
-            else
-            {
-                PlayerAvatar = GameObject.FindGameObjectWithTag("PlayerAnne");
-                if(PlayerAvatar == null)
-                {
-                    PlayerAvatar = GameObject.FindGameObjectWithTag("PlayerAlex");
+        }
+            //else
+            //{
+            //    PlayerAvatar = GameObject.FindGameObjectWithTag("PlayerAnne");
+            //    if(PlayerAvatar == null)
+            //    {
+            //        PlayerAvatar = GameObject.FindGameObjectWithTag("PlayerAlex");
 
-                    if(PlayerAvatar == null)
-                    {
-                        PlayerCameraFound = false;
-                    }
-                    else
-                    {
-                        PlayerCameraFound = true;
-                    }
-                }
-                else
-                {
-                    PlayerCameraFound = true;
-                }
+            //        if(PlayerAvatar == null)
+            //        {
+            //            PlayerCameraFound = false;
+            //        }
+            //        else
+            //        {
+            //            PlayerCameraFound = true;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        PlayerCameraFound = true;
+            //    }
 
-                if(PlayerCameraFound != false)
-                {
-                    PlayerCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            //    if(PlayerCameraFound != false)
+            //    {
+            //        PlayerCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
-                    if(PlayerCamera != null)
-                    {
-                        PlayerCameraFound = true;
-                    }
-                    else
-                    {
-                        PlayerCameraFound = false;
-                    }
-                }
-            }
+            //        if(PlayerCamera != null)
+            //        {
+            //            PlayerCameraFound = true;
+            //        }
+            //        else
+            //        {
+            //            PlayerCameraFound = false;
+            //        }
+            //    }
+            //}
         }
     }
-}

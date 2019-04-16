@@ -852,6 +852,7 @@ namespace HOS
                                 CanRightTurn = false;
                                 CanForward = false;
                                 CanBackup = false;
+                                TextArea.text = "";
 
                                 UTurnSelected = false;
                                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -1799,10 +1800,13 @@ namespace HOS
                 }
             }
 
+            if(CurrentCursor == CursorType.Forward)
+            {
+                Footstep.Play();
+            }
+
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
             CurrentCursor = CursorType.Default;
-
-            Footstep.Play();
 
             //    CurrentPlayer.transform.position = WaypointList[2].transform.position;
             //    CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 20f, 0f);

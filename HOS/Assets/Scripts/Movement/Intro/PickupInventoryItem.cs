@@ -16,8 +16,8 @@ namespace HOS
 
         private float TimeBetweenNarration = 13;
         private float TimeCounter;
-        private float BeforeLetterCounter = 4f;
-        public float AfterLetterCounter = 4f;
+        private float BeforeLetterCounter = .2f;
+        public float AfterLetterCounter = .2f;
 
         private bool LetterClicked = false;
         private bool PaperOpen = false;
@@ -25,7 +25,7 @@ namespace HOS
         private bool LetterOpen = false;
         public bool Clickable = false;
 
-        private int LetterNarrationCounter = 4;
+        private int LetterNarrationCounter = 1;
         private int SpeakCounter = 2;
 
         private Scene CurrentScene;
