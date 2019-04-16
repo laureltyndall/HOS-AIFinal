@@ -1478,6 +1478,7 @@ namespace HOS
                                     // Looking at maze entrance
                                     CurrentPlayer.transform.position = WaypointList[1].transform.position;
                                     CurrentWaypoint = WaypointList[1];
+                                    Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                                     CanUturn = false;
                                     CanOrbit = true;
                                     CanLeftTurn = false;
