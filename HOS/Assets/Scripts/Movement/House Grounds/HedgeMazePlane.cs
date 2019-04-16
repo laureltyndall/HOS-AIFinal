@@ -16,6 +16,7 @@ namespace HOS
         public GameManager ManagerScript;
         public bool ManagerFound = false;
         public AudioSource Footstep;
+        public StickController StickScript;
 
         // Use this for initialization
         void Start()
@@ -39,7 +40,7 @@ namespace HOS
             }
             else
             {
-                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !MovementScript.UTurnSelected)
+                if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[9] && !MovementScript.UTurnSelected && !StickScript.CameraOn)
                 {
                     // If we are right next to the gate and we are looking at it
                     Clickable = true;
@@ -83,6 +84,12 @@ namespace HOS
                 if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
                 {
                     TextArea.text = ("I dont think I should wander around in there until I've found " + MovementScript.SiblingName);
+                }
+                if (!ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Stick) && ManagerScript.GroundsFromHouse)
+                {
+                    // Turn on Closeup camera
+                    StickScript.CameraOn = true;
+                    TextArea.text = ("'Beware of dog?' This must be an old sign. " + MovementScript.SiblingName + "is allergic to dogs.");
                 }
                 else
                 {
