@@ -8,6 +8,7 @@ public class AnimalAI : MonoBehaviour {
     Animator anim;
     public GameObject Target;
     public MouseGameManager GameScript;
+    public Animation MyAnimation;
     
     public GameObject GetTarget()
     {
@@ -19,6 +20,8 @@ public class AnimalAI : MonoBehaviour {
         anim = GetComponent<Animator>();
         GameObject go = GameObject.FindGameObjectWithTag("GameManager");
         GameScript = go.GetComponent<MouseGameManager>();
+        MyAnimation = GetComponentInChildren<Animation>();
+        MyAnimation.Play("Run");
     }
 
     private void Update()
