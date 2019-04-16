@@ -65,6 +65,7 @@ public class Inventory : MonoBehaviour
         NewItem.ItemID = InventoryItem.MysteryChecklist;
         NewItem.Status = ItemStatus.Available;
         ItemsInInventory.Add(InventoryItem.MysteryChecklist,NewItem);
+        NewItem = new Item();
 
         NewItem.ItemImage = GameObject.FindGameObjectWithTag("SiblingLetterSprite").GetComponent<Image>();
         NewItem.ItemImage.enabled = false;
