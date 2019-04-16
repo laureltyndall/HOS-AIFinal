@@ -185,6 +185,7 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "Living Room" && CurrentGameState == GameState.None)
             {
                 CurrentGameState = GameState.GameStarted;
+               // CurrentPlayer.gameObject.SetActive(true);
                 CurrentPlayer.transform.position = new Vector3(14.8f, 0f, 17.72f);
                 CurrentPlayer.transform.localScale = new Vector3(2.5f,2.5f,2.5f);
                 CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
@@ -198,6 +199,7 @@ namespace HOS
             else if (SceneManager.GetActiveScene().name == "LivingRoomPuzzleGame" && CurrentGameState == GameState.None)
             {
                 CurrentGameState = GameState.GameStarted;
+                CurrentPlayer.gameObject.SetActive(false);
                 CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "HedgeMazeCenter" && CurrentGameState == GameState.None)
