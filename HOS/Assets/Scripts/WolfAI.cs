@@ -12,6 +12,9 @@ public class WolfAI : MonoBehaviour {
     NavMeshAgent _navigation;
     public AudioSource Bark;
     public AudioSource Growl;
+    public bool SoundPlayed = false;
+
+    public bool WolfOn = true;
 
     //public MouseGameManager GameScript;
     //public Animation MyAnimation;
@@ -37,16 +40,34 @@ public class WolfAI : MonoBehaviour {
 
     private void Update()
     {
-        if (StickThrow)
+        if (WolfOn)
         {
-            Target = GameObject.FindGameObjectWithTag("Stick");
-            anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
-        }
+            if (StickThrow)
+            {
+                if (!SoundPlayed)
+                {
+                    Bark.Play();
+                    SoundPlayed = true;
+                }
+                GameObject go = GameObject.FindGameObjectWithTag("Stick");
+                Target = GameObject.FindGameObjectWithTag("Stick");
+                anim.SetFloat("distance", Vector3.Distance(transform.position, go.transform.position));
+            }
 
+            else
+            {
+                if (!SoundPlayed)
+                {
+                    Growl.Play();
+                    SoundPlayed = true;
+                }
+                Target = GameObject.FindGameObjectWithTag("ActiveMovementPlayer");
+                anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
+            }
+        }
         else
         {
-            Target = GameObject.FindGameObjectWithTag("ActiveMovementPlayer");
-            anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
+
         }
         //MyAnimation = GetComponentInChildren<Animation>();
         //MyAnimation.Play("Run");
@@ -54,10 +75,11 @@ public class WolfAI : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "USABLE BOX" || collision.gameObject.name == "USABLE BOX (1)" || collision.gameObject.name == "USABLE BOX (2)")
+        if (collision.transform.tag == "Stick")
         {
             //GameScript.m_GameWinner = true;
-            Destroy(this.gameObject);
+            SoundPlayed = false;
+
         }
     }
 }

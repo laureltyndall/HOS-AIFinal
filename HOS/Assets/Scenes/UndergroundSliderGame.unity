@@ -1153,6 +1153,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114182373710861100, guid: 13f4f2a463ecb7c48a885da2e068ede5,
+        type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13f4f2a463ecb7c48a885da2e068ede5, type: 2}
   m_IsPrefabParent: 0
@@ -3611,6 +3616,7 @@ MonoBehaviour:
   CenterFromGame: 0
   HallfromOutside: 0
   HallFromRoom: 0
+  FountainPuzzleFin: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}

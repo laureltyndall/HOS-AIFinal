@@ -39,14 +39,14 @@ namespace HOS
 
             if (MovementScript.CanOrbit)
             {
-                if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
+                if ((Input.mousePosition.x >= 0 && Input.mousePosition.x <= 100) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height))
                 {
                     Debug.Log("Rotating Left");
                     Cursor.SetCursor(MovementScript.CursorList[4], Vector2.zero, CursorMode.Auto);
                     MovementScript.CurrentCursor = CursorType.Panoramic;
                     MovementScript.RotateLeft();
                 }
-                if ((Input.mousePosition.x >= 1100 && Input.mousePosition.x <= 1400) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= 800))
+                if ((Input.mousePosition.x >= (Screen.width - 100) && Input.mousePosition.x <= Screen.width) && (Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height))
                 {
                     Debug.Log("Rotating Right");
                     Cursor.SetCursor(MovementScript.CursorList[4], Vector2.zero, CursorMode.Auto);
@@ -58,25 +58,25 @@ namespace HOS
             {
                 if (MovementScript.CanForward)
                 {
-                    if (MovementScript.CurrentScene.name == "Intro" || MovementScript.CurrentScene.name == "HouseGrounds")
-                    {
-                        if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
-                        {
-                            Debug.Log("Changing to Forward Cursor");
-                            Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
-                            MovementScript.CurrentCursor = CursorType.Forward;
-                        }
-                    }
+                //    if (MovementScript.CurrentScene.name == "Intro" || MovementScript.CurrentScene.name == "HouseGrounds")
+                //    {
+                //        if ((Input.mousePosition.x >= 539 && Input.mousePosition.x <= 936) && (Input.mousePosition.y >= 234 && Input.mousePosition.y <= 800))
+                //        {
+                //            Debug.Log("Changing to Forward Cursor");
+                //            Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
+                //            MovementScript.CurrentCursor = CursorType.Forward;
+                //        }
+                //    }
 
-                    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior" || MovementScript.CurrentScene.name == "Kitchen" || MovementScript.CurrentScene.name == "Living Room" || MovementScript.CurrentScene.name == "HedgeMazeCenter" || MovementScript.CurrentScene.name == "HouseHallWay" || MovementScript.CurrentScene.name == "Underground Passage")
-                    {
+                //    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior" || MovementScript.CurrentScene.name == "Kitchen" || MovementScript.CurrentScene.name == "Living Room" || MovementScript.CurrentScene.name == "HedgeMazeCenter" || MovementScript.CurrentScene.name == "HouseHallWay" || MovementScript.CurrentScene.name == "Underground Passage")
+                //    {
                         if ((Input.mousePosition.x >= 410 && Input.mousePosition.x <= 850) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
                         {
                             Debug.Log("Changing to Forward Cursor");
                             Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);
                             MovementScript.CurrentCursor = CursorType.Forward;
                         }
-                    }
+                    //}
                 }
 
                 if (MovementScript.CanBackup)

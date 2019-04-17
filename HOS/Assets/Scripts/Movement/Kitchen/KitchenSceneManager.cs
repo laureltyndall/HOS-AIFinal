@@ -88,6 +88,7 @@ namespace HOS
                 if(!RadioOn)
                 {
                     ManagerScript.RadioMusic.Stop();
+                    ManagerScript.AmbientMusic.Play();
                 }
             }
         }

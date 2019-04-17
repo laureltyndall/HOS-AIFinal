@@ -90,9 +90,10 @@ namespace HOS
                     else
                     {
                         TextArea.text = "I don’t need to go outside right now.";
-                      //    ManagerScript.KitchenFromGame = true;
+                        //    ManagerScript.KitchenFromGame = true;
 
-                      //    ManagerScript.LoadScene("HedgeMaze");
+                        //    ManagerScript.LoadScene("HedgeMaze");
+                   //     ManagerScript.LoadScene("HedgeMazeCenter");
                     }
 
                 }

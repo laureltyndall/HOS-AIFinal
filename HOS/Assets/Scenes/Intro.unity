@@ -1425,6 +1425,7 @@ MonoBehaviour:
   CenterFromGame: 0
   HallfromOutside: 0
   HallFromRoom: 0
+  FountainPuzzleFin: 0
   GameOverScreen: {fileID: 0}
   GameOver: 0
   PlayerCopy: {fileID: 0}
@@ -7753,6 +7754,16 @@ Prefab:
     - target: {fileID: 1623505754131556, guid: 62a82430d8918cf4f94a939650809d53, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224625317764601878, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224625317764601878, guid: 62a82430d8918cf4f94a939650809d53,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a82430d8918cf4f94a939650809d53, type: 2}

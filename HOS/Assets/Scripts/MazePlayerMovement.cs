@@ -19,6 +19,10 @@ public class MazePlayerMovement : MonoBehaviour
     public MenuManager mManagerObject;
     private bool GameOverShown = false;
     public AudioSource StickThrowSound;
+    public GameObject Wolf;
+    private bool WolfOn = true;
+    public float WoflTimer = 7f;
+    private float resettimer = 7f;
     
     public float Speed = 5.0f;
 	// Use this for initialization
@@ -30,6 +34,22 @@ public class MazePlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        if (!WolfOn)
+        {
+            if (WoflTimer <= 0)
+            {
+                stickFlag.WolfOn = true;
+                WolfOn = true;
+                Wolf.SetActive(true);
+                WoflTimer = resettimer;
+            }
+            else
+            {
+                WoflTimer -= Time.deltaTime;
+
+            }
+        }
+
         float HorzMovement = Input.GetAxis("Horizontal");
         float VertMovement = Input.GetAxis("Vertical");
 //        if (Input.GetKey(KeyCode.W))
@@ -59,6 +79,7 @@ public class MazePlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && CanThrowStick)
         {
             StickThrowSound.Play();
+            stickFlag.SoundPlayed = false;
             GameObject shellInstance = GameObject.Instantiate(StickObject, FireTarget.transform);
             shellInstance.GetComponent<Rigidbody>().AddForce(200, 4, 2000);
             shellInstance.transform.SetParent(null);
@@ -69,7 +90,10 @@ public class MazePlayerMovement : MonoBehaviour
             {
                 CanThrowStick = false;
             }
-            
+
+            stickFlag.WolfOn = false;
+            WolfOn = false;
+            Wolf.SetActive(false);
         }
         if (Input.GetKey(KeyCode.E))
         {
@@ -86,6 +110,7 @@ public class MazePlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wolf")
         {
+            stickFlag.Growl.Play();
             if (!GameOverShown)
             {
                 mManagerObject.ShowGameOver(gameOver);

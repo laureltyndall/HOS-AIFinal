@@ -67,8 +67,8 @@ namespace HOS
 
             TimeCounter = TimeBetweenNarration;
 
-            CharacterName = LetterNarration.CharacterName;
-            SiblingName = LetterNarration.SiblingName;
+            CharacterName = MovementScript.PlayerName;
+            SiblingName = MovementScript.SiblingName;
         }
 
         // Update is called once per frame
