@@ -968,6 +968,34 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 382340596}
+--- !u!1 &436970380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 436970381}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &436970381
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436970380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.562, y: 1.045, z: 0.993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 891906567}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &440867409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,6 +1135,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 071ef01d992a90d44a84f2c70db3ebf5, type: 2}
+    - target: {fileID: 177940, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 2}
   m_IsPrefabParent: 0
@@ -1489,7 +1521,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4631702853345556, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.52
+      value: -2.83
       objectReference: {fileID: 0}
     - target: {fileID: 4631702853345556, guid: 180fa1ade9116834b88ce30201e719bf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1678,7 +1710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &748038887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2061,7 +2093,15 @@ MonoBehaviour:
   Manager: {fileID: 0}
   Player: {fileID: 891906561}
   PlayerBody: {fileID: 891906563}
+  FireTarget: {fileID: 436970380}
+  StickObject: {fileID: 1702620079940404, guid: 80804eb71622d67489b5fffcc66343d7,
+    type: 2}
   Speed: 5
+--- !u!4 &891906567 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4631702853345556, guid: 180fa1ade9116834b88ce30201e719bf,
+    type: 2}
+  m_PrefabInternal: {fileID: 636876458}
 --- !u!1 &938513677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 891906561}
+  GameScript: {fileID: 0}
+  MyAnimation: {fileID: 0}
 --- !u!195 &1457934053
 NavMeshAgent:
   m_ObjectHideFlags: 0

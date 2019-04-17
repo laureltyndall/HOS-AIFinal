@@ -9,6 +9,8 @@ public class MazePlayerMovement : MonoBehaviour
     public GameManager Manager;
     public GameObject Player;
     public Rigidbody PlayerBody;
+    public GameObject FireTarget;
+    public GameObject StickObject;
     public float Speed = 5.0f;
 	// Use this for initialization
 	void Start () 
@@ -44,6 +46,11 @@ public class MazePlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             Player.transform.Rotate(0,-5,0);
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject shellInstance = GameObject.Instantiate(StickObject,FireTarget.transform);
+            shellInstance.GetComponent<Rigidbody>().AddForce(200,4,2000);
         }
         if (Input.GetKey(KeyCode.E))
         {
