@@ -41,6 +41,16 @@ namespace HOS
                 Clickable = false;
                 MyCollider.enabled = false;
             }
+
+            if(!RoomManager.TurnLIghtsOn )
+            {
+                RoomManager.LightsOn = true;
+                On.SetActive(true);
+                Off.SetActive(false);
+
+                Light1.SetActive(true);
+                Light2.SetActive(true);
+            }
         }
 
         void OnMouseOver()

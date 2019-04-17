@@ -15,6 +15,7 @@ namespace HOS
         public GameObject Ghost;
         public GameObject UprightBox;
         public GameObject FallingBox;
+        public GameObject Light;
         private float GhostActiveCounter = 2f;
         public GameObject Flashlight;
         private bool BoxFalling = false;
@@ -66,7 +67,10 @@ namespace HOS
             {
                 if (ManagerScript.LRFromUnderground)
                 {
-                    if(!NamedTwin)
+                    LightsOn = true;
+                    Light.SetActive(true);
+
+                    if (!NamedTwin)
                     {
                         if (MovementScript.PlayerName == "Anne")
                         {
@@ -142,6 +146,10 @@ namespace HOS
                     {
                         TextArea.text = "I should turn the lights on in here, too. Let's find a light switch.";
                     }
+                    else
+                    {
+                        Light.SetActive(true);
+                    }
 
                     if (HaveFlashlight && !GhostSeen)
                     {
@@ -163,6 +171,7 @@ namespace HOS
                             GhostActiveCounter -= Time.deltaTime;
                             if (!BoxFalling)
                             {
+                                GhostLaugh.Play();
                                 UprightBox.SetActive(false);
                                 FallingBox.SetActive(true);
                                 BoxSound.Play();

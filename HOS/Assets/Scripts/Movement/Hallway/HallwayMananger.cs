@@ -21,6 +21,7 @@ namespace HOS
         public GameObject Ghost;
         public bool GhostOn = false;
         public bool GhostInPosition = false;
+        public bool TurnLIghtsOn = false;
         
         public bool GhostSeen = false;
 
@@ -138,6 +139,11 @@ namespace HOS
                             TextArea.text = "What IS that?!";
                         }
                     }
+                }
+
+                if(ManagerScript.HallFromRoom && ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
+                {
+                    TurnLIghtsOn = true;
                 }
             }
         }
