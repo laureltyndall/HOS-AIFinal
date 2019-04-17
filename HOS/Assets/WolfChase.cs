@@ -20,7 +20,12 @@ public class WolfChase : WolfBaseFSM {
         //var direction = WolfOppenent.transform.position - WolfNPC.transform.position;
         //WolfNPC.transform.rotation = Quaternion.Slerp(WolfNPC.transform.rotation,
         //    Quaternion.LookRotation(direction), rotSpeed * Time.deltaTime);
-        WolfNavAgent.SetDestination(WolfOppenent.transform.position);
+        WolfAI MyAI = animator.GetComponent<WolfAI>();
+        StickTarget = GameObject.FindGameObjectWithTag("Stick");
+        if(MyAI.StickThrow && StickTarget != null)
+            WolfNavAgent.SetDestination(StickTarget.transform.position);
+        else
+            WolfNavAgent.SetDestination(WolfOppenent.transform.position);
 
         WolfNPC.transform.Translate(0, 0, Time.deltaTime * speed);
     }

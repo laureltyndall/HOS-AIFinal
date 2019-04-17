@@ -49,9 +49,9 @@ public class WolfAI : MonoBehaviour {
                     Bark.Play();
                     SoundPlayed = true;
                 }
-                GameObject go = GameObject.FindGameObjectWithTag("Stick");
                 Target = GameObject.FindGameObjectWithTag("Stick");
-                anim.SetFloat("distance", Vector3.Distance(transform.position, go.transform.position));
+                anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
+                //Vector3.MoveTowards(this.transform.position,Target.transform.position, 4 * Time.deltaTime);
             }
 
             else
@@ -63,6 +63,8 @@ public class WolfAI : MonoBehaviour {
                 }
                 Target = GameObject.FindGameObjectWithTag("ActiveMovementPlayer");
                 anim.SetFloat("distance", Vector3.Distance(transform.position, Target.transform.position));
+                //Vector3.MoveTowards(this.transform.position,Target.transform.position, 4 * Time.deltaTime);
+
             }
         }
         else

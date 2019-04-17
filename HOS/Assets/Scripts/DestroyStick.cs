@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DestroyStick : MonoBehaviour 
 {
-    
+    public WolfAI WolfObj;
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+    {
+		WolfObj = GameObject.FindGameObjectWithTag("Wolf").GetComponent<WolfAI>();
+        
 	}
 	
 	// Update is called once per frame
@@ -19,6 +21,7 @@ public class DestroyStick : MonoBehaviour
     {
         if (collide.transform.tag == "Wolf")
         {
+            WolfObj.StickThrow = false;
             Destroy(this.gameObject);
         }
     }

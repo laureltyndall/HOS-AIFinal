@@ -28,7 +28,7 @@ public class MazePlayerMovement : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        //Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -38,9 +38,9 @@ public class MazePlayerMovement : MonoBehaviour
         {
             if (WoflTimer <= 0)
             {
-                stickFlag.WolfOn = true;
-                WolfOn = true;
-                Wolf.SetActive(true);
+                //stickFlag.WolfOn = true;
+               // WolfOn = true;
+                //Wolf.SetActive(true);
                 WoflTimer = resettimer;
             }
             else
@@ -91,9 +91,9 @@ public class MazePlayerMovement : MonoBehaviour
                 CanThrowStick = false;
             }
 
-            stickFlag.WolfOn = false;
-            WolfOn = false;
-            Wolf.SetActive(false);
+            //stickFlag.WolfOn = false;
+            //WolfOn = false;
+            //Wolf.SetActive(false);
         }
         if (Input.GetKey(KeyCode.E))
         {
