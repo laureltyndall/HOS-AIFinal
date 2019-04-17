@@ -48,7 +48,7 @@ public class MouseGameManager : MonoBehaviour
                 gameManagerFlag = true;
             }
         }
-        
+
     }
 
     public void SpawnAllMice()

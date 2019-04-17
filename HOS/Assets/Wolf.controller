@@ -82,6 +82,6 @@ MonoBehaviour:
   WolfNavAgent: {fileID: 0}
   WolfNPC: {fileID: 0}
   WolfOppenent: {fileID: 0}
-  speed: 2
+  speed: 5
   rotSpeed: 1
   accuracy: 3
