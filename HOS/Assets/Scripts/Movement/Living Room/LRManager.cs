@@ -39,6 +39,7 @@ namespace HOS
         private float TimeBetweenDialogue = 4f;
         private float ResetDiaTimer = 4f;
         private int DiaCounter = 0;
+        private bool GWPanOn = false;
 
         private GameManager ManagerScript;
         private bool ManagerFound = false;
@@ -109,6 +110,7 @@ namespace HOS
                             else
                             {
                                 Talking = false;
+                                DiaFinished = true;
                             }
                         }
                         else
@@ -121,10 +123,14 @@ namespace HOS
                             }
                             else
                             {
-                                DialoguePanel.SetActive(false);
-                                TwinAlex.SetActive(false);
-                                TwinAnne.SetActive(false);
-                                Controller.ShowGameOver(GameWonPanel);
+                                if (!GWPanOn)
+                                {
+                                    DialoguePanel.SetActive(false);
+                                    TwinAlex.SetActive(false);
+                                    TwinAnne.SetActive(false);
+                                    GWPanOn = true;
+                                    Controller.ShowGameOver(GameWonPanel);
+                                }
                             }
                         }
                     }

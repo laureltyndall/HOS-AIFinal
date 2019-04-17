@@ -103,7 +103,7 @@ namespace HOS
                 {
                     if (WolfActive)
                     {
-                        DogWhine.Play();
+                        
                         PlayerCamera.SetActive(false);
 
                         MovementScript.CanUturn = false;
@@ -112,6 +112,8 @@ namespace HOS
                         MovementScript.CanRightTurn = false;
                         MovementScript.CanForward = false;
                         MovementScript.CanBackup = false;
+
+                        DogWhine.Play();
 
                         if (WolfCounter <= 0)
                         {

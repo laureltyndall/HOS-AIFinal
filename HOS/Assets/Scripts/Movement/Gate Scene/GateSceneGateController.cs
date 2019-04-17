@@ -79,6 +79,7 @@ namespace HOS
                 Clickable = true;
 
                 Snake.SetActive(false);
+                SnakeHiss.Stop();
                 TextArea.text = "I should be able to get through the gate safely now.";
             }
             }
@@ -168,6 +169,7 @@ namespace HOS
                             GateLocked.Play();
 
                             Snake.SetActive(true);
+                            SnakeHiss.Play();
                             TextArea.text = "Whoah! There's a snake!";
                         }
                         else if(ClickCounter < 5 && ClickCounter > 0)

@@ -78574,7 +78574,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c11b9905ad5f53b449d2fcad8d4a72d3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -80543,12 +80543,12 @@ GameObject:
   - component: {fileID: 1473651678}
   - component: {fileID: 1473651677}
   m_Layer: 0
-  m_Name: Directional light
+  m_Name: Testing Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1473651677
 Light:
   m_ObjectHideFlags: 0
