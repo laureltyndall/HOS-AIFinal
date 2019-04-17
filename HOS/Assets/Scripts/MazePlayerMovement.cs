@@ -75,6 +75,6 @@ public class MazePlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision Collide)
     {
         PlayerBody.velocity = new Vector3(0,0,0);
-        Player.transform.position = new Vector3(Player.transform.position.x, -2.83f, Player.transform.position.z);
+        //Player.transform.position = new Vector3(Player.transform.position.x, -2.83f, Player.transform.position.z);
     }
 }

@@ -84,9 +84,7 @@ namespace HOS
                         DoorOpen.Play();
                         ManagerScript.PlayerCopy = ManagerScript.CurrentPlayer;
                         //ManagerScript.LoadScene("Gate Scene");
-                        ManagerScript.CenterFromMaze = true;
-                        ManagerScript.LoadScene("Gate Scene");
-                        //ManagerScript.LoadScene("UndergroundSliderGame");
+                        ManagerScript.LoadScene("HedgeMaze");
                     }
                     // else, dialogue that you don't need to leave right now
                     else

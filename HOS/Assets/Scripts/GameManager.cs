@@ -222,9 +222,9 @@ namespace HOS
             {
                 CurrentGameState = GameState.GameStarted;
                 CurrentPlayer.gameObject.SetActive(false);
-                Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
-                B.onClick.AddListener(MasterInventory.ActivateMenu);
-                MasterInventory.FindButtons();
+                //Button B = GameObject.FindGameObjectWithTag("InventoryActiveButton").GetComponent<Button>();
+               // B.onClick.AddListener(MasterInventory.ActivateMenu);
+                //MasterInventory.FindButtons();
                 CurrentSceneName = SceneManager.GetActiveScene().name;
             }
             else if (SceneManager.GetActiveScene().name == "FountainMiniGame" && CurrentGameState == GameState.None)
