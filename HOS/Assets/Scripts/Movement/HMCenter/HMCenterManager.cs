@@ -144,7 +144,7 @@ namespace HOS
                                         WolfCamera.SetActive(false);
                                         PlayerCamera.SetActive(true);
                                         WolfActive = false;
-                                        TextArea.text = "What is going on here? I need to find " + MovementScript.SiblingName + ".";
+                                        TextArea.text = "What is going on here?";
                                     }
                                     else
                                     {

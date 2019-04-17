@@ -79,19 +79,20 @@ namespace HOS
                 if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[0])
                 {
                     // If the player has the letter in inventory, leave the house
-                    if(ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.SiblingLetter))
+                    if (ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.SiblingLetter))
                     {
                         DoorOpen.Play();
                         ManagerScript.PlayerCopy = ManagerScript.CurrentPlayer;
-                        //ManagerScript.LoadScene("Gate Scene");
-                        //ManagerScript.CenterFromMaze = true;
-                        ManagerScript.LoadScene("MouseGame");
-                        //ManagerScript.LoadScene("UndergroundSliderGame");
+
+                        ManagerScript.LoadScene("Gate Scene");
                     }
                     // else, dialogue that you don't need to leave right now
                     else
                     {
                         TextArea.text = "I don’t need to go outside right now.";
+                      //    ManagerScript.KitchenFromGame = true;
+
+                      //    ManagerScript.LoadScene("HedgeMaze");
                     }
 
                 }

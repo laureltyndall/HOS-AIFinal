@@ -18,6 +18,7 @@ public class MazePlayerMovement : MonoBehaviour
     public GameObject gameOver;
     public MenuManager mManagerObject;
     private bool GameOverShown = false;
+    public AudioSource StickThrowSound;
     
     public float Speed = 5.0f;
 	// Use this for initialization
@@ -57,7 +58,7 @@ public class MazePlayerMovement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && CanThrowStick)
         {
-            
+            StickThrowSound.Play();
             GameObject shellInstance = GameObject.Instantiate(StickObject, FireTarget.transform);
             shellInstance.GetComponent<Rigidbody>().AddForce(200, 4, 2000);
             shellInstance.transform.SetParent(null);

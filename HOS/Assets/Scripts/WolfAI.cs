@@ -10,8 +10,9 @@ public class WolfAI : MonoBehaviour {
     public GameObject Target;
     public bool StickThrow;
     NavMeshAgent _navigation;
-    
-    
+    public AudioSource Bark;
+    public AudioSource Growl;
+
     //public MouseGameManager GameScript;
     //public Animation MyAnimation;
 
