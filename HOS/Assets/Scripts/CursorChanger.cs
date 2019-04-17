@@ -70,7 +70,7 @@ namespace HOS
 
                 //    if(MovementScript.CurrentScene.name == "Gate Scene" || MovementScript.CurrentScene.name == "HouseExterior" || MovementScript.CurrentScene.name == "Kitchen" || MovementScript.CurrentScene.name == "Living Room" || MovementScript.CurrentScene.name == "HedgeMazeCenter" || MovementScript.CurrentScene.name == "HouseHallWay" || MovementScript.CurrentScene.name == "Underground Passage")
                 //    {
-                        if ((Input.mousePosition.x >= 410 && Input.mousePosition.x <= 850) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
+                        if ((Input.mousePosition.x >= 210 && Input.mousePosition.x <= (Screen.width - 250)) && (Input.mousePosition.y >= 215 && Input.mousePosition.y <= 700))
                         {
                             Debug.Log("Changing to Forward Cursor");
                             Cursor.SetCursor(MovementScript.CursorList[3], Vector2.zero, CursorMode.Auto);

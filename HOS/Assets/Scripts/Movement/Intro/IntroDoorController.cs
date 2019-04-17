@@ -93,7 +93,7 @@ namespace HOS
                         //    ManagerScript.KitchenFromGame = true;
 
                         //    ManagerScript.LoadScene("HedgeMaze");
-                   //     ManagerScript.LoadScene("HedgeMazeCenter");
+                     //   ManagerScript.LoadScene("Underground Passage");
                     }
 
                 }

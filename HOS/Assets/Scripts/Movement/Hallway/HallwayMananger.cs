@@ -154,7 +154,7 @@ namespace HOS
         public void TurnOffNote()
         {
             PaperCrinkle.Play();
-            ManagerScript.AmbientMusic.Pause();
+            ManagerScript.AmbientMusic.Stop();
             ManagerScript.RadioMusic.Play();
             // Turn on music
             TextArea.text = "Where's that music coming from?";

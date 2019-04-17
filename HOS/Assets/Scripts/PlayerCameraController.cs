@@ -449,7 +449,7 @@ namespace HOS
             }
             else if (CurrentScene.name == "Underground Passage")
             {
-                if(CurrentWaypoint == WaypointList[2] || CurrentWaypoint == WaypointList[5] || CurrentWaypoint == WaypointList[7] || CurrentWaypoint == WaypointList[10] || CurrentWaypoint == WaypointList[14] || CurrentWaypoint == WaypointList[24])
+                if(CurrentWaypoint == WaypointList[2] || CurrentWaypoint == WaypointList[5] || CurrentWaypoint == WaypointList[6] || CurrentWaypoint == WaypointList[7] || CurrentWaypoint == WaypointList[10] || CurrentWaypoint == WaypointList[14] || CurrentWaypoint == WaypointList[24])
                 {
                     CanUturn = false;
                     CanForward = false;
@@ -1635,6 +1635,17 @@ namespace HOS
                             CanBackup = false;
                         }   // On Path
                         // Waypoint 5 controlled by movement pane
+                        else if (CurrentWaypoint == WaypointList[5])
+                        {
+                            CurrentPlayer.transform.position = WaypointList[6].transform.position;
+                            CurrentWaypoint = WaypointList[6];
+                            CanUturn = false;
+                            CanOrbit = false;
+                            CanLeftTurn = false;
+                            CanRightTurn = false;
+                            CanForward = true;
+                            CanBackup = false;
+                        }
                         else if (CurrentWaypoint == WaypointList[6])
                         {
                             CurrentPlayer.transform.position = WaypointList[7].transform.position;
@@ -1720,7 +1731,7 @@ namespace HOS
                             // 17 Can't move at all, player about to die
                             CurrentPlayer.transform.position = WaypointList[17].transform.position;
                             CurrentWaypoint = WaypointList[17];
-                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 6f, 0f);
+                            CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 15f, 0f);
                             CanUturn = false;
                             CanOrbit = false;
                             CanLeftTurn = false;
@@ -1803,11 +1814,6 @@ namespace HOS
                     MovePlayerUturn();
                     UTurnSelected = !UTurnSelected;
                 }
-            }
-
-            if(CurrentCursor == CursorType.Forward)
-            {
-                Footstep.Play();
             }
 
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);

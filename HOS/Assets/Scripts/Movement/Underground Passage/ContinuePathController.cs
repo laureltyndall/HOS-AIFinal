@@ -30,11 +30,6 @@ namespace HOS
                 Clickable = true;
                 MyCollider.enabled = true;
             }
-            else
-            {
-                Clickable = false;
-                MyCollider.enabled = false;
-            }
         }
 
         void OnMouseOver()
@@ -48,7 +43,7 @@ namespace HOS
         void OnMouseExit()
         {
             //The mouse is no longer hovering over the GameObject so output this message each frame
-            //      Debug.Log("Mouse is no longer on " + this.name);
+          //  Debug.Log("Mouse is no longer on " + this.name);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
 
@@ -66,6 +61,12 @@ namespace HOS
                     MovementScript.CurrentWaypoint = MovementScript.WaypointList[6];
                     MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
                     //    Camera.main.transform.rotation = Quaternion.Euler(45f, -160f, 0f);
+                }
+                else if (MovementScript.CurrentWaypoint == MovementScript.WaypointList[6])
+                {
+                    MovementScript.CurrentPlayer.transform.position = MovementScript.WaypointList[7].transform.position;
+                    MovementScript.CurrentWaypoint = MovementScript.WaypointList[7];
+                    MovementScript.CurrentPlayer.transform.rotation = Quaternion.Euler(0f, -180f, 0f);
                 }
                 else if(MovementScript.CurrentWaypoint == MovementScript.WaypointList[7])
                 {

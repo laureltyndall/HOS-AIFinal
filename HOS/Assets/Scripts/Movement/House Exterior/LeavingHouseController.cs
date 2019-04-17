@@ -89,7 +89,7 @@ namespace HOS
                     {
                         if (ClickCounter == 1)
                         {
-                            TextArea.text = ("I need to find a flashlight.");
+                            TextArea.text = ("I need to find a flashlight. \n *Sigh* That means going back inside. I hope that thing is gone.");
                         }
                         else if (ClickCounter == 2)
                         {

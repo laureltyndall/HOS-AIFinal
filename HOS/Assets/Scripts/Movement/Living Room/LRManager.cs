@@ -36,8 +36,8 @@ namespace HOS
         private bool DiaFinished = false;
         private bool NamedTwin = false;
         private bool Talking = false;
-        private float TimeBetweenDialogue = 4f;
-        private float ResetDiaTimer = 4f;
+        private float TimeBetweenDialogue = 3f;
+        private float ResetDiaTimer = 3f;
         private int DiaCounter = 0;
         private bool GWPanOn = false;
 
