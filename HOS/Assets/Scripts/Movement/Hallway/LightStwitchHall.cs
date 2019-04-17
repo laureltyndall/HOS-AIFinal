@@ -42,7 +42,7 @@ namespace HOS
                 MyCollider.enabled = false;
             }
 
-            if(!RoomManager.TurnLIghtsOn )
+            if(RoomManager.TurnLIghtsOn )
             {
                 RoomManager.LightsOn = true;
                 On.SetActive(true);

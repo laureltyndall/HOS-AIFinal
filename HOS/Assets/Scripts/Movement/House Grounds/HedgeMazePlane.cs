@@ -107,6 +107,8 @@ namespace HOS
                     ManagerScript.CenterFromGame = false;
                     ManagerScript.HallfromOutside = false;
                     ManagerScript.HallFromRoom = false;
+
+                //    ManagerScript.CenterFromMaze = true;
                     SceneManager.LoadScene("HedgeMaze");
                 }
             }

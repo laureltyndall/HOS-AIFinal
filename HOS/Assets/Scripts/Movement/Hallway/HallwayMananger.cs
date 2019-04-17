@@ -61,6 +61,11 @@ namespace HOS
                     GhostSeen = true;
                     HaveList = true;
                     List.SetActive(false);
+
+                    if (ManagerScript.HallFromRoom)
+                    {
+                        TurnLIghtsOn = true;
+                    }
                 }
 
                 if(!GhostSeen && ManagerScript.HallfromOutside & !HaveList)
@@ -132,6 +137,7 @@ namespace HOS
                             GhostOn = false;
                             TextArea.text = "I need to get out of here!";
                             TimeToMove = true;
+                            ManagerScript.HallFromRoom = false;
                             ManagerScript.InteriorGhostSeen = true;
                         }
                         else
@@ -141,10 +147,7 @@ namespace HOS
                     }
                 }
 
-                if(ManagerScript.HallFromRoom && ManagerScript.CurrentPlayer.PlayerInventory.ContainsKey(InventoryItem.Flashlight))
-                {
-                    TurnLIghtsOn = true;
-                }
+                
             }
         }
 

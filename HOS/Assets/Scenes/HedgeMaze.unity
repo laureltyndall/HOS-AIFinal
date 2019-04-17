@@ -1009,7 +1009,7 @@ GameObject:
   - component: {fileID: 440867410}
   - component: {fileID: 440867414}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: MazeExit
   m_TagString: MazeExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,8 +1075,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 440867409}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.217499, y: -6.94125, z: 150.79031}
-  m_LocalScale: {x: 2, y: 15, z: 10}
+  m_LocalPosition: {x: 12.69, y: -6.94125, z: 153.25}
+  m_LocalScale: {x: 2, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 1534751058}
   m_RootOrder: 0
@@ -1092,6 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15888f3c79604446902065b97035318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
 --- !u!1001 &441849487
 Prefab:
   m_ObjectHideFlags: 0
@@ -1138,6 +1139,10 @@ Prefab:
     - target: {fileID: 177940, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 177940, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 2}
+      propertyPath: m_TagString
+      value: Wolf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0bff5de0452ee2b4ab4d0603fe171d7b, type: 2}
@@ -2077,7 +2082,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &891906564
 MonoBehaviour:
@@ -2097,6 +2102,8 @@ MonoBehaviour:
   StickObject: {fileID: 1702620079940404, guid: 80804eb71622d67489b5fffcc66343d7,
     type: 2}
   Speed: 5
+  StickCounter: 2
+  CanThrowStick: 1
 --- !u!4 &891906567 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4631702853345556, guid: 180fa1ade9116834b88ce30201e719bf,
@@ -2707,9 +2714,9 @@ MeshCollider:
   m_GameObject: {fileID: 1457934051}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300006, guid: 91d2fb8fbb39fab44b86ce07763f1e74, type: 3}
@@ -2728,6 +2735,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1457934058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1457934051}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.8, z: 0.9}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!1 &1534751057
 GameObject:
   m_ObjectHideFlags: 0

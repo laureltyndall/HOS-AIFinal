@@ -87,6 +87,7 @@ namespace HOS
                 {
                     TextArea.text = ("I should try the door handle. I don't want to be stuck out here if I can help it.");
                     Knocked = true;
+                    KnobScript.Clickable = true;
                 }
             }
         }
