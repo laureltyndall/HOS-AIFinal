@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using HOS;
 
 public class WolfBaseFSM : StateMachineBehaviour
 {
-
+    public NavMeshAgent WolfNavAgent;
     public GameObject WolfNPC;
     public GameObject WolfOppenent;
     public float speed = 2.0f;
@@ -16,5 +17,7 @@ public class WolfBaseFSM : StateMachineBehaviour
     {
         WolfNPC = animator.gameObject;
         WolfOppenent = WolfNPC.GetComponent<WolfAI>().GetTarget();
+        WolfNavAgent = WolfNPC.GetComponent<NavMeshAgent>();
+
     }
 }

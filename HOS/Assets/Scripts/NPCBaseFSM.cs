@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using HOS;
 
 public class NPCBaseFSM : StateMachineBehaviour {
 
     public GameObject NPC;
     public GameObject opponent;
+    public NavMeshAgent agent;
     public float speed = 2.0f;
     public float rotSpeed = 1.0f;
     public float accuracy = 3.0f;
@@ -15,5 +17,6 @@ public class NPCBaseFSM : StateMachineBehaviour {
     {
         NPC = animator.gameObject;
         opponent = NPC.GetComponent<AnimalAI>().GetTarget();
+        agent = NPC.GetComponent<NavMeshAgent>();
     }
 }

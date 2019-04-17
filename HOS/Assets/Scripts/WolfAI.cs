@@ -1,12 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WolfAI : MonoBehaviour {
 
     Animator anim;
     public GameObject Target;
     public bool StickThrow;
+    NavMeshAgent _navigation;
+    
+    
     //public MouseGameManager GameScript;
     //public Animation MyAnimation;
 
@@ -18,11 +23,16 @@ public class WolfAI : MonoBehaviour {
     private void Start()
     {
         anim = GetComponent<Animator>();
+        _navigation = this.GetComponent<NavMeshAgent>();
+
+      
         //GameObject go = GameObject.FindGameObjectWithTag("GameManager");
         //GameScript = go.GetComponent<MouseGameManager>();
         //MyAnimation = GetComponentInChildren<Animation>();
         //MyAnimation.Play("Run");
     }
+
+   
 
     private void Update()
     {

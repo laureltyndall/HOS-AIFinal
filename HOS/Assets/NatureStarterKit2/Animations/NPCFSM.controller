@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPC: {fileID: 0}
   opponent: {fileID: 0}
+  agent: {fileID: 0}
   speed: 2
   rotSpeed: 1
   accuracy: 3
@@ -62,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPC: {fileID: 0}
   opponent: {fileID: 0}
+  agent: {fileID: 0}
   speed: 1
   rotSpeed: 1
   accuracy: 3

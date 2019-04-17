@@ -11,6 +11,8 @@ public class MazePlayerMovement : MonoBehaviour
     public Rigidbody PlayerBody;
     public GameObject FireTarget;
     public GameObject StickObject;
+    public WolfAI stickFlag;
+    
     public float Speed = 5.0f;
 	// Use this for initialization
 	void Start () 
@@ -49,8 +51,12 @@ public class MazePlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            
             GameObject shellInstance = GameObject.Instantiate(StickObject,FireTarget.transform);
             shellInstance.GetComponent<Rigidbody>().AddForce(200,4,2000);
+            stickFlag.StickThrow = true;
+            
+            
         }
         if (Input.GetKey(KeyCode.E))
         {
