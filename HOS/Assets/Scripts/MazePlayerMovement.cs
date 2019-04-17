@@ -12,6 +12,8 @@ public class MazePlayerMovement : MonoBehaviour
     public GameObject FireTarget;
     public GameObject StickObject;
     public WolfAI stickFlag;
+    public int NumberOfSticks = 3;
+    public bool CanThrowStick = true;
     
     public float Speed = 5.0f;
 	// Use this for initialization
@@ -21,7 +23,7 @@ public class MazePlayerMovement : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()  
+	void Update()
     {
         float HorzMovement = Input.GetAxis("Horizontal");
         float VertMovement = Input.GetAxis("Vertical");
@@ -47,15 +49,20 @@ public class MazePlayerMovement : MonoBehaviour
 //        }
         if (Input.GetKey(KeyCode.Q))
         {
-            Player.transform.Rotate(0,-5,0);
+            Player.transform.Rotate(0, -5, 0);
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && CanThrowStick)
         {
             
-            GameObject shellInstance = GameObject.Instantiate(StickObject,FireTarget.transform);
-            shellInstance.GetComponent<Rigidbody>().AddForce(200,4,2000);
+            GameObject shellInstance = GameObject.Instantiate(StickObject, FireTarget.transform);
+            shellInstance.GetComponent<Rigidbody>().AddForce(200, 4, 2000);
             stickFlag.StickThrow = true;
-            
+            NumberOfSticks -= 1;
+
+            if (NumberOfSticks <= 0)
+            {
+                CanThrowStick = false;
+            }
             
         }
         if (Input.GetKey(KeyCode.E))
