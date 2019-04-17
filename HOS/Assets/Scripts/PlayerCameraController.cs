@@ -162,6 +162,9 @@ namespace HOS
                             MainCamera = Camera.main;
                             CurrentPlayer.transform.position = WaypointList[3].transform.position;
                             CurrentWaypoint = WaypointList[3];
+                            CanUturn = false;
+                            CanForward = false;
+                            CanOrbit = true;
                         }
                     }
                     else if (CurrentScene.name == "Kitchen")
@@ -1240,6 +1243,7 @@ namespace HOS
                                 // Move to previous waypoint closer to gate
                                 CurrentPlayer.transform.position = WaypointList[2].transform.position;
                                 CurrentWaypoint = WaypointList[2];
+                                CurrentPlayer.transform.rotation = Quaternion.Euler(0f, 15f, 0f);
                                 //   Camera.main.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                                 CanUturn = true;
                                 CanOrbit = false;
@@ -1330,32 +1334,32 @@ namespace HOS
                             CanForward = false;
                             CanBackup = false;
                         }
-                        else if (CurrentWaypoint == WaypointList[1])
-                        {
-                            if (!UTurnSelected)         // Looking at door
-                            {
-                                CurrentPlayer.transform.position = WaypointList[0].transform.position;
-                                CurrentWaypoint = WaypointList[0];
-                                CanUturn = false;
-                                CanOrbit = true;
-                                CanLeftTurn = false;
-                                CanRightTurn = false;
-                                CanForward = false;
-                                CanBackup = false;
-                            }
-                            else
-                            {
-                                // Looking at midroom
-                                CurrentPlayer.transform.position = WaypointList[2].transform.position;
-                                CurrentWaypoint = WaypointList[2];
-                                CanUturn = false;
-                                CanOrbit = true;
-                                CanLeftTurn = false;
-                                CanRightTurn = false;
-                                CanForward = false;
-                                CanBackup = false;
-                            }
-                        }
+                        //if (CurrentWaypoint == WaypointList[1])
+                        //{
+                        //    if (!UTurnSelected)         // Looking at door
+                        //    {
+                        //        CurrentPlayer.transform.position = WaypointList[0].transform.position;
+                        //        CurrentWaypoint = WaypointList[0];
+                        //        CanUturn = false;
+                        //        CanOrbit = true;
+                        //        CanLeftTurn = false;
+                        //        CanRightTurn = false;
+                        //        CanForward = false;
+                        //        CanBackup = false;
+                        //    }
+                        //    else
+                        //    {
+                        //        // Looking at midroom
+                        //        CurrentPlayer.transform.position = WaypointList[2].transform.position;
+                        //        CurrentWaypoint = WaypointList[2];
+                        //        CanUturn = false;
+                        //        CanOrbit = true;
+                        //        CanLeftTurn = false;
+                        //        CanRightTurn = false;
+                        //        CanForward = false;
+                        //        CanBackup = false;
+                        //    }
+                        //}
                         else if (CurrentWaypoint == WaypointList[3])
                         {
                             if (!UTurnSelected)         // Looking at fireplace

@@ -185,7 +185,6 @@ namespace HOS
                     }
 
                     ClickCounter++;
-                    SnakeHiss.Play();
                 }
             }
         }

@@ -4942,7 +4942,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 622523856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.47, y: 1, z: -12.07}
+  m_LocalPosition: {x: 11.99, y: 1, z: -12.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11971,6 +11971,7 @@ MonoBehaviour:
   Ghost: {fileID: 2042440408}
   GhostOn: 0
   GhostInPosition: 0
+  TurnLIghtsOn: 0
   GhostSeen: 0
   Count: 3
   GhostLaugh: {fileID: 1306886791}
