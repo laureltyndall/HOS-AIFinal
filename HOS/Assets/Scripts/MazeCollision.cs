@@ -10,7 +10,7 @@ public class MazeCollision : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-	   Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();	
+	   //Manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();	
 	}
 	
 	// Update is called once per frame

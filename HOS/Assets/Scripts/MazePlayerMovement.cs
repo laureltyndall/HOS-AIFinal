@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using HOS;
 
 public class MazePlayerMovement : MonoBehaviour 
@@ -14,6 +15,9 @@ public class MazePlayerMovement : MonoBehaviour
     public WolfAI stickFlag;
     public int NumberOfSticks = 3;
     public bool CanThrowStick = true;
+    public GameObject gameOver;
+    public MenuManager mManagerObject;
+    private bool GameOverShown = false;
     
     public float Speed = 5.0f;
 	// Use this for initialization
@@ -56,6 +60,7 @@ public class MazePlayerMovement : MonoBehaviour
             
             GameObject shellInstance = GameObject.Instantiate(StickObject, FireTarget.transform);
             shellInstance.GetComponent<Rigidbody>().AddForce(200, 4, 2000);
+            shellInstance.transform.SetParent(null);
             stickFlag.StickThrow = true;
             NumberOfSticks -= 1;
 
@@ -75,4 +80,22 @@ public class MazePlayerMovement : MonoBehaviour
         //PlayerBody.AddForce(Movement * Speed);
         Player.transform.Translate(HorzMovement * Speed,0,VertMovement * Speed);
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Wolf")
+        {
+            if (!GameOverShown)
+            {
+                mManagerObject.ShowGameOver(gameOver);
+                GameOverShown = true;
+            }
+
+        }
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("HedgeMaze");
+    }
 }
