@@ -12,6 +12,8 @@ public class MazePlayerMovement : MonoBehaviour
     public GameObject FireTarget;
     public GameObject StickObject;
     public float Speed = 5.0f;
+    public int StickCounter = 2;
+    public bool CanThrowStick = true;
 	// Use this for initialization
 	void Start () 
     {
@@ -19,7 +21,7 @@ public class MazePlayerMovement : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()  
+	void Update()
     {
         float HorzMovement = Input.GetAxis("Horizontal");
         float VertMovement = Input.GetAxis("Vertical");
@@ -45,21 +47,34 @@ public class MazePlayerMovement : MonoBehaviour
 //        }
         if (Input.GetKey(KeyCode.Q))
         {
-            Player.transform.Rotate(0,-5,0);
+            Player.transform.Rotate(0, -5, 0);
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.E))
         {
-            GameObject shellInstance = GameObject.Instantiate(StickObject,FireTarget.transform);
-            shellInstance.GetComponent<Rigidbody>().AddForce(200,4,2000);
+            Player.transform.Rotate(0, 5, 0);
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Space) && CanThrowStick)
         {
-            Player.transform.Rotate(0,5,0);
-       } 
+            GameObject shellInstance = GameObject.Instantiate(StickObject, FireTarget.transform);
+            shellInstance.GetComponent<Rigidbody>().AddForce(200, 4, 2000);
+            shellInstance.transform.SetParent(null);
+            StickCounter -= 1;
+            if (StickCounter <= 0)
+            {
+                CanThrowStick = false;
+            }
+        }
+
         HorzMovement *=Time.deltaTime;
         VertMovement *=Time.deltaTime;
         //Vector3 Movement = new Vector3(HorzMovement, 0 , VertMovement);
         //PlayerBody.AddForce(Movement * Speed);
         Player.transform.Translate(HorzMovement * Speed,0,VertMovement * Speed);
 	}
+
+    void OnCollisionEnter(Collision Collide)
+    {
+        PlayerBody.velocity = new Vector3(0,0,0);
+        Player.transform.position = new Vector3(Player.transform.position.x, -2.83f, Player.transform.position.z);
+    }
 }

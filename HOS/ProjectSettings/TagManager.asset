@@ -58,6 +58,8 @@ TagManager:
   - InventoryActiveButton
   - MazeExit
   - Mouse
+  - ActiveMovementPlayer
+  - Wolf
   layers:
   - Default
   - TransparentFX
